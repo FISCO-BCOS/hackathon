@@ -1,0 +1,10 @@
+build
+report-*.html
+.idea
+log
+node_modules
+.DS_Store
+contract.address
+contracts/*.address
+*/data
+*/log
