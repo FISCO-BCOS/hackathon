@@ -16,3 +16,4 @@
 ## 项目地址
 https://github.com/chislab/fisco-devkit
 
+##[教程视频](https://www.bilibili.com/video/av63664699/)
