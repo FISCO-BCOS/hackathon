@@ -13,7 +13,7 @@
 
 ## 参赛作品
 
-+ [提交说明与入口](201907-Beijing/README.md#提交说明与入口example_projectreadmemd)
++ [提交说明与入口](201907-Beijing/README.md)
 
 # [2019年8月微众银行金融科技大赛](201908-Shenzhen/README.md)
 
