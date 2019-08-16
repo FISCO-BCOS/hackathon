@@ -11,10 +11,8 @@
 4. 参赛队伍可以在各自子目录`Contrcts`目录下提交Solidity合约。合约接口需要有说明文档，要求提供通过[console](https://github.com/FISCO-BCOS/console)、[nodejs-sdk](https://github.com/FISCO-BCOS/nodejs-sdk)或[python-sdk](https://github.com/FISCO-BCOS/python-sdk)调用的操作截图。
 5. 参赛队伍可以在各自子目录`Project`目录下提交项目代码。项目代码要求提供运行指引且需要经过FISCO BCOS团队审核。项目代码要求安装步骤清晰、保证能运行和项目干净清晰。项目详细介绍请[参考这里的格式](example_project/README.md)提交。
 
-## [队名：项目名](example_project/README.md)
+## [参赛作品（部分）](https://mp.weixin.qq.com/s/1hiij7bteHIvg2ypBma2fg)
 
-请在这里提交项目简介。
++ [启思队：FISCO BCOS多语言开发套件](https://github.com/FISCO-BCOS/hackathon/tree/master/201907-Beijing/chislab)
 
-## 示例-启思：FISCO BCOS多语言快速开发套件
-
-支持NodeJS、Golang的开发套件，支持Docker部署、合约编译、功能测试、性能测试，让你更专注于合约的编写!
+本项目旨在构建基于FISCO BCOS的开发套件，以便开发者迅速地搭建开发环境和测试，提供的功能包括Docker搭链、合约编译、NodeJS与Go语言的SDK和性能测试。开发者可以通过本项目迅速地搭链，对合约进行部署测试，并转化为相应语言的SDK，并且集成了链的性能测试模块caliper，方便开发者进行性能测试。
