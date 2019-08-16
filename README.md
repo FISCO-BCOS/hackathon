@@ -32,4 +32,4 @@ FinTechathon，[微众银行首届金融科技高校技术大](支持超链：ht
 
 ## 参赛作品
 
-+ [提交说明与入口](201908-Shenzhen/README.md#提交说明与入口example_projectreadmemd)
++ [提交说明与入口](201908-Shenzhen/README.md)
