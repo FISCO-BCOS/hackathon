@@ -48,9 +48,7 @@ $ protoc --go_out=plugins=grpc:. route_guide.proto
 进入主目录 `GoRXL\myRXL\web`,开三个终端，分别运行主函数：
 
 ```
-go run main_firm.go
-go run main_persion.go
-go run main_school.go
+go run main.go
 ```
 
 或者运行`go build` 命令，生成 `.exe` 文件
