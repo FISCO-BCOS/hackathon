@@ -1,0 +1,306 @@
+syntax="proto3";
+
+option java_multiple_files = true;
+option java_package="bcosServer";
+
+//学生信息初始化
+message StuInfoInitInput{
+    uint64 StuID = 1;
+    string StuName = 2;
+    string UsName = 3; 
+    string Major = 4; 
+    string ExtInfo = 5;  
+    uint64 Time = 6;
+
+    uint32 UsLevel = 7;
+    uint32 Grade = 8;
+}
+
+message StuInfoInitOutput{
+    string Success = 1;
+}
+
+//学生信息更新
+message StudentInfoUpdateInput{
+    uint64 StuID =1;
+    string StuName =2;
+    string UsName =3; 
+    string Major =4;
+    string ExtInfo =5;
+    uint64 Time =6;
+
+    uint32 UsLevel = 7;
+    uint32 Grade = 8;
+}
+
+message StuInfoUpdateOutput{
+    string Success = 1;
+}
+
+
+//各学期成绩录入
+message StuGradeRecodeInput{
+    uint64 StuID =1;
+    string StuName =2;
+    uint32 Grade =3;
+    uint32 AverageGrades =4;
+    string ExtInfo =5;
+    uint64 Time =6;
+
+    uint32 ObligatoryCredit = 7;
+    uint32 OptionalCredit = 8;
+}
+
+message StuGradeRecodeOutput{
+    string Success =1;
+}
+
+
+//各学期成绩更新
+message StuGradeUpdateInput{
+    uint64 StuID =1;
+    string StuName =2;
+    uint32 Grade =3;
+    uint32 AverageGrades =4;
+    string ExtInfo =5;
+    uint64 Time =6;
+
+    uint32 ObligatoryCredit = 7;
+    uint32 OptionalCredit = 8;
+}
+
+message StuGradeUpdateOutput{
+    string Success =1;
+}
+
+
+//活动发布
+message ActivityRegisterInput{
+    uint32 ActID =1;
+    string ActName =2;
+    string Organizer =3;
+    string Status =4;
+    string ExtInfo =5;
+    uint64 Time =6;
+}
+
+message ActivityRegisterOutput{
+    string Success =1;
+}
+
+
+//活动信息更新
+message ActivityInfoUpdateInput{
+    uint32 ActID =1;
+    string ActName =2;
+    string Organizer =3;
+    string Status =4;
+    string ExtInfo =5;
+    uint64 Time =6;
+}
+
+message ActivityInfoUpdateOutput{
+    string Success =1;
+}
+
+
+//活动成绩记录
+message ActivityGradeRecodeInput{
+    uint32 ActID =1;
+    uint64 StuID =2;
+    string ActName =3;
+    string StuName =4;
+    string ExtInfo =5;
+    uint64 Time =6;
+    string ActSignature =7;
+}
+
+message ActivityGradeRecodeOutput{
+    string Success =1;
+}
+
+
+//证书信息初始化
+message CertInfoInitInput{
+    uint64 CertID =1;
+    uint64 StuID =2;
+    string StuName =3;
+    string UsName =4;
+    string Major =5;
+    string StudyTime =6; 
+    string CertStatus =7;
+    string ExtInfo =8;
+    uint64 Time =9; 
+    string CertSignature =10;
+}
+
+message CertInfoInitOutput{
+    string Success =1;
+}
+
+
+//证书信息更新
+message CertInfoUpdateInput{
+    uint64 CertID =1;
+    uint64 StuID =2;
+    string StuName =3;
+    string UsName =4;
+    string Major =5;
+    string StudyTime =6; 
+    string CertStatus =7;
+    string ExtInfo =8;
+    uint64 Time =9; 
+    string CertSignature =10;
+}
+
+message CertInfoUpdateOutput{
+    string Success =1;
+}
+
+
+//学生信息查询
+message StuInfoQueryInput{
+    uint64 StuID =1 ;
+}
+
+message StuInfoQueryOutput{
+    uint64 StuID = 1;
+    string StuName = 2;
+    string UsName = 3; 
+    string Major = 4; 
+    string ExtInfo = 5;  
+    uint64 Time = 6;
+
+    uint32 UsLevel = 7;
+    uint32 Grade = 8;
+}
+
+
+//学生成绩查询
+message StuGradeQueryInput{
+    uint64 StuID =1;
+    uint32 Grade =2;
+}
+
+message StuGradeQueryOutput{
+    uint64 StuID =1;
+    string StuName =2;
+    uint32 Grade =3;
+    uint32 AverageGrades =4;
+    string ExtInfo =5;
+    uint64 Time =6;
+
+    uint32 ObligatoryCredit = 7;
+    uint32 OptionalCredit = 8;
+}
+
+
+//学生活动查询
+message StuActQueryInput{
+    uint64 StuID =1;
+    uint32 ActID =2;
+}
+
+message StuActQueryOutput{
+    uint32 ActID=1;
+    uint64 StuID=2;
+    string ActName=3;
+    string StuName=4;
+    string ExtInfo=5;
+    uint64 Time=6;
+    string ActSignature=7;
+
+}
+
+
+//学生证书查询
+message StuCertQueryInput{
+    uint64 CertID =1;
+}
+
+message StuCertQueryOutput{
+    uint64 CertID =1;
+    uint64 StuID =2;
+    string StuName =3;
+    string UsName =4;
+    string Major =5;
+    string StudyTime =6; 
+    string CertStatus =7;
+    string ExtInfo =8;
+    uint64 Time =9;
+    string CertSignature = 10;
+}
+
+
+//活动信息查询
+message ActInfoQueryInput{
+    uint32 ActID =1;
+}
+
+message ActInfoQueryOutput{
+    uint32 ActID =1;
+    string ActName =2;
+    string Organizer =3;
+    string Status =4;
+    string ExtInfo =5;
+    uint64 Time =6;
+}
+//学分查询
+message AllCreditQueryInput{
+    uint64 StuID =1;
+}
+
+message AllCreditQueryOutput{
+    uint32 CreditSum =1;
+    uint32 ObligatoryCredit =2;
+    uint32 OptionalCredit =3;
+}
+
+//信用评估
+message CreditEvaluationInput{
+    uint64 StuID = 1;
+}
+
+message CreditEvaluationOutput{
+    uint64 StuID = 1;
+    uint32 UsScore = 2;
+    uint32 GradeScore = 3;
+    uint32 LevelScore = 4;
+    uint32 CreditScore = 5;
+}
+
+service CreditCert{
+    //学生信息初始化
+    rpc StuInfoInit (StuInfoInitInput) returns (StuInfoInitOutput){}
+    //学生信息更新
+    rpc StuInfoUpdate (StudentInfoUpdateInput) returns (StuInfoUpdateOutput){}
+    //各学期成绩录入
+    rpc StuGradeRecode (StuGradeRecodeInput) returns (StuGradeRecodeOutput){}
+    //各学期成绩更新
+    rpc StuGradeUpdate (StuGradeUpdateInput) returns (StuGradeUpdateOutput){}
+    //活动发布
+    rpc ActivityRegister (ActivityRegisterInput) returns (ActivityRegisterOutput){}
+    //活动信息更新
+    rpc ActivityInfoUpdate (ActivityInfoUpdateInput) returns (ActivityInfoUpdateOutput){}
+    //活动成绩录入
+    rpc ActivityGradeRecode (ActivityGradeRecodeInput) returns (ActivityGradeRecodeOutput){}
+    //证书信息初始化
+    rpc CertInfoInit (CertInfoInitInput) returns (CertInfoInitOutput){}
+    //证书信息更新
+    rpc CertInfoUpdate (CertInfoUpdateInput) returns (CertInfoUpdateOutput){}
+    //学生信息查询
+    rpc StuInfoQuery (StuInfoQueryInput) returns (StuInfoQueryOutput){}
+    //学生成绩查询
+    rpc StuGradeQuery (StuGradeQueryInput) returns (StuGradeQueryOutput){}
+    //学生活动查询
+    rpc StuActQuery (StuActQueryInput) returns (StuActQueryOutput){}
+    //学生证书查询
+    rpc StuCertQuery (StuCertQueryInput) returns (StuCertQueryOutput){}
+    //活动信息查询
+    rpc ActInfoQuery (ActInfoQueryInput) returns (ActInfoQueryOutput){}
+    //学分查询
+    rpc AllCreditQuery (AllCreditQueryInput) returns (AllCreditQueryOutput){}
+    //信用评估
+    rpc CreditEvaluation (CreditEvaluationInput) returns (CreditEvaluationOutput){}
+    
+}

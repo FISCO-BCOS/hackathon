@@ -1,0 +1,219 @@
+<!doctype html>    {{define "show_activity"}}
+<html class="no-js">
+<head>
+  	<meta charset="utf-8">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<meta name="description" content="">
+  	<meta name="keywords" content="">
+  	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+  	<title>show_活动</title>
+  	<meta name="renderer" content="webkit">
+  	<!-- No Baidu Siteapp-->
+  	<meta http-equiv="Cache-Control" content="no-siteapp"/>
+  	<link rel="stylesheet" href="assets/css/amazeui.min.css">
+  	<link rel="stylesheet" href="assets/css/swiper.min.css">
+  	<link rel="stylesheet" href="assets/css/style.css">
+  	<link rel="stylesheet" href="assets/css/inquery.css">
+  	<script src="assets/js/jquery.min.js"></script>
+  	<script src="assets/js/common.js"></script>
+  	<script src="assets/js/swiper.min.js"></script>
+	<link rel="stylesheet" href="http://at.alicdn.com/t/font_702550_3c60k2sbqzv.css">
+	<!-- 单独插件↓ -->
+	<link rel="stylesheet" href="assets/css/jquery.mcustomscrollbar.css">
+	<script src="assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=0Ax5gpUK8DiCTw39VGNMhQQZrbsjO8bV"></script>
+    <style type="text/css">
+    .am-radius2222{
+        border-radius: 2px;
+        display: block;
+        padding: .5em;
+        font-size: 1.6rem;
+        line-height: 1.2;
+        color: #555;
+        vertical-align: middle;
+        background-color: #fff;
+        background-image: none;
+        border: 1px solid #ccc;
+        margin-left: 100px;
+        width: 80%;
+    }
+    </style>
+</head>
+<body>
+    
+	<!--header start-->
+	<!-- pc header start -->
+	<div class="header am-show-lg-only" data-am-sticky>
+        <div class="am-container">
+            <h1 class="am-fl logo am-text-left">
+                <a href="#" class="am-block"><img src="assets/images/logo.png" alt="" /></a>
+            </h1>
+            <div class="nav am-inline-block">
+                <ul class="am-cf nav_list">
+                    <li>
+                        <a href="/index" class="am-block">首页</a>
+                    </li>
+                    <li class="active">
+                        <a href="#" class="am-block">关于融信链</a>
+                    </li>
+                    <li>
+                        <a href="#" class="am-block">业务板块</a>
+                    </li>
+                    <li>
+                        <a href="#" class="am-block">新闻中心</a>
+                    </li>
+                    <li>
+                        <a href="#" class="am-block">投资者关系</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="header_right am-fr">
+                <div class="shares am-fl"><!-- 股票代码： --><font><!-- 300167 --></font></div>
+                <div class="search am-fr">
+                    <form action="">
+                        <input type="text" placeholder="融信链">
+                        <button type="submit" class="am-icon-btn am-primary"><i class="am-icon-search"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+	</div>
+	<!-- pc header end -->
+
+	<!--header end-->
+
+    <!-- main start -->
+	<div class="column_main contact">
+        <!-- column banner start -->
+		<div class="column_banner" style="background-image:url(assets/images/about_bn_02.jpg)">
+            <div class="am-container">
+                <div class="title white">
+                    <h3 data-am-scrollspy="{animation: 'slide-bottom', delay: 300, repeat:false}"></h3>
+                    <p data-am-scrollspy="{animation: 'slide-bottom', delay: 500, repeat:false}"></p>
+                </div>
+            </div>
+        </div>
+        <!-- column banner end -->
+
+        <div class="column_nav">
+            <div class="am-container am-cf">
+                <!-- breadcrumb start -->
+                <div class="breadcrumb am-fl">
+                    <ol class="am-breadcrumb am-margin-0 am-padding-0">
+
+                    </ol>
+                </div>
+                <!-- breadcrumb end -->
+                <!-- nav start -->
+                <ul class="nav am-fr">
+
+                </ul>
+                <!-- nav end -->
+            </div>
+        </div>
+
+        
+        <div class="gray bd">
+        	<div class="am-container am-cf">
+    			<div class="column_name"></div>
+                <div class="am-container" style="padding-top: 50px;max-width: 1300px;">
+    				<!-- <div class="column_name">联系我们</div> -->
+    				<div class="item info" data-am-scrollspy="{animation: 'slide-bottom', delay: 300, repeat:false}" style="background-image: url(assets/images/background_activity.jpg);background-size: cover;height: 900px;">
+                        <!-- <div class="title">联系方式</div> -->
+                        <div class="am-g am-g-collapse">
+                            <div class="back1" style="margin-top: 23%;text-align: center;">
+                                <h1 style='font-size: 50px;font-family: "宋体";'></h1>
+                            </div>
+                            <div class="black2" style="margin-top: 110px;">
+                                <div class="word1s" style="display: inline-block;font-size: 25px;width: 100%;">
+                                  <p class="p111">活动编号：</p>  <p style="text-align:left;display: inline-block;">{{.actID}}</p>
+                                </div>
+                            </div>
+                            <div class="black2" style="width: 100%;">
+                                <div class="word1s" style="display: inline-block;font-size: 25px;width: 100%;">
+                                    <p class="p111">活动名称：</p>   <p style="text-align:left;display: inline-block;">{{.actName}}</p>
+                                </div>
+                            </div>
+
+                            <div class="black2" style="width: 100%;">
+                                <div class="word1s" style="display: inline-block;font-size: 25px;width: 100%;">
+                                    <p class="p111">状态：</p>   <p style="text-align:left;display: inline-block;">{{.status}}</p>
+                                </div>
+                            </div>
+                            <div class="black2" style="width: 100%;">
+                                <div class="word1s" style="display: inline-block;font-size: 25px;width: 100%;">
+                                   <p class="p111">备注：</p>   <p style="text-align:left;display: inline-block;">{{.extInfo}}</p>
+                                </div>
+                            </div>
+                             <div class="black2" style="width: 100%;">
+                                <div class="word1s" style="display: inline-block;font-size: 25px;width: 100%;margin-top: 30px;">
+                                    <p style="text-align:left;display: inline-block;font-size: 17px;width: 50%;padding-left: 30%;">{{.time}}</p>
+                                    <p style="text-align:left;display: inline-block;font-size: 17px;padding-left: 6%;">{{.sponsor}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <button class="am-btn am-btn-primary am-radius" style="margin-right: 20px;font-size: 20px;width: 10%;float: right;">
+                    <a style="color: #fff;" href="/index">返回</a>
+                </button>
+			</div>
+            
+        </div>
+        
+	</div>
+    <!-- main end -->
+	<!-- footer start -->
+	<div class="footer">
+		<div class="down">
+			<div class="am-container am-cf">
+				<div class="copyright am-fl">© 版权所有 2019</div>
+				<ul class="am-fr">
+					<li><a href="#">友情链接</a></li>
+					<li><a href="#">法律声明</a></li>
+					<li><a href="#">加入我们</a></li>
+					<li><a href="#">意见与建议</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- footer end -->
+<script type="text/javascript">
+    $(function () {
+        ShowMap('113.949105,22.573199','19');
+    })
+    function getInfo(id) {
+        $.ajax({
+            type: "POST",
+            url: "WebUserControl/Contact/GetInfo.ashx",
+            cache: false,
+            async: false,
+            data: { ID: id },
+            success: function (data) {
+                data = eval(data);
+                var length = data.length;
+                if (length > 0) {
+                    ShowMap(data[0]["Image"],data[0]["NewsNum"]);
+                }
+            }
+        });
+    }
+    function ShowMap(zuobiao,zoom) {
+        var arrzuobiao = zuobiao.split(',');
+        var map = new BMap.Map("baiduMap");
+        map.centerAndZoom(new BMap.Point(arrzuobiao[0], arrzuobiao[1]), zoom);
+        map.addControl(new BMap.NavigationControl());
+        var myIcon = new BMap.Icon("assets/images/map_position_07.png", new BMap.Size(131,143));
+        var marker = new BMap.Marker(new BMap.Point(arrzuobiao[0], arrzuobiao[1]),{icon:myIcon});
+        map.addOverlay(marker);
+    }
+
+</script>
+<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+<script src="assets/js/amazeui.min.js"></script>
+</body>{{end}}
+</html>
