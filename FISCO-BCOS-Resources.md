@@ -42,7 +42,7 @@
 4. console
   console 控制台是FISCO BCOS 2.0的重要交互式客户端工具。控制台拥有丰富的命令，包括查询区块链状态、管理区块链节点、部署并调用合约等。
   - [操作文档](https://fisco-bcos-documentation.readthedocs.io/zh_CN/latest/docs/installation.html#id7)
-  - [源码]https://github.com/FISCO-BCOS/console
+  - [源码](https://github.com/FISCO-BCOS/console)
 
 #### 区块链通用组件
   - 展示工具: 
