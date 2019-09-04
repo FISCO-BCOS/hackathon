@@ -8,7 +8,7 @@
 | 内存     | 2G                | 4GB                                                          |
 | 带宽     | 1M                | 5M                                                           |
 | Java     | Java(TM) 1.8      | 推荐`Oralce JDK`；<br />如果在`CentOS`中使用`Open JDK`，请先升级到`1.9` |
-| 操作系统 | 能正常运行JVM即可 | 快速安装Bash脚本在以下环境测试通过：<br />`CentOS7.2`、`Ubuntu16.04`、`RedHat7.4`<br />`Java`服务在以下环境测试通过：<br />`CentOS7.2`、`Ubuntu16.04`、`RedHat7.4` |
+| 操作系统 | 能正常运行JVM即可 | 快速安装Bash脚本在以下环境测试通过：<br />`CentOS7.2 + `、`Ubuntu16.04`、`RedHat7.4`<br />`Java`服务在以下环境测试通过：<br />`CentOS7.2`、`Ubuntu16.04`、`RedHat7.4` |
 
 ### 文档
 
