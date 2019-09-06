@@ -13,7 +13,7 @@ contract EnterpriseManager {
   mapping(address => Enterprise) public enterprises;
   address[] public enterpriseAddresses;
 
-  // enterpirse is exited or not
+  // enterprise is exited or not
   function IsExitAddress(address _enterAddress)
     public
     constant
