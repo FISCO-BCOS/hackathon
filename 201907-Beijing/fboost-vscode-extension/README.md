@@ -20,6 +20,7 @@ FBoost Visucal Code Extension 是针对 [Visual Code](https://code.visualstudio.
 
 主要根据 [FISCO BCOS 文档](https://fisco-bcos-documentation.readthedocs.io/zh_CN/latest/docs/installation.html) 集成相关命令，通过 `ctrl+shift+p (win)` 或者 `command+shift+p (mac)` 调出快捷命令，使用户在 Visual Code 中便捷操作 FISCO BCOS。
 
+
 ### Install & Run
 
 ```
