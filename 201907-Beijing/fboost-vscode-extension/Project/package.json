@@ -1,0 +1,104 @@
+{
+	"name": "fboost-extension",
+	"displayName": "FBoost extension",
+	"description": "FBoost Visucal Code Extension 是针对 Visual Code 设计的 FISCO BCOS 扩展插件。",
+	"version": "0.0.1",
+	"publisher": "leec",
+	"repository": "https://github.com/includeleec/fboost-vscode-extension",
+	"icon": "resources/icon.jpg",
+	"engines": {
+		"vscode": "^1.36.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:extension.helloWorld",
+		"onCommand:fboost.initialEnv",
+		"onCommand:fboost.installDependency",
+		"onCommand:fboost.setNodeBase",
+		"onCommand:fboost.buildChain",
+		"onCommand:fboost.startNodes",
+		"onCommand:fboost.checkProcess",
+		"onCommand:fboost.installConsole",
+		"onCommand:fboost.copyConsoleConfig",
+		"onCommand:fboost.copyConsoleCert",
+		"onCommand:fboost.startConsole",
+		"onCommand:fboost.scaffold.spring-boot"
+	],
+	"main": "./extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.helloWorld",
+				"title": "Hello World"
+			},
+			{
+				"command": "fboost.initialEnv",
+				"title": "FBoost:[Deploy] (1).Initial envirement"
+			},
+			{
+				"command": "fboost.installDependency",
+				"title": "FBoost:[Deploy] (2).Install dependency"
+			},
+			{
+				"command": "fboost.setNodeBase",
+				"title": "FBoost:[Deploy] (3).Set node base"
+			},
+			{
+				"command": "fboost.buildChain",
+				"title": "FBoost:[Deploy] (4).Build chain"
+			},
+			{
+				"command": "fboost.startNodes",
+				"title": "FBoost:[Deploy] (5).Start nodes"
+			},
+			{
+				"command": "fboost.checkProcess",
+				"title": "FBoost:[Check] nodes process"
+			},
+			{
+				"command": "fboost.checkLog",
+				"title": "FBoost:[Check] logs"
+			},
+			{
+				"command": "fboost.checkConsensus",
+				"title": "FBoost:[Check] nodes consensus status"
+			},
+			{
+				"command": "fboost.installConsole",
+				"title": "FBoost:[Console] (1).Install console"
+			},
+			{
+				"command": "fboost.copyConsoleConfig",
+				"title": "FBoost:[Console] (2).Copy console config"
+			},
+			{
+				"command": "fboost.copyConsoleCert",
+				"title": "FBoost:[Console] (3).Copy console certificate"
+			},
+			{
+				"command": "fboost.startConsole",
+				"title": "FBoost:[Console] Start console"
+			},
+			{
+				"command": "fboost.scaffold.spring-boot",
+				"title": "FBoost:[Scaffold] Spring Boot Starter"
+			}
+		]
+	},
+	"scripts": {
+		"test": "node ./test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^5.2.6",
+		"@types/node": "^10.12.21",
+		"@types/vscode": "^1.36.0",
+		"eslint": "^5.13.0",
+		"glob": "^7.1.4",
+		"mocha": "^6.1.4",
+		"typescript": "^3.3.1",
+		"vscode-test": "^1.0.0-next.0"
+	}
+}
