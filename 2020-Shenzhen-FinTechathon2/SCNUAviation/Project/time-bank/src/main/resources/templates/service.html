@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>SB Admin 2 - Blank</title>
+
+
+
+  <!-- Custom fonts for this template-->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+
+  <!-- Custom styles for this page -->
+  <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" href="css/service.css">
+
+</head>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="service_list.html">
+          <div class="sidebar-brand-icon rotate-n-15">
+            <i class="fas fa-laugh-wink"></i>
+          </div>
+          <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+        </a>
+  
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0">
+  
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item">
+          <a class="nav-link" href="service_list.html">
+            <i class="fas fa-fw"><img src="img/home_page.svg" width="25px" height="25px" style="padding-bottom: 3px;"></i>
+            <span>首页</span>
+          </a>
+        </li>
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item active">
+          <a class="nav-link" href="service_list.html">
+            <i class="fas fa-fw"><img src="img/to_service_others.svg" width="22px" height="22px" style="padding-bottom: 3px;"></i>
+            <span>接取服务</span>
+          </a>
+        </li>
+          <!-- Divider -->
+        <hr class="sidebar-divider">
+        <!-- Nav Item - Utilities Collapse Menu -->
+        <li class="nav-item">
+          <a class="nav-link" href="donate.html">
+            <i class="fas fa-fw"><img src="img/as_gift.svg" width="22px" height="22px" style="padding-bottom: 3px;"></i>
+            <span>赠送志愿币</span>
+          </a>
+        </li>
+        <hr class="sidebar-divider">
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+          <a class="nav-link" href="crowdfunding.html">
+            <i class="fas fa-fw"><img src="img/zhongchou.svg" width="22px" height="22px" style="padding-bottom: 3px;"></i>
+            <span>公益众筹</span>
+          </a>
+        </li>
+        <hr class="sidebar-divider">
+        <!-- Nav Item - Utilities Collapse Menu -->
+        <li class="nav-item">
+          <a class="nav-link" href="buy.html">
+            <i class="fas fa-fw"><img src="img/store.svg" width="22px" height="22px" style="padding-bottom: 3px;"></i>
+            <span>志愿币商城</span>
+          </a>
+        </li>
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+          <a class="nav-link" href="new-service.html">
+            <i class="fas fa-fw"><img src="img/get_service.svg" width="25px" height="25px" style="padding-bottom: 3px;"></i>
+            <span>发布服务</span>
+          </a>
+        </li>
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+        <!-- Nav Item - Charts -->
+        <li class="nav-item">
+          <a class="nav-link" href="user.html">
+            <i class="fas fa-fw"><img src="img/user_center.svg" width="22px" height="22px" style="padding-bottom: 3px;"></i>
+            <span>用户中心</span></a>
+        </li>
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+          <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
+      </ul>
+      <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+          <!-- Sidebar Toggle (Topbar) -->
+          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
+
+
+        <!--   <div class="ml-md-3 my-2 my-md-0 mw-20 mr-4">
+            <div class="dropdown mb-1" style="float: left;" >
+              <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size:10px;">
+                广州市
+              </button>
+              <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="javascript:void(0)" onclick="switch_choose('#dropdownMenuButton', '广州市')">广州市</a>
+                <a class="dropdown-item" href="javascript:void(0)" onclick="switch_choose('#dropdownMenuButton', '东莞市')">东莞市</a>
+                <a class="dropdown-item" href="javascript:void(0)" onclick="switch_choose('#dropdownMenuButton', '深圳市')">深圳市</a>
+              </div>
+            </div>
+          </div> -->
+
+          <!-- Topbar Search -->
+          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            
+            <div class="input-group" style="float: left">
+              <input type="text" class="form-control bg-light border-0 small" placeholder="请输入要搜索的服务" aria-label="Search" aria-describedby="basic-addon2">
+              <div class="input-group-append" style="z-index: 0">
+                <button class="btn btn-primary" type="button">
+                  <i class="fas fa-search fa-sm"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <!-- Topbar Navbar -->
+          <ul class="navbar-nav ml-auto">
+
+            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+            <li class="nav-item dropdown no-arrow d-sm-none">
+              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-search fa-fw"></i>
+              </a>
+              <!-- Dropdown - Messages -->
+              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                <form class="form-inline mr-auto w-100 navbar-search">
+                  <div class="input-group">
+                    <input type="text" class="form-control bg-light border-0 small" placeholder="请输入要搜索的服务" aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <button class="btn btn-primary" type="button">
+                        <i class="fas fa-search fa-sm"></i>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </li>
+
+            <!-- Nav Item - Alerts -->
+            <li class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell fa-fw"></i>
+                <!-- Counter - Alerts -->
+                <span class="badge badge-danger badge-counter">3+</span>
+              </a>
+              <!-- Dropdown - Alerts -->
+              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                <h6 class="dropdown-header">
+                  Alerts Center
+                </h6>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="mr-3">
+                    <div class="icon-circle bg-primary">
+                      <i class="fas fa-file-alt text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="small text-gray-500">December 12, 2019</div>
+                    <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                  </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="mr-3">
+                    <div class="icon-circle bg-success">
+                      <i class="fas fa-donate text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="small text-gray-500">December 7, 2019</div>
+                    $290.29 has been deposited into your account!
+                  </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="mr-3">
+                    <div class="icon-circle bg-warning">
+                      <i class="fas fa-exclamation-triangle text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="small text-gray-500">December 2, 2019</div>
+                    Spending Alert: We've noticed unusually high spending for your account.
+                  </div>
+                </a>
+                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+              </div>
+            </li>
+
+            <!-- Nav Item - Messages -->
+            <li class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-envelope fa-fw"></i>
+                <!-- Counter - Messages -->
+                <span class="badge badge-danger badge-counter">7</span>
+              </a>
+              <!-- Dropdown - Messages -->
+              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
+                <h6 class="dropdown-header">
+                  Message Center
+                </h6>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="dropdown-list-image mr-3">
+                    <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
+                    <div class="status-indicator bg-success"></div>
+                  </div>
+                  <div class="font-weight-bold">
+                    <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
+                    <div class="small text-gray-500">Emily Fowler · 58m</div>
+                  </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="dropdown-list-image mr-3">
+                    <img class="rounded-circle" src="https://source.unsplash.com/AU4VPcFN4LE/60x60" alt="">
+                    <div class="status-indicator"></div>
+                  </div>
+                  <div>
+                    <div class="text-truncate">I have the photos that you ordered last month, how would you like them sent to you?</div>
+                    <div class="small text-gray-500">Jae Chun · 1d</div>
+                  </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="dropdown-list-image mr-3">
+                    <img class="rounded-circle" src="https://source.unsplash.com/CS2uCrpNzJY/60x60" alt="">
+                    <div class="status-indicator bg-warning"></div>
+                  </div>
+                  <div>
+                    <div class="text-truncate">Last month's report looks great, I am very happy with the progress so far, keep up the good work!</div>
+                    <div class="small text-gray-500">Morgan Alvarez · 2d</div>
+                  </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="dropdown-list-image mr-3">
+                    <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="">
+                    <div class="status-indicator bg-success"></div>
+                  </div>
+                  <div>
+                    <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</div>
+                    <div class="small text-gray-500">Chicken the Dog · 2w</div>
+                  </div>
+                </a>
+                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+              </div>
+            </li>
+
+            <div class="topbar-divider d-none d-sm-block"></div>
+
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+              </a>
+              <!-- Dropdown - User Information -->
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Profile
+                </a>
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Settings
+                </a>
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Activity Log
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Logout
+                </a>
+              </div>
+            </li>
+
+          </ul>
+
+        </nav>
+        <!-- End of Topbar -->
+        
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+
+          <!-- 轮播 -->
+          <div class="row">
+            <div class="col-lg-12">
+              <!-- Collapsable Card Example -->
+              <div class="card shadow mb-4">
+                <!-- Card Header - Accordion -->
+<!--                 <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                  <h6 class="m-0 font-weight-bold text-primary">筛选</h6>
+                </a> -->
+                <!-- Card Content - Collapse -->
+                <div class="collapse show" id="collapseCardExample">
+                  <div class="card-body" style="border: solid #f8f9fc; 1px;">
+                    
+                   <!-- 轮播的图片 -->
+
+                      <div id="demo" class="carousel slide" data-ride="carousel">
+                       
+                        <!-- 指示符 -->
+                        <ul class="carousel-indicators">
+                          <li data-target="#demo" data-slide-to="0" class="active"></li>
+                          <li data-target="#demo" data-slide-to="1"></li>
+                          <li data-target="#demo" data-slide-to="2"></li>
+                        </ul>
+                       
+                        <!-- 轮播图片 -->
+<!--                         <div class="carousel-inner">
+                          <div class="carousel-item active">
+                            <img src="img/lunbo1.jpg" style="width: 1000px;height: 450px;">
+                          </div>
+                          <div class="carousel-item">
+                            <img src="img/lunbo2.jpg" style="width: 1000px;height: 450px;">
+                          </div>
+                          <div class="carousel-item">
+                            <img src="img/lunbo3.jpg" style="width: 1000px;height: 450px;">
+                          </div>
+                        </div> -->
+                        <div class="carousel-inner">
+                          <div class="carousel-item active">
+                            <img src="https://static.runoob.com/images/mix/img_fjords_wide.jpg" style="width:100%">
+                          </div>
+                          <div class="carousel-item">
+                            <img src="https://static.runoob.com/images/mix/img_nature_wide.jpg" style="width:100%">
+                          </div>
+                          <div class="carousel-item">
+                            <img src="https://static.runoob.com/images/mix/img_mountains_wide.jpg" style="width:100%">
+                          </div>
+                        </div>
+                       
+                        <!-- 左右切换按钮 -->
+                        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                          <span class="carousel-control-prev-icon"></span>
+                        </a>
+                        <a class="carousel-control-next" href="#demo" data-slide="next">
+                          <span class="carousel-control-next-icon"></span>
+                        </a>
+                       
+                      </div>
+
+                    
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Page Heading -->
+          <!-- <h1 class="h3 mb-4 text-gray-800">Service Page</h1> -->
+          <!-- 分类开始 -->
+          <div class="row">
+            <div class="col-lg-12">
+              <!-- Collapsable Card Example -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <!-- <h6 class="m-0 font-weight-bold text-primary">服务列表</h6> -->
+                  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size:10px;">
+                广州市
+              </button>
+              <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="javascript:void(0)" onclick="switch_choose('#dropdownMenuButton', '广州市')">广州市</a>
+                <a class="dropdown-item" href="javascript:void(0)" onclick="switch_choose('#dropdownMenuButton', '东莞市')">东莞市</a>
+                <a class="dropdown-item" href="javascript:void(0)" onclick="switch_choose('#dropdownMenuButton', '深圳市')">深圳市</a>
+              </div>
+                </div>
+                <!-- Card Content - Collapse -->
+                <div class="collapse show" id="collapseCardExample">
+                  <div class="card-body" style="border: solid #f8f9fc; 1px;">
+
+                    
+
+
+                    <!-- 服务分类内容开始 -->
+                    <div class="row" id="service_type">
+                        <div class="ml-md-3 my-2 my-md-0 mw-20 mr-4">
+                          <div style="float: left;margin-top: 15%">
+                            <span>公共服务：</span>
+                          </div>
+                        </div>
+                        <a href="#" class="btn btn-light mr-4">
+                          <span class="text">宣传</span>
+                        </a>
+                        <a href="#" class="btn btn-light mr-4">
+                          <span class="text">环境清洁</span>
+                        </a>
+                        <a href="#" class="btn btn-light mr-4">
+                          <span class="text">公共卫生</span>
+                        </a>
+                        <a href="#" class="btn btn-light mr-4">
+                          <span class="text">文体活动</span>
+                        </a>
+                        <a href="#" class="btn btn-light mr-4">
+                          <span class="text">维修养护</span>
+                        </a>
+                        <a href="#" class="btn btn-light mr-4">
+                          <span class="text">方案征集</span>
+                        </a>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <!-- 服务分类内容结束 -->
+                    <!-- 地点分类开始 -->
+                    <div class="row" id="region_list">
+                        <div class="ml-md-3 my-2 my-md-0 mw-20 mr-4">
+                          <div style="float: left;margin-top: 15%">
+                            <span>区域：</span>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <!-- 地点分类结束 -->
+                    <!-- 价格开始 -->
+                    <div class="row" id="price_list">
+                        <div class="ml-md-3 my-2 my-md-0 mw-20 mr-4">
+                          <div style="float: left;margin-top: 15%">
+                            <span>价格：</span>
+                          </div>
+                        </div>
+                        <a href="#" class="btn btn-light mr-4">
+                          <span class="text">全部</span>
+                        </a>
+                        <a href="#" class="btn btn-light mr-4">
+                          <span class="text">0-5</span>
+                        </a>
+                        <a href="#" class="btn btn-light mr-4">
+                          <span class="text">5-10</span>
+                        </a>
+                        <a href="#" class="btn btn-light mr-4">
+                          <span class="text">10以上</span>
+                        </a>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <!-- 价格结束 -->
+                    <!-- 发布时间开始 -->
+                    <div class="row" id="date_list">
+                        <div class="ml-md-3 my-2 my-md-0 mw-20 mr-4">
+                          <div style="float: left;margin-top: 15%">
+                            <span>发布时间：</span>
+                          </div>
+                        </div>
+                        <a href="#" class="btn btn-light mr-4">
+                          <span class="text">全部</span>
+                        </a>
+                        <a href="#" class="btn btn-light mr-4">
+                          <span class="text">今日发布</span>
+                        </a>
+                        <a href="#" class="btn btn-light mr-4">
+                          <span class="text">昨日发布</span>
+                        </a>
+                        <a href="#" class="btn btn-light mr-4">
+                          <span class="text">近三日发布</span>
+                        </a>
+                        <a href="#" class="btn btn-light mr-4">
+                          <span class="text">24小时到期</span>
+                        </a>
+                        <a href="#" class="btn btn-light mr-4">
+                          <span class="text">2天内到期</span>
+                        </a>
+                    </div>
+                    <!-- <div class="dropdown-divider"></div> -->
+                    <!-- 发布时间结束 -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 分类结束 -->
+
+
+          <!-- 服务列表开始 -->
+          <div class="row">
+            <div class="col-lg-12">
+                <!-- Basic Card Example -->
+              <div class="card shadow mb-4" id="service_list">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">服务列表</h6>
+                </div>
+                <!-- <div class="card-body card-light" style="border: solid #f8f9fc; 1px;" onclick="del()">
+                    <span class="text">测试&nbsp;|&nbsp;擦洗玻璃&nbsp;|&nbsp;服务分类：清洁卫生</span>
+                    <br>
+                    <span class="text">时间币：4.0&nbsp;|&nbsp;服务时间：周六下午2-3点&nbsp;|&nbsp;发布时间：2020-9-30&nbsp;|&nbsp;有效期：2020-10-31</span>
+                </div> -->
+                <div id="delete" style="border: 1px solid;width: 100%;margin: auto;height: 100%;position: fixed;left: 0px;top: 0px;background: rgb(0,0,0,0.6);overflow: auto;text-align: center;display: none;z-index: 100;">
+    <div style="background: white;width: 450px;margin: auto;margin-top: 50px;border-radius: 5px;">
+      <div style="width: 100%;height: 100%;border-bottom: 1px solid #CCCCCC;margin-top: 40px">
+        <!-- 框内内容 -->
+        <div style="padding-top: 20px;" id="service_detail">
+          <span class="text" >需求描述：擦洗窗户（卧室两扇窗户需要擦洗）</span>
+        </div>
+        <span class="text" >要求：自备梯子，手脚麻利</span>
+        <br>
+        <span class="text">服务时间：周日下午2-3点，预计1小时</span>
+        <br>
+        <span class="text">服务地点：万顷沙镇民建村裕安东路50号</span>
+        <br>
+        <span class="text">联系人：xxx</span>
+        <br>
+        <span class="text">联系电话：12031130123</span>
+        <br>
+        <span class="text">有效期至：2020-10-31</span>
+        <br>
+        <br>
+        <!-- <div style="font-size: 0.9rem;padding-top: 30px;">您确定要删除该项目吗？</div>
+        <div style="font-size: 0.8rem;margin-top: 15px;">一旦删除将不可恢复。</div> -->
+      </div>
+      <div style="height: 39px;">
+        <div onclick="javascript:window.location.href='service_detail.html'" style="float: left;width: 49%;height: 39px;border-right: 1px solid #CCCCCC;line-height: 39px;font-size: 1rem;">接取</div>
+        <div onclick="delesc()" style="float: right;width: 50%;height: 39px;line-height: 39px;font-size: 1rem">取消</div>
+      </div>
+    </div>
+  </div>
+              </div>
+            </div>
+          </div>
+          <!-- 服务列表结束-->
+
+          <!-- 分页开始 -->
+          <div class="row" style="z-index: -1">
+            <div class="col-sm-12 col-md-5">
+              <div class="dataTables_info" id = "dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
+            </div>
+            <div class="col-sm-12 col-md-7">
+              <div class="dataTables_paginate paging_simple_numbers" id="dataTables_paginate">
+                <ul class="pagination">
+                  <li class="paginate_button page-item previous" id="dataTable_previous">
+                    <a href="#" aria-controls="dataTable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
+                  </li>
+                  <li class="pagination_button page-item active">
+                    <a href="#" aria-controls="dataTable" data-dt-idx="1" tabindex="0" class="page-link">1</a>
+                  </li>
+                  <li class="pagination_button page-item ">
+                    <a href="#" aria-controls="dataTable" data-dt-idx="2" tabindex="0" class="page-link">2</a>
+                  </li>
+                  <li class="pagination_button page-item ">
+                    <a href="#" aria-controls="dataTable" data-dt-idx="3" tabindex="0" class="page-link">3</a>
+                  </li>
+                  <li class="pagination_button page-item ">
+                    <a href="#" aria-controls="dataTable" data-dt-idx="4" tabindex="0" class="page-link">4</a>
+                  </li>
+                   <li class="pagination_button page-item ">
+                    <a href="#" aria-controls="dataTable" data-dt-idx="5" tabindex="0" class="page-link">5</a>
+                  </li>
+                  <li class="pagination_button page-item ">
+                    <a href="#" aria-controls="dataTable" data-dt-idx="6" tabindex="0" class="page-link">6</a>
+                  </li>
+                  <li class="pagination_button page-item next" id="dataTable_next">
+                    <a href="#" aria-controls="dataTable" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- 分页结束 -->
+
+
+
+
+
+
+
+
+
+        </div>
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; Your Website 2020</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="login.html">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  
+
+
+  
+
+
+
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin-2.min.js"></script>
+  <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+  <script src="js/serviceList.js"></script>
+
+   <!-- Custom scripts for all pages-->
+
+  <!-- Page level plugins -->
+  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="js/demo/datatables-demo.js"></script>
+
+  <script>
+    $(function() {
+        // load_service_type("");
+        load_region("");
+        load_service_list("");
+
+
+    });
+
+  </script>
+
+</body>
+
+</html>
