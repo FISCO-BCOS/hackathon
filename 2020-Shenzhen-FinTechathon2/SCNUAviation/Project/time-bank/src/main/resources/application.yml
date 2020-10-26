@@ -1,0 +1,30 @@
+encrypt-type: # 0:standard, 1:guomi
+  encrypt-type: 0
+
+group-channel-connections-config:
+  caCert: classpath:ca.crt
+  sslCert: classpath:sdk.crt
+  sslKey: classpath:sdk.key
+  all-channel-connections:
+    - group-id: 1 #group ID
+      connections-str:
+        - 121.37.203.86:20200 # node listen_ip:channel_listen_port
+        - 121.37.203.86:20201
+    - group-id: 2
+      connections-str:
+        - 121.37.203.86:20202 # node listen_ip:channel_listen_port
+        - 121.37.203.86:20203
+
+channel-service:
+  group-id: 1 # The specified group to which the SDK connects
+  agency-name: fisco # agency name
+
+accounts:
+  pem-file: 0xcdcce60801c0a2e6bb534322c32ae528b9dec8d2.pem
+  p12-file: 0x98333491efac02f8ce109b0c499074d47e7779a6.p12
+  password: 123456
+
+spring:
+  thymeleaf:
+    cache: false
+#    prefix: classpath:/webapp/WEB-INF/web/
