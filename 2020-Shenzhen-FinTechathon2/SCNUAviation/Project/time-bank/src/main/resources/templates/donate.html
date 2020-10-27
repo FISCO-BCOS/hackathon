@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>志愿时交易</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-gradient-primary topbar mb-4 static-top shadow">
+
+
+          <!-- Nav Item - Dashboard -->
+          <a class="nav-link" href="service_list.html">
+            <span style="width:70px;display:-moz-inline-box; display:inline-block;color: white;font-weight: bold;">首页</span>
+          </a>
+
+          <a class="nav-link" href="service_list.html">
+            <span style="width:80px;display:-moz-inline-box; display:inline-block;color: white;font-weight: bold;">接取服务</span>
+          </a>
+
+          <a class="nav-link" href="donate.html">
+            <span style="width:80px;display:-moz-inline-box; display:inline-block;color: white;font-weight: bold;">赠送志愿时</span>
+          </a>
+
+          <a class="nav-link" href="crowdfunding.html">
+            <span style="width:80px;display:-moz-inline-box; display:inline-block;color: white;font-weight: bold;">公益DAO</span>
+          </a>
+          <a class="nav-link" href="buy.html">
+            <span style="width:80px;display:-moz-inline-box; display:inline-block;color: white;font-weight: bold;">志愿时商城</span>
+          </a>
+
+          <a class="nav-link" href="new-service.html">
+            <span style="width:80px;display:-moz-inline-box; display:inline-block;color: white;font-weight: bold;">发布服务</span>
+          </a>
+
+          <a class="nav-link" href="service_detail.html">
+            <span style="width:80px;display:-moz-inline-box; display:inline-block;color: white;font-weight: bold;">用户中心</span></a>
+
+          <!-- Topbar Search -->
+          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+
+            <div class="input-group" style="float: left">
+              <input type="text" class="form-control bg-light border-0 small" placeholder="请输入要搜索的服务" aria-label="Search" aria-describedby="basic-addon2">
+              <div class="input-group-append" style="z-index: 0">
+                <button class="btn btn-danger" type="button">
+                  <i class="fas fa-search fa-sm"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <!-- Topbar Navbar -->
+          <ul class="navbar-nav ml-auto">
+
+            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+            <li class="nav-item dropdown no-arrow d-sm-none">
+              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-search fa-fw"></i>
+              </a>
+              <!-- Dropdown - Messages -->
+              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                <form class="form-inline mr-auto w-100 navbar-search">
+                  <div class="input-group">
+                    <input type="text" class="form-control bg-light border-0 small" placeholder="请输入要搜索的服务" aria-label="Search" aria-describedby="basic-addon2">
+                    <button class="btn btn-primary" type="button">
+                      <i class="fas fa-search fa-sm"></i>
+                    </button>
+                    <!--                     <div class="input-group-append">
+
+                                        </div> -->
+                  </div>
+                </form>
+              </div>
+            </li>
+
+
+
+            <div class="topbar-divider d-none d-sm-block"></div>
+
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-light small">唐焌景</span>
+                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+              </a>
+              <!-- Dropdown - User Information -->
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Profile
+                </a>
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Settings
+                </a>
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Activity Log
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Logout
+                </a>
+              </div>
+            </li>
+
+          </ul>
+
+        </nav>
+        <!-- End of Topbar -->
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <!-- 账户余额 -->
+          <div class="card">
+
+            <div class="card-header font-weight-bold">
+                赠予志愿币
+            </div>
+            <div class="card-body">
+            <blockquote class="blockquote mb-0 text-center">
+                <p><img src="img/coins.svg" class="" width="30px" height="30px">剩余志愿币：32.5</p>
+                <p><img src="img/coins.svg" class="" width="30px" height="30px">可用志愿币：22.5</p>
+                <!--<footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>-->
+            </blockquote>
+            </div>
+          </div><br>
+          
+          <!--表单-->
+          <div class="card">
+  				<div class="card-body">
+          <form class="needs-validation" novalidate>
+				  <div class="form-row">
+				  	<div class="col-md-6 mb-6">
+				      <label for="validationCustom01"><img src="img/name.svg" class="" width="26px" height="26px">接收人姓名</label>
+				      <input type="text" class="form-control" id="validationCustom01" value="" required>
+			      	<div class="invalid-feedback">
+				        	接收人地址不能为空
+				      </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="validationCustom02"><img src="img/city.svg" class="" width="26px" height="26px">省份</label>
+                            <select class="custom-select form-control" id="validationCustom02" required>
+                                <option selected disabled value="">省份</option>
+                                <!--<option>...</option>-->
+                            </select>
+                            <div class="invalid-feedback">
+                                请选择省份
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="validationCustom03"><img src="img/city2.svg" class="" width="26px" height="26px">城市</label>
+                            <select class="custom-select form-control" id="validationCustom03" required>
+                                <option selected disabled value="">城市</option>
+                                <!--<option>...</option>-->
+                            </select>
+                            <div class="invalid-feedback">
+                                请选择城市
+                            </div>
+                        </div>
+			      </div>
+				  </div><br>
+				  <div class="form-row">
+				    <div class="col-md-3 mb-3">
+				      <label for="validationCustom04"><img src="img/pw.svg" class="" width="22px" height="22px">密码</label>
+				      <input type="text" class="form-control" id="validationCustom04" value="" required>
+			      	<div class="invalid-feedback">
+				        	密码有误
+				      </div>
+			      </div>
+				  </div>
+				  <div class="form-row">
+				    <div class="col-md-3 mb-3">
+				      <label for="validationCustom05"><img src="img/vali_code.svg" class="" width="22px" height="22px">短信验证码</label>
+				      <input type="text" class="form-control" id="validationCustom05" value="" required>
+			      	<div class="invalid-feedback">
+				        	验证码错误
+				      </div><br>
+		      		<button type="button" class="btn btn-outline-secondary">获取短信验证码</button>
+			      </div>
+				  </div>
+				  <div class="form-group">
+				    <div class="form-check">
+				      <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+				      <label class="form-check-label" for="invalidCheck">
+				        	我已阅读并同意《时间银行》条款
+				      </label>
+				      <div class="invalid-feedback">
+				        	请先仔细阅读并选择同意《时间银行》条款
+				      </div>
+				    </div>
+				  </div>
+				  <button class="btn btn-primary" type="submit">确认</button>
+				</form>
+				
+				<script>
+				// Example starter JavaScript for disabling form submissions if there are invalid fields
+				(function() {
+				  'use strict';
+				  window.addEventListener('load', function() {
+				    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+				    var forms = document.getElementsByClassName('needs-validation');
+				    // Loop over them and prevent submission
+				    var validation = Array.prototype.filter.call(forms, function(form) {
+				      form.addEventListener('submit', function(event) {
+				        if (form.checkValidity() === false) {
+				          event.preventDefault();
+				          event.stopPropagation();
+				        }
+				        form.classList.add('was-validated');
+				      }, false);
+				    });
+				  }, false);
+				})();
+				</script>
+
+        </div>
+       </div>
+      </div>
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; Your Website 2020</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="login.html">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin-2.min.js"></script>
+
+</body>
+
+</html>

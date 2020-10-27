@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>Signin Template for Bootstrap</title>
+        <!-- Bootstrap core CSS -->
+        <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link th:href="@{/css/signin.css}" rel="stylesheet">
+    </head>
+
+    <body class="text-center">
+            <p style="color: #ff0000" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+            <br>
+            <h1>学生列表</h1>
+            <br>
+
+            <div>
+            <div th:each="stu:${students}">
+                <br>
+                <div>
+                    <div th:text="${stu.getName()}"></div>
+                    <div th:text="${stu.getNum()}"></div>
+                </div>
+
+                <br>
+            </div>
+            </div>
+
+    </body>
+
+</html>
