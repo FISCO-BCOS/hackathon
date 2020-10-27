@@ -1,0 +1,17 @@
+server:
+  #端口号
+  port: 8888
+  #项目名，如果不设定，默认是 /
+  servlet:
+    context-path: /demo
+
+transactionUrl: http://127.0.0.1:5002/WeBASE-Front/trans/handle
+groupId: 1
+userAddress: "0x570965117b8ff1412040a2ac03d0457c17f14051"
+useAes: true
+contract:
+  name: HelloWorld
+  address: "0x165942d86810054b1d1c889a3f4e6b75559f09ed"
+  funcName: set
+  funcParam: "[\"abc\"]"
+  contractAbi: "[{\"constant\":false,\"inputs\":[{\"name\":\"n\",\"type\":\"string\"}],\"name\":\"set\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"get\",\"outputs\":[{\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"}]"
