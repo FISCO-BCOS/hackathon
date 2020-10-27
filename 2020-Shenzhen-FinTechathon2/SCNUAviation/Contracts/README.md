@@ -158,3 +158,78 @@ java调用方法：
 p2pTime.accept(volunteerAddress).send();
 ```
 
+
+
+## DAO合约
+
+### 1、构造函数
+
+功能：初始化DAO众筹合约的相关信息
+
+java调用方法：
+
+```java
+DAO.deploy(
+                    web3j,
+                    credentials,
+                    new StaticGasProvider(
+                        GasConstants.GAS_PRICE, GasConstants.GAS_LIMIT),
+                    title,
+                    description,
+                    fundingGoalInToken,
+                    durationInDays,
+                    addressOfToken
+		   ).send();
+```
+
+参数列表：
+
+* ``title``：DAO众筹的标题
+* ``description``：DAO众筹的内容描述
+* ``fundingGoalInToken``：众筹项目计划筹集的目标志愿时
+* ``durationInDays``：众筹持续时间
+* ``addressOfToken``：志愿时代币合约地址
+
+
+
+### 2、pay
+
+功能：往DAO合约捐赠的志愿时
+
+java调用方法：
+
+```java
+dao.pay(timeToken).send();
+```
+
+参数列表：
+
+* ``timeToken``：往DAO合约捐赠的志愿时数量
+
+
+
+### 3、checkGoalReached
+
+功能：检查是否达到筹集目标
+
+java调用方法：
+
+```java
+TransactionReceipt tr = dao.checkGoalReached().send();
+tuple1 = dao.getCheckGoalReachedOutput(tr);
+```
+
+
+
+### 4、
+
+功能：众筹截止时间后，筹集失败则将志愿时退回给捐赠者，筹集成功则将志愿时转移至众筹受益人
+
+java调用方法：
+
+```java
+dao.safeWithdrawal().send();
+```
+
+
+
