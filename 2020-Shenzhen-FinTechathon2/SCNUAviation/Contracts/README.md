@@ -221,7 +221,7 @@ tuple1 = dao.getCheckGoalReachedOutput(tr);
 
 
 
-### 4、
+### 4、safeWithdrawal
 
 功能：众筹截止时间后，筹集失败则将志愿时退回给捐赠者，筹集成功则将志愿时转移至众筹受益人
 
