@@ -47,7 +47,7 @@ contract P2PTime {
         emit Transaction_msg(1);
     }
 
-    function accept(adress _volunteer) public {
+    function accept(address _volunteer) public {
         require(msg.sender == owner);
         require(state == 2);
         volunteer = _volunteer;
