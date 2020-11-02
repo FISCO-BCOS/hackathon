@@ -97,7 +97,7 @@ GeTui.prototype.getBatch = function () {
  * 与服务其建立连接
  * connect to the server
  * @return true -- 连接成功 false -- 连接失败
- *           true -- connection sucessful false -- connection failure
+ *           true -- connection successful false -- connection failure
  * @throws IOException
  *         出现任何连接异常
  *         For any IO Exceptions
