@@ -1537,11 +1537,11 @@ module.exports = require("protobufjs").newBuilder({})["import"]({
                             "id": 2
                         },
                         {
-                            "name": "floa",
+                            "name": "float",
                             "id": 3
                         },
                         {
-                            "name": "doub",
+                            "name": "doubt",
                             "id": 4
                         },
                         {
