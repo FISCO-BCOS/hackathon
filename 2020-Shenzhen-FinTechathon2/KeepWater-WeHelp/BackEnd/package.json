@@ -1,0 +1,24 @@
+{
+  "name": "helpchain",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "axios": "^0.20.0",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "~2.6.1",
+    "ethereumjs-tx": "^2.1.2",
+    "express": "~4.16.1",
+    "goeasy-im": "^1.2.1",
+    "gt-push-sdk": "^4.1.1",
+    "http-errors": "~1.6.3",
+    "js-sha256": "^0.9.0",
+    "morgan": "~1.9.1",
+    "pg": "^8.3.3",
+    "request-promise": "^4.2.6",
+    "web3": "^1.3.0"
+  }
+}

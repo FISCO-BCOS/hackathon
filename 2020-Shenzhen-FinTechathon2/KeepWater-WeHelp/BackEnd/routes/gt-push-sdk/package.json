@@ -1,0 +1,51 @@
+{
+  "_from": "gt-push-sdk",
+  "_id": "gt-push-sdk@4.1.1",
+  "_inBundle": false,
+  "_integrity": "sha512-bvRo6FD49aYift9lEBp+1DIkqgF4kJNHrPl3S66Z3FbCW5CkmGtHpAnr3CgQRVN6024yqLmWqRI2UlytMK19dg==",
+  "_location": "/gt-push-sdk",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "gt-push-sdk",
+    "name": "gt-push-sdk",
+    "escapedName": "gt-push-sdk",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/gt-push-sdk/-/gt-push-sdk-4.1.1.tgz",
+  "_shasum": "a23d687539a8805a55cf904994c4177c1785883c",
+  "_spec": "gt-push-sdk",
+  "_where": "D:\\myexpress\\helpchain\\helpchain",
+  "author": {
+    "name": "getui.com"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "crypto": "0.0.3",
+    "protobufjs": "^3.8.2",
+    "request": "^2.51.0",
+    "util": "^0.10.3"
+  },
+  "deprecated": false,
+  "description": "Node wrapper for getui OS SDK API",
+  "engines": [
+    "node >= 0.6.0"
+  ],
+  "keywords": [
+    "getui",
+    "sdk",
+    "push",
+    "os",
+    "android"
+  ],
+  "main": "index.js",
+  "name": "gt-push-sdk",
+  "version": "4.1.1"
+}
