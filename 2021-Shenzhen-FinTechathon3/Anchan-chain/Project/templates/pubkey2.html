@@ -1,0 +1,55 @@
+{% extends "layout.html" %} {%block left%}
+{%if is_login%}
+<li class="layui-nav-item"><a onclick="javascript:history.go(-1)">返回</a></li>
+{%else%}
+<li class="layui-nav-item layui-nav-itemed">
+    <a href="javascript:;">实体模块</a>
+    <dl class="layui-nav-child">
+        <dd><a href="/enterprise">生产企业模块</a></dd>
+        <dd><a href="/agency">安评机构模块</a></dd>
+        <dd><a href="/audit">监管部门模块</a></dd>
+    </dl>
+</li>
+{%endif%}
+{%endblock%} {%block main%}
+<div class=layui-row>
+    <div class="layui-card">
+        <div class="layui-card-header">数字信封公钥链上查询</div>
+        <div class="layui-card-body" style="width: 400px;">
+            <form class="layui-form" action="/pubkey" method="POST">
+                <div class="layui-form-item">
+                    <label class=layui-form-label for="ent-type">实体类型</label>
+                    <div class=layui-input-block>
+                        <select id="ent-type" name=ent-type>
+                            <option value="enterprise">生产企业</option>
+                            <option value="agency">安评机构</option>
+                            <option value="audit">监管部门</option>
+                          </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class=layui-form-label for="name">机构或部门名称</label>
+                    <div class=layui-input-block>
+                        <input type="text" name=name class="layui-input" id="name">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class=layui-input-block>
+                        <button type="submit" class="layui-btn">查询</button>
+                    </div>
+                </div>
+            </form>
+
+            {%if result%}
+            <p>公钥信息</p>
+            <div>
+                <pre class="layui-code">
+{{result}}
+                </pre>      
+            </div>
+            {%endif%}
+        </div>
+    </div>
+</div>
+
+{%endblock%}

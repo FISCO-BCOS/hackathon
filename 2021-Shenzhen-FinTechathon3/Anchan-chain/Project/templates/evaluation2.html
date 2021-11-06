@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{%block left%}
+<li class="layui-nav-item"><a href="/enterprise">返回上一级</a></li>
+{%endblock%}
+
+{%block main%}
+<div class=layui-row>
+    <div class="layui-card">
+        <div class="layui-card-header">审查合约地址： {{evaluation_addr}}</div>
+        <div class="layui-card-body">
+
+            <table class="layui-table">
+                <thead>
+                    <tr>
+                        <th>部门类型</th>
+                        <th>部门名称</th>
+                        <th>合约地址</th>
+                        <th>数字信封公钥</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for re in result%}
+                    {%if re[1] != ""%}
+                    <tr>
+                        <td>安评机构</td>
+                        <td>{{re[0]}}</td>
+                        <td>{{re[1]}}</td>
+                        <td><pre class=layui-code>{{re[2]}}</pre></td>
+                    </tr>
+                    {%else%}
+                    <tr>
+                        <td>监管部门</td>
+                        <td>{{re[0]}}</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    {%endif%}
+                    {%endfor%}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{%endblock%}

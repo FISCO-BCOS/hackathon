@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+
+{%block left%}
+{% if not is_login %}
+<li class="layui-nav-item layui-nav-itemed">
+    <a href="javascript:;">实体模块</a>
+    <dl class="layui-nav-child">
+        <dd><a href="/enterprise">生产企业模块</a></dd>
+        <dd><a href="/agency">安评机构模块</a></dd>
+        <dd><a href="/audit">监管部门模块</a></dd>
+    </dl>
+</li>
+{%else%}
+<li class="layui-nav-item layui-nav-itemed">
+    <a href="javascript:;">监管部门</a>
+    <dl class="layui-nav-child">
+        <dd><a href="/audit">基本信息</a></dd>
+        <dd><a href="/audit/revoke">安全生产许可证撤销</a></dd>
+        <dd><a href="/audit/log">实体业务查询</a></dd>
+        <dd><a href="/audit/search">门限加密秘钥查询</a></dd>
+        <dd><a href="/audit/accusation">查看举报信息{%if audit.reports | length >= 1%}<span class="layui-badge">{{audit.reports | length}}</span>{%endif%}</a></dd>
+
+        <dd class=layui-this><a href="/audit/arbitrate">发起仲裁合约</a></dd>
+        <dd><a href="/audit/check">执行仲裁判决</a></dd>
+    </dl>
+</li>
+{%endif%}
+{%endblock%}
+
+{%block main%}
+
+<div class=layui-row>
+    <div class="layui-card">
+        <div class="layui-card-header">添加仲裁</div>
+        <div class="layui-card-body">
+
+        <form class="layui-form" action="/audit/arbitrate" method="POST">
+            <div class="layui-form-item">
+                <label class=layui-form-label style="width: 100px;" for="ent-addr">企业名称</label>
+                <div class=layui-input-inline>
+                    <input type="text" name=ent-addr class="layui-input" id="ent-addr">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class=layui-input-block>
+                    <button type="submit" class="layui-btn layui-btn-danger" name="send">添加仲裁</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="layui-card" style="margin-top: 10px;">
+        <div class="layui-card-header">已有仲裁合约列表</div>
+        <div class="layui-card-body">
+
+            <table class="layui-table">
+                <thead>
+                    <tr>
+                        <th>仲裁合约地址</th>
+                        <th>行为</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%if arbitrate_list%}
+                    {%for a in arbitrate_list%}
+                    <tr>
+                        <td>{{a.addr}}</td>
+                        <td><a href="/arbitrate/{{a.addr}}" style="color: blue">查询</a></td>
+                    </tr>
+                    {%endfor%}
+                    {%else%}
+                    <tr>
+                        <td>暂无仲裁合约</td>
+                        <td></td>
+                    </tr>
+                    {%endif%}
+                </tbody>
+            </table>
+    </div>
+</div>
+
+{%endblock%}

@@ -1,0 +1,8 @@
+env
+.DS_Store
+.vscode
+**/__pycache__
+test/**
+!test/.gitkeep
+output/**
+!output/.gitkeep

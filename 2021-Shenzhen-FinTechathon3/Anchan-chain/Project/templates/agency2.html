@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{%block left%}
+{% if not is_login %}
+<li class="layui-nav-item layui-nav-itemed">
+    <a href="javascript:;">实体模块</a>
+    <dl class="layui-nav-child">
+        <dd><a href="/enterprise">生产企业模块</a></dd>
+        <dd class=layui-this><a href="/agency">安评机构模块</a></dd>
+        <dd><a href="/audit">监管部门模块</a></dd>
+    </dl>
+</li>
+{%else%}
+<li class="layui-nav-item layui-nav-itemed">
+    <a href="javascript:;">安评机构</a>
+    <dl class="layui-nav-child">
+        <dd class=layui-this><a href="/agency">基本信息</a></dd>
+        <dd><a href="/agency/engineer">安评师管理</a></dd>
+        <dd><a href="/agency/upload">安评报告上传</a></dd>
+        <dd><a href="/agency/evaluation">审查安评报告</a></dd>
+    </dl>
+</li>
+{%endif%}
+{%endblock%}
+
+{%block main%}
+{% if not is_login %}
+<div class=layui-row style="width: 50%;">
+    <div class=layui-col-4>
+    <form class="layui-form"  method="POST">
+        <div class="layui-form-item">
+            <label class=layui-form-label for="name">用户名</label>
+            <div class="layui-input-block">
+                <input type="text" name=name class="layui-input" id="name">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="password" class=layui-form-label>密码</label>
+            <div class="layui-input-block">
+                <input type="password" name=password class="layui-input" id="password">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button type="submit" class="layui-btn">登录（注册）</button>
+            </div>
+        </div>
+    </form>
+    </div>
+</div>
+{%else%}
+<div class=layui-row>
+    <div class="layui-card">
+        <div class="layui-card-header">安评机构名称： {{username}}</div>
+        <div class="layui-card-body">
+            <p>账户地址：{{agency.account_addr}}</p>
+            <p>安评机构合约地址：{{agency.contract_addr}}</p>
+            <p>安评师列表合约地址：{{agency.engineer_list_addr}}</p>
+            {%if agency.envelope_pub%}
+            <a href="/agency/dl_key" class="layui-btn layui-btn-sm layui-btn-danger">下载数字信封私钥</a>
+            <a href="/agency/dl_pub" class="layui-btn layui-btn-sm layui-btn-normal">下载数字信封公钥</a> 
+            {%endif%}
+        </div>
+    </div>
+</div>
+{%endif%}
+
+{%endblock%}
