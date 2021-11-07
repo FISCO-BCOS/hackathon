@@ -1,0 +1,25 @@
+{
+  "functionArg": {
+      "weId": "xxxxxxxxxxxxxxxxx",
+      "cptJsonSchema":{
+          "title": "cpt",
+          "description": "this is cpt",
+          "properties": {
+            "credit": {
+                "enum": [
+                    "无",
+                    "优秀"
+                ],
+                "type": "string",
+                "description": "the credit of certificate owner"
+            },
+          },
+        ]
+      }
+  },
+  "transactionArg": {
+      "invokerWeId": "xxxxxxxxxx"
+  },
+  "functionName": "registerCpt",
+  "v": "1.0.0"
+}
