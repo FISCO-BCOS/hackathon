@@ -20,6 +20,8 @@ contract Arbitrate{
     uint confirmTimes;
     uint start;
 
+    address randomNumberAddress = 0x2ab1a8217e2e471784d0c5cbe01fba1d243c2e47;
+    randomNumber randGen =  randomNumber(randomNumberAddress);
 
     constructor(address _enterpriseAddress){
         enterpriseAddress = _enterpriseAddress;
@@ -53,16 +55,16 @@ contract Arbitrate{
     }
 
 
-    function rand(uint256 total) public view returns(uint256) {
-        uint256 random = uint256(keccak256(abi.encodePacked(block.number, now)));
-        return random%total;
+    function randFromOracle(uint256 seed,uint256 total) public returns(uint256) {
+        randGen.getRandomNumber(seed);
+        return randGen.get() % total;
     }
 
 
     
-    function rand2(uint256 seed,uint256 total) public view returns (uint256) {
-        uint256 randomNumber = uint256(keccak256(abi.encodePacked(block.number, seed)));
-        return randomNumber%total;
+    function genNextRand(uint256 seed,uint256 total) public view returns (uint256) {
+        uint256 rand = uint256(keccak256(abi.encodePacked(block.number, seed)));
+        return rand%total;
     }
 
 
@@ -72,9 +74,9 @@ contract Arbitrate{
         uint256 len;
         uint256 nonce;
         len = length;
-        nonce = rand(total);
+        nonce = randFromOracle(now,total);
         while (len>0){
-            r = rand2(nonce,total);
+            r = genNextRand(nonce,total);
             if(resultMap[r] != 1){
                 resultMap[r] = 1;
                 randomAuditIndex.push(r);
