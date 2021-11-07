@@ -20,7 +20,7 @@ def index():
     return render_template("index2.html", is_login = is_login, count = count_numbers())
 
 @app.route("/help")
-def help():
+def help_handle():
     is_login = public.check_login()
     return render_template("help2.html", is_login = is_login)
 

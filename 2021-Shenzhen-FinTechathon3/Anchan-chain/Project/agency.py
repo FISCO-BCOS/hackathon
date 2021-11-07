@@ -293,10 +293,7 @@ def agency_evaluation():
     eva_accept = request.form.get("eva-accept")
     eva_deny = request.form.get("eva-deny")
     
-    if eva_accept is not None:
-        result = True
-    else:
-        result = False
+    result = True if eva_accept is not None else False
 
     eng_list = request.form.get("eng-list", "")
     eng_list = [ e for e in eng_list.split()]

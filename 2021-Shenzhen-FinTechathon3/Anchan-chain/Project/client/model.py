@@ -40,6 +40,6 @@ class User():
             self.password = load_dict.get("password", "")
             self.entity_type = load_dict.get("entity_type", "")
             self.is_login = load_dict.get("is_login", True)
-        except:
+        except Exception:
             self.is_login = False
             return

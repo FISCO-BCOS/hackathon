@@ -182,7 +182,7 @@ def audit_log():
         try:
             time_local = time.localtime(l[0]/ 1000)
             result.append((time.strftime("%Y-%m-%d %H:%M:%S", time_local), l[1], l[2]))
-        except:
+        except Exception:
             result.append(l)
 
     return render_template("audit2-2.html", is_login = True, succ_msg = "查询成功",audit = audit, log_result = result,username = username)
@@ -265,7 +265,7 @@ def audit_arbitrate():
         db.session.commit()
 
         arbitrate_list = Arbitrate.query.all()
-    except:
+    except Exception:
         traceback.print_exc()
         return render_template("audit2-5.html", is_login = True, audit = audit, username = username, arbitrate_list = arbitrate_list, fail_msg = "仲裁合约部署失败")
     
@@ -294,7 +294,7 @@ def public_arbitrate(arbitrate_addr: str):
         name_list = list(res[0])
         pub_list = list(res[1])
         addr_list = list(res[2])
-    except:
+    except Exception:
         traceback.print_exc()
         return render_template("audit2-5.html", is_login = True, audit = audit, username = username, arbitrate_list = arbitrate_list, fail_msg = "仲裁合约查询失败")
 
@@ -324,21 +324,17 @@ def audit_check():
     if arbirate is None:
         return render_template("audit2-6.html", is_login = True, audit = audit, username = username, fail_msg = "仲裁合约地址错误")
 
-    if arbitrate_accept is not None:
-        result = True
-    else:
-        result = False
+    result = True if arbitrate_accept is not None else False
         
     try:
         if result:
             res = call_contract(arbitrate_addr, "Arbitrate", "confirm", signer = signer)
             app.logger.info(f"{res}")
             return render_template("audit2-6.html", is_login = True, audit = audit, username = username, succ_msg = "仲裁通过")
-        else:
-            res = call_contract(arbitrate_addr, "Arbitrate", "deny", signer = signer)
-            app.logger.info(f"{res}")
-            return render_template("audit2-6.html", is_login = True, audit = audit, username = username, succ_msg = "仲裁拒绝")
-    except:
+        res = call_contract(arbitrate_addr, "Arbitrate", "deny", signer = signer)
+        app.logger.info(f"{res}")
+        return render_template("audit2-6.html", is_login = True, audit = audit, username = username, succ_msg = "仲裁拒绝")
+    except Exception:
         traceback.print_exc()
     return render_template("audit2-6.html", is_login = True, audit = audit, username = username, fail_msg = "仲裁执行失败")
     

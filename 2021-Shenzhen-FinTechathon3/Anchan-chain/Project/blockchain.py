@@ -47,32 +47,32 @@ def create_account(name, password = ""):
 def signin_account(username, password) -> Union[Signer_Impl, None]:
     try:
         signer = Signer_ECDSA.from_key_file(f"{client_config.account_keyfile_path}/{username}.keystore", password)
-    except:
+    except Exception:
         return None
     return signer
 
-def compile_and_abis(compile: bool = True):
+def compile_and_abis(is_compile: bool = True):
     """
     Compiles all contracts and generates abi and bin files 
     """
     global abis, dp
     for c in ContractsList:
-        if compile:
+        if is_compile:
             Compiler.compile_file(f"Contracts/{c}.sol", output_path="Contracts")
         data_parser = DatatypeParser()
         data_parser.load_abi_file(f"Contracts/{c}.abi")
         abis[c] = data_parser.contract_abi
         dp[c] = data_parser
 
-def deploy_contract(contract, compile: bool = False, signer: Signer_Impl = None, fn_args = None):
+def deploy_contract(contract, is_compile: bool = False, signer: Signer_Impl = None, fn_args = None):
     """
     Args:
         contract: the contract's name, e.g.: "EngineerList"
-        compile (bool): compile or not
+        is_compile (bool): compile or not
     Returns:
         the contract address
     """
-    if compile and (os.path.isfile(client_config.solc_path) or os.path.isfile(client_config.solcjs_path)):
+    if is_compile and (os.path.isfile(client_config.solc_path) or os.path.isfile(client_config.solcjs_path)):
         Compiler.compile_file(f"Contracts/{contract}.sol", output_path="Contracts")
 
     data_parser = DatatypeParser()
@@ -194,7 +194,7 @@ def init():
     db.create_all()
 
     app.logger.warn("compile all contracts")
-    compile_and_abis(compile = True)
+    compile_and_abis(is_compile = True)
 
     for c_name in UniqueContractsList:
         addr =deploy_contract(c_name)
@@ -212,4 +212,3 @@ def init():
 
 if __name__ == "__main__":
     init()
-

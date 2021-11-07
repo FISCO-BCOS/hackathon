@@ -13,7 +13,7 @@ def check_login():
 
 
 @app.route("/license/<addr>")
-def license(addr):
+def license_handle(addr):
     is_login = check_login()
 
     try:
@@ -29,14 +29,14 @@ def license(addr):
     time_local = None
     try:
         time_local = time.localtime(license_info[5]/ 1000)
-    except:
+    except Exception:
         pass
     if time_local is not None:
         license_info[5] = time.strftime("%Y-%m-%d %H:%M:%S", time_local)
     try:
         agency = Agency.query.filter(Agency.contract_addr == license_info[10]).first()
         license_info[10] = agency.username
-    except:
+    except Exception:
         pass
     
     try:
@@ -48,7 +48,7 @@ def license(addr):
             else:
                 engineer_list.append(e_eid)
         license_info[11] = engineer_list
-    except:
+    except Exception:
         pass
     return render_template("license2.html", is_login = is_login,license_info = license_info)
 
@@ -121,7 +121,7 @@ def public_key():
         if result is None:
             return render_template("pubkey2.html", is_login = is_login, fail_msg = "查询失败")
         result = str(result, encoding = "utf-8")
-    except:
+    except Exception:
         return render_template("pubkey2.html", is_login = is_login, fail_msg = "查询失败")
 
     return render_template("pubkey2.html", succ_msg = "查询成功",is_login = is_login,  result = result)
@@ -172,7 +172,7 @@ def credit():
             call_contract(ent.contract_addr, "Agency", "updateCredit", args = [])
             res = call_contract(ent.contract_addr, "Agency", "getCredit", args = [])
             result = res[0]
-    except:
+    except Exception:
         traceback.print_exc()
         return render_template("credit2.html", is_login = is_login, fail_msg = "查询失败")
     return render_template("credit2.html", is_login = is_login, succ_msg = "查询成功", result = result, name = name)

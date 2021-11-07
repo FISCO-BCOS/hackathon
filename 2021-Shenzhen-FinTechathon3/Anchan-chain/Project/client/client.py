@@ -61,7 +61,7 @@ def enterprise_upload(args, user: User):
             "data-hash": hash_value
         }
         ret = s.post(url = enterprise_upload_url, data=data, files=files)
-    except:
+    except Exception:
         traceback.print_exc()
         print("文件不存在或读取失败")
         exit(1)
@@ -74,7 +74,7 @@ def enterprise_upload(args, user: User):
     print(f"进行自动化数据切片，切片存储到 {output_dir}")
     try:
         word.split_word(filename)
-    except:
+    except Exception:
         traceback.print_exc()
         print("自动化数据分配失败")
         exit(1)
@@ -110,7 +110,7 @@ def agency_upload(args, user: User):
             "ent-name": args.enterprise
         }
         ret = s.post(url = enterprise_upload_url, data=data, files=files)
-    except:
+    except Exception:
         traceback.print_exc()
         print("文件不存在或读取失败")
         exit(1)
@@ -123,7 +123,7 @@ def agency_upload(args, user: User):
     print(f"进行自动化数据切片，切片存储到 {output_dir}")
     try:
         word.split_word(filename)
-    except:
+    except Exception:
         traceback.print_exc()
         print("自动化数据分配失败")
         exit(1)
@@ -140,7 +140,7 @@ def arg_login(args):
     user = User(username = username, password = password, entity_type = entity_type, is_login= True)
     try:
         user.dump()
-    except:
+    except Exception:
         print("dump user information error")
         exit(1)
     exit(0)
@@ -151,7 +151,7 @@ def arg_logout(args):
         user.try_load()
         if user.is_login:
             user.logout()
-    except:
+    except Exception:
         print("logout error")
         exit(1)
 
@@ -162,7 +162,7 @@ def arg_upload(args):
         if not user.is_login:
             print("need to login first")
             exit(1)
-    except:
+    except Exception:
         print("login error")
         exit(1)
     
