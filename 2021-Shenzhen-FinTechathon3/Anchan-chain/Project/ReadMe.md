@@ -78,10 +78,10 @@ docker-compose up
 
 ## 五、安产链项目
 
-安产链项目的源代码部署在 USTC LUG 的 Gitlab 服务以及 Gitee 代码托管网站上。使用如下命令运行安产链项目：
+安产链项目的源代码部署在 Gitee 代码托管网站上。使用如下命令运行安产链项目：
 
 ```sh
-git clone https://git.lug.ustc.edu.cn/anchan-chain/anchan-chain.git #拉取源代码
+git clone https://gitee.com/anchan-chain/anchan-chain.git #拉取源代码
 
 cd anchan-chain
 pip install -r requirement.txt
