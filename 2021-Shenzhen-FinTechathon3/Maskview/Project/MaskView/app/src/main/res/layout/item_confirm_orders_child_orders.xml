@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp">
+
+        <com.maskview.dao.ZQRoundOvalImageView
+            android:id="@+id/item_child_image_orders"
+            android:layout_width="110dp"
+            android:layout_height="105dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="10dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="105dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="15dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/item_child_imgTopic_orders"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/item_child_topic_orders"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/Tv_tag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/item_child_imgTopic_orders"
+                android:layout_alignBaseline="@+id/item_child_imgPrice_orders"
+                android:text="@string/item_child_moneyMark"
+                android:textColor="#E3170D" />
+
+            <TextView
+                android:id="@+id/item_child_imgPrice_orders"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/item_child_imgTopic_orders"
+                android:layout_marginTop="6dp"
+                android:layout_toEndOf="@+id/Tv_tag"
+                android:textColor="#E3170D"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/item_child_imgPrice_orders"
+                android:layout_marginTop="10dp"
+                android:text="@string/item_child_note_orders"
+                android:textSize="12sp" />
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#C0C0C0" />
+
+</LinearLayout>

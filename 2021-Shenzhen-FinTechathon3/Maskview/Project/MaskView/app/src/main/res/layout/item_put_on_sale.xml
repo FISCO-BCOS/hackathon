@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="30dp"
+    android:background="@drawable/lv_put_on_sale"
+    android:gravity="center">
+
+
+    <ImageView
+        android:id="@+id/item_put_on_sale_img"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:adjustViewBounds="true"
+        android:src="@mipmap/config" />
+
+
+    <ImageView
+        android:id="@+id/item_put_on_sale_deleteThis"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:src="@mipmap/delete_sale" />
+
+
+</RelativeLayout>

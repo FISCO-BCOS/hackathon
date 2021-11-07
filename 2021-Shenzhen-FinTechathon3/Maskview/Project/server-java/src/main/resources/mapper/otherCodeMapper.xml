@@ -1,0 +1,52 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.media.dao.OtherCodeDao">
+    <resultMap id="otherCodeResult" type="otherCode">
+        <result property="phoneNumber" column="phone_number"/>
+        <result property="phoneCode" column="code"/>
+        <result property="expireTime" column="expire_time"/>
+    </resultMap>
+
+
+    <sql id="selectCode">
+        select code from others_code
+    </sql>
+
+    <!--添加数据-->
+    <insert id="insertOtherCode" parameterType="otherCode">
+        insert into register_code
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="phoneNumber != null">phone_number,</if>
+            <if test="phoneCode != null">code,</if>
+            <if test="expireTime != null">expire_time</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="phoneNumber != null">#{phoneNumber},</if>
+            <if test="phoneCode != null">#{phoneCode},</if>
+            <if test="expireTime != null">#{expireTime}</if>
+        </trim>
+    </insert>
+
+    <!--是否有该手机号的记录,没有的话添加,有的话更新验证码-->
+    <select id="isExist" parameterType="BigInteger" resultMap="otherCodeResult">
+        select count(phone_number) from others_code
+        where phone_number = #{phoneNumber}
+    </select>
+
+    <!--通过手机号查验证码-->
+    <select id="getHerCode" parameterType="BigInteger" resultMap="otherCodeResult">
+        <include refid="selectCode"/>
+        where phone_number = #{phoneNumber}
+    </select>
+
+    <update id="updateCode" parameterType="otherCode">
+        update others_code
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="phoneCode != null">code = #{phoneCode}</if>
+        </trim>
+        where phone_number = #{phoneNumber}
+    </update>
+
+
+</mapper>

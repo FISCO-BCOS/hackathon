@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rv_setBackgroundWall"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    tools:context=".mainView.mine.SetBackgroundWall">
+
+    <ImageView
+        android:id="@+id/iv_nowBackgroundWall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:adjustViewBounds="true"
+        android:src="@mipmap/mybackground" />
+
+    <TextView
+        android:id="@+id/tv_setBackgroundWall"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="center"
+        android:text="设置封面"
+        android:textColor="#ffffff"
+        android:textSize="16sp" />
+
+</RelativeLayout>

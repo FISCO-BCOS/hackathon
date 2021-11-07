@@ -1,0 +1,25 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.media.dao.RegisterCodeDao">
+    <resultMap id="registerCodeResult" type="registerCode">
+        <result property="phoneNumber" column="phone_number"/>
+        <result property="phoneCode" column="code"/>
+        <result property="expireTime" column="expire_time"/>
+    </resultMap>
+
+    <!--添加数据-->
+    <insert id="insertRegisterCode" parameterType="registerCode">
+        insert into register_code
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="phoneNumber != null">phone_number,</if>
+            <if test="phoneCode != null">code,</if>
+            <if test="expireTime != null">expire_time,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="phoneNumber != null">#{phoneNumber},</if>
+            <if test="phoneCode != null">#{phoneCode},</if>
+            <if test="expireTime != null">#{expireTime},</if>
+        </trim>
+    </insert>
+</mapper>

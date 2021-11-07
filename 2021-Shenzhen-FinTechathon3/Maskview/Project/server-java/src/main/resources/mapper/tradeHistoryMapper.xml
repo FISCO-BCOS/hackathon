@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.media.dao.TradeHistoryDao">
+
+    <resultMap type="tradeHistory" id="TradeHistoryResult">
+        <result property="id" column="id"/>
+        <result property="purchaseUid" column="purchaser_id"/>
+        <result property="sellerUid" column="seller_id"/>
+        <result property="imgPath" column="img_name"/>
+        <result property="tradePrice" column="trade_price"/>
+        <result property="dataHash" column="data_hash"/>
+        <result property="createdAt" column="created_at"/>
+    </resultMap>
+
+    <insert id="save" parameterType="TradeHistory">
+        insert into trade_history
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="purchaseUid != null">purchaser_id,</if>
+            <if test="sellerUid != null">seller_id,</if>
+            <if test="imgPath != null">img_name,</if>
+            <if test="tradePrice != null">trade_price,</if>
+            <if test="dataHash != null">data_hash,</if>
+            created_at,
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="purchaseUid != null">#{purchaseUid},</if>
+            <if test="sellerUid != null">#{sellerUid},</if>
+            <if test="imgPath != null">#{imgPath},</if>
+            <if test="tradePrice != null">#{tradePrice},</if>
+            <if test="dataHash != null">#{dataHash},</if>
+            now(),
+        </trim>
+    </insert>
+</mapper>
