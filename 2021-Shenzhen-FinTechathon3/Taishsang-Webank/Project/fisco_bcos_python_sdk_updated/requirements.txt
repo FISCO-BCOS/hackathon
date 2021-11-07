@@ -1,0 +1,16 @@
+attrdict
+bumpversion<1,>=0.5.3
+configobj
+cytoolz
+lru-dict
+parsimonious
+requests
+toolz
+hypothesis>=3.6.1
+argcomplete
+pymitter
+asyncio
+promise
+rsa
+ecdsa
+pyOpenSSL
