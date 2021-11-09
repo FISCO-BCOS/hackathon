@@ -26,12 +26,4 @@
 |-----|---------|----------|
 |数字金融与乡村治理|蒲沧龙|浙江工业大学之江学院|
 |数字金融与乡村治理|王宁波|无锡太湖学院|
-|数字金融与乡村治理|xxxxx|xxxxxxxxxxxxxxxx|
-|数字金融与乡村治理|xxxxx|xxxxxxxxxxxxxxxx|
-|数字金融与乡村治理|xxxxx|xxxxxxxxxxxxxxxx|
-|数字金融与乡村治理|xxxxx|xxxxxxxxxxxxxxxx|
-|数字金融与乡村治理|xxxxx|xxxxxxxxxxxxxxxx|
-|数字金融与乡村治理|xxxxx|xxxxxxxxxxxxxxxx|
-|数字金融与乡村治理|xxxxx|xxxxxxxxxxxxxxxx|
-|数字金融与乡村治理|xxxxx|xxxxxxxxxxxxxxxx|
-|数字金融与乡村治理|xxxxx|xxxxxxxxxxxxxxxx|
+|数字金融与乡村治理|江会文|江西师范大学|
