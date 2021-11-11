@@ -6,7 +6,7 @@ contract EngineerList{
     struct businessInfo{ 
         uint time;
         address licenseAddr;
-        string bussinessType;
+        string businessType;
     }
 
     //安评师信息，包括安评师姓名、安评师所属领域、安评师证书、安评师所属安评机构、安评师业务列表
@@ -56,7 +56,7 @@ contract EngineerList{
         businessInfo memory tempBusiness;
         tempBusiness.time = time;
         tempBusiness.licenseAddr = addr;
-        tempBusiness.bussinessType = bType;
+        tempBusiness.businessType = bType;
         engineerMap[id].businessList.push(tempBusiness);
         updateCredit(id);
     }

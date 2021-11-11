@@ -15,7 +15,7 @@ contract Agency {
     struct businessInfo{ 
         uint time;
         address licenseAddr;
-        string bussinessType;
+        string businessType;
     }
 
     //安评机构业务列表
@@ -65,15 +65,15 @@ contract Agency {
     }
     
     // 为机构添加业务，同时为多个安评师添加业务，indexes记录安评师索引。
-    function addBusiness(string[] id ,uint time,address licenseAddr,string bussinessType) public {
+    function addBusiness(string[] id ,uint time,address licenseAddr,string businessType) public {
         businessInfo memory tempInfo ;
         tempInfo.time = time;
         tempInfo.licenseAddr = licenseAddr;
-        tempInfo.bussinessType = bussinessType;
+        tempInfo.businessType = businessType;
         businessList.push(tempInfo);
         uint i;
         for(i =0; i< id.length;i ++){
-            EngineerList(engList).addBusiness(id[i],time,licenseAddr,bussinessType);
+            EngineerList(engList).addBusiness(id[i],time,licenseAddr,businessType);
         }
         updateCredit();
     }

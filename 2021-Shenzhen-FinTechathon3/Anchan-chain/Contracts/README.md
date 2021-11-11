@@ -108,7 +108,7 @@ string agencyCert   //安评机构证书信息
 struct businessInfo{    //业务信息
     uint time;  //业务时间
     address licenseAddr;    //业务对应证书地址
-    string bussinessType;   //业务类型
+    string businessType;   //业务类型
 }
 
 businessInfo[] businessList;    //业务信息列表
@@ -170,7 +170,7 @@ function deny(address evaluationAddress, string[] id) returns(address)
 #### addBusiness
 
 ``` sol
-function addBusiness(string[] id ,uint time,address licenseAddr,string bussinessType)
+function addBusiness(string[] id ,uint time,address licenseAddr,string businessType)
 ```
 id 为安评师编号列表， time 为业务时间， `licenseAddr` 为业务涉及证书地址，`businessType` 为业务类型。 函数功能：为安评机构和部分安评师添加业务记录。
 
@@ -223,7 +223,7 @@ function getCredit() returns(int)
     struct businessInfo{    //业务信息
         uint time;  //业务时间
         address licenseAddr;    //业务涉及证书地址
-        string bussinessType;   //业务类型
+        string businessType;   //业务类型
     }
     
     struct engineerInfo{    //安评师信息
@@ -496,7 +496,7 @@ address relatedAgency; // 生成报告的安评机构的合约地址
 
 string[] relatedEngineer; // 与生成报告相关的安评师
 
-string bussiness; // 业务名称
+string business; // 业务名称
 
 uint start; // 记录是否开始审查
 
@@ -607,10 +607,10 @@ function deny() public returns(address)
 
 安评机构不通过审查，并生成仲裁合约，并返回仲裁合约的地址。
     
-#### bussinessUpdate
+#### businessUpdate
 
 ``` sol
-function bussinessUpdate() returns(address)
+function businessUpdate() returns(address)
 ```
 
 为相关安评机构与安评师更新业务列表。

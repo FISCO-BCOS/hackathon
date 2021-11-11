@@ -30,7 +30,7 @@ contract ReportEvaluation{
     address enterprise;//被评定的企业
     address relatedAgency; // 发证机构
     string[] relatedEngineer; //相关安评师
-    string bussiness;
+    string business;
     uint start;
     uint confirmTimes;
     
@@ -155,13 +155,13 @@ contract ReportEvaluation{
     }
 
     //开始审核后，生成证书，并更新业务列表
-    function bussinessUpdate() public returns(address){
+    function businessUpdate() public returns(address){
         License newLicense;
         newLicense = new License();
         newLicense.addLicense(enterprise,relatedAgency,relatedEngineer); //调用发证合约
         Enterprise _enterprise = Enterprise(enterprise);
         address licenseAddr = _enterprise.getLicenseAddress();
-        bussiness = _enterprise.getReport();
+        business = _enterprise.getReport();
         Agency agency = Agency(relatedAgency);//更新安评机构
         agency.addBusiness(relatedEngineer, now , licenseAddr,"评价");
         //更新业务
