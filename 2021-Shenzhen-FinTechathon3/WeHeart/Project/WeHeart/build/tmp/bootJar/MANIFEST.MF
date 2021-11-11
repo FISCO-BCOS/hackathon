@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: org.springframework.boot.loader.JarLauncher
+Start-Class: org.example.demo.Application
+

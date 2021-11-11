@@ -1,0 +1,1 @@
+[{"constant":true,"inputs":[{"name":"signature","type":"string"},{"name":"message","type":"string"},{"name":"paramInfo","type":"string"}],"name":"ringSigVerify","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"}]
