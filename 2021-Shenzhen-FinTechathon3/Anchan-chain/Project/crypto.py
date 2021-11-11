@@ -1,4 +1,3 @@
-from binascii import hexlify
 from typing import List, Tuple
 from Crypto.Cipher import AES
 from Crypto.Random import get_random_bytes

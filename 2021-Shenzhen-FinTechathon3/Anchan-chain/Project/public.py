@@ -5,8 +5,8 @@ import time
 
 
 from __init__ import app
-from blockchain import call_contract, call_contract2, to_checksum_address
-from models import Agency, Arbitrate, Contracts, Enterprise, Audit, Engineer, count_numbers
+from blockchain import call_contract, to_checksum_address
+from models import Agency, Contracts, Enterprise, Audit, Engineer, count_numbers
 
 def check_login():
     return session.get("username") is not None
@@ -19,7 +19,7 @@ def license_handle(addr):
     try:
         res = call_contract(addr, "License", "getInfo", args = [])
         res2 = call_contract(addr, "License", "showInfo", args = [])
-    except Exception as e:
+    except Exception:
         traceback.print_exc()
         return render_template("index2.html", is_login = is_login, fail_msg = "证书合约地址错误或合约调用失败", count = count_numbers())
 
@@ -85,7 +85,7 @@ def search_report():
     try:
         AccusationAddr = Contracts.query.filter(Contracts.name == "Accusation").first().addr
         call_contract(AccusationAddr, "Accusation", "addAccusation", args = ["", msg ,"", name])
-    except Exception as e:
+    except Exception:
         traceback.print_exc()
         return render_template("report2.html", is_login = is_login, succ_msg = "举报合约执行失败")
     return render_template("report2.html", is_login = is_login, succ_msg = "举报成功，举报合约执行成功")

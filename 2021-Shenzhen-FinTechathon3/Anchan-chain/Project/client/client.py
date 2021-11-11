@@ -1,12 +1,10 @@
-from typing import Dict, Optional
+from typing import Optional
 
 import requests
 import logging
 import argparse
 import hashlib
 import traceback
-
-from requests.sessions import session
 
 from config import base_url, output_dir
 from model import User

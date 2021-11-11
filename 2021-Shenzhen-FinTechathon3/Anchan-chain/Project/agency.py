@@ -13,6 +13,9 @@ from blockchain import signin_account, create_account, deploy_contract, call_con
 from crypto import gen_rsakey, shamir_encode, aes_encode
 from ipfs import ipfs_client
 
+def load():
+    pass
+
 def login(username, password) -> Tuple[Agency, Signer_Impl]:
     if username == "":
         return None, None # input error
@@ -69,7 +72,7 @@ def signup(username, password) -> Tuple[Agency, Signer_Impl]:
 
         db.session.add(agency)
         db.session.commit()
-    except Exception as e:
+    except Exception:
         traceback.print_exc()
         db.session.rollback()
         return None, None
@@ -124,7 +127,7 @@ def add_engineer():
         db.session.add(engineer)
         db.session.add(agency)
         db.session.commit()
-    except Exception as e:
+    except Exception:
         traceback.print_exc()
         return render_template("agency2-1.html", is_login = True, agency = agency, username = username, fail_msg = "添加失败")
     return render_template("agency2-1.html", is_login = True, agency = agency, username = username, succ_msg = "添加成功")
@@ -142,7 +145,7 @@ def get_engineer(index: str):
         EngineerListAddr = db.session.query(Contracts).filter(Contracts.name == "EngineerList").first().addr
         res = call_contract2(EngineerListAddr, "EngineerList", "getEngineer", args = [index])
         res = res[0]
-    except Exception as e:
+    except Exception:
         traceback.print_exc()
         return render_template("agency2-1.html", is_login = True, agency = agency, username = username, fail_msg = "查询失败")
     return render_template("engineer2.html", engineer_info = res, is_login = True, agency = agency, index = index, username = username, succ_msg = "查询成功")
@@ -158,14 +161,14 @@ def del_engineer(index: str):
 
     try:
         EngineerListAddr = db.session.query(Contracts).filter(Contracts.name == "EngineerList").first().addr
-        res = call_contract(EngineerListAddr, "EngineerList", "deleteAgency", args = [index], signer= signer)
+        call_contract(EngineerListAddr, "EngineerList", "deleteAgency", args = [index], signer= signer)
 
         engineer = Engineer.query.filter(Engineer.eid == index).first()
         if engineer is not None:
             agency.engineers.remove(engineer)
             db.session.commit()
 
-    except Exception as e:
+    except Exception:
         traceback.print_exc()
         return render_template("agency2-1.html", is_login = True, agency = agency, username = username, fail_msg = "删除失败")
     return render_template("agency2-1.html", is_login = True, agency = agency, username = username, succ_msg = "删除成功")
@@ -271,8 +274,7 @@ def upload():
         licenseAddr = res[0]
         enterprise.license_addr = licenseAddr
         db.session.commit()
-
-    except Exception as e:
+    except Exception:
         traceback.print_exc()
         return render_template("agency2-2.html", is_login = True, agency = agency, username = username, succ_msg = "智能合约调用失败")
     return render_template("agency2-2.html", is_login = True, agency = agency, username = username, succ_msg = "添加成功")
@@ -291,7 +293,7 @@ def agency_evaluation():
 
     eva_addr = request.form.get("eva-addr")
     eva_accept = request.form.get("eva-accept")
-    eva_deny = request.form.get("eva-deny")
+    # eva_deny = request.form.get("eva-deny")
     
     result = True if eva_accept is not None else False
 
@@ -315,7 +317,7 @@ def agency_evaluation():
             db.session.add(arbitrate)
             db.session.commit()
         # call_contract(agency.contract_addr, "Agency", "addBusiness", [[], f"审查：审查合约地址{eva_addr}"], signer = signer)
-    except Exception as e:
+    except Exception:
         traceback.print_exc()
         return render_template("agency2-3.html", is_login = True, agency = agency, username = username, fail_msg = "调用合约失败")
 

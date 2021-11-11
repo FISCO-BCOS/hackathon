@@ -12,8 +12,8 @@ from __init__ import app
 from models import Arbitrate, Audit, Contracts, Enterprise, IPFSObject, db, Agency, Engineer
 from crypto import gen_rsakey
 
-print(app.logger.handlers)
-
+def load():
+    pass
 
 def login(username = "", password = "") -> Tuple[Audit, Signer_Impl]:
     if username == "":
@@ -53,7 +53,7 @@ def signup(username, password) -> Tuple[Audit, Signer_Impl]:
 
         db.session.add(audit)
         db.session.commit()
-    except Exception as e:
+    except Exception:
         traceback.print_exc()
         db.session.rollback()
         return None, None
@@ -132,7 +132,7 @@ def audit_revoke():
     try:
         if license_addr is not None or license_addr != "":
             call_contract(license_addr, "License", "revokeLicense", args=[])
-    except Exception as e:
+    except Exception:
         traceback.print_exc()
         return render_template("audit2-1.html", is_login = True, fail_msg = "撤销失败",audit = audit, username = username)
     return render_template("audit2-1.html", is_login = True, succ_msg = "撤销成功",audit = audit, username = username)
@@ -161,7 +161,7 @@ def audit_log():
             try:
                 res = call_contract2(target.contract_addr, "Agency", "showBusiness", args=[])
                 log_result = res[0]
-            except Exception as e:
+            except Exception:
                 traceback.print_exc()
     elif log_type == "engineer":
         target = Engineer.query.filter(Engineer.username == keyword).first()
@@ -171,7 +171,7 @@ def audit_log():
                 res = call_contract2(EngineerListAddr, "EngineerList", "getEngineer", args=[target.eid])
                 log_result = res[0]
                 log_result = log_result[5]
-            except Exception as e:
+            except Exception:
                 traceback.print_exc()
     if log_result is None:
         return render_template("audit2-2.html", is_login = True, fail_msg = "查询失败",audit = audit, username = username)
@@ -181,7 +181,7 @@ def audit_log():
         try:
             time_local = time.localtime(l[0]/ 1000)
             result.append((time.strftime("%Y-%m-%d %H:%M:%S", time_local), l[1], l[2]))
-        except Exception as e:
+        except Exception:
             result.append(l)
 
     return render_template("audit2-2.html", is_login = True, succ_msg = "查询成功",audit = audit, log_result = result,username = username)
@@ -209,7 +209,7 @@ def audit_search():
 def audit_accusation():
     username = session.get("username", "")
     password = session.get("password", "")
-    audit, signer = login(username, password)
+    audit, _ = login(username, password)
 
     if audit is None:
         return redirect("/audit")
@@ -225,7 +225,7 @@ def audit_accusation():
                 result.append(["匿名",r[1]])
             else:
                 result.append([r[0], r[1]])
-    except Exception as e:
+    except Exception:
         traceback.print_exc()
         return render_template("audit2-4.html", is_login = True, fail_msg = "查询举报合约失败",audit = audit, username = username)
     return render_template("audit2-4.html", is_login = True, audit = audit, username = username, result = result, succ_msg="举报合约查询成功")
@@ -293,7 +293,7 @@ def public_arbitrate(arbitrate_addr: str):
         name_list = list(res[0])
         pub_list = list(res[1])
         addr_list = list(res[2])
-    except Exception as e:
+    except Exception:
         traceback.print_exc()
         return render_template("audit2-5.html", is_login = True, audit = audit, username = username, arbitrate_list = arbitrate_list, fail_msg = "仲裁合约查询失败")
 
@@ -314,7 +314,7 @@ def audit_check():
     
     arbitrate_addr = request.form.get("arbitrate-addr")
     arbitrate_accept = request.form.get("arbitrate-accept")
-    arbitrate_deny = request.form.get("arbitrate-deny")
+    # arbitrate_deny = request.form.get("arbitrate-deny")
 
     if arbitrate_addr is None:
         return render_template("audit2-6.html", is_login = True, audit = audit, username = username, fail_msg = "仲裁合约地址错误")

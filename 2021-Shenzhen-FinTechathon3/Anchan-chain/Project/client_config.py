@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # - * - coding: utf - 8 -
-import os
-from eth_utils.crypto import set_crypto_type, CRYPTO_TYPE_GM, CRYPTO_TYPE_ECDSA
+from eth_utils.crypto import set_crypto_type
 
 class client_config:
     """

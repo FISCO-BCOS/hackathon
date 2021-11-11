@@ -1,6 +1,4 @@
-from logging import Manager
 import os
-import random
 from flask import request, render_template, session, redirect
 from typing import List, Tuple
 import traceback
@@ -10,10 +8,14 @@ from werkzeug.utils import secure_filename
 from __init__ import app
 from client.signer_impl import Signer_Impl
 from eth_utils.address import to_checksum_address
-from models import Contracts, Engineer, Enterprise, Audit, Agency, IPFSObject, db, count_numbers
-from blockchain import signin_account, create_account, deploy_contract, call_contract, call_contract2
+from models import Contracts, Enterprise, Audit, Agency, IPFSObject, db, count_numbers
+from blockchain import signin_account, create_account, deploy_contract, call_contract
 from crypto import gen_rsakey, shamir_encode, aes_encode
 from ipfs import ipfs_client
+
+def load():
+    pass
+
 def login(username, password) -> Tuple[Enterprise, Signer_Impl]:
     if username == "":
         return None, None # input error
@@ -55,7 +57,7 @@ def signup(username, password) -> Tuple[Enterprise, Signer_Impl]:
 
         db.session.add(enterprise)
         db.session.commit()
-    except Exception as e:
+    except Exception:
         traceback.print_exc()
         db.session.rollback()
         return None, None
@@ -137,7 +139,7 @@ def enterprise_evaluation():
 
         res = call_contract(evaluation_addr, "ReportEvaluation", "startEvaluation", signer = signer)
         ea_addr_list: List[str] = list(res[0])
-    except Exception as e:
+    except Exception:
         traceback.print_exc()
         return render_template("enterprise2.html", is_login = True, fail_msg = "合约调用失败", enterprise = enterprise, username = username)
 
@@ -166,7 +168,7 @@ def enterprise_result():
     try:
         res = call_contract(evaluation_addr, "ReportEvaluation", "businessUpdate", args = [], signer = signer)
         license_addr = res[0]
-    except Exception as e:
+    except Exception:
         return render_template("enterprise2.html", is_login = True, fail_msg = "合约调用失败", enterprise = enterprise, username = username)
 
     if "0x0000000000" in license_addr:

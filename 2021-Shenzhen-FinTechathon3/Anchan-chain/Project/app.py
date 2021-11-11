@@ -13,6 +13,10 @@ import enterprise
 import agency
 import public
 
+audit.load()
+enterprise.load()
+agency.load()
+
 @app.route("/")
 def index():
     is_login = public.check_login()

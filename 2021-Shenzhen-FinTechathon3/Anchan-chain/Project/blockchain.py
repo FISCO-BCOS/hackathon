@@ -1,7 +1,7 @@
 import sys
 import os
 import json
-from typing import  List, Union
+from typing import List, Union
 import traceback
 import re
 
@@ -75,13 +75,13 @@ def deploy_contract(contract, is_compile: bool = False, signer: Signer_Impl = No
             load_f.close()
         result = client.deploy(contract_bin, contract_abi = data_parser.contract_abi, fn_args= fn_args ,from_account_signer=signer)
         addr = result["contractAddress"]
-    except BcosError as e:
+    except BcosError:
         traceback.print_exc()
         return None
-    except BcosException as e:
+    except BcosException:
         traceback.print_exc()
         return None
-    except Exception as e:
+    except Exception:
         traceback.print_exc()
         return None
     finally:
