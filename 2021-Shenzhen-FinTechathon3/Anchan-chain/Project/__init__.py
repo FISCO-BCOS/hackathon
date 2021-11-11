@@ -4,7 +4,6 @@
 import os
 from datetime import timedelta
 import logging
-from typing import Any, Dict
 from flask import Flask
 
 app = Flask(__name__)

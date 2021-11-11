@@ -264,7 +264,7 @@ def audit_arbitrate():
         db.session.commit()
 
         arbitrate_list = Arbitrate.query.all()
-    except Exception as e:
+    except Exception:
         traceback.print_exc()
         return render_template("audit2-5.html", is_login = True, audit = audit, username = username, arbitrate_list = arbitrate_list, fail_msg = "仲裁合约部署失败")
     
