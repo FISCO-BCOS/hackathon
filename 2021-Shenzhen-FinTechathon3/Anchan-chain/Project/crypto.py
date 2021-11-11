@@ -37,6 +37,5 @@ def aes_decode(key: bytes, cipherfile: str, output: str):
         fo.write(result)
 
 def gen_rsakey():
-    key_pair = RSA.generate(1024)
+    key_pair = RSA.generate(2048)
     return key_pair.exportKey(), key_pair.public_key().export_key()
-

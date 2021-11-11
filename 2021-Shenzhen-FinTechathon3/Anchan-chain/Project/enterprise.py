@@ -51,7 +51,7 @@ def signup(username, password) -> Tuple[Enterprise, Signer_Impl]:
                 username, 
                 to_checksum_address(enterprise.account_addr),
                 to_checksum_address(enterprise.contract_addr),
-                enterprise.envelope_pub, "" ])
+                enterprise.envelope_pub, ""])
 
         db.session.add(enterprise)
         db.session.commit()
@@ -164,7 +164,7 @@ def enterprise_result():
         return render_template("enterprise2.html", is_login = True, fail_msg = "缺少审查合约地址", enterprise = enterprise, username = username)
 
     try:
-        res = call_contract(evaluation_addr, "ReportEvaluation", "bussinessUpdate", args = [], signer = signer)
+        res = call_contract(evaluation_addr, "ReportEvaluation", "businessUpdate", args = [], signer = signer)
         license_addr = res[0]
     except Exception as e:
         return render_template("enterprise2.html", is_login = True, fail_msg = "合约调用失败", enterprise = enterprise, username = username)
@@ -213,7 +213,7 @@ def enterprise_upload():
         data_file_addr = ipfs_client.add(enc_data_path)
 
         for i, audit in enumerate(Audit.query.all()):
-            obj_data = IPFSObject(hash = data_file_addr["Hash"], name = secure_filename(data_file.filename), secret =  shares[i][1].hex(), idx = shares[i][0])
+            obj_data = IPFSObject(hash = data_file_addr["Hash"], name = secure_filename(data_file.filename), secret = shares[i][1].hex(), idx = shares[i][0])
             audit.files.append(obj_data)
             db.session.add(obj_data)
             db.session.commit()

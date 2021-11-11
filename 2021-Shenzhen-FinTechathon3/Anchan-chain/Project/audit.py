@@ -1,4 +1,3 @@
-from os import name
 import traceback
 import time
 from typing import Tuple
@@ -50,7 +49,7 @@ def signup(username, password) -> Tuple[Audit, Signer_Impl]:
             args = [
                 username, 
                 to_checksum_address(audit.account_addr),
-                audit.envelope_pub, "" ], signer = signer)
+                audit.envelope_pub, ""], signer = signer)
 
         db.session.add(audit)
         db.session.commit()
@@ -182,7 +181,7 @@ def audit_log():
         try:
             time_local = time.localtime(l[0]/ 1000)
             result.append((time.strftime("%Y-%m-%d %H:%M:%S", time_local), l[1], l[2]))
-        except Exception:
+        except Exception as e:
             result.append(l)
 
     return render_template("audit2-2.html", is_login = True, succ_msg = "查询成功",audit = audit, log_result = result,username = username)
@@ -265,7 +264,7 @@ def audit_arbitrate():
         db.session.commit()
 
         arbitrate_list = Arbitrate.query.all()
-    except Exception:
+    except Exception as e:
         traceback.print_exc()
         return render_template("audit2-5.html", is_login = True, audit = audit, username = username, arbitrate_list = arbitrate_list, fail_msg = "仲裁合约部署失败")
     
@@ -294,7 +293,7 @@ def public_arbitrate(arbitrate_addr: str):
         name_list = list(res[0])
         pub_list = list(res[1])
         addr_list = list(res[2])
-    except Exception:
+    except Exception as e:
         traceback.print_exc()
         return render_template("audit2-5.html", is_login = True, audit = audit, username = username, arbitrate_list = arbitrate_list, fail_msg = "仲裁合约查询失败")
 

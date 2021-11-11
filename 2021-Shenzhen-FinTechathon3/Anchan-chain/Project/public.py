@@ -30,14 +30,14 @@ def license_handle(addr):
     try:
         time_local = time.localtime(license_info[5]/ 1000)
     except Exception:
-        pass
+        traceback.print_exc()
     if time_local is not None:
         license_info[5] = time.strftime("%Y-%m-%d %H:%M:%S", time_local)
     try:
         agency = Agency.query.filter(Agency.contract_addr == license_info[10]).first()
         license_info[10] = agency.username
     except Exception:
-        pass
+        traceback.print_exc()
     
     try:
         engineer_list = []
@@ -49,7 +49,7 @@ def license_handle(addr):
                 engineer_list.append(e_eid)
         license_info[11] = engineer_list
     except Exception:
-        pass
+        traceback.print_exc()
     return render_template("license2.html", is_login = is_login,license_info = license_info)
 
 @app.route("/search", methods = ["GET", "POST"])
@@ -63,7 +63,7 @@ def search():
     if name is None:
         return render_template("search2.html", is_login = is_login, fail_msg = "没有查询关键词")
 
-    result  = Enterprise.query.filter(Enterprise.username.like(f"%{name}%")).all()
+    result = Enterprise.query.filter(Enterprise.username.like(f"%{name}%")).all()
     return render_template("search2.html", is_login = is_login, result = result)
 
 @app.route("/report", methods = ["GET", "POST"])

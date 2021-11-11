@@ -182,7 +182,7 @@ def main():
     sub_parsers = parser.add_subparsers(help='sub-commands')
 
     login_parser = sub_parsers.add_parser('login', help='login an account')
-    login_parser.add_argument('-u', dest='username', help='username', default=  "")
+    login_parser.add_argument('-u', dest='username', help='username', default= "")
     login_parser.add_argument('-p', dest='password', help='password', default= "")
     login_parser.add_argument('-e', dest='entity', help='enterprise or agency', default="")
     login_parser.set_defaults(func=arg_login)

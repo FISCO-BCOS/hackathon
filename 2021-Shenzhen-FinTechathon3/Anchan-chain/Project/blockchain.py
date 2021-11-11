@@ -1,13 +1,9 @@
-from enum import unique
 import sys
 import os
 import json
-from typing import Dict, Any, List, Union
+from typing import  List, Union
 import traceback
 import re
-
-from ipfshttpclient.client.base import CommonArgs
-from sqlalchemy.sql.schema import Constraint
 
 # Python SDK path
 sys.path.append("/home/ubuntu/anchan/python-sdk")
@@ -15,14 +11,13 @@ sys.path.append("/home/ubuntu/anchan/python-sdk")
 from client.bcosclient import BcosClient
 from client.bcoserror import BcosError, BcosException
 from client.datatype_parser import DatatypeParser
-from client.common import common
 from client.common.compiler import Compiler
 from eth_utils import to_checksum_address
 from client.signer_impl import Signer_ECDSA, Signer_Impl
 from eth_account.account import Account
 
 from client_config import client_config
-from models import Contracts, Engineer, Enterprise, Audit, Agency, db
+from models import Contracts, Engineer, db
 from config import debug
 from __init__ import dp, abis, app
 
@@ -55,14 +50,9 @@ def compile_and_abis(is_compile: bool = True):
     """
     Compiles all contracts and generates abi and bin files 
     """
-    global abis, dp
     for c in ContractsList:
         if is_compile:
             Compiler.compile_file(f"Contracts/{c}.sol", output_path="Contracts")
-        data_parser = DatatypeParser()
-        data_parser.load_abi_file(f"Contracts/{c}.abi")
-        abis[c] = data_parser.contract_abi
-        dp[c] = data_parser
 
 def deploy_contract(contract, is_compile: bool = False, signer: Signer_Impl = None, fn_args = None):
     """
@@ -100,10 +90,8 @@ def deploy_contract(contract, is_compile: bool = False, signer: Signer_Impl = No
     return addr
 
 def call_contract(contract_addr: str, contract_name: str, fn_name: str, args: List = None, signer: Signer_Impl = None, gasPrice = 30000000):
-    global abis, dp
     client = BcosClient()
 
-    # contract_abi = abis[contract_name]
     data_parser: DatatypeParser = DatatypeParser()
     data_parser.load_abi_file(f"Contracts/{contract_name}.abi")
     contract_abi = data_parser.contract_abi
@@ -119,7 +107,7 @@ def call_contract(contract_addr: str, contract_name: str, fn_name: str, args: Li
     txhash = receipt['transactionHash']
     txresponse = client.getTransactionByHash(txhash)
     inputresult = data_parser.parse_transaction_input(txresponse['input'])
-    outputresult  = data_parser.parse_receipt_output(inputresult['name'], receipt['output'])
+    outputresult = data_parser.parse_receipt_output(inputresult['name'], receipt['output'])
     client.finish()
     app.logger.info(f"call contract {contract_name} at {contract_addr}. {fn_name} ({args}) -> {outputresult}")
     return outputresult

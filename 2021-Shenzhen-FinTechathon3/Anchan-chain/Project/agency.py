@@ -65,7 +65,7 @@ def signup(username, password) -> Tuple[Agency, Signer_Impl]:
                 username, 
                 to_checksum_address(agency.account_addr),
                 to_checksum_address(agency.contract_addr),
-                agency.envelope_pub, "" ], signer = signer)
+                agency.envelope_pub, ""], signer = signer)
 
         db.session.add(agency)
         db.session.commit()
@@ -219,7 +219,7 @@ def upload():
 
     ent_name = request.form.get("ent-name")
     eng_list = request.form.get("eng-list", "")
-    eng_list = [ e for e in eng_list.split()]
+    eng_list = [e for e in eng_list.split()]
     data_hash = request.form.get("data-hash")
     if ent_name is None:
         return render_template("agency2-2.html", is_login = True, agency = agency, username = username, fail_msg = "缺少生产企业名称")
@@ -254,7 +254,7 @@ def upload():
 
         for i, audit in enumerate(Audit.query.all()):
 
-            obj_data = IPFSObject(hash = data_file_addr["Hash"], name = secure_filename(data_file.filename), secret =  shares[i][1].hex(), idx = shares[i][0])
+            obj_data = IPFSObject(hash = data_file_addr["Hash"], name = secure_filename(data_file.filename), secret = shares[i][1].hex(), idx = shares[i][0])
             audit.files.append(obj_data)
             db.session.add(obj_data)
             db.session.commit()
@@ -267,7 +267,7 @@ def upload():
         enterprise.evaluation_addr = res[0]
         db.session.commit()
 
-        res = call_contract(enterprise.evaluation_addr, "ReportEvaluation", "bussinessUpdate", args = [] , signer = signer)
+        res = call_contract(enterprise.evaluation_addr, "ReportEvaluation", "businessUpdate", args = [] , signer = signer)
         licenseAddr = res[0]
         enterprise.license_addr = licenseAddr
         db.session.commit()
@@ -296,7 +296,7 @@ def agency_evaluation():
     result = True if eva_accept is not None else False
 
     eng_list = request.form.get("eng-list", "")
-    eng_list = [ e for e in eng_list.split()]
+    eng_list = [e for e in eng_list.split()]
 
     if eva_addr is None:
         return render_template("agency2-3.html", is_login = True, agency = agency, username = username, fail_msg = "缺少审查合约地址")

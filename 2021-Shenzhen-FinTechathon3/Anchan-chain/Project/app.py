@@ -1,17 +1,16 @@
 #!/usr/bin/env python3.7
 # -*- coding: utf-8 -*-
 
-from flask import render_template, session, request
-import logging
+from flask import render_template, session
 
 from __init__ import app
 from config import host, port, debug
 
-from models import Enterprise, db, count_numbers, Agency
-from blockchain import compile_and_abis, call_contract
+from models import count_numbers
+from blockchain import compile_and_abis
+import audit
 import enterprise
 import agency
-import audit
 import public
 
 @app.route("/")
