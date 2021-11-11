@@ -19,7 +19,7 @@ from eth_account.account import Account
 from client_config import client_config
 from models import Contracts, Engineer, db
 from config import debug
-from __init__ import dp, abis, app
+from __init__ import app
 
 ContractsList = ["Agency", "Arbitrate", "Credit","EngineerList", "Enterprise", "License", "Management","ReportEvaluation", "Accusation"]
 

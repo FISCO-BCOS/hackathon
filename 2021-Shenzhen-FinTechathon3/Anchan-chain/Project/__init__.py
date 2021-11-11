@@ -7,9 +7,6 @@ import logging
 from typing import Any, Dict
 from flask import Flask
 
-abis: Dict[str, Any] = {}
-dp: Dict[str, Any] = {}
-
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.urandom(24)
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=7)  # 配置7天有效
