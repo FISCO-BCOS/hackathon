@@ -47,9 +47,9 @@ CODE IS LAW. 智能合约公开透明，一旦确定发布后不可更改，可�
 项目采用 `vue` + `vuetify` 开发，通过Webase-Front与区块链进行交互。功能包括：平台方发布广告位，广告商发布积分募集项，创作者向积分募集项投资积分、查看与转移自己的数字资产托管平台、积分交易记录等。
 
 ## 队员介绍
-|姓名|主要工作内容|
-|---|---|
-|刘炎|智能合约开发、联盟链运维、文档撰写|
-|张静|PPT制作、项目宣讲|
-|方杰|文档撰写、联盟链运维|
-|黄春霖|项目方案策划、智能合约开发、前端开发、文档撰写|
+|姓名|Github ID|主要工作内容|
+|---|---|---|
+|刘炎|[slithQY](https://github.com/slithQY)|智能合约开发、联盟链运维、文档撰写|
+|张静|[lovecuit](https://github.com/lovecuit)|PPT制作、项目宣讲|
+|方杰|[jiefang111](https://github.com/jiefang111)|文档撰写、联盟链运维|
+|黄春霖|[TrenlinHuang](https://github.com/TrenlinHuang)|项目方案策划、智能合约开发、前端开发、文档撰写|
