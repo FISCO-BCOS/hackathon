@@ -37,7 +37,7 @@ contract IDIGIT  {
     
     function issueWithAssetURI(address to, string memory assetURI, bytes data)public returns(bool);//给地址to创建资产assetId，data是备注，assetURI是资产描述
     
-    function destory(uint256 assetId, bytes data) public; //销毁某个资产（可能用于某些视频下架），只有拥有者本人和监管方可以销毁
+    function destroy(uint256 assetId, bytes data) public; //销毁某个资产（可能用于某些视频下架），只有拥有者本人和监管方可以销毁
     
     
 }
