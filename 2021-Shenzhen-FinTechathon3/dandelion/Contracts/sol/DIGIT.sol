@@ -114,7 +114,7 @@ contract Suspendable is SuspenderRole {
 contract DIGIT is Suspendable{
     
     event Create(address indexed _owner, uint256 _assetId);  //创建数字资产 
-    event Destory(address indexed _owner, uint256 _assetId); //销毁数字资产
+    event Destroy(address indexed _owner, uint256 _assetId); //销毁数字资产
     event Play(address indexed _account, uint256 _assetId, uint256 timestamp); //数字资产被播放
     
     Integral integral = Integral(0xebf7c1a6139ae44cbf3e5b559f160b326ecd52e1);
@@ -383,11 +383,11 @@ contract DIGIT is Suspendable{
     }
     
     //销毁资产，只有用户和监管方可执行
-    function destory(uint256 assetId, bytes data) public{
+    function destroy(uint256 assetId, bytes data) public{
         address _owner = ownerOf(assetId);
-        require(_owner != address(0), "DIGIT: could destory nonexist asset");
+        require(_owner != address(0), "DIGIT: could destroy nonexist asset");
         _destroy(_owner, msg.sender, assetId, data);
-        emit Destory(_owner, assetId);
+        emit Destroy(_owner, assetId);
     }
     
     function _destroy(address owner, address operator, uint256 assetId, bytes data) internal{
