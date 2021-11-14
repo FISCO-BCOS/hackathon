@@ -160,7 +160,7 @@ null
 
 | 参数      | 类型       | 说明                          |
 | --------- | ---------- | ----------------------------- |
-| condition | Conditiong | 根据filter返回的condition条件 |
+| condition | Condition | 根据filter返回的condition条件 |
 | amount    | int        | 数据的条数                    |
 
 
