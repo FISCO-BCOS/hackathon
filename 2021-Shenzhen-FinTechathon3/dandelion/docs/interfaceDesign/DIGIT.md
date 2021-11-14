@@ -200,7 +200,7 @@ null
 
 
 
-## destory
+## destroy
 
 #### 功能说明
 
