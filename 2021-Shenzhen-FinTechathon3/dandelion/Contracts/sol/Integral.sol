@@ -214,22 +214,22 @@ contract Integral {
         success = true;
     }
     
-    // function destory(uint256 _value) public whenNotSuspended returns(bool){
-    function destory(uint256 _value) public returns(bool){
+    // function destroy(uint256 _value) public whenNotSuspended returns(bool){
+    function destroy(uint256 _value) public returns(bool){
         require(_value > 0, "Integral: value must more than zero");
-        _destory(msg.sender, _value);
+        _destroy(msg.sender, _value);
         return true;
     }
     
     //广告商购买该数量的积分发布广告
-    function _destory(address _owner, uint256 _value) internal {
-        require(_balanceOf[_owner] >= _value, "Integral: destory Insufficient balance");
+    function _destroy(address _owner, uint256 _value) internal {
+        require(_balanceOf[_owner] >= _value, "Integral: destroy Insufficient balance");
         _balanceOf[_owner] -= _value;
-        emit Destory(_owner, _value);
+        emit Destroy(_owner, _value);
     }
     
     event Transfer(address indexed _from, address indexed _to, uint256 _value); 
-    event Destory(address indexed _owner, uint256 _value);
+    event Destroy(address indexed _owner, uint256 _value);
     event Proportion(address indexed account, uint256 _platform);
     
 }
