@@ -1,0 +1,40 @@
+language: python
+git:
+    depth: 5
+matrix:
+  include:
+    - name: "Scan code with cobra"
+      python: 3.6
+      dist: xenial
+      before_cache:
+      cache:
+      before_install:
+      script: |
+        bash ci/code_security_audit.sh
+    - name: "Python 3.7.1 on Xenial Linux"
+      python: 3.7           # this works for Linux but is ignored on macOS or Windows
+      dist: xenial          # required for Python >= 3.7
+    - name: "Python 3.6 on Xenial Linux"
+      python: 3.6
+      dist: xenial
+    - name: "Python 3.5 on Xenial Linux"
+      python: 3.5
+      dist: xenial
+addons:
+  apt:
+    packages:
+    - openssl
+    - curl
+    - npm
+  homebrew:
+    packages:
+    - openssl
+    - curl
+    - npm
+install:
+  - python --version
+  - pip install -r requirements.txt
+  - bash init_env.sh -i
+script: |
+  bash -x ci/ci_check.sh
+
