@@ -1,0 +1,24 @@
+# 配置服务器端口号
+server.port=1718
+#https证书配置
+server.ssl.key-store=server.keystore
+server.ssl.key-alias=tomcat
+server.ssl.enabled=false
+server.ssl.key-store-password=123456
+server.ssl.key-store-type=JKS
+
+# mysql8数据源配置
+spring.datasource.driverClassName=com.mysql.cj.jdbc.Driver
+spring.datasource.url=jdbc:mysql://IP:3306/starry
+spring.datasource.username=用户名
+spring.datasource.password=密码
+
+# mybatis
+mybatis.type-aliases-package=com.media.pojo
+mybatis.mapper-locations=mapper/*.xml
+
+# 设置接收文件大小无限制
+# 单个文件大小最大20M
+spring.servlet.multipart.max-file-size=20MB
+# 单次请求的文件的总大小最大100M
+spring.servlet.multipart.max-request-size=100MB

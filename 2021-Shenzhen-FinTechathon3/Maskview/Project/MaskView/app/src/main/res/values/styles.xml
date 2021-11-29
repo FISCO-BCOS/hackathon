@@ -1,0 +1,71 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+    <!--底部导航radioButton的样式-->
+    <style name="btn_radio_style">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@drawable/selector_textcolor</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="myEditText">
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_marginTop">3dp</item>
+        <item name="android:textColorHint">#42000000</item>
+        <item name="android:paddingStart" tools:targetApi="jelly_bean_mr1">15dp</item>
+        <item name="android:paddingBottom">15dp</item>
+        <item name="colorControlNormal">#42000000</item>
+        <item name="colorControlActivated">#4169E1</item>
+    </style>
+
+    <style name="resetPriceEditText">
+        <item name="android:textSize">26sp</item>
+        <item name="android:textColorHint">#42000000</item>
+        <item name="android:paddingStart" tools:targetApi="jelly_bean_mr1">15dp</item>
+        <item name="android:paddingBottom">15dp</item>
+        <item name="colorControlNormal">#42000000</item>
+        <item name="colorControlActivated">#4169E1</item>
+    </style>
+
+    <style name="MyActivityDialog" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowFullscreen">true</item>
+        <!--设置dialog的背景-->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!--设置Dialog的windowFrame框为无-->
+        <item name="android:windowFrame">@null</item>
+        <!--设置无标题-->
+        <item name="windowNoTitle">true</item>
+        <!--是否浮现在activity之上-->
+        <item name="android:windowIsFloating">true</item>
+        <!--是否半透明-->
+        <item name="android:windowIsTranslucent">true</item>
+        <!--设置窗口内容不覆盖-->
+        <item name="android:windowContentOverlay">@null</item>
+        <!--设置动画，在这里使用让它继承系统的Animation.Dialog-->
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <!--背景是否模糊显示-->
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <style name="dialogActivity" parent="Theme.AppCompat.Dialog.Alert">
+        <!--设置动画，在这里使用让它继承系统的Animation.Dialog-->
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <!--是否半透明-->
+        <item name="android:windowIsTranslucent">true</item>
+        <!--设置无标题-->
+        <item name="windowNoTitle">true</item>
+    </style>
+
+
+</resources>

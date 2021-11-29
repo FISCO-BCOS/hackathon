@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+
+    <bean id="encryptType" class="org.fisco.bcos.web3j.crypto.EncryptType">
+        <constructor-arg value="0"/> <!-- 0:standard 1:guomi -->
+    </bean>
+
+    <bean id="groupChannelConnectionsConfig" class="org.fisco.bcos.channel.handler.GroupChannelConnectionsConfig">
+        <property name="caCert" value="ca.crt"/>
+        <property name="sslCert" value="sdk.crt"/>
+        <property name="sslKey" value="sdk.key"/>
+        <property name="allChannelConnections">
+            <list>
+                <bean id="group1" class="org.fisco.bcos.channel.handler.ChannelConnections">
+                    <property name="groupId" value="1"/>
+                    <property name="connectionsStr">
+                        <list>
+                            <value>IP:20200</value>
+                        </list>
+                    </property>
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="channelService" class="org.fisco.bcos.channel.client.Service" depends-on="groupChannelConnectionsConfig">
+        <property name="groupId" value="1"/>
+        <property name="orgID" value="fisco"/>
+        <property name="allChannelConnections" ref="groupChannelConnectionsConfig"></property>
+    </bean>
+
+</beans>

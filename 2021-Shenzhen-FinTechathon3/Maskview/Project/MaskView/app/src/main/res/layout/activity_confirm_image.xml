@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/layout_tag"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/confirmImage_finishThisActivity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:src="@drawable/ic_back" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="7"
+                android:background="#f7f7f7"
+                android:gravity="center"
+                android:text="@string/confirmImage_title"
+                android:textColor="#e6000000"
+                android:textSize="20sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_confirmImage_note1"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_marginTop="6dp"
+            android:gravity="center_vertical"
+            android:paddingStart="10dp"
+            android:text="@string/confirmImage_note1"
+            tools:ignore="RtlSymmetry" />
+
+        <TextView
+            android:id="@+id/tv_confirmImage_note2"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:gravity="center_vertical"
+            android:paddingStart="10dp"
+            android:text="@string/confirmImage_note2"
+            tools:ignore="RtlSymmetry" />
+
+        <TextView
+            android:id="@+id/tv_confirmImage_note3"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:gravity="center_vertical"
+            android:paddingStart="10dp"
+            android:text="@string/confirmImage_note3"
+            tools:ignore="RtlSymmetry" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            app:cardUseCompatPadding="true">
+
+            <com.goyourfly.multi_picture.MultiPictureView
+                android:id="@+id/confirmImage_MultiPictureView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:background="#F0F8FF"
+                app:editable="false"
+                app:imageLayoutMode="DYNAMIC"
+                app:max="6"
+                app:ratio="1"
+                app:space="6dp"
+                app:span="3" />
+
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/bt_confirmImage_choseAgain"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bt_sell"
+            android:tag="first"
+            android:text="@string/confirmImage_choseAgain"
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/bt_confirmImage_confirmNow"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/bt_count_money"
+            android:text="@string/confirmImage_confirmNow"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+</ScrollView>

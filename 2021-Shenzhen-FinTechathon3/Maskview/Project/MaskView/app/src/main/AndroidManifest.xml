@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.maskview">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.SET_WALLPAPER" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission
+        android:name="android.permission.WRITE_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.READ_OWNER_DATA" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/logo"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:largeHeap="true"
+        android:hardwareAccelerated="false"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".mainView.putOnSale.PutOnSale"/>
+        <!--<activity android:name=".mainView.sell.SellImage" />-->
+        <activity android:name=".mainView.securePurchase.SecurePurchase" />
+        <activity android:name=".mainView.mgGoods.bigImg.ShowBigConfirmImg" />
+        <activity android:name=".mainView.mine.SetBackgroundWall" />
+        <activity android:name=".mainView.mine.SetHeadView" />
+        <activity
+            android:name=".mainView.confirmImg.ConfirmResult"
+            android:theme="@style/dialogActivity" />
+        <activity android:name=".mainView.mine.MineActivity" />
+        <activity
+            android:name=".mainView.herAllFansInfo.HerAllFansInfo"
+            android:theme="@style/dialogActivity" />
+        <activity
+            android:name=".mainView.herAllFocusInfo.HerAllFocusInfo"
+            android:theme="@style/dialogActivity" />
+        <activity android:name=".mainView.userInfoAndSellList.UserInfoAndSellList" />
+        <activity android:name=".mainView.myPurchase.OneImageView" />
+        <activity android:name=".mainView.updatePwd.UpdatePwd" />
+        <activity android:name=".mainView.myInfo.MyInfo" />
+        <activity android:name=".mainView.myPurchase.MyPurchase" />
+        <activity android:name=".mainView.records.MySaleRecords" />
+        <activity android:name=".mainView.records.MyPurchaseRecords" />
+        <activity android:name=".mainView.confirmImg.ConfirmImage" />
+        <activity android:name=".mainView.resetSellPriceTopic.ResetSellImgPrice" />
+        <activity
+            android:name=".mainView.setSellImgInfo.SetSellImgInfo"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity android:name=".mainView.purchaseView.PurchaseView" />
+        <activity android:name=".mainView.register.Register" />
+        <activity android:name=".mainView.confirmOrders.ConfirmOrders" />
+        <activity android:name=".mainView.forgetPwd.ResetPwd" />
+        <activity
+            android:name=".mainView.forgetPwd.ForgetPwdCode"
+            android:windowSoftInputMode="stateVisible" /> <!-- 进入界面显示软键盘 -->
+        <activity android:name=".mainView.login.LoginByPassword" />
+        <activity android:name=".mainView.login.LoginByPhoneCode" />
+        <activity android:name=".mainView.MaskView">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+
+</manifest>

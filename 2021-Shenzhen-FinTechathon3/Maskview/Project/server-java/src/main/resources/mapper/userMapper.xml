@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.media.dao.UserDao">
+
+    <resultMap type="user" id="userResult">
+        <id property="uid" column="uid"/>
+        <result property="phoneNumber" column="phone_number"/>
+        <result property="userName" column="username"/>
+        <result property="salt" column="salt"/>
+        <result property="key" column="key"/>
+        <result property="points" column="points"/>
+        <result property="headView" column="head_view"/>
+        <result property="backgroundWall" column="background_wall"/>
+        <result property="birth" column="birth"/>
+        <result property="sex" column="sex"/>
+    </resultMap>
+
+    <sql id="selectUserInfo">
+          select a.uid, a.phone_number, a.username, a.salt,a.key, a.points, a.head_view, a.background_wall, a.birth, a.sex
+          from user a
+    </sql>
+
+    <!--通过uid检索某个用户信息--> <!--id必须与userDao中方法名一样-->
+    <select id="getUserInfoByUid" parameterType="BigInteger" resultMap="userResult">
+        <include refid="selectUserInfo"/>
+        where uid=#{uid}
+    </select>
+
+    <!--通过phoneNumber检索某个用户信息--> <!--id必须与userDao中方法名一样-->
+    <select id="getUserInfoByPhoneNumber" parameterType="BigInteger" resultMap="userResult">
+        <include refid="selectUserInfo"/>
+        where phone_number=#{phoneNumber}
+    </select>
+</mapper>
