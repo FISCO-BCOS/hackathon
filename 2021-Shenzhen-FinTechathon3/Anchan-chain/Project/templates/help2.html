@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{%block left%}
+{%if is_login%}
+<li class="layui-nav-item"><a onclick="javascript:history.go(-1)">返回</a></li>
+{%else%}
+<li class="layui-nav-item layui-nav-itemed">
+    <a href="javascript:;">实体模块</a>
+    <dl class="layui-nav-child">
+        <dd><a href="/enterprise">生产企业模块</a></dd>
+        <dd><a href="/agency">安评机构模块</a></dd>
+        <dd><a href="/audit">监管部门模块</a></dd>
+    </dl>
+</li>
+{%endif%}
+{%endblock%}
+
+{%block main%}
+<div class=layui-row>
+    <div class="layui-card">
+        <div class="layui-card-header">帮助文档</div>
+        <div class="layui-card-body">
+            <p>暂无帮助文档</p>
+        </div>
+    </div>
+</div>
+{%endblock%}

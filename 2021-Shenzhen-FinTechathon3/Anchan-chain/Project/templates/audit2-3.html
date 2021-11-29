@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{%block left%}
+{% if not is_login %}
+<li class="layui-nav-item layui-nav-itemed">
+    <a href="javascript:;">实体模块</a>
+    <dl class="layui-nav-child">
+        <dd><a href="/enterprise">生产企业模块</a></dd>
+        <dd><a href="/agency">安评机构模块</a></dd>
+        <dd><a href="/audit">监管部门模块</a></dd>
+    </dl>
+</li>
+{%else%}
+<li class="layui-nav-item layui-nav-itemed">
+    <a href="javascript:;">监管部门</a>
+    <dl class="layui-nav-child">
+        <dd><a href="/audit">基本信息</a></dd>
+        <dd><a href="/audit/revoke">安全生产许可证撤销</a></dd>
+        <dd><a href="/audit/log">实体业务查询</a></dd>
+        <dd class=layui-this><a href="/audit/search">门限加密秘钥查询</a></dd>
+        <dd><a href="/audit/accusation">查看举报信息{%if audit.reports | length >= 1%}<span class="layui-badge">{{audit.reports | length}}</span>{%endif%}</a></dd>
+        <dd><a href="/audit/arbitrate">发起仲裁合约</a></dd>
+        <dd><a href="/audit/check">执行仲裁判决</a></dd>
+    </dl>
+</li>
+{%endif%}
+{%endblock%}
+
+{%block main%}
+
+<div class=layui-row>
+    <div class="layui-card">
+        <div class="layui-card-header">门限加密秘钥查询</div>
+        <div class="layui-card-body">
+
+            <div class=row>
+                <form class="layui-form"  method="POST" action="/audit/search">
+                    <div class="layui-form-item">
+                        <label class=layui-form-label for="keyword">关键词</label>
+                        <div class=layui-input-block>
+                            <input type="text" name=keyword class="layui-input" id="keyword">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class=layui-input-block>
+                            <button type="submit" class="layui-btn">查询</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            {%if result%}
+            <table class="layui-table">
+                <thead>
+                    <tr>
+                        <th>名称</th>
+                        <th>IPFS哈希</th>
+                        <th>子秘钥</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for v in result%}
+                    <tr>
+                        <td>{{v.name}}</td>
+                        <td>{{v.hash}}</td>
+                        <td>({{v.idx}},{{v.secret}})</td>
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+            {%endif%}
+        </div>
+    </div>
+</div>
+
+{%endblock%}

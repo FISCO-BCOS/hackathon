@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{%block left%}
+<li class="layui-nav-item"><a href="/audit">返回上一级</a></li>
+{%endblock%}
+
+{%block main%}
+<div class=layui-row>
+    <div class="layui-card">
+        <div class="layui-card-header">审查合约地址： {{arbitrate_addr}}</div>
+        <div class="layui-card-body">
+
+            <table class="layui-table">
+                <thead>
+                    <tr>
+                        <th>部门名称</th>
+                        <th>部门账户地址</th>
+                        <th>数字信封公钥</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for re in result%}
+                    <tr>
+                        <td>{{re[0]}}</td>
+                        <td>{{re[1]}}</td>
+                        <td><pre class=layui-code>{{re[2]}}</pre></td>
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{%endblock%}

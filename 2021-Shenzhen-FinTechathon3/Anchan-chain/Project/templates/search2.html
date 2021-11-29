@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{%block left%}
+{%if is_login%}
+<li class="layui-nav-item"><a onclick="javascript:history.go(-1)">返回</a></li>
+{%else%}
+<li class="layui-nav-item layui-nav-itemed">
+    <a href="javascript:;">实体模块</a>
+    <dl class="layui-nav-child">
+        <dd><a href="/enterprise">生产企业模块</a></dd>
+        <dd><a href="/agency">安评机构模块</a></dd>
+        <dd><a href="/audit">监管部门模块</a></dd>
+    </dl>
+</li>
+{%endif%}
+{%endblock%}
+
+{%block main%}
+<div class=layui-row>
+    <div class="layui-card">
+        <div class="layui-card-header">安全许可链上查询</div>
+        <div class="layui-card-body">
+            <form class="layui-form"  method="POST">
+                <div class="layui-form-item">
+                    <label class="layui-form-label" for="name">企业名称</label>
+                    <div class="layui-input-block">
+                        <input type="text" name=name class="layui-input" id="name">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button type="submit" class="layui-btn">查询</button>
+                    </div>
+                </div>
+            </form>
+
+            {%if result%}
+            <table class="layui-table">
+                <thead>
+                    <tr>
+                        <th>生产企业</th>
+                        <th>证书地址</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for ret in result %}
+                    {%if ret.license_addr%}
+                    <tr>
+                        <td>{{ret.username}}</td>
+                        <td>{{ret.license_addr}}</td>
+                        <td><a href="/license/{{ret.license_addr}}" class="layui-btn layui-btn-sm">查看证书</a></td>
+                    </tr>
+                    {%else%}
+                    <tr>
+                        <td>{{ret.username}}</td>
+                        <td>暂无证书上链</td>
+                        <td></td>
+                    </tr>
+                    {%endif%}
+                    {%endfor%}
+                  </tbody>
+            </table>
+            {%endif%}
+        </div>
+    </div>
+</div>
+{%endblock%}

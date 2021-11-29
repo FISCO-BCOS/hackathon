@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{%block left%}
+{% if not is_login %}
+<li class="layui-nav-item layui-nav-itemed">
+    <a href="javascript:;">实体模块</a>
+    <dl class="layui-nav-child">
+        <dd><a href="/enterprise">生产企业模块</a></dd>
+        <dd><a href="/agency">安评机构模块</a></dd>
+        <dd><a href="/audit">监管部门模块</a></dd>
+    </dl>
+</li>
+{%else%}
+<li class="layui-nav-item layui-nav-itemed">
+    <a href="javascript:;">安评机构</a>
+    <dl class="layui-nav-child">
+        <dd><a href="/agency">基本信息</a></dd>
+        <dd><a href="/agency/engineer">安评师管理</a></dd>
+        <dd><a href="/agency/upload">安评报告上传</a></dd>
+        <dd class=layui-this><a href="/agency/evaluation">审查安评报告</a></dd>
+    </dl>
+</li>
+{%endif%}
+{%endblock%}
+
+{%block main%}
+<div class=layui-row>
+    <div class="layui-card">
+        <div class="layui-card-header">审查安全报告</div>
+        <div class="layui-card-body" >
+
+            <form class="layui-form" action="/agency/evaluation" method="POST">
+                <div class="layui-form-item">
+                    <label class=layui-form-label style="width: 100px;" for="eva-addr">审查合约地址</label>
+                    <div class=layui-input-inline>
+                        <input type="text" name=eva-addr class="layui-input" id="eva-addr">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class=layui-form-label for="eng-list">安评师序号</label>
+                    <div class=layui-input-inline>
+                        <input type="text" name=eng-list class="layui-input" id="eng-list">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class=layui-input-block>
+                        <button type="submit" class="layui-btn" name="eva-accept">审查通过</button>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class=layui-input-block>
+                        <button type="submit" class="layui-btn layui-btn-danger" name="eva-deny">审查拒绝</button>
+                    </div>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+</div>
+
+{%endblock%}
