@@ -1,0 +1,72 @@
+{
+  "functionArg": {
+      "weId": "xxxxxxxxxxxxxxxxx",
+      "cptJsonSchema":{
+          "title": "cpt",
+          "description": "this is cpt",
+          "properties": {
+            "number of bank account": {
+                "enum": [
+                    "无",
+                    "1",
+                    "2",
+                    "大于2"
+                ],
+                "type": "string",
+                "description": "the number of bank account of certificate owner"
+            },
+            "personal phone": {
+                "enum": [
+                    "无",
+                    "有"
+                ],
+                "type": "string",
+                "description": "Does owner have personal phone"
+            },
+            "habitation": {
+                "enum": [
+                    "租房",
+                    "房屋抵押",
+                    "自己房屋"
+                ],
+                "type": "string",
+                "description": "the habitation of certificate owner"
+            },
+            "credit card number": {
+                "enum": [
+                    "无",
+                    "1-4",
+                    "大于4"
+                ],
+                "type": "string",
+                "description": "the number of credit card of certificate owner"
+            },
+            "live age": {
+                "enum": [
+                    "少于1年",
+                    "1-2年",
+                    "3-5年",
+                    "6-10年",
+                    "大于10年"
+                ],
+                "type": "string",
+                "description": "the live age of certificate owner"
+            },
+            "car": {
+                "enum": [
+                    "有",
+                    "无"
+                ],
+                "type": "string",
+                "description": "Does certificate owner have car"
+            }
+          },
+        ]
+      }
+  },
+  "transactionArg": {
+      "invokerWeId": "xxxxxxxxxx"
+  },
+  "functionName": "registerCpt",
+  "v": "1.0.0"
+}

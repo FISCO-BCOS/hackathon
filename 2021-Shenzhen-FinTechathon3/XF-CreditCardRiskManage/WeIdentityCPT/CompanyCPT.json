@@ -1,0 +1,51 @@
+{
+  "functionArg": {
+      "weId": "xxxxxxxxxxxxxxxxx",
+      "cptJsonSchema":{
+          "title": "cpt",
+          "description": "this is cpt",
+          "properties": {
+            "income": {
+                "enum": [
+                    "小于15000",
+                    "15001-25000",
+                    "25001-35000",
+                    "35001-45000",
+                    "45001-60000",
+                    "超过60000"
+                ],
+                "type": "string",
+                "description": "the income of certificate owner per year"
+            },
+            "employment": {
+                "enum": [
+                    "自我就业",
+                    "非熟练体力活",
+                    "熟练体力活",
+                    "文职工作",
+                    "管理工作",
+                    "专业工作"
+                ],
+                "type": "string",
+                "description": "the employment of certificate owner"
+            },
+            "work age": {
+                "enum": [
+                    "少于6个月",
+                    "6月至2年",
+                    "2到5年",
+                    "大于5年"
+                ],
+                "type": "string",
+                "description": "the work age of certificate owner"
+            },
+          },
+        ]
+      }
+  },
+  "transactionArg": {
+      "invokerWeId": "xxxxxxxxxx"
+  },
+  "functionName": "registerCpt",
+  "v": "1.0.0"
+}

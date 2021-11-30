@@ -1,0 +1,63 @@
+{
+  "functionArg": {
+      "weId": "xxxxxxxxxxxxxxxxx",
+      "cptJsonSchema":{
+          "title": "cpt",
+          "description": "this is cpt",
+          "properties": {
+            "name": {
+                "type": "string",
+                "description": "the name of certificate owner"
+            },
+            "gender": {
+                "description": "the gender of certificate owner",
+                "enum": [
+                    "F",
+                    "M"
+                ],
+                "type": "string"
+            },
+            "age": {
+                "enum": [
+                    "小于20",
+                    "20-21",
+                    "22-24",
+                    "25-30",
+                    "31-40",
+                    "41-50",
+                    "超过50"
+                ],
+                "type": "string",
+                "description": "the age of certificate owner"
+            },
+            "marriage": {
+                "enum": [
+                    "已婚",
+                    "未婚"
+                ],
+                "type": "string",
+                "description": "the marriage of certificate owner"
+            },
+            "education": {
+                "enum": [
+                    "小学",
+                    "初中",
+                    "高中",
+                    "本科",
+                    "硕士",
+                    "博士"
+                ],
+                "type": "string",
+                "description": "the education of certificate owner"
+            },
+          "required": [
+            "name"
+        ]
+      }
+  },
+  "transactionArg": {
+      "invokerWeId": "xxxxxxxxxx"
+  },
+  "functionName": "registerCpt",
+  "v": "1.0.0"
+}
