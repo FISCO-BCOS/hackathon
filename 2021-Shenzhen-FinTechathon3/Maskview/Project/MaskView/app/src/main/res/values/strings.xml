@@ -1,0 +1,205 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">MaskView</string>
+    <string name="bottomItem_displayHall">展厅</string>
+    <string name="bottomItem_myGoods">作品</string>
+    <string name="bottomItem_shoppingCart">购物车</string>
+    <string name="bottomItem_mine">我的</string>
+
+    <string name="server_error">服务器内部异常</string>
+    <string name="network_error">网络错误,请稍后重试</string>
+    <string name="make_sure">确定</string>
+
+    <!--activity_login_by_phone_code-->
+    <string name="login_byPhoneCode">手机号登录</string>
+    <string name="login_hint_phone">请输入手机号</string>
+    <string name="login_hint_code">请输入验证码</string>
+    <string name="login_getPhoneCode">获取验证码</string>
+    <string name="login_byPassword">使用密码登录</string>
+    <string name="login_textLogin">登录</string>
+    <string name="login_quick">快捷登录</string>
+    <string name="login_weChat">微信</string>
+    <string name="login_micro">微博</string>
+
+    <!--activity_login_by_password-->
+    <string name="login_byPwd">密码登录</string>
+    <string name="login_hint_pwd">请输入密码</string>
+    <string name="login_forgetPwd">忘记密码?</string>
+    <string name="forgetPwd_findPwdByPhone">手机号找回密码</string>
+    <string name="text_nextStep">下一步</string>
+
+    <!--activity_confirm_image-->
+    <string name="confirmImage_title">确权图片</string>
+    <string name="confirmImage_note1">♦&#8194;请选择本机图片进行确权</string>
+    <string name="confirmImage_note2">♦&#8194;确权过的图片不能再次确权</string>
+    <string name="confirmImage_note3">♦&#8194;购买的图片不能确权</string>
+    <string name="confirmImage_choseAgain">重新选择</string>
+    <string name="confirmImage_confirmNow">开始确权</string>
+
+    <!--activity_confirm_orders-->
+    <string name="item_child_topic_orders">主题</string>
+    <string name="item_child_moneyMark">¥&#160;</string>
+    <string name="item_child_note_orders">不支持退货功能,请慎重购买</string>
+    <string name="confirm_orders_text">确认订单</string>
+    <string name="confirm_orders_selectedPrice">总计&#160;:&#160;</string>
+    <string name="confirm_orders_money_note">¥&#160;</string>
+    <string name="confirm_orders_text_remaining_sum">&#160;(余额:</string>
+    <string name="confirm_orders_kuo_hao">&#160;)&#8194;</string>
+    <string name="confirm_orders_money_notEnough">余额不足</string>
+    <string name="confirm_orders_recharge_now">立即充值</string>
+    <string name="confirm_orders_confirmToBuy">确认购买</string>
+
+    <!--fragment_display_hall-->
+    <string name="display_hall_fans">粉丝</string>
+    <string name="display_hall_focus">＋ 关注</string>
+    <string name="display_hall_focus1">关注</string>
+    <string name="display_hall_alreadyFocus">已关注</string>
+    <string name="display_hall_loading_note">您的MaskView动态</string>
+
+    <!--activity_reset_pwd-->
+    <string name="resetPwd">重置密码</string>
+    <string name="resetPwd_confirmPwd">请确认密码</string>
+    <string name="resetPwd_checkPwd">密码至少6个字符,不能包含空格和符号。</string>
+    <string name="resetPwd_OK">保存</string>
+
+    <!--fragment_mine-->
+    <string name="mine_name">夏天的风</string>
+    <string name="mine_my_fans">粉丝&#160;</string>
+    <string name="mine_my_like">关注&#160;</string>
+    <string name="mine_my_points">余额&#160;</string>
+    <string name="mine_count">1000</string>
+    <string name="mine_myPurchaseRecords">购买记录</string>
+    <string name="mine_mySellRecords">出售记录</string>
+    <string name="mine_myPurchaseImg">我的购买</string>
+    <string name="mine_myInfo">个人信息</string>
+    <string name="mine_updatePwd">修改密码</string>
+    <string name="mine_notarialApplication">我的公证申请</string>
+    <string name="mine_originsApplication">我的溯源申请</string>
+    <string name="mine_logout">退出账号</string>
+
+    <!--fragment_my_goods-->
+    <string name="myGoods_myConfirm">我的确权</string>
+    <string name="myGoods_mySell">我的上架</string>
+    <string name="myGoods_setPrice">上架</string>
+    <string name="myGoods_underImg">确认下架</string>
+    <string name="myGoods_sellNote1">♦&#8194;确权的图片才能上架</string>
+    <string name="myGoods_sellNote2">♦&#8194;长按选择上架图片</string>
+    <string name="myGoods_underNote1">♦&#8194;点击图片修改上架信息</string>
+    <string name="myGoods_underNote2">♦&#8194;长按选择下架图片</string>
+    <string name="myGoods_noConfirmImg">空空如也,快去确权图片吧</string>
+    <string name="myGoods_noSellImg">空空如也,快去上架图片吧</string>
+    <string name="myGoods_noResponse">服务器开小差啦,刷新试试吧</string>
+    <string name="myGoods_closeLongClick">取消</string>
+
+    <!--activity_my_info-->
+    <string name="myInfo">个人信息</string>
+    <string name="myInfo_nickName">昵称</string>
+    <string name="myInfo_headView">头像</string>
+    <string name="myInfo_sex">性别</string>
+    <string name="myInfo_birth">出生日期</string>
+    <string name="myInfo_phone">绑定手机号</string>
+    <string name="myInfo_phoneText">123****2222</string>
+    <string name="myInfo_no">未设置</string>
+
+    <!--activity_my_purchase-->
+    <string name="myPurchase_text">我的购买</string>
+    <string name="myPurchase_note1">♦&#8194;购买图片由本机获取</string>
+    <string name="myPurchase_note2">♦&#8194;删除后需重新购买</string>
+    <string name="myPurchase_noImg">空空如也,快去购买图片吧</string>
+
+    <!--activity_purchase_view-->
+    <string name="purchase_now">立即购买</string>
+    <string name="purchase_addToCart">加入购物车</string>
+    <string name="purchase_date" tools:ignore="TypographyDashes">2010–01-01</string>
+    <string name="purchase_sellerName">卖家姓名</string>
+    <string name="purchase_text_by">By&#160;:&#160;</string>
+    <string name="purchase_imgTopic">主题</string>
+    <string name="purchase_money_note">¥</string>
+
+    <!--activity_my_purchase_records,activity_my_sale_records-->
+    <string name="purchaseRecords">购买记录</string>
+    <string name="saleRecords">出售记录</string>
+    <string name="item_purchaseRecords_tag1">支出:&#160;</string>
+    <string name="item_purchaseRecords_tag2">时间:&#160;</string>
+    <string name="item_saleRecords_tag1">收益:&#160;</string>
+    <string name="item_saleRecords_tag2">时间:&#160;</string>
+    <string name="no_purchaseRecords">无购买记录</string>
+    <string name="no_saleRecords">无销售记录</string>
+    <string name="no_response">服务器未响应</string>
+
+    <!--activity_register-->
+    <string name="register_setPwd">设置密码</string>
+    <string name="register_inputPwd">请输入密码</string>
+    <string name="register_confirmPwd">请确认密码</string>
+    <string name="register_over">完成</string>
+
+    <!--activity_reset_sell_img_price-->
+    <string name="money_note">¥&#160;</string>
+    <string name="resetSellPrice_date" tools:ignore="TypographyDashes">2010–01-01</string>
+    <string name="resetSellPrice_sellerName">卖家姓名</string>
+    <string name="resetSellPrice_text_by">By&#160;:&#160;</string>
+    <string name="resetSellPrice_ok">确定</string>
+    <string name="resetSellPrice_quit">取消</string>
+    <string name="resetSellPrice_changePrice">改价</string>
+
+    <!--activity_set_sell_img_info-->
+    <string name="setSellImgInfo_text">设置上架信息</string>
+    <string name="setSellImgInfo_confirmSell">确认上架</string>
+    <string name="item_setSellImgInfo_topic">请输入主题</string>
+    <string name="item_setSellImgInfo_price">请输入价格</string>
+
+    <!--fragment_shopping_cart-->
+    <string name="shopping_cart">购物车</string>
+    <string name="all_selected">&#8194;全选</string>   <!--汉字的宽空格-->
+    <string name="selected_money">合计&#160;:&#160;</string>   <!--窄空格-->
+    <string name="init_selected_count">共0件</string>
+    <string name="init_selected_money">¥&#160;0</string>
+    <string name="count_money">去结算</string>
+    <string name="item_delete_child">删除</string>
+    <string name="item_text_note">不可退款</string>
+    <string name="empty_shoppingCart">购物车是空的,快去添加吧</string>
+    <string name="request_fail">请求失败,请重试</string>
+    <string name="clear_shoppingCart">清空购物车</string>
+    <string name="deleteMany_shoppingCart">删除</string>
+    <string name="edit_cart">编辑</string>
+    <string name="edit_exit">完成</string>
+
+    <!--activity_update_pwd-->
+    <string name="updatePwd">更改密码</string>
+    <string name="updatePwd_inputPwd">请输入新密码</string>
+    <string name="updatePwd_confirmPwd">请确认密码</string>
+
+    <!--alert_choose_purchase-->
+    <string name="choose_trade_type">请选择交易类型</string>
+    <string name="secureTrade_note">安全交易每步操作都会上链存证,更加安全</string>
+    <string name="normal_trade">普通交易</string>
+    <string name="secure_trade">安全交易</string>
+
+    <!--activity_secure_purchase-->
+    <string name="secureTrade_seller">卖家:&#8194;</string>
+    <string name="secureTrade_type">交易类型:&#8194;</string>
+    <string name="secureTrade_type_input">安全交易</string>
+    <string name="secureTrade_myPoints">我的余额:&#8194;</string>
+    <string name="secureTrade_imgPrice">图片价格:&#8194;</string>
+    <string name="secureTrade_overage">剩余:&#8194;</string>
+    <string name="secureTrade_money">¥&#160;900</string>
+    <string name="secureTrade_confirmPurchase">确认购买</string>
+    <string name="secureTrade_confirmInfo">确认信息</string>
+    <string name="secureTrade_text1">正在进行安全验证……</string>
+    <string name="secureTrade_text2">正在进行加密操作……</string>
+
+    <!--activity_put_on_sale-->
+    <string name="putOnSale_topic">标题</string>
+    <string name="putOnSale_price">价格</string>
+    <string name="putOnSale_allCount">共3张</string>
+    <string name="putOnSale_confirmSale">确认上架</string>
+
+    <string name="secureTra_waiting">安全购买中,请耐心等待……</string>
+    <string name="secureTra_markFail">水印失败, 请稍后重试</string>
+    <string name="secureTra_base64Fail">解码失败, 请稍后重试</string>
+    <string name="secureTra_alreadyFreeze">账户处于冻结状态, 请稍后重试</string>
+    <string name="secureTra_freezeFail">积分冻结失败, 请稍后重试</string>
+    <string name="secureTra_hashError">图片源错误</string>
+    <string name="secureTra_freeze60">网络异常, 账户冻结60s, 请稍后再试</string>
+    <string name="secureTra_ineligible">该图不符合安全交易条件</string>
+    <string name="secureTra_succeed">恭喜,购买成功！</string>
+</resources>

@@ -1,0 +1,82 @@
+{% extends "layout.html" %} {%block left%} {% if not is_login %}
+<li class="layui-nav-item layui-nav-itemed">
+    <a href="javascript:;">实体模块</a>
+    <dl class="layui-nav-child">
+        <dd><a href="/enterprise">生产企业模块</a></dd>
+        <dd><a href="/agency">安评机构模块</a></dd>
+        <dd><a href="/audit">监管部门模块</a></dd>
+    </dl>
+</li>
+{%else%}
+<li class="layui-nav-item layui-nav-itemed">
+    <a href="javascript:;">安评机构</a>
+    <dl class="layui-nav-child">
+        <dd><a href="/agency">基本信息</a></dd>
+        <dd class=layui-this><a href="/agency/engineer">安评师管理</a></dd>
+        <dd><a href="/agency/upload">安评报告上传</a></dd>
+        <dd><a href="/agency/evaluation">审查安评报告</a></dd>
+    </dl>
+</li>
+{%endif%} {%endblock%} {%block main%}
+<div class=layui-row>
+    <div class="layui-card">
+        <div class="layui-card-header">添加安评师</div>
+        <div class="layui-card-body" style="width: 400px;">
+
+            <form class="layui-form" action="/agency/engineer" method="POST">
+                <div class="layui-form-item">
+                    <label class=layui-form-label for="name">名称</label>
+                    <div class=layui-input-block>
+                        <input type="text" name=name class="layui-input" id="name">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class=layui-form-label for="id">编号</label>
+                    <div class=layui-input-block>
+                        <input type="text" name=id class="layui-input" id="id">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class=layui-form-label for="field">类型</label>
+                    <div class=layui-input-block>
+                        <input type="text" name=field class="layui-input" id="field">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class=layui-input-block>
+                        <button type="submit" class="layui-btn">添加安评师</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="layui-card">
+        <div class="layui-card-header">安评师列表</div>
+        <div class="layui-card-body">
+
+            <table class="layui-table">
+                <thead>
+                    <tr>
+                        <th>姓名</th>
+                        <th>编号</th>
+                        <th>领域</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for e in agency.engineers %}
+                    <tr>
+                        <td>{{e.username}}</td>
+                        <td>{{e.eid}}</td>
+                        <td>{{e.field}}</td>
+                        <td><a href="/agency/get_engineer/{{e.eid}}" style="color: blue">查询</a> <a class=pull-right href="/agency/del_engineer/{{e.eid}}" style="color: orangered">删除</a></td>
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{%endblock%}

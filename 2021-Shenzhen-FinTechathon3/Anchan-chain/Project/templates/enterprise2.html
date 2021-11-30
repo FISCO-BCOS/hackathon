@@ -1,0 +1,152 @@
+{% extends "layout.html" %} {%block left%} {% if not is_login %}
+<li class="layui-nav-item layui-nav-itemed">
+    <a href="javascript:;">实体模块</a>
+    <dl class="layui-nav-child">
+        <dd class=layui-this><a href="/enterprise">生产企业模块</a></dd>
+        <dd><a href="/agency">安评机构模块</a></dd>
+        <dd><a href="/audit">监管部门模块</a></dd>
+    </dl>
+</li>
+{%else%}
+<li class="layui-nav-item layui-nav-itemed">
+    <a href="javascript:;">生产企业</a>
+    <dl class="layui-nav-child">
+        <dd class=layui-this><a href="/enterprise">企业信息面板</a></dd>
+        <dd><a href="/enterprise/upload">安评报告材料上传</a></dd>
+    </dl>
+</li>
+{%endif%}
+{%endblock%}
+
+
+{%block main%}
+
+{% if not is_login %}
+<div class=layui-row style="width: 50%;">
+    <div class=layui-col-4>
+        <form class="layui-form" method="POST">
+            <div class="layui-form-item">
+                <label class=layui-form-label for="name">用户名</label>
+                <div class="layui-input-block">
+                    <input type="text" name=name class="layui-input" id="name">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label for="password" class=layui-form-label>密码</label>
+                <div class="layui-input-block">
+                    <input type="password" name=password class="layui-input" id="password">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button type="submit" class="layui-btn">登录（注册）</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{%else%}
+<div class=layui-row>
+    <div class="layui-card">
+        <div class="layui-card-header">生产企业名称： {{username}}</div>
+        <div class="layui-card-body">
+            <p>账户地址： {{enterprise.account_addr}}</p>
+            <p>合约地址： {{enterprise.contract_addr}}</p>
+
+            {%if enterprise.license_addr%}
+            <p>证书地址： {{enterprise.license_addr}}</p>
+            {%endif%} {%if enterprise.evaluation_addr%}
+            <p>评估合约地址： {{enterprise.evaluation_addr}} </p>
+
+            <a href="/enterprise/evaluation" class="layui-btn layui-btn-sm layui-btn-danger">开始审查流程</a>
+            <!-- <a href="/enterprise/result" class="layui-btn layui-btn-sm layui-btn-normal">更新审查状态</a>  -->
+            {%endif%} {%if enterprise.license_addr%}
+            <a href="/license/{{enterprise.license_addr}}" class="layui-btn layui-btn-sm">查看证书</a> {%endif%}
+        </div>
+    </div>
+</div>
+{% if enterprise.ent_name == "" %}
+<div class=layui-row style="padding-top: 30px;">
+    <div class="layui-card">
+        <div class="layui-card-header">设置生产企业基本信息</div>
+        <div class="layui-card-body" style="width: 400px;">
+            <form class="layui-form" action="/enterprise/apply" method="POST">
+                <div class="layui-form-item">
+                    <label class="layui-form-label" for="ent-name">企业名称</label>
+                    <div class="layui-input-block">
+                        <input type="text" name=ent-name class="layui-input" id="ent-name">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label" for="rep-name">主要负责人</label>
+                    <div class="layui-input-block">
+                        <input type="text" name=rep-name class="layui-input" id="rep-name">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label" for="ent-addr">单位地址</label>
+                    <div class="layui-input-block">
+                        <input type="text" name=ent-addr class="layui-input" id="ent-addr">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label" for="ent-type">经济类型</label>
+                    <div class="layui-input-block">
+                        <input type="text" name=ent-type class="layui-input" id="ent-type">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label" for="ent-range">许可范围</label>
+                    <div class="layui-input-block">
+                        <input type="text" name=ent-range class="layui-input" id="ent-range">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button type="submit" class="layui-btn">设置基本信息</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{%else%}
+<div class="layui-row" style="padding-top: 30px;">
+    <div class="layui-card">
+        <div class="layui-card-header">企业基本信息</div>
+        <div class="layui-card-body">
+            <!-- <p>企业名称： {{ enterprise.ent_name}}</p>
+            <p>主要负责人： {{enterprise.rep_name}}</p>
+            <p>单位地址： {{enterprise.ent_addr}}</p>
+            <p> 经济类型 ：{{enterprise.ent_type}}</p>
+            <p>许可范围： {{enterprise.ent_range}}</p> -->
+            <table class="layui-table">
+
+                <thead>
+                    <tr>
+                        <th>企业名称</th>
+                        <th>主要负责人</th>
+                        <th>单位地址</th>
+                        <th>经济类型</th>
+                        <th>许可范围</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{enterprise.ent_name}}</td>
+                        <td>{{enterprise.rep_name}}</td>
+                        <td>{{enterprise.ent_addr}}</td>
+                        <td>{{enterprise.ent_type}}</td>
+                        <td>{{enterprise.ent_range}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+</div>
+
+{%endif%}
+{%endif%}
+{%endblock%}

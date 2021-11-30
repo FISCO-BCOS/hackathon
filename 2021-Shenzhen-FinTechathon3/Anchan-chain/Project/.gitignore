@@ -1,0 +1,10 @@
+bin
+**/*.bin
+*.abi
+**/*.pyc
+**/__pycache__
+data/*
+!data/.gitkeep
+db.sqlite3
+server.log
+env

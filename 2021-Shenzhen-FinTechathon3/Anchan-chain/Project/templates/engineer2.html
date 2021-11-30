@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{%block left%}
+<li class="layui-nav-item"><a href="/agency/engineer">返回上一级</a></li>
+{%endblock%}
+
+{%block main%}
+<div class=layui-row>
+    <div class="layui-card">
+        {%if engineer_info and engineer_info[0] != "" %}
+        <div class="layui-card-header">姓名：{{engineer_info[0]}}</div>
+        <div class="layui-card-body">
+            <p>编号： {{index}}</p>
+            <p>领域： {{engineer_info[1]}}</p>
+            <p>机构： {{engineer_info[3]}}</p>
+            <p>事务： {{engineer_info[5]}}</p>
+        </div>
+        {%else%}
+        <div class="layui-card-header">安评师名称：未找到该安评师</div>
+        <div class="layui-card-body"></div>
+        {%endif%}
+    </div>
+</div>
+{%endblock%}

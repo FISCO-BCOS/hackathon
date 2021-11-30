@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".mainView.register.Register">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/register_setPwd"
+            android:textColor="#e6000000"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.8dp"
+        android:background="#DCDCDC" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintEnabled="false"
+            app:passwordToggleDrawable="@drawable/selector_show_pwd"
+            app:passwordToggleEnabled="true">
+
+            <EditText
+                android:id="@+id/et_register_inputPwd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/register_inputPwd"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:theme="@style/myEditText" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintEnabled="false"
+            app:passwordToggleDrawable="@drawable/selector_show_pwd"
+            app:passwordToggleEnabled="true">
+
+            <EditText
+                android:id="@+id/et_register_confirmPwd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/register_confirmPwd"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:theme="@style/myEditText" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="@string/resetPwd_checkPwd"
+            android:textColor="#42000000"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/bt_register_submit"
+            android:layout_width="142dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/bt_login"
+            android:text="@string/register_over"
+            android:textColor="#2196f3"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{%block left%}
+<li class="layui-nav-item"><a onclick="javascript:history.go(-1)">返回</a></li>
+
+{%if not is_login%}
+<li class="layui-nav-item layui-nav-itemed">
+    <a href="javascript:;">实体模块</a>
+    <dl class="layui-nav-child">
+        <dd><a href="/enterprise">生产企业模块</a></dd>
+        <dd><a href="/agency">安评机构模块</a></dd>
+        <dd><a href="/audit">监管部门模块</a></dd>
+    </dl>
+</li>
+{%endif%}
+{%endblock%}
+
+{%block main%}
+<div class=layui-row>
+    <div class="layui-card">
+        {%if license_info %}
+        <div class="layui-card-header">企业名称：{{license_info[0]}}</div>
+        <div class="layui-card-body">
+            <p>企业名称： {{license_info[0]}}</p>
+            <p>企业代表人： {{license_info[1]}}</p>
+            <p>企业地址： {{license_info[2]}}</p>
+            <p>经济类型： {{license_info[3]}}</p>
+            <p>许可范围： {{license_info[4]}}</p>
+            <p>过期时间： {{license_info[5]}}</p>
+
+            {%if license_info[6] == "有效"%}
+            <p style="color:green">证书状态： {{license_info[6]}}</p>
+            {%else%}
+            <p style="color:crimson">证书状态： {{license_info[6]}}</p>
+            {%endif%}
+
+            <p>材料IPFS地址： {{license_info[8]}}</p>
+            <p>报告IPFS地址： {{license_info[9]}}</p>
+            <p>安评机构： {{license_info[10]}}</p>
+            <p>安评师： {{license_info[11]}}</p>
+        </div>
+        {%else%}
+        <div class="layui-card-header">未找到该证书</div>
+        <div class="layui-card-body"></div>
+        {%endif%}
+    </div>
+</div>
+{%endblock%}

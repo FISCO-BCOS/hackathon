@@ -1,0 +1,69 @@
+{% extends "layout.html" %} {%block left%} {% if not is_login %}
+<li class="layui-nav-item layui-nav-itemed">
+    <a href="javascript:;">实体模块</a>
+    <dl class="layui-nav-child">
+        <dd><a href="/enterprise">生产企业模块</a></dd>
+        <dd><a href="/agency">安评机构模块</a></dd>
+        <dd><a href="/audit">监管部门模块</a></dd>
+    </dl>
+</li>
+{%else%}
+<li class="layui-nav-item layui-nav-itemed">
+    <a href="javascript:;">安评机构</a>
+    <dl class="layui-nav-child">
+        <dd><a href="/agency">基本信息</a></dd>
+        <dd><a href="/agency/engineer">安评师管理</a></dd>
+        <dd class=layui-this><a href="/agency/upload">安评报告上传</a></dd>
+        <dd><a href="/agency/evaluation">审查安评报告</a></dd>
+    </dl>
+</li>
+{%endif%} {%endblock%} {%block main%}
+<div class=layui-row>
+    <div class="layui-card">
+        <div class="layui-card-header">上传安全评估报告</div>
+        <div class="layui-card-body">
+
+            <form class="layui-form" action="/agency/upload" method="POST" enctype="multipart/form-data">
+                <div class="layui-form-item">
+                    <label class=layui-form-label for="ent-name">企业名称</label>
+                    <div class=layui-input-inline>
+                        <input type="text" name=ent-name class="layui-input" id="ent-name">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class=layui-form-label for="eng-list">安评师序号</label>
+                    <div class=layui-input-inline>
+                        <input type="text" name=eng-list class="layui-input" id="eng-list">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">使用空格隔开</div>
+                </div>
+
+                <div class=" layui-form-item ">
+                    <label class=layui-form-label for="data-file ">评估报告</label>
+                    <!-- <input type="file " name=data-file class="layui-input " id="data-file "> -->
+                    <div class=layui-input-inline>
+                        <input type="file" name=data-file class=" " id="data-file">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux" style="margin-left:100px;">原始报告</div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class=layui-form-label for="data-hash">上传文件哈希</label>
+                    <div class=layui-input-inline>
+                        <input type="text" name=data-hash class="layui-input" id="data-hash">
+                    </div>
+                </div>
+
+                <div class=" layui-form-item ">
+                    <div class=layui-input-block>
+                        <button type="submit " class="layui-btn ">上传报告</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+{%endblock%}
