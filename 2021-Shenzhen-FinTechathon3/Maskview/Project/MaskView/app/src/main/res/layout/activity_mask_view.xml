@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".mainView.MaskView">
+
+    <FrameLayout
+        android:id="@+id/fl_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="60dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/bt_ConfirmImg"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/ic_confirm_image" />
+
+        </LinearLayout>
+
+        <RadioGroup
+            android:id="@+id/rg_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radioBt_displayHall"
+                style="@style/btn_radio_style"
+                android:layout_gravity="center_vertical"
+                android:drawableTop="@drawable/selector_displayhall"
+                android:text="@string/bottomItem_displayHall" />
+
+            <RadioButton
+                android:id="@+id/radioBt_mgGoods"
+                style="@style/btn_radio_style"
+                android:layout_gravity="center_vertical"
+                android:drawableTop="@drawable/selector_mygoods"
+                android:text="@string/bottomItem_myGoods" />
+
+
+            <!--<RadioButton
+                android:id="@+id/bt_ConfirmImg"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/ic_confirm_image"
+                android:button="@null"
+                android:gravity="center" />-->
+
+            <RadioButton
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+
+            <RadioButton
+                android:id="@+id/radioBt_shoppingCart"
+                style="@style/btn_radio_style"
+                android:layout_gravity="center_vertical"
+                android:drawableTop="@drawable/selector_shoppingcar"
+                android:text="@string/bottomItem_shoppingCart" />
+
+            <RadioButton
+                android:id="@+id/radioBt_mine"
+                style="@style/btn_radio_style"
+                android:layout_gravity="center_vertical"
+                android:drawableTop="@drawable/selector_mine"
+                android:text="@string/bottomItem_mine" />
+        </RadioGroup>
+
+
+    </RelativeLayout>
+
+</LinearLayout>

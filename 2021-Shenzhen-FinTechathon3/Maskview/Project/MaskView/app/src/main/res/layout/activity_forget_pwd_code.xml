@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    tools:context=".mainView.forgetPwd.ForgetPwdCode">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/forgetPwd_finishThisActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/ic_arrow_left" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="@string/forgetPwd_findPwdByPhone"
+            android:textColor="#e6000000"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#DCDCDC" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <EditText
+            android:id="@+id/et_forgetPwd_phoneNum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/login_hint_phone"
+            android:inputType="number"
+            android:theme="@style/myEditText"
+            tools:ignore="TextFields" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_forgetPwd_code"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:hint="@string/login_hint_code"
+                android:inputType="number"
+                android:theme="@style/myEditText" />
+
+            <Button
+                android:id="@+id/bt_forgetPwd_sendCode"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:background="@drawable/send_code"
+                android:text="@string/login_getPhoneCode"
+                android:textColor="#2196f3"
+                android:textSize="12sp"
+                tools:ignore="SmallSp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/bt_jump_resetPwd"
+            android:layout_width="142dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/bt_login"
+            android:text="@string/text_nextStep"
+            android:textColor="#2196f3"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

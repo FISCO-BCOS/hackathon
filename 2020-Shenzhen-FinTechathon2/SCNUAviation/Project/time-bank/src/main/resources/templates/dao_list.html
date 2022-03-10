@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>DAO状况</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="service_list.html">
+          <div class="sidebar-brand-icon">
+            <i class="fas fa-fw"><img src="img/people.png" width="44px" height="44px" style="padding-bottom: 3px;"></i>
+          </div>
+          <div class="sidebar-brand-text mx-3">义工联 node1</div>
+        </a>
+  
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0">
+  
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item">
+          <a class="nav-link" href="user.html">
+            <i class="fas fa-fw"><img src="img/home_page.svg" width="25px" height="25px" style="padding-bottom: 3px;"></i>
+            <span>组织信息</span>
+          </a>
+        </li>
+        <hr class="sidebar-divider">
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+          <a class="nav-link" href="dao_list">
+            <i class="fas fa-fw"><img src="img/zhongchou.svg" width="22px" height="22px" style="padding-bottom: 3px;"></i>
+            <span>DAO完成状况</span>
+          </a>
+        </li>
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+          <a class="nav-link" href="publish_DAO">
+            <i class="fas fa-fw"><img src="img/get_service.svg" width="25px" height="25px" style="padding-bottom: 3px;"></i>
+            <span>发布DAO</span>
+          </a>
+        </li>
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+        <!-- Nav Item - Charts -->
+        <li class="nav-item active">
+          <a class="nav-link" href="user.html">
+            <i class="fas fa-fw"><img src="img/user_center.svg" width="22px" height="22px" style="padding-bottom: 3px;"></i>
+            <span>组织数据</span></a>
+        </li>
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+          <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
+      </ul>
+      <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+          <!-- Sidebar Toggle (Topbar) -->
+          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
+
+          <!-- Topbar Search -->
+          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <div class="input-group">
+       <!--    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2"> -->
+              
+            </div>
+          </form>
+
+          <!-- Topbar Navbar -->
+          <ul class="navbar-nav ml-auto">
+
+            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+            <li class="nav-item dropdown no-arrow d-sm-none">
+              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-search fa-fw"></i>
+              </a>
+              <!-- Dropdown - Messages -->
+              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                <form class="form-inline mr-auto w-100 navbar-search">
+                  <div class="input-group">
+                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append" style="z-index: 0">
+                      <button class="btn btn-primary" type="button">
+                        <i class="fas fa-search fa-sm"></i>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </li>
+
+            <!-- Nav Item - Alerts -->
+            <li class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell fa-fw"></i>
+                <!-- Counter - Alerts -->
+                <span class="badge badge-danger badge-counter">3+</span>
+              </a>
+              <!-- Dropdown - Alerts -->
+              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                <h6 class="dropdown-header">
+                  Alerts Center
+                </h6>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="mr-3">
+                    <div class="icon-circle bg-primary">
+                      <i class="fas fa-file-alt text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="small text-gray-500">December 12, 2019</div>
+                    <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                  </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="mr-3">
+                    <div class="icon-circle bg-success">
+                      <i class="fas fa-donate text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="small text-gray-500">December 7, 2019</div>
+                    $290.29 has been deposited into your account!
+                  </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="mr-3">
+                    <div class="icon-circle bg-warning">
+                      <i class="fas fa-exclamation-triangle text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="small text-gray-500">December 2, 2019</div>
+                    Spending Alert: We've noticed unusually high spending for your account.
+                  </div>
+                </a>
+                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+              </div>
+            </li>
+
+            <!-- Nav Item - Messages -->
+            <li class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-envelope fa-fw"></i>
+                <!-- Counter - Messages -->
+                <span class="badge badge-danger badge-counter">7</span>
+              </a>
+              <!-- Dropdown - Messages -->
+              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
+                <h6 class="dropdown-header">
+                  Message Center
+                </h6>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="dropdown-list-image mr-3">
+                    <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
+                    <div class="status-indicator bg-success"></div>
+                  </div>
+                  <div class="font-weight-bold">
+                    <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
+                    <div class="small text-gray-500">Emily Fowler · 58m</div>
+                  </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="dropdown-list-image mr-3">
+                    <img class="rounded-circle" src="https://source.unsplash.com/AU4VPcFN4LE/60x60" alt="">
+                    <div class="status-indicator"></div>
+                  </div>
+                  <div>
+                    <div class="text-truncate">I have the photos that you ordered last month, how would you like them sent to you?</div>
+                    <div class="small text-gray-500">Jae Chun · 1d</div>
+                  </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="dropdown-list-image mr-3">
+                    <img class="rounded-circle" src="https://source.unsplash.com/CS2uCrpNzJY/60x60" alt="">
+                    <div class="status-indicator bg-warning"></div>
+                  </div>
+                  <div>
+                    <div class="text-truncate">Last month's report looks great, I am very happy with the progress so far, keep up the good work!</div>
+                    <div class="small text-gray-500">Morgan Alvarez · 2d</div>
+                  </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="dropdown-list-image mr-3">
+                    <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="">
+                    <div class="status-indicator bg-success"></div>
+                  </div>
+                  <div>
+                    <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</div>
+                    <div class="small text-gray-500">Chicken the Dog · 2w</div>
+                  </div>
+                </a>
+                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+              </div>
+            </li>
+
+            <div class="topbar-divider d-none d-sm-block"></div>
+
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">义工联</span>
+                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+              </a>
+              <!-- Dropdown - User Information -->
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Profile
+                </a>
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Settings
+                </a>
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Activity Log
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Logout
+                </a>
+              </div>
+            </li>
+
+          </ul>
+
+        </nav>
+        <!-- End of Topbar -->
+
+        <!-- Begin Page Content -->
+        
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+			<!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">组织数据</h1>
+      <!--  <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>-->
+          </div>
+
+          <!-- Content Row -->
+          <div class="row">
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">组织名称</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">义工联</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">总筹集志愿时长</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">658.0h</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">完成DAO数</div>
+                      <div class="row no-gutters align-items-center">
+                        <div class="col-auto">
+                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">3</div>
+                        </div>
+                        <div class="col">
+                          <div class="progress progress-sm mr-2">
+                            <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pending Requests Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">发布DAO数</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">6</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-comments fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Content Row -->
+
+          <div class="row">
+            <!-- Pie Chart -->
+            <div class="col-xl-4 col-lg-5">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">捐赠比例</h6>
+                  <div class="dropdown no-arrow">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                      <div class="dropdown-header">Dropdown Header:</div>
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                  </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <div class="chart-pie pt-4 pb-2">
+                    <canvas id="myPieChart"></canvas>
+                  </div>
+                  <div class="mt-4 text-center small">
+                    <span class="mr-2">
+                      <i class="fas fa-circle text-info"></i> 账号1
+                    </span>
+                    <span class="mr-2">
+                      <i class="fas fa-circle text-success"></i> 账号2
+                    </span>
+                    <span class="mr-2">
+                      <i class="fas fa-circle text-info"></i> 账号3
+                    </span>
+                    <span class="mr-2">
+                      <i class="fas fa-circle text-info1"></i> 账号4
+                    </span>
+                    <span class="mr-2">
+                      <i class="fas fa-circle text-gray-100"></i> 账号5
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Content Column -->
+            <div class="col-lg-8 mb-lg-n4">
+              <!-- Illustrations -->
+              <div class="card shadow mb-lg-n4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
+                </div>
+                <div class="card-body">
+                  <p>火星人志愿者服务总队成立于2015年8月10号。最初只是一群热心年青人，在工作之余坚持着对孤寡老人，残疾老人，独居老人的照顾，陪他们聊天,下棋，唱歌，表演等，后来他们组成了一个火星人志愿者团队带领各大高校学生及社会爱心人士到敬老院常规活动。</p>
+
+                  <p>项目介绍：俗话说“家有一老，如有一宝！”。社工在多番走访与核查中了解到鹤龙街辖区内户籍长者高达1787人（≥60岁）。社区内其实有着不少长者，儿女不在身边，生活质量较差，他们对生活充满担忧，害怕自己哪天摔倒没人扶，或是突然离开人世没人知道......其实他们特别希望有人能来听听自己的声音，知道自己没有被社会遗忘！
+
+                  <h4 class="small font-weight-bold">已筹集到的志愿时<span class="float-right">30%</span></h4>
+                  <div class="progress mb-4">
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+
+                  <h4 class="small font-weight-bold">距离众筹截止时间<span class="float-right">70%</span></h4>
+                  <div class="progress mb-4">
+                    <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+
+
+                </div>
+              </div>
+
+
+
+            </div>
+            </div>
+            <!-- Content Row -->
+
+            
+            <div class="container-fluid">
+
+          <!-- Page Heading -->
+  <!--    <h1 class="h3 mb-2 text-gray-800">历史记录</h1>-->
+  <!--       <p class="mb-4"><a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p> -->
+
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4" id="service_list">
+
+            <div class="card-header py-3">
+            	<button class="btn btn-primary dropdown-toggle" type="button" id="MenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size:10px;">
+                	捐赠记录
+              </button>
+    					<div class="dropdown-menu animated--fade-in" aria-labelledby="MenuButton">
+                <div id="menu1" class="menu1" onclick="display(1)"><a class="dropdown-item" style="cursor:pointer">全部记录</a></div>
+                <div id="menu2" class="menu2" onclick="display(2)"><a class="dropdown-item" style="cursor:pointer">正在筹集中的合约</a></div>
+                <div id="menu3" class="menu3" onclick="display(3)"><a class="dropdown-item" style="cursor:pointer">筹集完成的合约</a></div>
+             </div>
+            <div class="card-body">
+              <div class="table-responsive" id="content1">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>捐赠人地址</th>
+                      <th>数量</th>
+                      <th>时间</th>
+                      <th>交易Hash</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td>
+                        <label style="text-decoration:underline;color:#0000FF">0x983334...</label>
+                      </td>
+                      <td>10.0h</td>
+                      <td>2020/10/22</td>
+                      <td><label th:text="${hash}"></label></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label style="text-decoration:underline;color:#0000FF">0xee627c...</label>
+                      </td>
+                      <td>3.0h</td>
+                      <td>2020/10/21</td>
+                      <td><label>0x16135c57591929a63ca041c7f519b5883642ee8f24598b7bd467e6ff085af309
+                      </label></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label style="text-decoration:underline;color:#0000FF">0x41cc7e...
+                        </label>
+                      </td>
+                      <td>8.0h</td>
+                      <td>2020/10/18</td>
+                      <td><label>0x5a32a1cc5598b583a9ad4ab4bb89d98b947e704dc6926732531a52abba809ccf</label></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label style="text-decoration:underline;color:#0000FF">0x870f07...</label>
+                       </td>
+                      <td>9.0h</td>
+                      <td>2020/9/30</td>
+                      <td><label>0x61d4ebbb0fcc99770606ae775f9a827d89d212c0ecd3c32a46a9f16794329b75</label></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label style="text-decoration:underline;color:#0000FF">0x01c834...</label>
+                      </td>
+                      <td>9.0h</td>
+                      <td>2020/9/13</td>
+                      <td><label>0x971b380e2201c03f4130945a1d0492756ddc3c024c4ad0f62a8a91198122fd5b</label></td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              	<div class="card-header py-3">
+              	<h6 class="m-0 font-weight-bold text-primary"><a target="_blank" href="#">更多记录...</a></h6>
+            		</div>
+              </div>
+            	<div class="table-responsive" id="content2" style="display: none;">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>合约地址</th>
+                      <th>DAO类型</th>
+                      <th>项目简述</th>
+                      <th>众筹截止时间</th>
+                      <th>目标时长</th>
+                      <th>筹集状况</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td>367321</td>
+                      <td>公共服务</td>
+                      <td>参加自愿者服务</td>
+                      <td>2020/09/30</td>
+                      <td>3.0h</td>
+                      <td>未完成</td>
+                    </tr>
+                    <tr>
+                      <td>367321</td>
+                      <td>公共服务</td>
+                      <td>参加自愿者服务</td>
+                      <td>2020/09/30</td>
+                      <td>3.0h</td>
+                    </tr>
+                    <tr>
+                      <td>367321</td>
+                      <td>公共服务</td>
+                      <td>参加自愿者服务</td>
+                      <td>2020/09/30</td>
+                      <td>3.0h</td>
+                    </tr>
+                    <tr>
+                      <td>367321</td>
+                      <td>公共服务</td>
+                      <td>参加自愿者服务</td>
+                      <td>2020/09/30</td>
+                      <td>3.0h</td>
+                    </tr>
+                    <tr>
+                      <td>387615</td>
+                      <td>关爱服务</td>
+                      <td>参加关爱老年人服务</td>
+                      <td>2020/10/01</td>
+                      <td>4.0h</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+              </div>
+            	<div class="table-responsive" id="content3" style="display: none;">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>合约地址</th>
+                      <th>服务类型</th>
+                      <th>服务要求</th>
+                      <th>服务截止时间</th>
+                      <th>消耗志愿时长</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td>426410</td>
+                      <td>关爱服务</td>
+                      <td>参加关爱老年人服务</td>
+                      <td>2020/10/02</td>
+                      <td>4.0h</td>
+                    </tr>
+                    <tr>
+                      <td>426445</td>
+                      <td>公共服务</td>
+                      <td>参加自愿者服务</td>
+                      <td>2020/10/02</td>
+                      <td>3.0h</td>
+                    </tr>
+                    <tr>
+                      <td>431298</td>
+                      <td>家庭维修</td>
+                      <td>参加维修服务</td>
+                      <td>2020/10/03</td>
+                      <td>4.5h</td>
+                    </tr>
+                    <tr>
+                      <td>438730</td>
+                      <td>公共服务</td>
+                      <td>参加自愿者服务</td>
+                      <td>2020/10/05</td>
+                      <td>3.0h</td>
+                    </tr>
+                    <tr>
+                      <td>487531</td>
+                      <td>家政服务</td>
+                      <td>参加社区家政服务</td>
+                      <td>2020/10/05</td>
+                      <td>4.0h</td>
+                    </tr>
+                    <tr>
+                      <td>530871</td>
+                      <td>培训服务</td>
+                      <td>参加志愿培训服务</td>
+                      <td>2020/10/05</td>
+                      <td>4.0h</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+
+          </div>
+
+					</div>
+        </div>
+      <!-- End of Main Content -->
+			
+      
+
+    </div>
+    <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; Your Website 2020</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+
+      
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="login.html">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="vendor/chart.js/Chart.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="js/demo/chart-area-demo.js"></script>
+  <script src="js/demo/chart-pie-demo.js"></script>
+  <script src="js/utils.js"></script>
+  
+  <script>
+    $(function() {
+        var sid=getUrlParam("sid");
+        if(sid) {
+        	sid = parseInt(sid);
+        	display(sid);
+        	goToPhoto();
+        }
+    });
+    
+    function goToPhoto() {
+      //window.location.href='service_list.html';
+        $("html,body").animate({scrollTop: $("#service_list").offset().top}, 500);
+    }
+    // Pie Chart Example
+    var ctx = document.getElementById("myPieChart");
+    var myPieChart = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: ["账号1", "账号2", "账号3","账号4","账号5"],
+        datasets: [{
+          data: [20, 30, 5, 10, 40],
+          backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc','#48D1CC','#87CEEB'],
+          hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf','#48D1CC','#87CEEB'],
+          hoverBorderColor: "rgba(234, 236, 244, 1)",
+        }],
+      },
+      options: {
+        maintainAspectRatio: false,
+        tooltips: {
+          backgroundColor: "rgb(255,255,255)",
+          bodyFontColor: "#858796",
+          borderColor: '#dddfeb',
+          borderWidth: 1,
+          xPadding: 15,
+          yPadding: 15,
+          displayColors: false,
+          caretPadding: 10,
+        },
+        legend: {
+          display: false
+        },
+        cutoutPercentage: 80,
+      },
+    });
+
+
+  </script>
+</body>
+
+</html>

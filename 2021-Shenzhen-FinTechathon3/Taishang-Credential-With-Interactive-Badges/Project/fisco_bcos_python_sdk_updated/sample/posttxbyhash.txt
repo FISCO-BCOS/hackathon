@@ -1,0 +1,8 @@
+POST / HTTP/1.1
+Content-Type: text/json
+User-Agent: tester
+Host: 127.0.0.1
+Content-Type:  application/json
+Content-Length: 146
+
+{"jsonrpc": "2.0", "method": "getTransactionByHash", "params": [1, "0x27a7e7c14470a534cbf491310d85ad8e5620a893637cc47cfac964413bb08bf9"], "id": 0}

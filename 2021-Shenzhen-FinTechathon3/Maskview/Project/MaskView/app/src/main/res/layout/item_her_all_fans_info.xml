@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="2dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/lv_item_jumpHerInfo_fans"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical">
+
+            <com.maskview.util.CircleImageView
+                android:id="@+id/item_iv_herAllFansInfo_headView"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="20sp"
+                android:src="@mipmap/head" />
+
+            <TextView
+                android:id="@+id/item_tv_herAllFansInfo_userName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20sp"
+                android:singleLine="true"
+                android:text="用户昵称"
+                android:textColor="#000000" />
+
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/item_tv_herAllFansInfo_focus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+ 关注"
+                android:textColor="#4169E1" />
+
+            <TextView
+                android:id="@+id/item_tv_herAllFansInfo_cancelFocus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="已关注"
+                android:textColor="#808A87" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.6dp"
+        android:background="#C0C0C0" />
+
+</LinearLayout>

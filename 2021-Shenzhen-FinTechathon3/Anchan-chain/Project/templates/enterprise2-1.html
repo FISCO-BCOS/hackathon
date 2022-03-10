@@ -1,0 +1,51 @@
+{% extends "layout.html" %} {%block left%} {% if not is_login %}
+<li class="layui-nav-item layui-nav-itemed">
+    <a href="javascript:;">实体模块</a>
+    <dl class="layui-nav-child">
+        <dd class=layui-this><a href="/enterprise">生产企业模块</a></dd>
+        <dd><a href="/agency">安评机构模块</a></dd>
+        <dd><a href="/audit">监管部门模块</a></dd>
+    </dl>
+</li>
+{%else%}
+<li class="layui-nav-item layui-nav-itemed">
+    <a href="javascript:;">生产企业</a>
+    <dl class="layui-nav-child">
+        <dd><a href="/enterprise">企业信息面板</a></dd>
+        <dd class=layui-this><a href="/enterprise/upload">安评报告材料上传</a></dd>
+    </dl>
+</li>
+{%endif%} {%endblock%} {%block main%}
+<div class=layui-row>
+    <div class="layui-card">
+        <div class="layui-card-header">上传安评材料</div>
+        <div class="layui-card-body">
+
+            <form class="layui-form" action="/enterprise/upload" method="POST" enctype="multipart/form-data">
+
+                <div class=" layui-form-item ">
+                    <label class=layui-form-label for="data-file ">评估材料</label>
+                    <!-- <input type="file " name=data-file class="layui-input " id="data-file "> -->
+                    <div class=layui-input-inline>
+                        <input type="file" name=data-file class=" " id="data-file">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class=layui-form-label for="data-hash">上传文件哈希</label>
+                    <div class=layui-input-inline>
+                        <input type="text" name=data-hash class="layui-input" id="data-hash">
+                    </div>
+                </div>
+
+                <div class=" layui-form-item ">
+                    <div class=layui-input-block>
+                        <button type="submit " class="layui-btn ">上传材料</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+{%endblock%}

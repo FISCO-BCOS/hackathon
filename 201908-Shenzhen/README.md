@@ -1,4 +1,4 @@
-# 2019年8月微众银行金融科技大赛参赛作品
+# 2019年微众银行第一届金融科技高校技术大赛参赛作品
 
 ## 提交说明
 
@@ -9,10 +9,19 @@
     + 工具类：项目说明、环境依赖、使用方法等
 
 4. 参赛队伍可以在各自子目录`Contrcts`目录下提交Solidity合约。合约接口需要有说明文档，要求提供通过[console](https://github.com/FISCO-BCOS/console)、[nodejs-sdk](https://github.com/FISCO-BCOS/nodejs-sdk)或[python-sdk](https://github.com/FISCO-BCOS/python-sdk)调用的操作截图。
-5. 参赛队伍可以在各自子目录`Project`目录下提交项目代码。项目代码要求提供运行指引且需要经过FISCO BCOS团队审核。项目代码要求安装步骤清晰、保证能运行和项目干净清晰。项目详细介绍请[参考这里的格式](example_project/README.md)提交。
+5. 参赛队伍可以在各自子目录`Project`目录下提交项目代码。项目代码要求提供运行指引且需要经过FISCO BCOS团队审核。项目代码要求安装步骤清晰、保证能运行和项目干净清晰。项目详细介绍请[参考这里的格式](../201907-Beijing/example_project/README.md)提交。
 
-## [示例作品](https://mp.weixin.qq.com/s/1hiij7bteHIvg2ypBma2fg)
+## [示例作品](https://mp.weixin.qq.com/s/KodTTSm9wev-RvA8G48HQA)
 
-+ [启思队：FISCO BCOS多语言开发套件](https://github.com/FISCO-BCOS/hackathon/tree/master/201907-Beijing/chislab)
+### [Bithacks团队：DeFiDefender](Bithacks/README.md)
 
-本项目旨在构建基于FISCO BCOS的开发套件，以便开发者迅速地搭建开发环境和测试，提供的功能包括Docker搭链、合约编译、NodeJS与Go语言的SDK和性能测试。开发者可以通过本项目迅速地搭链，对合约进行部署测试，并转化为相应语言的SDK，并且集成了链的性能测试模块caliper，方便开发者进行性能测试。
+本项目希望在确保平台数据及用户隐私安全的前提下，通过联盟链、分布式身份、密文云存储、隐私计算和联邦学习等多项技术，将数据主权归还给用户，并通过统一的身份标识符，在数据验证和计算层面实现借贷行业的互联互通，为各平台提供贷前身份认证(防范虚假信息和身份冒用)、反欺诈(反多头借贷、行业黑名单)、可信数据溯源(欺诈实体追溯、催收)、AI风险定价等风控服务。
+
+### [融信链](RXL/README.md)
+
+“融信链”针对现有的电子学历证书系统存在的不足，用FISCO BCOS联盟链记录数据，保证学位学历证书数据来源可靠，公平公正记录学生在校学习经历，打开学校与社会各界开放交流的通道，为学生入职升学和企业招聘人才提供便利，提升跨国学历认证事务办理流程，最终提高教育质量，构建更加可信、开放、公平公正和高效的国际教育新生态。
+
+### [紫荆路Tank团：排污权许可区块链交易平台](SCNUTank/README.md)
+
+本作品旨在通过区块链构建排污权许可证交易平台，配合交易纠纷仲裁，黑名单，监督审计等链上机制健全活化市场。实现企业、政府、公众对于环保排污的三权制衡、多元共治，辅助排污政策制定，共建污水治理生态循环。
+

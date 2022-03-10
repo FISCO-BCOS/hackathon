@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".mainView.setSellImgInfo.SetSellImgInfo">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/setSellImgInfo_finishThisActivity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="7"
+            android:background="#f7f7f7"
+            android:gravity="center"
+            android:text="@string/setSellImgInfo_text"
+            android:textColor="#e6000000"
+            android:textSize="20sp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_setSellImgInfo"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="3dp"
+        android:layout_weight="1"
+        android:background="#DCDCDC" />
+
+    <Button
+        android:id="@+id/bt_setSellImgInfo_confirmSell"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="6dp"
+        android:background="@drawable/bt_sell"
+        android:text="@string/setSellImgInfo_confirmSell"
+        android:textColor="#ffffff"
+        android:textSize="16sp" />
+
+</LinearLayout>

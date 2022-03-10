@@ -1,0 +1,71 @@
+plugins {
+    id 'org.springframework.boot' version '2.1.4.RELEASE'
+    id 'java'
+    id 'com.github.sherter.google-java-format' version '0.8'
+}
+
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+
+description = 'Spring Boot Starter'
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+googleJavaFormat {
+    options style: 'AOSP'
+    source = sourceSets*.allJava
+    include '**/*.java'
+    exclude '**/temp/*.java'
+    exclude '**/solidity/*.java'
+}
+
+verifyGoogleJavaFormat {
+    source = sourceSets*.allJava
+    include '**/*.java'
+    exclude '**/temp/*.java'
+    exclude '**/solidity/*.java'
+}
+
+check.dependsOn.remove(test)
+check.dependsOn.remove(verifyGoogleJavaFormat)
+
+repositories {
+    maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+    maven { url "https://dl.bintray.com/ethereum/maven/" }
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+    mavenCentral()
+}
+
+dependencies {
+        compile 'org.springframework.boot:spring-boot-starter-logging'
+        compile 'org.codehaus.groovy:groovy-all:2.5.6'
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+        implementation 'org.springframework.boot:spring-boot-starter-actuator'
+        implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+        annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    compile 'org.fisco-bcos:web3sdk:2.3.0'
+
+    //引入aop切面编程
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+    //引入bootstrap
+    implementation 'org.webjars:bootstrap:4.1.0'
+    implementation 'org.webjars:jquery:3.5.0'
+}
+
+configurations {
+    all {
+        exclude group: 'org.slf4j', module: 'slf4j-log4j12'
+    }
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+test {
+    systemProperty "jdk.tls.namedGroups", "secp256k1"
+}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.media.dao.ImageKeyDao">
+    <resultMap id="ImageKeyResult" type="imageKey">
+        <result property="uid" column="uid"/>
+        <result property="phoneNumber" column="phone_number"/>
+        <result property="imgName" column="image_name"/>
+        <result property="imgKey" column="img_key"/>
+    </resultMap>
+
+    <sql id="selectImageKeyInfo">
+        select uid, phone_number, image_name, img_key
+        from image_key
+    </sql>
+
+    <!--id必须与userDao中方法名一样-->
+    <!--parameterType为该方法的形参类型-->
+    <select id="findImageKeyByPhoneNumber" parameterType="long" resultMap="ImageKeyResult">
+        <include refid="selectImageKeyInfo"/>
+        where phone_number = #{phoneNumber}
+    </select>
+
+</mapper>

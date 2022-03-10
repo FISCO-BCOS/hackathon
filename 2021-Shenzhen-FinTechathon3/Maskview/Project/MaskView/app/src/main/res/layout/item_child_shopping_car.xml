@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--删除button-->
+    <LinearLayout
+        android:id="@+id/id_back"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginLeft="0dp"
+        android:gravity="right"
+        tools:ignore="RtlHardcoded">
+
+        <Button
+            android:id="@+id/item_child_bt_deleteChild"
+            android:layout_width="80dp"
+            android:layout_height="100dp"
+            android:background="#E8321D"
+            android:text="@string/item_delete_child"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/item_child_layout_front"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:background="#ffffff"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/item_child_checkBox"
+                android:layout_width="23dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12sp"
+                android:background="@drawable/checkbox_bg"
+                android:button="@android:color/transparent" />
+
+            <RelativeLayout
+                android:layout_width="110dp"
+                android:layout_height="95dp">
+
+                <com.maskview.dao.ZQRoundOvalImageView
+                    android:id="@+id/item_child_image_shoppingCart"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="9dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop" />
+
+                <!--<ProgressBar
+                    android:id="@+id/item_child_shoppingCar_proBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="35dp" />-->
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/item_child_imgTopic_shoppingCart"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:singleLine="true"
+                    android:text="@string/app_name"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/item_child_tag_shoppingCart"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:singleLine="true"
+                        android:text="@string/item_text_note"
+                        android:textColor="#6c6c6c"
+                        android:textSize="10sp"
+                        tools:ignore="SmallSp" />
+
+                    <TextView
+                        android:id="@+id/item_child_price_shoppingCart"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/item_child_tag_shoppingCart"
+                        android:layout_marginTop="8dp"
+                        android:text="¥ 88.00"
+                        android:textColor="#E8321D"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5sp"
+            android:background="#EAEAEC" />
+    </LinearLayout>
+
+
+</FrameLayout>

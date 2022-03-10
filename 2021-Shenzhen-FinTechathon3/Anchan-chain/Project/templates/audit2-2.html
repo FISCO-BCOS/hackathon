@@ -1,0 +1,86 @@
+{% extends "layout.html" %} {%block left%} {% if not is_login %}
+<li class="layui-nav-item layui-nav-itemed">
+    <a href="javascript:;">实体模块</a>
+    <dl class="layui-nav-child">
+        <dd><a href="/enterprise">生产企业模块</a></dd>
+        <dd><a href="/agency">安评机构模块</a></dd>
+        <dd><a href="/audit">监管部门模块</a></dd>
+    </dl>
+</li>
+{%else%}
+<li class="layui-nav-item layui-nav-itemed">
+    <a href="javascript:;">监管部门</a>
+    <dl class="layui-nav-child">
+        <dd><a href="/audit">基本信息</a></dd>
+        <dd><a href="/audit/revoke">安全生产许可证撤销</a></dd>
+        <dd class=layui-this><a href="/audit/log">实体业务查询</a></dd>
+        <dd><a href="/audit/search">门限加密秘钥查询</a></dd>
+        <dd><a href="/audit/accusation">查看举报信息{%if audit.reports | length >= 1%}<span class="layui-badge">{{audit.reports | length}}</span>{%endif%}</a></dd>
+        <dd><a href="/audit/arbitrate">发起仲裁合约</a></dd>
+        <dd><a href="/audit/check">执行仲裁判决</a></dd>
+    </dl>
+</li>
+{%endif%} {%endblock%} {%block main%}
+
+<div class=layui-row width="300">
+    <div class="layui-card">
+        <div class="layui-card-header">实体业务查询</div>
+        <div class="layui-card-body">
+
+            <form class="layui-form" method="POST" action="/audit/log">
+                <div class="layui-form-item">
+                    <label class=layui-form-label for="log-type">日志类型</label>
+                    <div class=layui-input-block>
+                        <select id="log-type" name=log-type>
+                            <option value="agency">安评机构</option>
+                            <option value="engineer">安评师</option>
+                          </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class=layui-form-label for="keyword">安评机构或安评师名称</label>
+                    <div class=layui-input-block>
+                        <input type="text" name=keyword class="layui-input" id="keyword">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class=layui-input-block>
+                        <button type="submit" class="layui-btn">查看</button>
+                    </div>
+                </div>
+            </form>
+
+            <table class="layui-table" lay-size="sm">
+                <thead>
+                    <colgroup>
+                        <col width="50">
+                        <col width="100">
+                        <col width="10">
+                      </colgroup>
+                    <tr>
+                        <th>时间</th>
+                        <th>证书合约地址</th>
+                        <th>行为</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%if log_result%} {%for v in log_result%}
+                    <tr>
+                        <td>{{v[0]}}</td>
+                        <td>{{v[1]}}</td>
+                        <td>{{v[2]}}</td>
+                    </tr>
+                    {%endfor%} {%else%}
+                    <tr>
+                        <td>暂无日志消息</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    {%endif%}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{%endblock%}
