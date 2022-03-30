@@ -1,0 +1,29 @@
+pragma solidity ^0.4.4;
+
+
+contract Shicuo2 {
+    mapping(string => string)  balances;
+
+
+    function update(string time,string details3,
+                    string doctor,string details1,
+                    string patient,string details2
+                     ) public {
+         balances[time] = details3;   
+         
+         balances[doctor] = details1;
+         
+         balances[patient] = details2;
+       
+        
+       
+         
+    }
+  
+     function searchBalance(string doctor,string patient,string time) constant public returns (string,string,string) {
+        
+        return (balances[time],balances[doctor],balances[patient]);
+    }
+    
+
+}
