@@ -1,4 +1,4 @@
-# 2022 深圳国际金融科技大赛（FinTechathon）
+#  [2022 深圳国际金融科技大赛（FinTechathon）](2022-shenzhen-FinTechathon/README.md)
 
 ## 赛事简介
 
@@ -74,13 +74,6 @@ FinTechathon2021微众银行第三届金融科技高校技术大赛，旨在打�
 ### 部分示例作品
 
 ---------------------
-
-
-
-
-
-
-
 
 # [2020年微众银行第二届金融科技高校技术大赛](2020-Shenzhen-FinTechathon2/README.md)
 
