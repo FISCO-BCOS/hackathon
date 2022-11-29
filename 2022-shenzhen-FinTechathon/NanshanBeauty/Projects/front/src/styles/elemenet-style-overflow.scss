@@ -1,0 +1,190 @@
+// cover some element-ui styles
+
+
+.el-table .el-breadcrumb__inner,
+.el-breadcrumb__inner a {
+  font-weight: 400 !important;
+
+}
+
+.el-upload {
+  input[type='file'] {
+    display: none !important;
+  }
+}
+
+.el-upload__input {
+  display: none;
+}
+
+.cell {
+  .el-tag {
+    margin-right: 0;
+  }
+}
+
+.small-padding {
+  .cell {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+.fixed-width {
+  .el-button--mini {
+    padding: 7px 10px;
+    min-width: 60px;
+  }
+}
+
+.status-col {
+  .cell {
+    padding: 0 10px;
+    text-align: center;
+
+    .el-tag {
+      margin-right: 0px;
+    }
+  }
+}
+
+// to fixed https://github.com/ElemeFE/element/issues/2461
+.el-dialog {
+  transform: none;
+  left: 0;
+  position: relative;
+  margin: 0 auto;
+}
+
+// refine element ui upload
+.upload-container {
+  .el-upload {
+    width: 100%;
+
+    .el-upload-dragger {
+      width: 100%;
+      height: 200px;
+    }
+  }
+}
+
+// dropdown
+//.el-dropdown-menu {
+//  a {
+//    display: block
+//  }
+//}
+
+// fix date-picker ui bug in filter-item
+.el-range-editor.el-input__inner {
+  display: inline-flex !important;
+}
+
+// to fix el-date-picker css style
+.el-range-separator {
+  box-sizing: content-box;
+}
+
+/*
+ element-ui 样式重置
+*/
+.elODialogModal {
+  .el-dialog {
+    margin-top: 7vh !important;
+  }
+
+  .el-dialog__header {
+    border-bottom: 1px solid #ddd;
+  }
+
+  .el-dialog__body {
+    padding-top: 10px;
+    overflow-y: auto;
+  }
+}
+
+.elODialogModalBodyH60vh {
+  .el-dialog__body {
+    min-height: 50vh;
+    max-height: 65vh;
+  }
+}
+
+.elODialogModalBodyH70vh {
+  .el-dialog__body {
+    min-height: 60vh;
+    max-height: 70vh;
+  }
+}
+
+.elODialogModalBodyH40vh {
+  .el-dialog__body {
+    min-height: 40vh;
+    max-height: 55vh;
+  }
+}
+
+.elODialogModalBodyW80vh {
+  .el-dialog__body {
+    width: 80vh;
+  }
+}
+
+.elFormItemMarginB0px {
+  .el-form-item {
+    margin-bottom: 12px !important;
+
+  }
+}
+
+
+// 我修改的
+.el-form-item__label {
+  height: 50px !important;
+  line-height: 50px !important;
+  font-size: larger !important;
+  font-family: system-ui !important;
+  size: auto !important;
+}
+
+label {
+  font-weight: 550;
+}
+
+// card 的header统一高度
+.el-card__header {
+  height: 60px !important;
+}
+
+.el-card {
+  border-radius: var(--el-card-border-radius) !important;
+  border: 1px solid var(--el-card-border-color) !important;
+  background-color: var(--el-card-bg-color) !important;
+  overflow: hidden !important;
+  color: var(--el-text-color-primary) !important;
+  transition: var(--el-transition-duration) !important;
+  font-size: large !important;
+}
+
+.login-container {
+  .el-input input {
+    background: transparent;
+    border: 0px;
+    -webkit-appearance: none;
+    border-radius: 0px;
+    padding: 10px 5px px 10px 15px;
+    color: #fff;
+    height: 42px;
+    caret-color: #fff;
+    font-size: large;
+  }
+}
+
+.el-radio.el-radio--large .el-radio__label {
+  font-size: 17px;
+  font-weight: bolder;
+}
+
+.el-card.is-always-shadow {
+  box-shadow: var(--el-box-shadow-light);
+}

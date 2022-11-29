@@ -1,0 +1,74 @@
+buildscript {
+    repositories {
+        maven { url "https://maven.aliyun.com/repository/public/"}
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+        mavenCentral()
+        mavenLocal()
+    }
+    dependencies {
+        classpath 'com.webank:solc-gradle-plugin:1.0.2-SNAPSHOT'
+    }
+}
+
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'solc-gradle-plugin'
+
+repositories {
+    maven {
+        url 'https://maven.aliyun.com/repository/public/'
+    }
+    mavenCentral()
+}
+def spring_boot_version = '2.4.6'
+
+dependencies {
+    implementation "org.springframework.boot:spring-boot-starter:${spring_boot_version}"
+    implementation "org.springframework.boot:spring-boot-starter-web:${spring_boot_version}"
+    implementation "org.springframework.boot:spring-boot-starter-jdbc:${spring_boot_version}"
+    implementation "org.springframework.boot:spring-boot-starter-data-redis:${spring_boot_version}"
+    implementation "org.springframework.boot:spring-boot-starter-data-mongodb:${spring_boot_version}"
+    implementation "org.apache.commons:commons-pool2:2.5.0"
+    implementation 'javax.validation:validation-api:1.1.0.Final'
+    implementation 'org.apache.shiro:shiro-spring-boot-starter:1.9.0'
+    implementation 'com.auth0:java-jwt:3.19.2'
+    implementation 'com.alibaba:fastjson:2.0.13'
+    implementation "io.springfox:springfox-swagger2:2.9.2"
+    implementation "io.springfox:springfox-swagger-ui:2.9.2"
+    implementation "junit:junit:4.13.1"
+    implementation "org.projectlombok:lombok:1.18.8"
+    implementation "org.fisco-bcos.java-sdk:fisco-bcos-java-sdk:2.9.0"
+    implementation "org.apache.poi:poi:4.0.0"
+    implementation "org.apache.poi:poi-ooxml:4.0.0"
+//    implementation("com.webank:weid-java-sdk:1.8.2") {
+//        exclude group:'org.apache.logging.log4j'
+//    }
+    implementation 'com.webank.weevent:weevent-client:1.6.0'
+    implementation "mysql:mysql-connector-java:8.0.17"
+    implementation "com.baomidou:mybatis-plus-boot-starter:3.4.2"
+    implementation 'com.alibaba:druid-spring-boot-starter:1.2.8'
+    annotationProcessor "org.projectlombok:lombok:1.18.8"
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor:${spring_boot_version}"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:5.7.0"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.7.0"
+    testImplementation "org.springframework.boot:spring-boot-starter-test:${spring_boot_version}"
+}
+
+test {
+    enabled(false)
+//    useJUnitPlatform()
+}
+
+solc {
+    pkg = 'com.brecycle.contract'
+    contracts = '../contract'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}

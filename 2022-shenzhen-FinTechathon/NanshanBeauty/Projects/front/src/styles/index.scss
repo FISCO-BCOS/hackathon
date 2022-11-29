@@ -1,0 +1,68 @@
+@import './variables.scss';
+@import './transition.scss';
+@import './scss-suger.scss';
+@import './reset-style.scss';
+@import './elemenet-style-overflow.scss';
+
+//scroll
+@mixin main-show-wh() {
+  /* css 声明 */
+  //height: calc(100vh - #{$navBarHeight} - #{$tagViewHeight} - #{$appMainPadding * 2});
+  height: calc(100vh - #{var(--nav-bar-height)} - #{var(--tag-view-height)} - #{calc(var(--app-main-padding) * 2)});
+  width: 100%;
+}
+.scroll-y {
+  @include main-show-wh();
+  overflow-y: auto;
+}
+.scroll-x {
+  @include main-show-wh();
+  overflow-x: auto;
+}
+.scroll-xy {
+  @include main-show-wh();
+  overflow: auto;
+}
+
+
+// 我改的样式
+.app-container {
+  padding: 20px;
+}
+
+// 搜索框的背景卡
+.search{
+  padding:18px  0 0  10px;
+  margin-bottom: 10px;
+  box-shadow: var(--el-box-shadow-light);
+  border-radius: var(--el-card-border-radius);
+  border: 1px solid var(--el-card-border-color);
+}
+
+// 背景卡
+.el-card.is-always-shadow {
+  box-shadow: var(--el-box-shadow-light);
+}
+
+.el-card {
+  border-radius: var(--el-card-border-radius);
+  border: 1px solid var(--el-card-border-color);
+  background-color: var(--el-card-bg-color);
+  overflow: hidden;
+  color: var(--el-text-color-primary);
+  transition: var(--el-transition-duration);
+}
+
+.el-card {
+  --el-card-border-color: var(--el-border-color-light);
+  --el-card-border-radius: 4px;
+  --el-card-padding: 20px;
+  --el-card-bg-color: var(--el-fill-color-blank);
+  --el-font-size-base: auto;
+}
+
+// 底部
+.pagination-container[data-v-8c60cd3a] {
+  background: #fff;
+  padding: 32px 16px;
+}
