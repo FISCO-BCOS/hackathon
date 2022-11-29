@@ -1,0 +1,33 @@
+@startuml
+'https://plantuml.com/state-diagram'
+
+'积分流程
+电池汽车企业 : 有初始积分；发行产品缴纳积分
+DAO : 管理积分流动
+梯次回收企业 : 环节配额积分*评价因子
+拆解回收企业 : 环节配额积分*评价因子
+消费者 : 环节配额积分*评价因子
+
+电池汽车企业 --> DAO : 缴纳积分
+'电池汽车企业 --> 消费者 : 电池
+'消费者 --> 梯次回收企业 : 电池
+'消费者 --> 拆解回收企业 : 电池
+DAO --> 消费者 : 派发积分
+DAO --> 梯次回收企业 : 派发积分
+DAO --> 拆解回收企业 : 派发积分
+'梯次回收企业 --> 拆解回收企业 : 电池
+梯次回收企业 --> 电池汽车企业 : 积分回购
+拆解回收企业 --> 电池汽车企业 : 积分回购
+消费者 --> 电池汽车企业 : 积分回购
+
+'合约结构
+Admin --> controller
+controller --> Data
+controller --> BasicAuth
+controller --> DAOO
+controller --> P2PPoint
+Data --> LibRole
+P2PPoint --> Libmath
+Data --> Libmath
+
+@enduml
