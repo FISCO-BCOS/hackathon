@@ -29,3 +29,15 @@
 支持高效的用户撤销机制也是本系统需要实现的功能目标。在现实应用中，诸如恶意用户注销、诚实用户注册多个账户等行为均会导致用户撤销情况。这给现有系统的设计与实现带来了一个巨大的难题。如果不能很好地处理用户撤销情况，系统不仅面临着巨大的系统资源开销，更面临着隐私泄露的严峻威胁。
 
 ## 方案
+
+如系统流程图所示，系统工作流程主要分为以下几个部分。在系统初始化部分，系统中特权区块链节点交互生成系统主密钥与主公钥。随后数据请求者选择特权节点，利用自身属性请求用户密钥。为实现不同的用户属性产生不同的密钥，本方法引入代理重加密来实现这一目的，并防止用户通过交换属性进行合谋。在哈希生成阶段，用户为自身数据选择2个策略，分别为用户管理数据使用权（可读性）和数据拥有权（可编辑性）。区块链上任何用户都可以验证哈希值的有效性，进而保证用户数据的完整性和防止非法篡改数据。匹配阶段用于实现隐私保护的匹配代理功能，根据用户属性为用户将数据库中的数据进行分级。在阅读和编辑阶段，授权用户可以行使自身权利来操作数据。在编辑节点的过程中，考虑到被重新上传的数据的权限管理问题，用户可以重新自定义数据的策略，进行数据保护。
+
+![img](./System.png)
+
+系统流程图
+
+该方案由七个概率多项式时间的算法组成，具体如下：
+$Setup(\lambda\rightarrow{msk,mpk})$：由特权节点运行，生成双线性群$(p,q,G,G_T,e)$,其中，$e:G\timesG\rightarrowG_T$,假设属性域为$U$,大小为$n$，特权节点选择$n$个随机值$\left\{r_i\right\}_i^n并计算\left\{R_i=g^{r_i}\right\}_i^n$。接下来，特权节点共享两个抗碰撞哈希函数$H_1[G\rightarrow\left\{0,1\right\}^\ast]和H_2[G_T\rightarrowZ_p]$。然后，特权节点共享主密钥$msk=\left\{r_i\right\}_i^n$并发布主公钥$mpk=\left(p,g,G,G_T,e,\left\{R_i\right\}_i^n,H_1\left[\cdot\right],H_2\left[\cdot\right]\right)$。
+$Keygen(\left\{msk,\sigma\right\}\rightarrowsk_\sigma)$：用户选择一个特权节点，根据其属性集生成密钥$msk$。特权节点随机选择一个值$\gamma\inZ_p$, 计算$sk_\sigma=\left\{g^\frac{\gamma}{r_i}\right\}_i^\sigma$。然后，特权节点将$\gamma$发送给区块链节点，将s$k_\sigma$发送给用户。若需要撤销数据分享系统中的用户，区块链节点只需移除对应的$\gamma$，使$sk_\sigma$失效，无法恢复任何消息。
+$HashGen(\left\{P_r,P_e,m,x\right\}\rightarrow{C,H})$：数据所有者向区块链节点提交信息$m\inM$, $M$为消息空间。数据所有者为用户生成两个访问策略，$P_r$用于阅读者，$P_e$用于修改者。为实现向下兼容，$P_r$和$P_e$满足$P_r\inP_e$。$x$为数据所有者的私钥。通过该算法，数据所有者生成对应密文$C={C_m=m\cdote\left(g^{O_1},g^{S_1}\right),C_{1,i}=R_i^{K_r\left(i\right)\cdotN_{r,i}\left(0\right)\cdoto_1},C_{2,i}=R_i^{K_r\left(i\right)\cdotN_{r,i}\left(0\right)\cdoto_2},C_3=g^{o_2\cdotS_1},\ C_x=x\cdote\left(g^{o_3},g^{S_2}\right),C_{4,i}=R_i^{K_r\left(i\right)\cdotN_{r,i}\left(0\right)\cdoto_3},C_{5,i}=R_i^{K_r\left(i\right)\cdotN_{r,i}\left(0\right)\cdoto_4},\ C_6=g^{o_4\cdotS_2},C_7=g^x}$和哈希值$H={h,o_h}$。
+
