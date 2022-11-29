@@ -5,6 +5,7 @@
 合约为Solidity语言编写，通过SmartDev转换为abi、bin文件与基于Java语言的合约类，最后通过Java合约类进行调用。
 ## 具体说明
 当前目录下文件分为三部分：
-1.以sol结尾的文件是我们编写的智能合约。
-2.以java结尾的文件是我们利用SmartDev将Solidity合约编译为Java合约类的集合。
-3.以png结尾的文件是我们在代码中利用对应Java合约类的示范。
+
+1. 以sol结尾的文件是我们编写的智能合约。
+2. 以java结尾的文件是我们利用SmartDev将Solidity合约编译为Java合约类的集合。
+3. 以png结尾的文件是我们在代码中利用对应Java合约类的示范。
