@@ -1,4 +1,5 @@
 # B-Recycle电池回收管理平台
+[English](README-en.md)
 
 ## 项目介绍
 **B-Recycle**是一个基于`FISCO BCOS`的区块链电池回收管理平台，使用`Vue+SpringBoot`进行前后端搭建，集成了`FISCO BCOS`的`Java-SDK`
