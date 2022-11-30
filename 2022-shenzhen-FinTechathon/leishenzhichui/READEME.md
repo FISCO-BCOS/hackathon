@@ -13,15 +13,13 @@
 3. 基于多方利益均衡的电力交易机制
 一般来说，充电服务平台中的成员是自私的，其只关注自身利益，充电桩运营商和第三方结算平台自利性决定了其追求个体效用最大化，而现有的电力资源交易机制存在被恶意操纵的可能。同时, 不同充电桩隶属于不同运营商，数据和现金流对竞争对手并不能开放并不现实，各个运营商拥有独立的充电桩APP, 进而导致传统的第三方结算平台面临找桩难、支付更难等问题。随着充电服务平台中的成员数量和类型的增加，电力资源交易框架将会进入自由交易的新纪元，有必要设计利益均衡的交易机制以此打破电力成员的利己主义和垄断行为。博弈论和拍卖理论为研究具有个体理性和激励相容等属性的电力资源交易机制提供了新思路。
 
-## 项目说明
-
 ## 环境依赖
-• 编译器：CLion、Remix、Pycharm、IDEA
-• 区块链底层平台：FISCO-BCOS
-• 区块链软件开发工具包：Python-SDK
-• 中间件平台：WeBASE
-• 分布式身份认证组件：WeIndentity
-• 前端框架：Vue2.0 + ElementUI
-• 硬件环境：四台 Jetson Nanos用于负责搭建众充服务平台的联盟链，并且模拟实际的群组联邦学习本地训练与聚合。每台内存：4 GB RAM，CPU: Quadcore ARM A57，GPU:128-core Maxwell
-• 操作系统：Linux Ubuntu 18.04 LTS
-• 开发语言：C++（预编译智能合约）、Solidity（智能合约）、Python（本地模型训练、后端）、HTML与JavaScript（前端开发）
+1. 编译器：CLion、Remix、Pycharm、IDEA
+2. 区块链底层平台：FISCO-BCOS
+3. 区块链软件开发工具包：Python-SDK
+4. 中间件平台：WeBASE
+5. 分布式身份认证组件：WeIndentity
+6. 前端框架：Vue2.0 + ElementUI
+7. 硬件环境：四台 Jetson Nanos用于负责搭建众充服务平台的联盟链，并且模拟实际的群组联邦学习本地训练与聚合。每台内存：4 GB RAM，CPU: Quadcore ARM A57，GPU:128-core Maxwell
+8. 操作系统：Linux Ubuntu 18.04 LTS
+9. 开发语言：C++（预编译智能合约）、Solidity（智能合约）、Python（本地模型训练、后端）、HTML与JavaScript（前端开发）
