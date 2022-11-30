@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: _NAME_
+  name: _NAME_
+spec:
+  replicas: _REPLICAS_
+  selector:
+    matchLabels:
+      run: _NAME_
+  template:
+    metadata:
+      labels:
+        run: _NAME_
+        # armsPilotAutoEnable: "on"
+        # armsPilotCreateAppName: "ARMS_NAME"    #请将<your-deployment-name>替换为您的应用名称。
+    spec:
+      containers:
+      - image: _IMAGE_
+        name: _NAME_
+        env:
+          - name: DUBBO_IP_TO_REGISTRY
+            value: "_DUBBO_IP_"
+          - name: DUBBO_PORT_TO_REGISTRY
+            value: "_NODEPORT_"
+        livenessProbe:
+          tcpSocket:
+            port: __PORT__
+          initialDelaySeconds: 50   # 延迟探测时间(秒) 【 在k8s第一次探测前等待秒 】
+          periodSeconds: 5          # 执行探测频率(秒) 【 每隔秒执行一次 】
+          successThreshold: 1       # 健康阀值
+          timeoutSeconds: 2         # 超时时间
+        readinessProbe:
+          tcpSocket:
+            port: __PORT__
+          initialDelaySeconds: 30   # 延迟探测时间(秒) 【 在k8s第一次探测前等待秒 】
+          periodSeconds: 5          # 执行探测频率(秒) 【 每隔秒执行一次 】
+          successThreshold: 1       # 健康阀值
+          timeoutSeconds: 2         # 超时时间
+        ports:
+          - containerPort: __PORT__ # 容器对外开放端口
+            name: http
+            protocol: TCP
+          - containerPort: _NODEPORT_
+            name: dubbo
+            protocol: TCP
+---
+apiVersion: v1
+kind: Service   
+metadata:
+  name: _NAME_
+  labels:
+    app: _NAME_
+spec:
+  type: ClusterIP
+  ports:
+  - port: __PORT__
+    name: _NAME_
+    protocol: TCP
+    targetPort: __PORT__
+  selector:
+    run: _NAME_
