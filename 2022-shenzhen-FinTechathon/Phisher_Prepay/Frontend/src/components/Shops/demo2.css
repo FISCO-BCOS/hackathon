@@ -1,0 +1,23 @@
+.card {
+    background-color: white;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 20px 50px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+    padding: 1.25rem;
+    position: relative;
+    transition: 0.15s ease-in;
+    margin: 12px;
+  }
+  .card:hover, .card:focus-within {
+    box-shadow: 0 0 0 5px #FFE8D1, 0 10px 60px 0 rgba(0, 0, 0, 0.1);
+    transform: translatey(-5px);
+  }
+  .card-header {
+    background-color: #E2CFEA;
+    border-radius: 16px;
+    margin: 5px;
+  }
+  .card-body {
+    background-color: #A06CD5;
+    border-radius: 12px;
+  }

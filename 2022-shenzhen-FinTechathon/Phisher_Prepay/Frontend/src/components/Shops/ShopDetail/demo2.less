@@ -1,0 +1,56 @@
+.container {
+    height: 100vh;
+    // width: 100vh;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    [data-prefers-color='dark'] & {
+      background-color: unset;
+    }
+  }
+  
+  .side {
+    flex: none;
+  }
+  
+  .main {
+    flex: auto;
+    // width: 100vh;
+  }
+  
+  .content {
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    color: #cccccc;
+    &.active {
+      display: flex;
+    }
+  }
+  .combo {
+    height: 100%;
+    width: 100%;
+    display: none;
+    &.active {
+      display: flex;
+    }
+  }
+  .card {
+    background-color: white;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 20px 50px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+    padding: 1.25rem;
+    position: relative;
+    transition: 0.15s ease-in;
+    margin: 12px;
+    width: 90%;
+    max-width: 400px;
+  }
+  .card:hover, .card:focus-within {
+    box-shadow: 0 0 0 5px #FFE8D1, 0 10px 60px 0 rgba(0, 0, 0, 0.1);
+    transform: translatey(-5px);
+  }
