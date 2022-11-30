@@ -2,18 +2,22 @@
 - TechCrop_Web： 前端页面
 - TechCrop： 后端项目
 
-进入TechCrop_Web目录：
+1.进入TechCrop_Web目录：
 ```shell
 yarn build
 ```
 
-构建成功后将build文件夹移动到TechCrop中
+2.构建成功后将build文件夹移动到TechCrop中
 
-移动外部Contracts下的文件到TechCrop的contracts目录下
+3.移动外部Contracts下的文件到TechCrop的contracts目录下
 
-进入TechCrop目录，提前下载[solidity编译器](https://github.com/ethereum/solidity/releases)（0.4.25版本与0.6.0）
+4.进入TechCrop目录，提前下载[solidity编译器](https://github.com/ethereum/solidity/releases)（0.4.25版本与0.6.0）
 
-编译合约：
+5.编译abigen
+```shell
+go build ./cmd/abigen
+```
+6.编译合约：
 ```shell
 -- 0.4.25可以通过命令行安装
 -- bash tools/download_solc.sh -v 0.4.25
@@ -28,7 +32,7 @@ yarn build
 ./abigen --bin contracts/insurances/Insurances.bin --abi contracts/insurances/Insurances.abi --pkg insurances --type Insurance --out contracts/insurances/Insurances.go
 ```
 
-构建命令行工具
+7.构建命令行工具
 ```shell
 go build ./bin/crop/crop.go
 

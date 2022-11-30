@@ -16,7 +16,6 @@ contract WeatherOracle {
         claimitic = _claimAddress;
     }
 
-    //function toTimestamp(uint16 year, uint8 month, uint8 day)
     function setDisasterLevel(uint16 _year, uint8 _month, uint8 _day, uint _level) public returns(bool){
         uint _timeStamp = DateTime.toTimestamp(_year, _month, _day);
         count++;
