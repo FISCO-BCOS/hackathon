@@ -3,7 +3,7 @@ pragma solidity  >=0.4.25 <=0.6.10;
 import "./Claimitic.sol";
 import "./DateTime.sol";
 
-contract WeatherOracle {
+contract WeatherCheck {
     Claimitic public claimitic;
 
 

@@ -3,7 +3,7 @@ pragma solidity  <=0.6.10;
 
 import "./SafeMath.sol";
 import "./Supervison.sol";
-import "./WeatherOracle.sol";
+import "./WeatherCheck.sol";
 
 
 contract Insurances is Supervision{
