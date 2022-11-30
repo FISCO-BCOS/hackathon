@@ -68,3 +68,14 @@ can help regulate the power battery recycling market.
 
 ## Open Source Agreement
 We use `Apache-2.0 license` as open source agreement.
+
+## Team Introduce
+Here is our team members, welcome for email us if you have any problem.
+
+| Name                   | Responsibility                                                               | Email                       | github                          |
+|------------------------|------------------------------------------------------------------------------|-----------------------------|---------------------------------|
+| CMGUN(Qilin Chen)      | project coordination, system design, front-end/back-end/contract development | cmgun@foxmail.com           | https://github.com/cmgun        |
+| Fiñorita(Meixian Fong) | product design, front-end development                                        | 771348742@qq.com            | https://github.com/Finorita     |
+| Morton(Hongyu Liu)     | points system design, contract development                                   | szl95276@163.com            | https://github.com/Littleciciz1 |
+| Rui(Xiangrui He)       | industry research, point system design, PPT production                       | 2210515005@email.szu.edu.cn | -                               |
+| Fay(Yafei Wu)          | industry research, product design, document writing                          | 452580962@qq.com            | -                               |
