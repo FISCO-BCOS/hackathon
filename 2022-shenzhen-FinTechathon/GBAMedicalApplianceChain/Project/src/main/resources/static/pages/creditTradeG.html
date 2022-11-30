@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+
+
+</head>
+<body>
+<div id="app">
+  <div class="myHeader">
+    <img class="logo" src="../img/logo.jpg"/>
+  </div>
+  <div class="myBody">
+    <div class="myBodyNavi">
+      积分交易
+    </div>
+    <div class="myBodyContent">
+      <el-form ref="form" :model="form" label-width="110px">
+        <el-form-item label="当前余额" >
+          <p>123456</p>
+        </el-form-item>
+        <el-form-item label="对方地址">
+          <el-input v-model="form.name"></el-input>
+        </el-form-item>
+        <el-form-item label="交易额">
+          <el-input v-model="form.name"></el-input>
+        </el-form-item>
+        <el-form-item label="境内代理人邮箱">
+          <el-input v-model="form.name"></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="danger" @click="onSubmit">取消</el-button>
+          <el-button type="primary" @click="onSubmit">交易</el-button>
+
+        </el-form-item>
+      </el-form>
+
+    </div>
+
+  </div>
+
+
+</div>
+</body>
+
+<script src="../js/vue.js"></script>
+<script src="../js/axios-0.18.0.js"></script>
+<script src="../plugins/element-ui/lib/index.js"></script>
+<script src="../js/car.js"></script>
+<link rel="stylesheet"  href="../plugins/element-ui/lib/theme-chalk/index.css">
+<link rel="stylesheet" type="text/css" href="../css/style.css">
+
+</html>
