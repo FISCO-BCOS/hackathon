@@ -1,0 +1,18 @@
+*{
+	/*初始化 清除页面元素的内外边距*/
+	padding: 0;
+	margin: 0;
+	/*盒子模型*/
+	box-sizing: border-box;
+}
+:root {
+	/*弹性布局 让页面元素垂直+水平居中*/
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/*让页面始终占浏览器可视区域总高度*/
+	height: 100vh;
+	/*背景渐变色*/
+	/* background: linear-gradient(#141e30,#243b55); */
+	background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
