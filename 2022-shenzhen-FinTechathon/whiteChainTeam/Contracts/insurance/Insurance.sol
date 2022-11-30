@@ -9,7 +9,7 @@ import "./WeatherCheck.sol";
 contract Insurances is Supervision{
     using SafeMath for uint256;
 
-    WeatherOracle weatheroracle;
+    WeatherCheck weatherCheck;
 
     event NewInsurance(uint256 indexed _insuranceId, address indexed _beneficiary);
     event CensorInsurance(uint256 indexed _insuranceId, bool result);
@@ -53,10 +53,10 @@ contract Insurances is Supervision{
     }
     
 
-    constructor(address _adminAddress, WeatherOracle _weatheroracle) Supervision(_adminAddress) public{
-        require(address(_weatheroracle) != address(0), "oracle contract address must be non-null");
+    constructor(address _adminAddress, WeatherCheck _weatherCheck) Supervision(_adminAddress) public{
+        require(address(_weatherCheck) != address(0), "oracle contract address must be non-null");
         adminAddress = msg.sender;
-        weatheroracle = _weatheroracle; 
+        weatherCheck = _weatherCheck;
     }
 
     function createInsurance(address _beneficiary, uint _duration, string memory _insuranceUri) public isOnlyAdmin returns(uint256){
@@ -82,7 +82,7 @@ contract Insurances is Supervision{
         Insurance storage _insurance = idOfInsurance[_insuranceId];
         require(!_insurance.insuranceStatus, "insurance is executed");
         //预言机部分，result直接获取结果       
-        bool result = weatheroracle.isLevel(_insurance.startTime, _insurance.endTime);
+        bool result = weatherCheck.isLevel(_insurance.startTime, _insurance.endTime);
         if (result) {
             _insurance.censorStatus = true;
         }
@@ -101,7 +101,7 @@ contract Insurances is Supervision{
         if (!_insurance.censorStatus) {
             revert(string(abi.encodePacked(_insuranceId, " is not censored")));
         }
-        _insurance.compensation = weatheroracle.computeMoney(basicMoney, _insurance.startTime, _insurance.endTime);
+        _insurance.compensation = weatherCheck.computeMoney(basicMoney, _insurance.startTime, _insurance.endTime);
         _insurance.insuranceStatus = true;
         emit ExecuteInsurance(_insuranceId, _insurance.compensation);
     }

@@ -16,7 +16,7 @@
 
 - 合约变量
 ```
-WeatherOracle weatheroracle;//预言机实例
+WeatherCheck weatherCheck;//天气判断
 ```
 
 - 结构体变量
@@ -66,13 +66,13 @@ struct Insurance {
 
 **constructor**
 ```
-constructor(address _supervision, WeatherOracle _weatheroracle) Supervision(_supervision) public;
+constructor(address _supervision, WeatherCheck _weathercheck) Supervision(_supervision) public;
 //初始化监管者地址、保单方地址、预言机合约地址
 ```
 |     参数        |    含义       | 
 |  ----           |   ----        | 
 | _supervision    | 监管者地址     | 
-| _weatheroracle  | 预言机合约地址 |
+| _weathercheck  | 天气判断合约地址 |
 
 **Functions**
 
@@ -207,7 +207,7 @@ function getSupervision() public view returns(address);
 function isSupervision() public view returns(bool);
 ```
 
-## WeatherOracle.sol
+## WeatherCheck.sol
 ---
 气象情况判定合约，完成对气象灾害的分类并进行赔偿金额的计算功能。
 
