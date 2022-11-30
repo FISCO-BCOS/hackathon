@@ -44,3 +44,7 @@ go build ./bin/crop/crop.go
 > 配置文件：config.toml
 
 ![crop](./assets/crop.png)
+![page](./assets/page1.png)
+![page](./assets/page2.png)
+![page](./assets/page3.png)
+![page](./assets/page4.png)
