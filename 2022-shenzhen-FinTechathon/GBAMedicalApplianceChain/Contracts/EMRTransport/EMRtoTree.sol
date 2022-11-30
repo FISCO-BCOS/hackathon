@@ -21,7 +21,7 @@ contract EMRtoTree{
     }
     
     // 接收字符串并生成sha
-    function convert(address _weid, bytes[7] memory _emr) public returns(bytes32[8]){
+    function convert(address _weid, bytes[7] memory _emr) internal returns(bytes32[8]){
         bytes32[8] memory _sha;
         _sha[0] = sha256(_weid);
         for(uint i=1; i<8; i++){
@@ -31,7 +31,7 @@ contract EMRtoTree{
         return _sha;
     }
     
-    function createTree(bytes32[] memory _sha) public returns(bytes32){
+    function createTree(bytes32[] memory _sha) internal returns(bytes32){
         LibMerkleTree.constructMerkleTree(_sha, merk);
         return merk.root.value;
     }
