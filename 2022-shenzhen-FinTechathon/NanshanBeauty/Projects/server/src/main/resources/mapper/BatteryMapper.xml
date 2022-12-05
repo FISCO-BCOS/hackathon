@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.brecycle.mapper.BatteryMapper">
+
+    <resultMap id="yearRecycleEntDTO" type="com.brecycle.entity.dto.YearRecycleEntDTO">
+        <result column="ownerId" property="ownerId" />
+        <result column="totalKah" property="totalKah" />
+    </resultMap>
+
+    <select id="selectYearRecycleEntInfo" resultMap="yearRecycleEntDTO">
+        select owner_id as ownerId, sum(kah) as totalKah
+        from battery
+        where status = '6' and <![CDATA[end_time <= #{endTime} and end_time >= #{startTime}]]>
+        group by owner_id
+    </select>
+
+</mapper>

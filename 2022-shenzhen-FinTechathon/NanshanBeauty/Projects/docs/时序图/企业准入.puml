@@ -1,0 +1,80 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+actor 企业
+actor 监管机构
+
+
+title 企业准入（回收商）
+== 准入申请 ==
+企业 -> Vue : 资料提交
+note left
+    企业状态：审批中
+end note
+Vue -> Controller : /ent/apply
+Controller -> EntService: 准入资料提交
+database Mongodb
+EntService -> Mongodb : 文件上传
+EntService <-- Mongodb : fileId
+database MySQL
+EntService -> MySQL : 保存文件关联信息
+EntService <-- MySQL : 返回结果
+Controller <-- EntService: 返回结果
+Vue <-- Controller : 返回结果
+企业 <-- Vue : 返回结果
+
+== 准入审批 ==
+监管机构 -> Vue : 查询已注册未审批的企业列表
+Vue -> Controller : /ent/list
+Controller -> EntService: 查询企业列表
+EntService -> MySQL: 查询企业列表
+EntService <-- MySQL : 返回结果
+Controller <-- EntService: 返回结果
+Vue <-- Controller : 返回结果
+监管机构 <-- Vue : 返回结果
+
+alt 准入审批通过
+监管机构 -> Vue : 企业准入审批通过
+Vue -> Controller : /ent/pass
+Controller -> EntService: 审批通过
+EntService -> JAVA_SDK : 部署准入合约
+EntService <-- JAVA_SDK : 合约地址
+EntService -> MySQL : 更新信息
+note left
+准入状态、角色类型、准入合约地址
+end note
+EntService <-- MySQL : 返回结果
+Controller <-- EntService: 返回结果
+Vue <-- Controller : 返回结果
+监管机构 <-- Vue : 返回结果
+
+else 准入审批拒绝
+监管机构 -> Vue : 企业准入审批拒绝
+Vue -> Controller : /ent/reject
+Controller -> EntService: 审批拒绝
+EntService -> MySQL : 更新信息
+EntService <-- MySQL : 返回结果
+Controller <-- EntService: 返回结果
+Vue <-- Controller : 返回结果
+监管机构 <-- Vue : 返回结果
+end alt
+
+== 准入结果查询 ==
+企业 -> Vue : 查询准入结果
+Vue -> Controller : /ent/accessResult
+Controller -> EntService: 查询准入结果
+EntService -> MySQL : 查询准入信息
+EntService <-- MySQL : 查询结果
+alt 准入审批通过
+    EntService -> JAVA_SDK : 查询准入合约内容
+    EntService <-- JAVA_SDK : 返回准入合约内容
+    Controller <-- EntService: 返回结果
+    Vue <-- Controller : 返回结果
+    企业 <-- Vue : 返回结果
+else 准入审批拒绝
+    Controller <-- EntService: 返回结果
+    Vue <-- Controller : 返回结果
+    企业 <-- Vue : 返回结果
+    企业 -> Vue : 可再次提交准入资料
+end alt
+
+@enduml

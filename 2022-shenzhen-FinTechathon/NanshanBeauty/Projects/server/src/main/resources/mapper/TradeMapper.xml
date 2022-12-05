@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.brecycle.mapper.TradeMapper">
+
+    <select id="selectExpireTrade" resultType="com.brecycle.entity.Trade">
+        select *
+        from trade
+        where status = '1' and trade_type = #{type} and  <![CDATA[ DATE_ADD(create_time,INTERVAL bid_days day) < NOW()]]>
+    </select>
+
+    <select id="selectTradeListByPage" resultType="com.brecycle.entity.Trade">
+        select *
+        from trade
+        where trade_type = #{param.tradeType}
+        <if test="param.myId != null and param.myId != ''">
+            and (seller_id = #{param.myId} or buyer_id = #{param.myId} )
+        </if>
+        <if test="param.status != null and param.status !=''">
+            and status = #{param.status}
+        </if>
+    </select>
+</mapper>
