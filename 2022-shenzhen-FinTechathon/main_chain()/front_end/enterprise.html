@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>enterprise</title>
+    <style>
+                * {
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            height: 100%;
+        }
+        body {
+            height: 100%;
+        }
+        .container {
+            height: 100%;
+            background-image: linear-gradient(to right, #fbc2eb, #a6c1ee);
+        }
+        .login-wrapper {
+            background-color: #fff;
+            width: 358px;
+            height: 588px;
+            border-radius: 15px;
+            padding: 0 50px;
+            position: relative;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .header {
+            font-size: 38px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 200px;
+        }
+        .btn {
+            text-align: center;
+            padding: 10px;
+            width: 100%;
+            margin-top: 40px;
+            background-image: linear-gradient(to right, #a6c1ee, #fbc2eb);
+            color: #fff;
+        }
+        .btn2 {
+            text-align: center;
+            padding: 10px;
+            width: 100%;
+            margin-top: 10px;
+            background-image: linear-gradient(to right, #a6c1ee, #fbc2eb);
+            color: #fff;
+        }
+        .btn4 {
+            text-align: center;
+            padding: 10px;
+            width: 100%;
+            margin-top: 10px;
+            background-image: linear-gradient(to right, #a6c1ee, #fbc2eb);
+            color: #fff;
+        }
+        .one{
+            background-image: linear-gradient(to right, #a6c1ee, #fbc2eb);
+            color: black;
+            border:white;
+        }
+        .two{
+            background-image: linear-gradient(to right, #a6c1ee, #fbc2eb);
+            color: black;
+            border:white;
+        }
+        .three{
+            background-image: linear-gradient(to right, #a6c1ee, #fbc2eb);
+            color: black;
+            border:white;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="login-wrapper">
+            <div class="header">企业选择功能</div>
+            <form action="" method="get" name="choose">
+                <div class="btn"><button onclick="one()" class="one">上传功能</button></div>
+                <div class="btn2"><button onclick="two()" class="two">查询功能</button></div>
+                <div class="btn4"><button onclick="three()" class="three">问题反馈</button></div></form></div></div>
+      
+</body>
+</html>
+<script>
+    function one(){
+        document.choose.action='file:///C:/Users/PCTC/Desktop/enterprisewrite.html';
+        document.choose.submit();
+    }
+    function two(){
+        document.choose.action='file:///C:/Users/PCTC/Desktop/enterpriseview.html';
+        document.choose.submit();
+    }
+    function three(){
+        document.choose.action='';
+        document.choose.submit();
+    }
+</script>
