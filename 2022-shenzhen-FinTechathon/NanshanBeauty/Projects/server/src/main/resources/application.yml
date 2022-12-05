@@ -1,0 +1,159 @@
+server:
+  port: 8090
+
+spring:
+  application:
+    name: b-recycle
+#  cloud:
+#    config:
+#      discovery:
+#        service-id: eureka-config
+#        enabled: false
+#      fail-fast: true
+#      profile: ${spring.profiles.active}
+  servlet:
+    multipart:
+      max-file-size: 100MB
+  datasource:
+    username: root
+    password: root
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/brecycle?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+  redis:
+    database: 0
+    host: 127.0.0.1
+    lettuce:
+      pool:
+        max-active: 8   #最大连接数据库连接数,设 0 为没有限制
+        max-idle: 8     #最大等待连接中的数量,设 0 为没有限制
+        max-wait: -1ms  #最大建立连接等待时间。如果超过此时间将接到异常。设为-1表示无限制。
+        min-idle: 0     #最小等待连接中的数量,设 0 为没有限制
+      shutdown-timeout: 100ms
+    password: ''
+    port: 6379
+  data:
+    mongodb:
+      host: 127.0.0.1
+      port: 27017
+      database: brecycle
+
+jwt:
+  authoritiesKey: auth
+  # 密匙KEY
+  secret: KeXu6IgYf7xaPe4jpw
+  # HeaderKEY
+  tokenHeader: AUTHORIZE_TOKEN
+  # jwt过期时间 单位秒 1天后过期=86400 7天后过期=604800
+  expiration: 86400
+  # 放入redis过期时间 单位秒 1天后过期=86400 7天后过期=604800
+  redisExpiration: 86400
+
+# mybatis-plus配置
+mybatis-plus:
+  global-config:
+    db-config:
+      # 下划线转驼峰命名
+      column-underline: true
+  # mapper xml扫描地址
+  mapper-locations: classpath*:mapper/*.xml
+
+fisco:
+  cryptoMaterial:
+    certPath: "conf"
+    caCert: "conf/ca.crt"
+    sslCert: "conf/sdk.crt"
+    sslKey: "conf/sdk.key"
+#   enSslCert: "conf/gm/gmensdk.crt"
+#   enSslKey: "conf/gm/gmensdk.key"
+
+  network:
+    peers:
+    - "192.168.111.128:20201"
+    - "192.168.111.128:20200"
+
+# 信使功能
+  amop:
+#  - publicKeys: [ "conf/amop/consumer_public_key_1.pem" ]
+#    topicName: "PrivateTopic1"
+#  - password: "123456"
+#    privateKey: "conf/amop/consumer_private_key.p12"
+#    topicName: "PrivateTopic2"
+
+# 默认生成的账户配置
+  account:
+    keyStoreDir: "account"
+  #  accountFilePath: "conf"
+  # pem为明文存储
+    accountFileFormat: "pem"
+#  accountAddress: "0x"
+# p12格式存储所需的口令
+#  password: ""
+
+# 线程池配置
+  threadPool:
+    channelProcessorThreadSize: "16"
+    receiptProcessorThreadSize: "16"
+    maxBlockingQueueSize: "102400"
+
+# 合约地址，先由WeBASE部署后在修改该处
+contract-addr:
+  helloworld: "0xc53b11e5a30a5dccff4322203dcccf3b5532a538"
+
+# WeEvent服务配置
+weevent:
+  brokerUrl: "http://192.168.111.128:8091/weevent-broker"
+  batteryAddTopic: "brecycle.battery.add"
+  safeCheckTopic: "brecycle.battery.addSafeCheck"
+  productorTransferTopic: "brecycle.transfer.productor"
+  carTransferTopic: "brecycle.transfer.car"
+  rentTransferTopic: "brecycle.transfer.rent"
+  customerTransferTopic: "brecycle.transfer.customer"
+  batteryEndTopic: "brecycle.battery.end"
+  carInfoTopic: "brecycle.battery.carInfo"
+
+point:
+  # 是否系统首年
+  isFirstYear: true
+  # 当前年数
+  varT: 1
+  # 每年的市场预计汽车产量
+  marketPredict:
+    2023: 15000000
+    2022: 14000000
+    2021: 12000000
+  # 每年预计注册到系统中的总产量
+  systemPredict:
+    2023: 7000000
+    2022: 6000000
+    2021: 5000000
+  # 平均每辆车电池容量：千安时
+  carAvgKAh: 50
+  # 平均每块电池容量：千安时
+  batteryAvgKAh: 0.055
+  # 积分比率，DAO设定值
+  alpha: 0.8
+  # 环节配额：一次回收
+  firstRecyclePartRatio: 0.2
+  # 环节配额：二次回收
+  secondRecyclePartRatio: 0.5
+  # 环节配额：拆解回收
+  endRecyclePartRatio: 0.3
+  # 积分总额派发分配比例：电池生产商:车企
+  producePayRatio: 0.5
+  # 积分合约地址
+  pointController: "0xbb4ae196c032c53ce856289acb76c36771e8a74e"
+  # DAO用户
+  dao: "admin"

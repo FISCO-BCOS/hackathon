@@ -1,0 +1,55 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+title 电池流转
+
+'actor 原料商
+actor 电池生产商
+actor 车企
+actor 电池租赁商
+actor 消费者
+
+alt 电池生产商 → 车企/电池租赁商
+    电池生产商 -> WeEvent : 扫码器或外部系统等设备批量录入流转信息
+    note left
+        发布消息
+        topic: brecycle.transfer.productor
+    end note
+else 车企/电池租赁商 → 消费者
+    车企 -> WeEvent : 扫码器或外部系统等设备批量录入流转信息
+    note left
+        发布消息
+        topic: brecycle.transfer.car
+    end note
+    电池租赁商 -> WeEvent : 扫码器或外部系统等设备批量录入流转信息
+    note left
+        发布消息
+        topic: brecycle.transfer.rent
+    end note
+else 消费者 -> 车企/电池租赁商
+    消费者 -> WeEvent : 扫码器或外部系统等设备批量录入流转信息
+    note left
+        发布消息
+        topic: brecycle.transfer.customer
+    end note
+end alt
+
+
+Listener -> WeEvent : 订阅topic
+Listener <-- WeEvent : 处理消息
+Listener -> Service : 电池流转
+Service -> JAVA_SDK : 获取BatteryContract合约
+Service <-- JAVA_SDK : 返回合约地址
+Service -> JAVA_SDK : BatteryContract.transfer
+note left
+    msg.sender=对应发起方
+end note
+Service <-- JAVA_SDK : 返回结果
+
+alt 消费者 -> 车企/电池租赁商
+    Service -> JAVA_SDK : 获取积分合约
+    Service <-- JAVA_SDK : 返回合约地址
+    Service -> JAVA_SDK : 积分合约.transfer
+end alt
+
+@enduml

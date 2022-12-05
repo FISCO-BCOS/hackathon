@@ -1,0 +1,7 @@
+.idea
+*.iml
+target
+/server/.gradle/
+/server/build/
+/server/out/
+/out/

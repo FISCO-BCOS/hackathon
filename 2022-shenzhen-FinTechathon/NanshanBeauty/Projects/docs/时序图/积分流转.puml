@@ -1,0 +1,159 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+title 积分流转
+
+actor 用户
+== 积分合约部署 ==
+测试接口 -> 应用层 : 调用积分合约部署
+应用层 -> JAVA_SDK : 部署PointController
+应用层 <-- JAVA_SDK : 返回合约地址
+应用层 -> 应用层 : 合约地址记录在配置文件中
+database MySQL
+应用层 -> MySQL : 获取平台管理员用户信息
+应用层 <-- MySQL : 返回
+应用层 -> JAVA_SDK : PointController.addDAO
+note left
+    合约里创建对应的积分账户
+end note
+应用层 <-- JAVA_SDK : 返回
+
+== 初始化积分总量 ==
+测试接口 -> 应用层 : 积分初始化
+应用层 -> 应用层 : 读取配置中的预测值
+应用层 -> JAVA_SDK : 根据配置的合约地址获取PointController
+应用层 <-- JAVA_SDK : 返回
+应用层 -> JAVA_SDK : PointController.initPoint
+note left
+    此处初始化2个积分总额
+    分别给后续二者进行初始积分派发
+    (1)电池生产商/车企
+    (2)回收商做派发激励
+    积分初始化给DAO账户
+end note
+
+== 年末回收商积分派发 ==
+定时器 -> 应用层 : 年度积分结余
+应用层 -> JAVA_SDK : PointController.daoTransfer
+note left
+    recyclePoint(t) = endBatteryCapability * β
+    endBatteryCapability：该回收商年度拆解的电池总容量
+    β = D(t) / phaseEndBatteryCapability
+    D(t)：上述的回收商积分总额
+    phaseEndBatteryCapability：整个拆解环节回收的总电池容量
+end note
+
+应用层 -> MySQL : 记录交易明细
+
+== 注册阶段 ==
+用户 -> 应用层 : 注册账户
+应用层 -> JAVA_SDK : 根据配置的合约地址获取PointController
+应用层 <-- JAVA_SDK : 返回
+应用层 -> JAVA_SDK : PointController.register
+应用层 <-- JAVA_SDK : 返回
+alt 电池生产商 or 车企
+    应用层 -> JAVA_SDK : PointController.daoTransfer
+    note left
+        获取注册积分
+        见积分文档
+    end note
+end alt
+
+应用层 -> MySQL : 记录交易明细
+
+== 电池生产商缴纳积分 ==
+用户 -> 应用层 : 添加电池
+
+应用层 -> 应用层 : 根据DAO制定的比率计算需要缴纳的积分
+note left
+    生产一次计算一次需要缴纳的积分
+    电池容量 * DAO制定的积分比率α * payRatio
+end note
+应用层 -> JAVA_SDK : 根据配置的合约地址获取PointController
+应用层 <-- JAVA_SDK : 返回
+应用层 -> JAVA_SDK : PointController.pay
+应用层 <-- JAVA_SDK : 返回
+
+应用层 -> MySQL : 记录交易明细
+
+== 车企缴纳积分 ==
+用户 -> 应用层 : 登记车辆电池信息
+
+应用层 -> 应用层 : 根据DAO制定的比率计算需要缴纳的积分
+note left
+    生产一次计算一次需要缴纳的积分
+    电池容量 * DAO制定的积分比率α * (1 - payRatio)
+end note
+应用层 -> JAVA_SDK : 根据配置的合约地址获取PointController
+应用层 <-- JAVA_SDK : 返回
+应用层 -> JAVA_SDK : PointController.pay
+应用层 <-- JAVA_SDK : 返回
+
+应用层 -> MySQL : 记录交易明细
+
+== 消费者获取积分 ==
+用户 -> 应用层 : 由线下网点进行消息推送
+note left
+    电池转移环节，假设能测出电池的充放电次数
+end note
+应用层 -> 应用层 : 计算应发积分
+应用层 -> JAVA_SDK : 根据配置的合约地址获取PointController
+应用层 <-- JAVA_SDK : 返回
+应用层 -> JAVA_SDK : PointController.daoTransfer
+note left
+    使用DAO账户派发积分
+end note
+应用层 <-- JAVA_SDK : 返回
+
+应用层 -> MySQL : 记录交易明细
+
+== 电池拆解回收环节 ==
+用户 -> 应用层 : 电池拆解检测信息推送
+note left
+    回收商推送
+    此时需要带上电池的回收来源，即从哪个梯次企业获取
+    信息包含：充放电次数、相关回收率
+end note
+应用层 -> 应用层 : 计算应发积分
+应用层 -> JAVA_SDK : 根据配置的合约地址获取PointController
+应用层 <-- JAVA_SDK : 返回
+应用层 -> JAVA_SDK : PointController.daoTransfer
+note left
+    使用DAO账户派发积分
+    获取积分主体：梯次利用企业、回收商
+end note
+应用层 <-- JAVA_SDK : 返回
+
+应用层 -> MySQL : 记录交易明细
+
+== 积分交易 ==
+用户 -> 应用层 : 卖方积分交易申请
+应用层 -> JAVA_SDK : 部署交易合约
+应用层 <-- JAVA_SDK : 返回合约地址
+应用层 -> JAVA_SDK : 根据配置的合约地址获取PointController
+应用层 <-- JAVA_SDK : 返回
+应用层 -> JAVA_SDK : PointController.freeze
+note left
+    冻结卖方积分
+end note
+应用层 <-- JAVA_SDK : 返回
+
+alt 积分竞价成功
+用户 -> 应用层 : 买方积分交易达成
+应用层 -> JAVA_SDK : 交易合约.bid 或者 deal
+应用层 <-- JAVA_SDK : 返回
+应用层 -> JAVA_SDK : 根据配置的合约地址获取PointController
+应用层 <-- JAVA_SDK : 返回
+应用层 -> JAVA_SDK : PointController.unFreezeAndTransfer
+应用层 <-- JAVA_SDK : 返回
+end alt
+
+alt 积分竞价失败，交易撤回
+应用层 -> 应用层 : 发现到期但没买方的交易
+应用层 -> JAVA_SDK : 交易合约.tradeEnd
+应用层 -> JAVA_SDK : 根据配置的合约地址获取PointController
+应用层 <-- JAVA_SDK : 返回
+应用层 -> JAVA_SDK : PointController.unFreeze
+应用层 <-- JAVA_SDK : 返回
+end alt
+
+@enduml

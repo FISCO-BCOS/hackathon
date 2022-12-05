@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.brecycle.mapper.UserMapper">
+
+    <resultMap id="entList" type="com.brecycle.entity.dto.EntListDTO">
+        <result column="id" property="id" />
+        <result column="user_name" property="userName" />
+        <result column="name" property="entName" />
+        <result column="idno" property="idno" />
+        <result column="access_status" property="accessStatus" />
+    </resultMap>
+
+    <select id="selectByUserName" resultType="com.brecycle.entity.User">
+        select * from user
+        where user_name = #{name} and status = 1
+    </select>
+
+    <select id="selectByName" resultType="com.brecycle.entity.User">
+        select * from user
+        where name = #{name} and status = 1
+    </select>
+
+    <select id="selectByAddr" resultType="com.brecycle.entity.User">
+        select * from user
+        where addr = #{addr}
+    </select>
+
+    <select id="selectEntListByPage" resultMap="entList">
+        select u.id, u.user_name, u.name, u.idno, e.access_status
+        from user u
+        left join ent_info e on u.id = e.user_id
+        where u.user_type = 2
+        <if test="param.userName != null and param.userName != ''">
+            and u.user_name = #{param.userName}
+        </if>
+        <if test="param.userName != null and param.userName != ''">
+            and u.user_name like concat('%',#{param.userName},'%')
+        </if>
+        <if test="param.accessStatus != null and param.accessStatus != ''">
+            and e.access_status = #{param.accessStatus}
+        </if>
+    </select>
+</mapper>
