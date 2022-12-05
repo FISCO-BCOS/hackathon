@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+
+</head>
+<body>
+<div id="app">
+    <div class="myHeader">
+        <img class="logo" src="../img/logo.jpg"/>
+    </div>
+    <div class="myBody">
+        <div class="myBodyNavi">
+            境外许可人模块
+        </div>
+        <div class="myBodyContent">
+            <div class="contentItem" @click="onAgentFileU">
+                <img class="myIcon" src="../img/tianjia.png">
+                <p>资料上传</p>
+            </div>
+            <div class="contentItem" @click="onAgentTrade">
+                <img class="myIcon" src="../img/jifenjiaoyi.png">
+                <p>积分交易</p>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="myBody">
+        <div class="myBodyNavi">
+            处方处理
+        </div>
+        <div class="myBodyContent">
+            <div class="contentItem" @click="onSubmit">
+                <img class="myIcon" src="../img/tianjiachufang.png">
+                <p>处方录入</p>
+            </div>
+            <div class="contentItem" @click="onSubmit">
+                <img class="myIcon" src="../img/huanzhechaxun.png">
+                <p>处方查询</p>
+            </div>
+            <div class="contentItem" @click="onSubmit">
+                <img class="myIcon" src="../img/chufangshanglian.png">
+                <p>处方发送</p>
+            </div>
+            <div class="contentItem" @click="onSubmit">
+                <img class="myIcon" src="../img/chufangyanzheng.png">
+                <p>处方验真</p>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+</body>
+
+<script src="../js/vue.js"></script>
+<script src="../js/axios-0.18.0.js"></script>
+<script src="../plugins/element-ui/lib/index.js"></script>
+<script src="../js/car.js"></script>
+<link rel="stylesheet"  href="../plugins/element-ui/lib/theme-chalk/index.css">
+<link rel="stylesheet" type="text/css" href="../css/style.css">
+
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+</head>
+<body>
+<div id="app">
+    <div class="myHeader">
+        <img class="logo" src="../img/logo.jpg"/>
+    </div>
+    <div class="myBody">
+        <div class="myBodyNavi">
+            代理人相关
+        </div>
+        <div class="myBodyContent">
+            <div class="contentItem" @click="credit2G">
+                <img class="myIcon" src="../img/jifen.png">
+                <p>积分兑换</p>
+            </div>
+            <div class="contentItem" @click="credit2B">
+                <img class="myIcon" src="../img/jifenjiaoyi.png">
+                <p>企业交易</p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+</body>
+
+<script src="../js/vue.js"></script>
+<script src="../js/axios-0.18.0.js"></script>
+<script src="../plugins/element-ui/lib/index.js"></script>
+<script src="../js/car.js"></script>
+<link rel="stylesheet"  href="../plugins/element-ui/lib/theme-chalk/index.css">
+<link rel="stylesheet" type="text/css" href="../css/style.css">
+
+</html>

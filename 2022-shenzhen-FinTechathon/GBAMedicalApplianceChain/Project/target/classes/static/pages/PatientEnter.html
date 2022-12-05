@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+
+</head>
+<body>
+<div id="app">
+    <div class="myHeader">
+        <img class="logo" src="../img/logo.jpg"/>
+    </div>
+    <div class="myBody">
+        <div class="pe">
+            <div class="peNavi">
+                <div></div>
+                <p>EMR电子处方</p>
+                <p>录入</p>
+            </div>
+            <div class="peTips">
+                请在以下录入患者信息
+            </div>
+            <div class="peContent">
+                <el-form ref="form" :model="form" label-width="80px">
+                    <el-form-item label="姓名">
+                        <el-input v-model="form.name"></el-input>
+                    </el-form-item>
+                    <el-form-item label="年龄">
+                        <el-input v-model="form.name"></el-input>
+                    </el-form-item>
+                    <el-form-item label="性别">
+                        <el-radio-group v-model="sizeForm.type" >
+                            <el-radio-button label="男" name="type"></el-radio-button>
+                            <el-radio-button label="女" name="type"></el-radio-button>
+                        </el-radio-group>
+                    </el-form-item>
+                    <el-form-item label="WeID">
+                        <el-input v-model="form.name"></el-input>
+                    </el-form-item>
+                    <el-form-item label="所需药品">
+                        <el-select v-model="medical.type" placeholder="选择药品">
+                            <el-option label="药物A" value="medicalA"></el-option>
+                            <el-option label="药物B" value="medicalB"></el-option>
+                            <el-option label="药物C" value="medicalC"></el-option>
+                            <el-option label="药物D" value="medicalD"></el-option>
+                        </el-select>
+                    </el-form-item>
+                    <el-form-item label="病因">
+                        <el-input v-model="form.name"></el-input>
+                    </el-form-item>
+                    <el-form-item label="家庭住址">
+                        <el-input v-model="form.name"></el-input>
+                    </el-form-item>
+                    <el-form-item label="联系方式">
+                        <el-input v-model="form.name"></el-input>
+                    </el-form-item>
+
+                    </el-form-item>
+                    <el-form-item>
+                        <el-button type="danger" plain>返回(不保存)</el-button>
+
+                        <el-button type="primary" @click="onSubmit">提交</el-button>
+                    </el-form-item>
+                </el-form>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>
+</body>
+
+<script src="../js/vue.js"></script>
+<script src="../js/axios-0.18.0.js"></script>
+<script src="../plugins/element-ui/lib/index.js"></script>
+<script src="../js/car.js"></script>
+<link rel="stylesheet"  href="../plugins/element-ui/lib/theme-chalk/index.css">
+<link rel="stylesheet" type="text/css" href="../css/style.css">
+
+</html>

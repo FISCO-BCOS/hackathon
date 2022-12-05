@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+
+
+</head>
+<body>
+<div id="app">
+  <div class="myHeader">
+    <img class="logo" src="../img/logo.jpg"/>
+  </div>
+  <div class="myBody">
+    <div class="pe">
+      <div class="peNavi">
+        <div></div>
+        <p>病历</p>
+        <p>查询</p>
+      </div>
+      <div class="peTips">
+        通过身份证查询病历
+      </div>
+      <div class="peContent">
+        <el-form ref="form" :model="form" label-width="100px">
+          <el-form-item label="身份证号码">
+            <el-input v-model="form.name"></el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" @click="onSubmit">查询</el-button>
+          </el-form-item>
+        </el-form>
+        </el-form>
+      </div>
+    </div>
+
+
+  </div>
+
+
+</div>
+</body>
+
+<script src="../js/vue.js"></script>
+<script src="../js/axios-0.18.0.js"></script>
+<script src="../plugins/element-ui/lib/index.js"></script>
+<script src="../js/car.js"></script>
+<link rel="stylesheet"  href="../plugins/element-ui/lib/theme-chalk/index.css">
+<link rel="stylesheet" type="text/css" href="../css/style.css">
+
+</html>
