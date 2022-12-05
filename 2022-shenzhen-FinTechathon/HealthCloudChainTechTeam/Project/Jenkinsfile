@@ -1,0 +1,117 @@
+gitlab_repo = "${params.gitlab_repo}"
+def split = gitlab_repo.split("/")
+def repo_name = split[1]
+branch_name = "${params.branch_name}"
+repo_url = "https://codeup.aliyun.com/6222da7a16f8e034350f49b6/${gitlab_repo}.git"
+argocd_url = "${params.argocd_url}"
+NAME = "${params.NAME}"
+REPLICAS = "${params.REPLICAS}"
+dockerhub_repo = "${params.dockerhub_repo}"
+def k8sconfig = "${params.k8sconfig}"
+PORT = "${params.PORT}"
+MVN_ENV = "${params.mvn_env}"
+import java.text.SimpleDateFormat
+def createVersion(){
+    def date = new Date()
+    String sdf = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(date)
+    return "${sdf}"
+}
+
+image_version = createVersion()
+work_dir = "${repo_name}-${image_version}"
+
+IMAGE = "${dockerhub_repo}:${branch_name}-${image_version}"
+
+pipeline {
+    environment{
+    // 项目名称
+    //PROJECT_NAME =  sh(returnStdout: true,script: 'echo $branch_name').trim()
+    K8S_CONFIG = credentials("${k8sconfig}")
+    }
+    agent {
+    node {
+      label 'slave-pipeline' //标签选择
+    }  
+  }
+    stages {
+        stage('git') {
+            steps {
+                container("jnlp"){
+                    deleteDir()
+                        git(
+                            url: "${repo_url}",
+                            credentialsId: 'codeup',
+                            branch: "${branch_name}"
+                        )
+                }
+            }
+        }
+        stage('build') {
+            steps {
+                container("maven"){
+                    sh """
+                        ls 
+                        mvn -B clean package -P${MVN_ENV} -Dmaven.test.skip=true -Dautoconfig.skip
+                    """
+                }
+            }
+        }
+        stage('docker push') {
+            steps {
+                container("docker"){
+                    sh """
+                        docker build -f Dockerfile -t ${dockerhub_repo}:${branch_name}-${image_version} .
+                        docker push ${dockerhub_repo}:${branch_name}-${image_version}
+                        docker rmi ${dockerhub_repo}:${branch_name}-${image_version}
+                    """
+                }
+            }
+        }
+        stage('Deploy') {
+            steps {
+                withCredentials([[$class: 'UsernamePasswordMultiBinding',
+                credentialsId: 'codeup',
+                usernameVariable: 'DEVOPS_USER',
+                passwordVariable: 'DEVOPS_PASSWORD']]){
+                    container('jnlp') {
+                        script{
+                            sh """
+                                git remote set-url origin http://${DEVOPS_USER}:${DEVOPS_PASSWORD}@codeup.aliyun.com/6222da7a16f8e034350f49b6/backend/gitops-deployment.git
+                                git config --global user.name "Administrator"
+                                git config --global user.email "coolops@163.com"
+                                git clone -b ${branch_name} http://${DEVOPS_USER}:${DEVOPS_PASSWORD}@codeup.aliyun.com/6222da7a16f8e034350f49b6/backend/gitops-deployment.git
+                                cd gitops-deployment
+                                if [ ! -d ${repo_name} ];then mkdir ${repo_name};fi
+                                cd ${repo_name}
+                                cp -rf ../../jenkins-deployment.yaml .
+                                sed -i s@_NAME_@${NAME}@g jenkins-deployment.yaml
+                                sed -i s@_IMAGE_@${IMAGE}@g jenkins-deployment.yaml
+                                sed -i s@_REPLICAS_@${REPLICAS}@g jenkins-deployment.yaml
+                                sed -i s@_DUBBO_IP_@${DUBBO_IP}@g jenkins-deployment.yaml
+                                sed -i s@_NODEPORT_@${NODEPORT}@g jenkins-deployment.yaml
+                                sed -i s@__PORT__@${PORT}@g jenkins-deployment.yaml
+                                cat jenkins-deployment.yaml
+                                git add .
+                                git commit -m 'image update'
+                                git push origin ${branch_name}
+
+                            """
+                        }
+                    }
+                }
+            }
+        }
+        stage('argocd sync') {
+            steps {
+                container("argocd"){
+                    sh """
+                        ls
+                        echo y | argocd login ${argocd_url} --username admin --password Yikangji123@
+                        sh /home/jenkins/argocd_sync.sh ${NAME}
+                        ls
+                    """
+                }
+            }
+        }        
+    }
+}

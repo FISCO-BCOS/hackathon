@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.ekangji</groupId>
+		<artifactId>ekangji-parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
+	<groupId>com.ekangji</groupId>
+	<artifactId>ekangji-policy-center</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+
+	<packaging>pom</packaging>
+	<name>ekangji-policy-center</name>
+	<description>保啦保单管理服务</description>
+
+	<modules>
+		<module>policy-client</module>
+		<module>policy-app</module>
+		<module>policy-domain</module>
+		<module>policy-infrastructure</module>
+		<module>policy-common</module>
+		<module>policy-start</module>
+		<module>policy-web</module>
+	</modules>
+
+	<properties>
+		<order.version>${project.version}</order.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.ekangji</groupId>
+				<artifactId>policy-client</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.ekangji</groupId>
+				<artifactId>policy-domain</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.ekangji</groupId>
+				<artifactId>policy-infrastructure</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.ekangji</groupId>
+				<artifactId>policy-app</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.ekangji</groupId>
+				<artifactId>policy-web</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.ekangji</groupId>
+				<artifactId>policy-common</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<!--定义打包命令指定的环境对应的profileActive变量值-->
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<profileActive>dev</profileActive>
+			</properties>
+			<activation>
+				<!--指定默认激活-->
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<profile>
+			<id>test</id>
+			<properties>
+				<profileActive>test</profileActive>
+			</properties>
+		</profile>
+		<profile>
+			<id>prod</id>
+			<properties>
+				<profileActive>prod</profileActive>
+			</properties>
+		</profile>
+	</profiles>
+
+	<build>
+		<resources>
+			<resource>
+				<!-- 指定配置文件所在的resource目录 -->
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<excludes>
+					<exclude>application.properties</exclude>
+					<exclude>application-test.properties</exclude>
+					<exclude>application-prop.properties</exclude>
+				</excludes>
+			</resource>
+			<!--需要动态添加的资源-->
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<includes>
+					<!--读取打包命令中指定的环境-->
+					<include>application.properties</include>
+					<include>application-${profileActive}.properties</include>
+				</includes>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-surefire-plugin</artifactId>
+			<configuration>
+				<testFailureIgnore>true</testFailureIgnore>
+			</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>2.3.12.RELEASE</version>
+				<configuration>
+					<mainClass>com.ekangji.policy.Application</mainClass>
+					<classifier>execute</classifier>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+
+</project>
