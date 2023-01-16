@@ -1,0 +1,20 @@
+the error = [libproviders.so: cannot open shared object file: No such file or directory]
+FISCO BCOS Version : 3.0.1
+Build Time         : 20221130 01:32:48
+Build Type         : Linux/g++/RelWithDebInfo
+Git Branch         : xsk
+Git Commit         : 882f153092652db02f2ab64be71ed9a4a3bec587
+[2022-11-30 01:39:59] The fisco-bcos is running...
+[2022-11-30 01:40:07] exit because receive signal 15
+scheduler has just stopped.
+[2022-11-30 01:40:07] fisco-bcos program exit normally.
+the error = [libproviders.so: cannot open shared object file: No such file or directory]
+FISCO BCOS Version : 3.0.1
+Build Time         : 20221130 01:32:48
+Build Type         : Linux/g++/RelWithDebInfo
+Git Branch         : xsk
+Git Commit         : 882f153092652db02f2ab64be71ed9a4a3bec587
+[2022-11-30 01:40:11] The fisco-bcos is running...
+[2022-11-30 01:54:07] exit because receive signal 15
+scheduler has just stopped.
+[2022-11-30 01:54:08] fisco-bcos program exit normally.
