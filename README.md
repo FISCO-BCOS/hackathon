@@ -15,7 +15,7 @@
 
 ---------------------
 
-#  [2022 深圳国际金融科技大赛（FinTechathon）](2023-shenzhen-FinTechathon/README.md)
+#  [2022 深圳国际金融科技大赛（FinTechathon）](2022-shenzhen-FinTechathon/README.md)
 
 ## 赛事简介
 
