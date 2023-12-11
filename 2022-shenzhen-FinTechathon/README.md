@@ -1,4 +1,4 @@
-# 2023 深圳国际金融科技大赛（FinTechathon）
+# 2022 深圳国际金融科技大赛（FinTechathon）
 
 ## 提交说明
 
