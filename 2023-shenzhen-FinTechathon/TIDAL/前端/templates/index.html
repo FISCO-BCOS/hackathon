@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>基于区块链的供应链碳足迹一元化系统</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"
+      integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-image: url("../static/blockchain.jpeg");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed; /* Add this line */
+        text-align: center;
+      }
+      h1 {
+        margin-top: 20%;
+      }
+      .button {
+        display: inline-block;
+        margin: 10px;
+        padding: 15px 30px;
+        background-color: #4caf50;
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container py-5">
+      <h1 class="text-center mb-4">基于区块链的供应链碳足迹一元化系统</h1>
+
+      <!-- Search Bar and Show All Button -->
+      <div class="row justify-content-center mb-4">
+        <div class="col-md-6">
+          <input
+            type="text"
+            id="search-bar"
+            class="form-control"
+            placeholder="请输入需要查询的碳足迹数据名"
+          />
+        </div>
+        <div class="col-md-auto">
+          <button id="search-btn" class="btn btn-primary">查找</button>
+          <button id="insert-btn" class="btn btn-danger">插入</button>
+          <button id="show-all-btn" class="btn btn-secondary">展示全部</button>
+        </div>
+      </div>
+
+      <!-- Card Container -->
+      <div id="card-container" class="row">
+        <!-- Cards will be appended here by JavaScript -->
+      </div>
+    </div>
+
+    <script>
+      function renderCard(item) {
+        var card = `
+            <div class="col-md-4">
+                <div class="card text-center mt-4">
+                    <div class="card-header">${item.Key}</div>
+                    <div class="card-body">
+                        <p class="card-text">哈希值： ${item.hashValue}</p>
+                        <p class="card-text">索引: ${item.databaseIndices}</p>
+                        <button class="btn btn-primary modify-btn" data-key="${item.Key}">修改</button>
+                        <button class="btn btn-secondary verify-btn" data-key="${item.Key}">验证</button>
+                    </div>
+                </div>
+            </div>`;
+        $("#card-container").append(card);
+      }
+
+      $(document).ready(function () {
+        // Populate all cards on page load
+        $.get("/getAll", function (data) {
+          data.forEach(renderCard);
+        });
+
+        // Search button click
+        $("#search-btn").click(function () {
+          var key = $("#search-bar").val();
+          $.post("/search", { key: key }, function (item) {
+            $("#card-container").empty();
+            renderCard(item);
+          });
+        });
+
+        // Show all button click
+        $("#show-all-btn").click(function () {
+          $("#card-container").empty();
+          $.get("/getAll", function (data) {
+            data.forEach(renderCard);
+          });
+        });
+
+        //Insert card
+        /*$("#insert-btn").click(function () {
+          var key = prompt("Enter key");
+          var indices = prompt("Enter indices");
+          var content = prompt("Enter content");
+        
+          if (key && indices && content) {
+            $.post("/insert", { key: key, indices: indices, content: content }, function (item) {
+              renderCard(item);
+            });
+          } else {
+            alert("All fields are required!");
+          }
+          
+
+        });*/
+        // Insert card
+        $("#insert-btn").click(function () {
+          var key = prompt("请输入要增加的碳足迹数据名");
+          var indices = prompt(
+            "请输入要同步的数据库索引，多内容请使用逗号分割"
+          );
+          var content = prompt("请输入对应的碳足迹内容");
+
+          if (key && indices && content) {
+            $.post(
+              "/insert",
+              { key: key, indices: indices, content: content },
+              function (response) {
+                if (response.error) {
+                  // If the server returned an error, alert with the error message
+                  alert(response.error);
+                } else {
+                  // If the server returned a successful response, render the card
+                  alert("本次交易哈希为: " + response);
+                  var new_res = {
+                    Key: key,
+                    hashValue: CryptoJS.SHA256(content),
+                    databaseIndices: indices,
+                  };
+                  renderCard(new_res);
+                }
+              }
+            ).fail(function () {
+              // If the server returned a status code of 500, alert with a general error message
+              alert("服务 500 错误，请联系管理员");
+            });
+          } else {
+            alert("所输入内容不能为空！");
+          }
+        });
+
+        $("#card-container").on("click", ".modify-btn", function () {
+          var key = $(this).closest(".card").find(".card-header")[0].innerText;
+          console.log($(this));
+          var card = $(this).closest(".card");
+          var new_content = prompt("请输入新的碳足迹数据");
+          if (new_content) {
+            $.post(
+              "/modifyProcess",
+              { new_content: new_content, key: key },
+              function (data) {
+                // update the card with new data
+                /*var card = $(this).closest(".card");
+                card.find(".card-header").text(data.key);
+                card
+                  .find(".card-text")
+                  .first()
+                  .text("Hash: " + data.hashValue);
+                card
+                  .find(".card-text")
+                  .last()
+                  .text("Transaction Hash: " + data.chameleon);*/
+                card.find(".card-header").text(data.key);
+                card
+                  .find(".card-text")
+                  .first()
+                  .text("哈希值： " + data.hashValue);
+                alert("修改成功！本次交易哈希为: " + data.chameleon);
+              }
+            );
+          }
+        });
+
+        $("#card-container").on("click", ".verify-btn", function () {
+          var key = $(this).closest(".card").find(".card-header")[0].innerText;
+          var btn = $(this);
+          //btn.text("Verifying..."); // show loading text
+          btn.text("验证中...");
+          $.post("/verifyProcess", { key: key }, function (data) {
+            if (data.result == "Data Verification Completed!") {
+              //btn.text("✔️ Verified");
+              btn.text("✔️ 验证通过");
+              btn.removeClass("btn-secondary").addClass("btn-success");
+            } else {
+              //btn.text("❌ Verification Failed");
+              btn.text("❌ 验证失败");
+              btn.removeClass("btn-secondary").addClass("btn-danger");
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
