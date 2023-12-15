@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query Page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container py-5">
+        <h1 class="text-center mb-4">Query Page</h1>
+        
+        <!-- Search Bar and Show All Button -->
+        <div class="row justify-content-center mb-4">
+            <div class="col-md-6">
+                <input type="text" id="search-bar" class="form-control" placeholder="Enter key to search">
+            </div>
+            <div class="col-md-auto">
+                <button id="search-btn" class="btn btn-primary">Search</button>
+                <button id="show-all-btn" class="btn btn-secondary">Show All</button>
+            </div>
+        </div>
+        
+        <!-- Card Container -->
+        <div id="card-container" class="row">
+            <!-- Cards will be appended here by JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        function renderCard(item) {
+            var card = `
+            <div class="col-md-4">
+                <div class="card text-center mt-4">
+                    <div class="card-header">${item.Key}</div>
+                    <div class="card-body">
+                        <p class="card-text">Hash: ${item.hashValue}</p>
+                        <p class="card-text">Index: ${item.databaseIndices}</p>
+                        <button class="btn btn-primary modify-btn" data-key="${item.Key}">Modify</button>
+                        <button class="btn btn-secondary verify-btn" data-key="${item.Key}">Verify</button>
+                    </div>
+                </div>
+            </div>`;
+            $('#card-container').append(card);
+        }
+
+        $(document).ready(function() {
+            // Populate all cards on page load
+            $.get('/getAll', function(data) {
+                data.forEach(renderCard);
+            });
+
+            // Search button click
+            $('#search-btn').click(function() {
+                var key = $('#search-bar').val();
+                $.post('/search', { key: key }, function(item) {
+                    $('#card-container').empty();
+                    renderCard(item);
+                });
+            });
+
+            // Show all button click
+            $('#show-all-btn').click(function() {
+                $('#card-container').empty();
+                $.get('/getAll', function(data) {
+                    data.forEach(renderCard);
+                });
+            });
+
+            $('#card-container').on('click', '.modify-btn', function() {
+                var key = $(this).closest(".card").find(".card-header")[0].innerText;
+                var new_content = prompt('Enter new content');
+                if (new_content) {
+                    $.post('/modifyProcess', { new_content: new_content, key: key }, function(data) {
+                        // update the card with new data
+                        var card = $(this).closest('.card');
+                        card.find('.card-header').text(data.Key);
+                        card.find('.card-text').first().text('Hash: ' + data.hashValue);
+                        card.find('.card-text').last().text('Transaction Hash: ' + data.chameleon);
+                    });
+                }
+            });
+            
+            $('#card-container').on('click', '.verify-btn', function() {
+                var key = $(this).closest(".card").find(".card-header")[0].innerText;
+                var btn = $(this);
+                btn.text('Verifying...'); // show loading text
+                $.post('/verifyProcess', { key: key }, function(data) {
+                    if (data.result == 'Data Verification Completed!') {
+                        btn.text('✔️ Verified');
+                        btn.removeClass('btn-secondary').addClass('btn-success');
+                    } else {
+                        btn.text('❌ Verification Failed');
+                        btn.removeClass('btn-secondary').addClass('btn-danger');
+                    }
+                });
+            });
+
+        });
+    </script>
+</body>
+</html>
