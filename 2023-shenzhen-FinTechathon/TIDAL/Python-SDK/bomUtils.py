@@ -26,9 +26,9 @@ def selectData(aimKey, database_index):
     cursor = db.cursor()
     pre_fix = 'bom_data_part_' + str(database_index)
     # First, we create the SQL statement.
-    sql = "SELECT data FROM %s WHERE bom_key='%s'" % (pre_fix, aimKey)
+    sql = "SELECT data FROM %s WHERE bom_key='%s'"
     # Then, we execute the SQL statement.
-    cursor.execute(sql)
+    cursor.execute(sql, (pre_fix, aimKey))
     # Finally, we fetch all the data returned by the SQL statement.
     results = cursor.fetchall()
     # Close the database.
@@ -43,10 +43,9 @@ def insertData(aimKey, database_index, content):
     cursor = db.cursor()
     pre_fix = 'bom_data_part_' + str(database_index)
     # First, we create the SQL statement.
-    sql = "INSERT INTO %s(bom_key, data) VALUES('%s', '%s')" % (
-        pre_fix, aimKey, content)
+    sql = "INSERT INTO %s(bom_key, data) VALUES('%s', '%s')"
     # Then, we execute the SQL statement.
-    cursor.execute(sql)
+    cursor.execute(sql, (pre_fix, aimKey, content))
     try:
         db.commit()
     except Exception as e:
@@ -61,10 +60,9 @@ def updateData(aimKey, database_index, new_content):
     cursor = db.cursor()
     pre_fix = 'bom_data_part_' + str(database_index)
     # First, we create the SQL statement.
-    sql = "UPDATE %s SET data='%s' WHERE bom_key='%s'" % (
-        pre_fix, new_content, aimKey)
+    sql = "UPDATE %s SET data='%s' WHERE bom_key='%s'"
     # Then, we execute the SQL statement.
-    cursor.execute(sql)
+    cursor.execute(sql, (pre_fix, new_content, aimKey))
     try:
         db.commit()
     except Exception as e:
@@ -80,9 +78,9 @@ def removeData(aimKey, database_index):
     cursor = db.cursor()
     pre_fix = 'bom_data_part_' + str(database_index)
     # First, we create the SQL statement.
-    sql = "DELETE FROM %s WHERE bom_key='%s'" % (pre_fix, aimKey)
+    sql = "DELETE FROM %s WHERE bom_key='%s'"
     # Then, we execute the SQL statement.
-    cursor.execute(sql)
+    cursor.execute(sql, (pre_fix, aimKey))
     try:
         db.commit()
     except Exception as e:

@@ -70,4 +70,4 @@ def verify():
     return jsonify({'result': result})
 
 if __name__ == '__main__':
-    app.run(port=2010, host="0.0.0.0")
+    app.run(port=2010, host="127.0.0.1")
