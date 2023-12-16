@@ -137,6 +137,8 @@ a {
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    color: #97a8be;
+    font-size: 14px;
 }
 
 .el-upload--text .el-icon-upload {
@@ -144,12 +146,6 @@ a {
     color: #97a8be;
     margin: 40px 0 16px;
     line-height: 50px;
-}
-
-.el-upload--text {
-    color: #97a8be;
-    font-size: 14px;
-    text-align: center;
 }
 
 .el-upload--text em {
