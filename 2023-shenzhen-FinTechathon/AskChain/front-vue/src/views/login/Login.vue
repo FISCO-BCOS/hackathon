@@ -216,7 +216,7 @@ export default {
   overflow: hidden;
 }
 .ms-content {
-  padding: 30px 30px;
+  padding: 30px;
 }
 
 .login-btn {
