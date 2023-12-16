@@ -260,7 +260,7 @@ export default {
 }
 
 .ms-content {
-  padding: 30px 30px;
+  padding: 30px;
 }
 
 .login-btn {
