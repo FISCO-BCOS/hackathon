@@ -1,0 +1,8 @@
+server:
+  port: 2333
+
+bcos:
+  key-store-path: /Users/ahy231/Documents/GitHub/blockchain-esg/java-backend/account/key
+  config-file: /Users/ahy231/Documents/GitHub/blockchain-esg/java-backend/config.toml
+  contract-address: "0x3a68508a8241f31824a7284d65dbb47b495c1a48"
+  governor-account: "0xe34ff45b06e012c777a02cc326b2bcc9d179d76b"
