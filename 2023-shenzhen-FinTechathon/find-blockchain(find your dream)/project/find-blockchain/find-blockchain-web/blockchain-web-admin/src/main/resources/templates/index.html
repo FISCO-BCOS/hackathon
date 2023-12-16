@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <!-- 路径基于 static 等目录为根路径，如下 -->
+    <link rel="stylesheet" type="text/css" href="/css/Login.css"/>
+</head>
+<body>
+<div id="login">
+    <div align="center">
+        <img src="/img/logo.png" width="150px" height="70px">
+        <h2 align="center">Login</h2>
+    </div>
+    <form method="post" th:action="@{/user/login}">
+        <input type="text" required="required" placeholder="用户名" name="username"></input>
+        <input type="password" required="required" placeholder="密码" name="password"></input>
+        <input type="checkbox" name="isRemember" value="true">自动登录</input>
+        <button class="but" type="submit">登录</button>
+    </form>
+
+    <script>
+        $("button[type='button']").click(function () {
+            var formData = {
+                username: $("#username").val(),
+                password: $("#password").val()
+            };
+            $.post("[[@{/}]]index", JSON.stringify(formData),
+                function (data) {
+                    alert("Data Loaded: " + data);
+                });
+        });
+    </script>
+
+</div>
+</body>
+</html>

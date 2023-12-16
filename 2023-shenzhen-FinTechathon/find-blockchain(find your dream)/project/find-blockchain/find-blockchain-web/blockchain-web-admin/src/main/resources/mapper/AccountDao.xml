@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.find.dao.AccountDao">
+
+<!--    <select id="getAccount" resultMap="AccountMap">-->
+<!--        select v.nodeId, address, trainAccu, repValue from validation_6g.federalNode v-->
+<!--    </select>-->
+
+<!--    <resultMap id="AccountMap" type="Account">-->
+<!--        <result property="nodeId" column="nodeId"/>-->
+<!--        <result property="address" column="address"/>-->
+<!--        <result property="trainAccu" column="trainAccu"/>-->
+<!--        <result property="repValue" column="repValue"/>-->
+<!--    </resultMap>-->
+
+<!--    &lt;!&ndash; 定义参数类型 &ndash;&gt;-->
+<!--&lt;!&ndash;    <parameterMap id="inputParam" type="java.util.List" >&ndash;&gt;-->
+<!--&lt;!&ndash;        <parameter property="list" javaType="java.util.List" jdbcType="INTEGER" />&ndash;&gt;-->
+<!--&lt;!&ndash;    </parameterMap>&ndash;&gt;-->
+
+<!--&lt;!&ndash;     定义结果类型&ndash;&gt;-->
+<!--    <resultMap id="outputResult" type="java.util.List" >-->
+<!--        <result column="repValue" property="repValue" jdbcType="FLOAT" />-->
+<!--    </resultMap>-->
+
+    <!-- 编写SELECT语句 -->
+<!--    <select id="getRepValue" resultMap="outputResult" parameterMap="inputParam">-->
+<!--        SELECT v.repValue AS repValue-->
+<!--        FROM validation_6g.federalNode v-->
+<!--        WHERE nodeId IN-->
+<!--        <foreach item="item" collection="list" open="(" separator="," close=")">-->
+<!--            #{item}-->
+<!--        </foreach>-->
+<!--    </select>-->
+
+<!--    <select id="getRepValueById" resultMap="outputResult">-->
+<!--        SELECT v.repValue as repValue-->
+<!--        FROM validation_6g.federalNode v-->
+<!--        WHERE nodeId = #{nodeId}-->
+<!--    </select>-->
+
+
+
+
+    <insert id="insert" parameterType="OnlineNode">
+        insert into validation_6g.federalNode(nodeId,address,state,repValue,ip) values (#{nodeId},#{address},#{state},#{repValue},#{ip})
+    </insert>
+
+<!--    <delete id="deleteAccount">-->
+<!--        DELETE FROM validation_6g.federalNode where nodeId = #{nodeId}-->
+<!--    </delete>-->
+
+
+</mapper>
