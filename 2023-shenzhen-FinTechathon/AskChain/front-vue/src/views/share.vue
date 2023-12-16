@@ -426,7 +426,7 @@ export default {
 
 .el-button {
   font-size: 1vw; /* 相对于视口宽度的 2% */
-  padding: 1vw 1vw; /* 相对于视口宽度的 1% 和 2% */
+  padding: 1vw; /* 相对于视口宽度的 1% 和 2% */
 }
 .handle-box {
   margin-bottom: 1%;
@@ -449,7 +449,7 @@ export default {
 }
 
 .ms-content {
-  padding: 30px 30px;
+  padding: 30px;
 }
 
 .ms-title {
