@@ -1,158 +1,120 @@
-# Blockchain ESG
-
-#### 介绍
-{ **区块链ESG评分系统**旨在为企业提供一种透明、可追溯的ESG（环境、社会和治理）项目评估解决方案。允许企业提交ESG项目信息，并映射为唯一的NFT，并接受ESG评估机构的打分。
-该NFT将包含项目的详细信息以及由ESG评估机构提交的分数，确保数据的不可篡改性和透明度。
-系统将自动计算并维护项目的总分数，该分数可作为ESG项目质量的客观标准，供政府、银行等机构参考。}
-
-#### 区块链部署教程
-
-1. 根据FISCO BCOS官方文档，下载build_chain.sh
-
-网址：https://fisco-bcos-documentation.readthedocs.io/zh_CN/latest/docs/installation.html
-
-2. 监管机构建立节点：bash build_chain.sh -l {政府服务器ip}:1
-3. 部署智能合约：使用控制台，部署ESGPlatform智能合约
-4. 监管机构公布ca.crt和ca.key
-5. 企业或评估机构获取ca.crt和ca.key，将他们置于同一目录下
-6. 企业或评估机构、项目方建立节点：bash build_chain.sh -l {自身服务器ip}:1 -k {ca.crt/ca.key所在目录}
+# **问链---**基于区块链的**ESG**评级系统
 
 
-#### Java后端部署
 
-1.  从Gitee上克隆项目到本地：git clone https://gitee.com/Leivon1Z/blockchain-esg.git
-2.  修改项目目录下./java-backend/src/main/java/resources/application-prod.yml：
+## 项目简介
 
-```yml
-server:
-  port: 2333
-
-bcos:
-  key-store-path: {生成用户密钥的路径，如：/Users/admin/account/key}
-  config-file: {项目目录/java-backend/config.toml}
-  contract-name: ESGPlatform
-  contract-address: {部署的合约地址}
-  contract-abi: {合约abi的路径，如：/Users/admin/abi/}
-```
-
-3. 进入java-backend，执行命令：mvn clean package（需要事先安装maven）
-4. 执行命令：nohup java -jar target/java-backend-0.0.1-SNAPSHOT.jar &
+在可持续发展的背景下，ESG（环境、社会和治理）评估成为了企业可持续性的重要指标。然而，当前市场上缺乏一个**统一、透明且高效**的ESG评估平台。现有的评估工具往往面临着**评分标准不一、数据不透明、易篡改、流程冗余**等问题，这不仅影响了评估的公正性，也增加了企业的运营成本。因此，开发一个**基于区块链的ESG评分系统**，旨在为企业提供一个可靠、透明且易于操作的ESG评估解决方案。同时经过我们调研发现市面上并无一个集中了众多企业和评估机构的区块链平台系统，本系统在成本效率方面具有显著优势，适合各种规模的企业及评估机构、相关监管机构使用。
 
 
-#### WeIdentity部署步骤
 
-1.  根据WeIdentity官方文档安装部署工具
+## 项目背景
 
-https://weidentity.readthedocs.io/zh-cn/latest/docs/weidentity-installation-by-web.html
+ESG是Environmental（环境）、Social（社会）和 Governance （治理）三个英文单词的首字母缩写的合称，是近年来非常火的的一个评价指标，因为它不像传统的企业评价标准，评价公司的盈利或者运营情况，而是把目光放在了企业在可持续发展、履行社会责任等方面的贡献上，引导企业“向善”发展。关注ESG的有很多好处，对于我们大众来说，企业注重ESG可以让企业把社会利益放在一个更重要的地位上，而非单考虑公司利益，从而让整个社会更加地美好。而对于企业自身来说，参与ESG也是有很多的好处
 
-2. 使用可视化部署的方式部署WeIdentity
+1. 可以确保自己的核心业务与社会利益不冲突，从而让企业获得更加健康长远的发展
+2. 关注环保和可持续发展，可以一定程度上减少公司运营成本
+3. 可以增强政府等监管机构对企业的信任；
+4. 在社会大众中建立良好公司形象，从而吸引更多优秀人才的加入
 
-​	a)    选择“WeID原始模式”
+ESG最早发源于欧美，近年来我们国家也开始重视ESG，更是提出自己的ESG标准，我们团队正是看到ESG发展的巨大潜力，想为国内的ESG发展添砖加瓦，尽自己的一份力。
 
-​	b)    区块链管理员选择“联盟链委员会管理员”，非管理员选择“非联盟链委员会管理员”
+## 项目目标
 
-​	c)    配置区块链节点，具体参数如下：
+我们的项目旨在应对当下市场对于有效、透明的ESG（环境、社会和治理）评估和报告工具日益增长的需求。这个领域存在着一个关键问题，就是现有的评估工具缺乏统一、透明且高效的平台。这导致了诸多问题，包括评分标准不一、数据不透明、易篡改、流程冗余等，这些问题不仅影响了评估的公正性，也增加了企业的运营成本。
 
-​		i.     机构名称：AskChain
+我们的项目旨在填补这一市场空白。我们将开发一个基于区块链技术的ESG评分系统，其核心目标是为企业提供一个可靠、透明、易于操作的ESG评估解决方案。此外，我们发现目前市场上并无一个集中了众多企业和评估机构的区块链平台系统。我们的系统将具有成本效率优势，适用于各种规模的企业和评估机构，并能够受到相关监管机构的认可和使用。
 
-​		ii.    通讯ID：1
+通过我们的平台，企业可以更好地披露和展示其在ESG领域的努力和成就。这将为投资者和监管机构提供了一个全面的ESG数据和报告，成为他们决策的重要支持依据。此外，这也有助于增强社会对企业的认知度和支持度，推动整体经济社会的可持续发展。
 
-​		iii.    非国密/国密SSL：非国密
+综上所述，我们的项目目标在于建立一个统一、透明、可信的ESG评估与报告平台，促进ESG信息的透明化和社会认知度，为市场提供一个稳定和可靠的ESG评估工具。
 
-​		iv.    链版本：2.0
 
-​		v.    区块链节点IP和Channel端口：127.0.0.1:20200
 
-​		vi.    ca.crt、sdk.crt、sdk.key等：在部署区块链节点的文件夹下nodes/{服务器IP}/sdk中
+## 方案
 
-​	d)    主群组为1
+### 物理架构
 
-​	e)    不配置数据库
+![image-1](img\image-20231217101648444.png)
 
-​	f)     选择“系统自动创建公私钥”
+### ESG评估周期
 
-​	g)    如果是管理员，则部署 WeIdentity 智能合约
+![image-2](img\image-20231217101704186.png)
 
-官方文档网址：https://weidentity.readthedocs.io/zh-cn/latest/docs/deploy-via-web.html
+### ESG评估流程
 
-3. 打开网页http://localhost:6021，创建当前用户的WeID
-4. 如果是管理员，需要发布CPT
+![image-3](img\image-20231217101722523.png)
 
-CPT模板如下：
+### 评估机构权重设置
 
-```
-{
-	"cptType" : "original",
-	"$schema" : "http://json-schema.org/draft-04/schema#",
-	"description" : "assessment org qualification",
-	"title" : "AssessmentQualificationV2.0",
-	"type" : "object",
-	"properties" : {
-		"address" : {
-		"description" : "org address",
-		"type" : "string"
-		},
-		"field" : {
-		"description" : "E/S/G",
-		"type" : "string"
-		},
-		"level" : {
-		"description" : "org level",
-		"type" : "integer"
-		},
-		"name" : {
-		"description" : "org name",
-		"type" : "string"
-		}
-	}
-}
+**知名度和信誉：**如果评估机构在业界具有较高的知名度和良好的信誉，可以考虑给予较高的权重。
 
-```
+ **专业性和经验：**评估机构的专业性和经验对于其提供的评估质量至关重要。具有更高专业性和丰富经验的机构可以被赋予更高的权重。
 
-#### WeIdentity-Sample部署步骤
+ **独立性：**独立性是一个重要的因素，尤其是在评估过程中。如果评估机构能够独立进行评估而不受其他利益的影响，可以考虑给予更高的权重。
 
-1. 下载WeIdentity-Sample代码：
+ **评估标准一致性：**如果评估机构的评估标准与行业或政府标准更一致，可以考虑给予较高的权重。
 
-`git clone https://github.com/WeBankBlockchain/WeIdentity-Sample`
+ **参与度和数据贡献：**如果评估机构更积极地参与和贡献数据，可以考虑给予较高的权重。
 
-2. 切换到3.1.0分支：
+ **行业影响力：**评估机构在特定行业中的影响力也可以被考虑为权重的因素。
 
-`git checkout release/3.1.0`
+**权重计算公式：**
 
-3. 修改application.properties配置文件：
+· 假设评估机构的权重由以下因素决定：知名度、专业性、独立性、行业影响力等。
 
-   ```properties
-   encrypt.type=0
-   
-   bcos.version=2
-   
-   deploy.style=blockchain
-   ```
+· 为每个因素分配相应的权重，例如：
 
-4. 将私钥、证书、配置文件等拷贝到当前项目中：
+o 知名度权重：30%
 
-(1)   将weid-build-tools/output/admin中的private_key拷贝至weid-sample/keys/priv/目录下。
+o 专业性权重：40%
 
-(2)   在weid-build-tools的resources目录下，将weidentity.properties 和 fisco.properties 复制到weid-sample的resources目录下。
+o 独立性权重：20%
 
-(3)   在weid-build-tools的resources/conf目录下，将所有FISCO BCOS节点证书文件复制到weid-sample的resources/conf目录下（为了方便，可以直接将整个conf目录拷贝过来）。。
+o 行业影响力权重：10%
 
-5. 如果您是第一次运行 WeIdentity-Sample，您需要先进行编译：
+· 最终权重计算公式：
 
-​	`chmod +x build.sh`
+![image-4](img\image-20231217102149313.png)
 
-​	`		./build.sh`
+### 贝叶斯平均算法计算总分
 
-6. 启用服务
+在一个项目中，不同评估机构可能给出的打分存在差异性，且评分数据可能相对不足。这可能导致最终得分的不准确性或偏差。为了应对这个问题，我们引入了贝叶斯平均算法。这个算法通过融合先验信息和新观测数据，提供了一种更为合理和准确的评分方法。它有以下优势：
 
-​	`chmod +x start.sh stop.sh`
+**综合信息处理**：贝叶斯算法能够综合考虑多个评估机构的打分数据，并结合先前的信念或假设，使得评分系统在数据量较少时也能给出相对稳健的估计。
 
-​	`./start.sh`
+**稳健性和鲁棒性**：引入贝叶斯平均能够有效减弱极端数据对最终评分的影响，提高了系统的鲁棒性。即使某些评分数据相对稀疏或存在较大偏差，系统也能更加稳定地反映整体趋势。
 
-#### 参与贡献
+**个性化调整**：先验参数的灵活设定使得评分系统可以根据具体场景进行个性化设置，更好地适应不同评估需求，提供更加客观公正的评价。
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+  **前瞻性和创新性**：引入贝叶斯算法代表了对于传统评分方法的一种创新，为项目带来更多的信任和可靠性，同时也追求更加科学化和前瞻性的打分方法。
 
+公式如下：
+
+**a.** **计算各级别的平均分**
+
+![image-20231217102211422](img\image-20231217102211422.png)
+
+\-    ![image-20231217102226094](img\image-20231217102226094.png):第i个级别的平均分数
+
+\-    ![image-20231217102238001](img\image-20231217102238001.png):第i个级别的总分数
+
+\-    ![image-20231217102257686](img\image-20231217102257686.png):第i个级别的评分数量
+
+**b.** **贝叶斯平均修正**
+
+![image-20231217102339226](img\image-20231217102339226.png)
+
+\-   ![image-20231217102356773](img\image-20231217102356773.png)：经贝叶斯平均修正后的得分
+
+\-  PS：先验强度
+
+### WeIdentity身份认证
+
+**WeIdentity**是一套基于区块链的分布式多中心的技术解决方案，提供分布式实体身份认证及管理、可信数据交换协议等，实现实体对象（人或物）数据的授权与交换。具有可溯源、防篡改等特性。
+
+在本系统中，ESG评估机构拥有对企业项目进行评分的权力，就要求ESG评估机构具有评估资格和能力。为保证智能合约上注册的ESG评估机构拥有监管机构授予的**评估资格**，本系统使用WeIdentity作为ESG评估机构的**实体身份认证工具**。
+
+ESG评估机构在智能合约上注册上链之前，需要经过WeIdentity的认证，保证ESG评估机构经过了监管机构的审查，并取得了相应的评估资格。WeIdentity保证ESG评估机构必须具备评估资质的同时，又**削减**了ESG评估机构证明资质的**繁琐过程**，方便ESG评估机构快速上链。
+
+![image-20231217102325101](img\image-20231217102325101.png)1
