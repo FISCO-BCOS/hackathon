@@ -40,6 +40,7 @@ contract ESGRatingSystem {
         address projectOwner;
         string fileUrl;
         mapping(address => uint8) scores;
+        mapping(address => string) standard;
     }
 
     // 定义评分变化事件
@@ -80,7 +81,8 @@ contract ESGRatingSystem {
     function scoreESG(
         address company,
         uint256 projectId,
-        uint8 score
+        uint8 score,
+        string standard
     ) external {
         require(
             score > 0 && score <= 100,
@@ -92,6 +94,7 @@ contract ESGRatingSystem {
         );
 
         companyProjects[company][projectId].scores[msg.sender] = score;
+        companyProjects[company][projectId].standard[msg.sender] = standard;
 
         // 触发评分变化事件
         emit ScoreChanged(company, msg.sender, projectId, score);
@@ -299,5 +302,13 @@ contract ESGRatingSystem {
             "Permission denied."
         );
         return companyProjects[_company][_projectId].scores[_assessment];
+    }
+
+    function getProjectStandard(address _company, uint _projectId, address _assessment) external view returns (string) {
+        require(
+            _company == msg.sender || assessmentLevel[msg.sender] != 0,
+            "Permission denied."
+        );
+        return companyProjects[_company][_projectId].standard[_assessment];
     }
 }
