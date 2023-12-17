@@ -131,6 +131,7 @@ function getTraceInfo(int ProjectID) public view returns(Project.TraceData[] mem
 - ``string public etp_name``企业名称
 - ``int public num``企业项目数量
 - ``mapping(int => address) public proj``企业项目列表
+- ``mapping(uint => Project) public proj_etp``企业的外包项目列表
 ### 初始化
 ```
 constructor(string id, string name) public
@@ -151,6 +152,46 @@ function Finish(int ProjectID, string remark) public onlyOwner()
 4.项目成交同步函数
 ```
 function AddProfit(uint ProjectID, uint money) external
+```
+5.物料立项函数
+```
+function CreateProj_etp(uint ProjectID, uint ProjectID_etp, string ProjectName_etp, uint money, string remark) public onlyOwner()
+```
+6.指定供应方函数
+```
+function Deal_etp(uint ProjectID_etp, address target, string remark) public onlyOwner()
+```
+7.物料验收函数
+```
+function Pass_etp(uint ProjectID_etp, string remark) public onlyOwner()
+```
+8.物料投入使用函数
+```
+function Work_etp(uint ProjectID_etp, string remark) public onlyOwner()
+```
+9.物料结算函数
+```
+function Salary_etp(uint ProjectID_etp, uint money, string remark) public onlyOwner()
+```
+10.物料售后函数
+```
+function AfterMarket_etp(uint ProjectID_etp, uint money, string remark) public onlyOwner()
+```
+11.查询物料状态
+```
+function getStatus_etp(uint ProjectID_etp) public view returns(uint)
+```
+12.查询物料使用资金
+```
+function getPrice_etp(uint ProjectID_etp) public view returns(uint)
+```
+13.查询项目剩余资金
+```
+function getRev_etp(uint ProjectID_etp) public view returns(int)
+```
+14.查询溯源记录
+```
+function getTraceInfo_etp(uint ProjectID_etp) public view returns(Project.TraceData[] memory _data)
 ```
 ## 银行合约(Bank)
 ### 变量
