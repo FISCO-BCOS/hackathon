@@ -40,12 +40,14 @@ contract Enterprise
     //施工
     function Build(uint ProjectID, uint money, string remark) public onlyOwner()
     {
+        require(Project(proj[ProjectID]).getStatus() == 1, "非法操作!");
         Project(proj[ProjectID]).Build(money, remark);
     }
     
     //竣工
     function Finish(uint ProjectID, string remark) public onlyOwner()
     {
+        require(Project(proj[ProjectID]).getStatus() == 2, "非法操作!");
         Project(proj[ProjectID]).Finish(remark);
         num--;
     }
@@ -58,6 +60,23 @@ contract Enterprise
         emit addProfit(ProjectID, money, "Finish");
     }
     
+    //查询项目状态
+    function getStatus(uint ProjectID) public view returns(uint)
+    {
+        return Project(proj[ProjectID]).getStatus();
+    }
+    
+    //查询项目使用资金
+    function getPrice(uint ProjectID) public view returns(uint)
+    {
+        return Project(proj[ProjectID]).getPrice();
+    }
+    
+    // 查询溯源记录
+    function getTraceInfo(uint ProjectID) public view returns(Project.TraceData[] memory _data) 
+    {
+        return Project(proj[ProjectID]).getTraceInfo();
+    }
     
     //--------------中标企业与外包企业的合约-------------------
     
@@ -73,35 +92,35 @@ contract Enterprise
     //指定供应方
     function Deal_etp(uint ProjectID_etp, address target, string remark) public onlyOwner() 
     {
-        require(proj_etp[ProjectID_etp].getStatus() == 0, "该项目不存在!");
+        require(proj_etp[ProjectID_etp].getStatus() == 0, "非法操作!");
         proj_etp[ProjectID_etp].Deal(target, remark);
     }
     
     //物料验收
     function Pass_etp(uint ProjectID_etp, string remark) public onlyOwner()
     {
-        require(proj_etp[ProjectID_etp].getStatus() == 3, "项目未完成!");
+        require(proj_etp[ProjectID_etp].getStatus() == 3, "非法操作!");
         proj_etp[ProjectID_etp].Pass(0, remark);
     }
     
     //物料投入使用
     function Work_etp(uint ProjectID_etp, string remark) public onlyOwner()
     {
-        require(proj_etp[ProjectID_etp].getStatus() == 4, "项目未验收!");
+        require(proj_etp[ProjectID_etp].getStatus() == 4, "非法操作!");
         proj_etp[ProjectID_etp].Work(remark);
     }
     
     //物料结算
     function Salary_etp(uint ProjectID_etp, uint money, string remark) public onlyOwner()
     {
-        require(proj_etp[ProjectID_etp].getStatus() == 5, "项目未投入使用!");
+        require(proj_etp[ProjectID_etp].getStatus() == 5, "非法操作!");
         proj_etp[ProjectID_etp].Salary(money, remark);
     }
     
     //物料售后
     function AfterMarket_etp(uint ProjectID_etp, uint money, string remark) public onlyOwner()
     {
-        require(proj_etp[ProjectID_etp].getStatus() == 5, "没有权限!");
+        require(proj_etp[ProjectID_etp].getStatus() == 5, "非法操作!");
         proj_etp[ProjectID_etp].AfterMarket(money, remark);
     }
     

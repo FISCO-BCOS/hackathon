@@ -50,21 +50,21 @@ contract Government
     //开标
     function Deal(uint ProjectID, address target, string remark) public onlyOwner() 
     {
-        require(proj[ProjectID].getStatus() == 0, "该项目不存在!");
+        require(proj[ProjectID].getStatus() == 0, "非法操作!");
         proj[ProjectID].Deal(target, remark);
     }
     
     //通过验收
     function Pass(uint ProjectID, uint money, string remark) public onlyOwner()
     {
-        require(proj[ProjectID].getStatus() == 3, "项目未完成!");
+        require(proj[ProjectID].getStatus() == 3, "非法操作!");
         proj[ProjectID].Pass(money, remark);
     }
     
     //投入使用
     function Work(uint ProjectID, string remark) public onlyOwner()
     {
-        require(proj[ProjectID].getStatus() == 4, "项目未验收!");
+        require(proj[ProjectID].getStatus() == 4, "非法操作!");
         proj[ProjectID].Work(remark);
         num--;
     }
@@ -72,14 +72,15 @@ contract Government
     //项目结算
     function Salary(uint ProjectID, uint money, string remark) public onlyOwner()
     {
-        require(proj[ProjectID].getStatus() == 5, "项目未投入使用!");
+        require(proj[ProjectID].getStatus() == 5, "非法操作!");
+        require(getRev(ProjectID) > 0, "项目预算已耗尽!");
         proj[ProjectID].Salary(money, remark);
     }
     
     //售后修缮
     function AfterMarket(uint ProjectID, uint money, string remark) public onlyOwner()
     {
-        require(proj[ProjectID].getStatus() == 5, "没有权限!");
+        require(proj[ProjectID].getStatus() == 5, "非法操作!");
         proj[ProjectID].AfterMarket(money, remark);
         num++;
     }

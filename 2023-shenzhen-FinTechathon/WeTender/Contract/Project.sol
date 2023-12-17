@@ -99,7 +99,6 @@ contract Project
     //项目结算（只有所有者可以操作）
     function Salary(uint money, string remark) external onlyOwner() returns (bool)
     {
-        require(getRev() > 0, "项目预算已耗尽!");
         traceData.push(TraceData({addr:msg.sender, status:4, money:money, timestamp:now, remark:remark}));
         Enterprise(builder).AddProfit(ProjectId, money);
         used_money += money;
@@ -129,7 +128,7 @@ contract Project
     }
     
     //查询项目剩余预算（只有所有者可以查看）
-    function getRev() public view onlyOwner() returns(int)
+    function getRev() public onlyOwner() view returns(int)
     {
         return int(bal) - int(used_money);
     }
