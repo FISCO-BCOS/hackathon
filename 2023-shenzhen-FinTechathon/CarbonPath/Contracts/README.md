@@ -103,3 +103,121 @@ function getTransaction3(uint id) public view returns (
 Note: retrieve CCER transaction information from the blockchain
 ```
 
+
+
+
+
+
+
+## 碳排放核算、清缴
+
+### 3. EmissionAccounting.sol
+This contract allows users carbon emitting enterprises to account for their own carbon emissions
+#### Variables
+```
+    uint constant et1 = 1981; // 原煤碳排放因子
+    uint constant et2 = 2405; // 洗精煤碳排放因子
+    uint constant et3 = 2860; // 焦炭排放因子
+    uint constant et4 = 21622; // 天然气排放因子
+    uint constant et5 = 2925; // 汽油排放因子
+    uint constant et6 = 3096; // 柴油碳排放因子
+    uint constant et7 = 318; // K2CO3排放因子
+    uint constant et8 = 223; // BaCO3排放因子
+    uint constant et9 = 522; // MgCO3排放因子
+    uint constant et10 = 440; // CaCO3碳排放因子
+```
+
+#### Functions
+#### 1. _AccountEmission1 
+```
+function _AccountEmission1(
+        uint amount1,
+        uint amount2,
+        uint amount3,
+        uint amount4,
+        uint amount5
+    ) public returns (string memory log)
+
+function _AccountEmission2(
+        uint amount6,
+        uint amount7,
+        uint amount8,
+        uint amount9,
+        uint amount10
+    ) public returns (string memory log)
+
+```
+```
+Note: Calculate emissions based on emission factors and amounts
+```
+
+#### 2. _sumEmission
+```
+function _sumEmission() public view returns (uint totalEmissions) 
+```
+```
+Note: Returns the sum of total emissions from both _AccountEmission1 and _AccountEmission2. 
+```
+
+
+### 4. Clearance.sol
+This contract allows users carbon emitting enterprises to account for their own carbon emissions
+#### Variables
+```
+    // Historical Transaction Information arrays
+    htxa_id: Array of transaction IDs
+    htxa_seller: Array of seller names
+    htxa_buyer: Array of buyer names
+    htxa_amount: Array of transaction amounts (should be float; multiply 100 times)
+    htxa_price: Array of transaction prices (should be float; multiply 100 times)
+    htxa_time: Array of transaction times in format: "YYYY-MM-DD"
+    htxa_size: Total number of Historical Transaction Information entries uploaded
+
+    // Clearance Information
+    cl_Num = 13: 12 months in total, extra space as buffer
+    cl_companyName: Array of company names for clearance
+    cl_month: Array of months for clearance
+    cl_buyAmount: Array of buy amounts for each month (should be float; multiply 100 times)
+    cl_sellAmount: Array of sell amounts for each month (should be float; multiply 100 times)
+```
+
+#### Functions
+#### 1. htxaRecord
+```
+ffunction htxaRecord(
+        string memory _seller,
+        string memory _buyer,
+        uint _amount,
+        uint _price,
+        string memory _time
+    ) public returns (string memory log)
+
+```
+```
+Note: Record Historical Transaction Information through variables
+```
+#### 2. getHtxa 
+```
+function getHtxa(uint _id) public view returns (string memory seller, string memory buyer, uint amount, uint price, string memory time)
+```
+```
+Note: Get Historical Transaction Information by htxa_id
+```
+
+#### 3. _getclSold 
+```
+function _getclSold(string memory companyName) public view returns (uint[cl_Num] memory) 
+```
+```
+Note: Get the total sell amount for a specific company in each month
+```
+
+#### 4. _getclBought 
+```
+function _getclBought(string memory companyName) public view returns (uint[cl_Num] memory)
+```
+```
+Note: Calculate and retrieve the total buy amount for a specific company in each month
+```
+
+
