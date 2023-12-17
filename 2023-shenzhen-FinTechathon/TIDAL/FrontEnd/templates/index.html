@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>基于区块链的供应链碳足迹一元化系统</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"
+    integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+
+  <style>
+    body {
+      background-image: url("../static/blockchain.jpeg");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+      margin: 0;
+      /* Remove default margin */
+    }
+
+    /* Overlay style */
+    .overlay {
+      position: fixed;
+      /* Use fixed instead of absolute */
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      /* Slightly darker overlay for better contrast */
+      z-index: -1;
+      /* Ensure it's behind all content */
+    }
+
+    /* Style for the page title */
+    h1 {
+      font-size: 2.5rem;
+      margin-top: 2rem;
+      /* Adjust margin-top as needed */
+      color: #ffffff;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    }
+
+    /* Card styles */
+    .card {
+      background-color: rgba(255, 255, 255, 0.9);
+      /* Semi-transparent white */
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px auto;
+      /* Center the card */
+      max-width: 600px;
+      /* Set a max-width for cards */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      /* Add a subtle shadow */
+    }
+
+    /* Card title */
+    .card-title {
+      color: #333;
+      /* Dark color for the card title for readability */
+    }
+
+    /* Card text */
+    .card-text {
+      color: #555;
+      /* Slightly lighter than the title for hierarchy */
+    }
+
+    .button {
+      display: inline-block;
+      margin: 10px;
+      padding: 15px 30px;
+      background-color: #4caf50;
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      border-radius: 5px;
+      box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #45a049;
+    }
+
+    /* Ensure tables inside cards are styled correctly */
+    .card .table-custom {
+      background-color: transparent;
+      /* Remove background from tables in cards */
+      box-shadow: none;
+      /* Remove shadow from tables in cards */
+    }
+
+
+      .table-custom {
+        width: 100%;
+        margin-bottom: 1rem;
+        background-color: #fff;
+      }
+      .table-custom th,
+      .table-custom td {
+        padding: 0.75rem;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;
+      }
+      .table-custom thead th {
+        vertical-align: bottom;
+        border-bottom: 2px solid #dee2e6;
+      }
+      .table-custom thead .table-name {
+        background-color: #f8f9fa;
+        font-size: 1.25em;
+        color: #495057;
+      }
+      .table-custom thead .column-title {
+        background-color: #e9ecef;
+        color: #495057;
+        font-weight: 500;
+      }
+      .table-custom tbody + tbody {
+        border-top: 2px solid #dee2e6;
+      }
+      .table-container {
+        margin-top: 20px;
+      }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    .card-entrance {
+      animation: fadeIn 1s ease-out;
+    }
+
+    .card {
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+      cursor: pointer;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .card-header {
+      background-color: #007bff;
+      color: white;
+      padding: 0.75rem 1.25rem;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .card-body {
+      padding: 1rem;
+    }
+
+    .card-field-name {
+      font-weight: bold;
+      color: #333;
+    }
+
+    .card-field-value {
+      color: #555;
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+      border: none;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+    }
+
+    .btn-secondary {
+      background-color: #6c757d;
+      border: none;
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background-color: #545b62;
+    }
+  </style>
+</head>
+<body>
+
+
+  <div class="user-info-dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownUserInfo" data-toggle="dropdown"
+      aria-haspopup="true" aria-expanded="false">
+      当前用户: <span id="current-user-name">[请选择用户]</span>
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownUserInfo">
+    </div>
+  </div>
+
+
+<!-- Permissions Modal -->
+<div class="modal fade" id="permissionsModal" tabindex="-1" role="dialog" aria-labelledby="permissionsModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="permissionsModalLabel">修改权限</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="permissionsForm">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="readPermission">
+            <label class="form-check-label" for="readPermission">
+              读取权限
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="writePermission">
+            <label class="form-check-label" for="writePermission">
+              写入权限
+            </label>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+        <button type="button" class="btn btn-primary" id="savePermissions">提交</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <div class="container py-5" style="margin-top: 10rem;">
+    <h1 class="text-center" style="margin-bottom: 3rem;">基于区块链的供应链碳足迹一元化系统</h1>
+
+    <div class="row justify-content-center" style="margin-top: 3rem; margin-bottom: 3rem; ">
+      <div class="col-md-6">
+        <input type="text" id="search-bar" class="form-control" placeholder="请输入需要查询的碳足迹数据名" />
+      </div>
+      <div class="col-md-auto">
+        <button id="search-btn" class="btn btn-light">查找</button>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#insertModal">插入</button>
+        <button id="show-all-btn" class="btn btn-info">显示碳足迹</button>
+        <button id="show-databases-btn" class="btn btn-dark">显示数据库</button>
+      </div>
+    </div>
+
+    <!-- Card Container -->
+    <div id="card-container" class="row">
+    </div>
+  </div>
+
+
+
+<div class="modal fade" id="insertModal" tabindex="-1" role="dialog" aria-labelledby="insertModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="insertModalLabel">插入碳足迹数据</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="carbonFootprintForm">
+          <div class="form-group">
+            <label for="key">碳足迹数据名:</label>
+            <input type="text" class="form-control" id="key" name="key" required>
+          </div>
+          <div class="form-group">
+            <label for="indices">数据库索引(逗号分隔):</label>
+            <input type="text" class="form-control" id="indices" name="indices" required>
+          </div>
+          <div class="form-group">
+            <label for="content">碳足迹数据:</label>
+            <input type="text" class="form-control" id="content" name="content" required>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+        <button type="submit" form="carbonFootprintForm" class="btn btn-primary">提交</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+  <script>
+
+
+    function renderCard(item) {
+      const card = `
+    <div class="col-md-4">
+      <div class="card text-center mt-4 card-entrance">
+        <div class="card-header">${item.Key}</div>
+        <div class="card-body">
+          <p class="card-text"><span class="card-field-name">哈希值：</span><span class="card-field-value">${item.hashValue}</span></p>
+          <p class="card-text"><span class="card-field-name">索引：</span><span class="card-field-value">${item.databaseIndices}</span></p>
+          <button class="btn btn-primary modify-btn" data-key="${item.Key}">修改</button>
+          <button class="btn btn-secondary verify-btn" data-key="${item.Key}">验证</button>
+        </div>
+      </div>
+    </div>
+  `;
+      $("#card-container").append(card);
+    }
+
+    $(document).ready(function () {
+
+      // Search button click
+      $("#search-btn").click(function () {
+        var key = $("#search-bar").val();
+        $.post("/search", { key: key }, function (item, status) {
+          if (status === "success") {
+            if (item.error) {
+              // If the server returned an error, check the error code
+              handleErrorResponse(item.errorCode);
+            } else {
+              // If the server returned a successful response, render the card
+              $("#card-container").empty();
+              if (item.Key === "Empty") {}
+              else {
+                renderCard(item);
+              }
+              
+            }
+          }
+        }).fail(function (xhr, status, error) {
+          handleErrorResponse(xhr.status);
+        });
+      });
+
+      // Show all button click
+      $("#show-all-btn").click(function () {
+        $("#card-container").empty();
+        $.get("/getAll", function (data, status) {
+          if (status === "success") {
+            if (data.error) {
+              // If the server returned an error, check the error code
+              handleErrorResponse(data.errorCode);
+            } else {
+              // If the server returned a successful response, render the cards
+              data.forEach(renderCard);
+            }
+          }
+        }).fail(function (xhr, status, error) {
+          handleErrorResponse(xhr.status);
+        });
+      });
+
+      // Insert card
+      $("#carbonFootprintForm").submit(function (event) {
+        event.preventDefault(); // Prevent the default form submission behavior
+    
+        var formData = {
+          key: $('#key').val(),
+          indices: $('#indices').val(),
+          content: $('#content').val()
+        };
+    
+        $.post("/insert", formData, function (response, status) {
+          $('#insertModal').modal('hide'); // Hide the modal
+          if (status === "success") {
+            if (response.error) {
+              // If the server returned an error
+              handleErrorResponse(response.errorCode);
+            } else {
+              // If the server returned a successful response, render the card
+              alert("修改成功!");
+              var new_res = {
+                Key: formData.key,
+                hashValue: response,
+                databaseIndices: formData.indices,
+              };
+              renderCard(new_res);
+            }
+          }
+        }).fail(function (xhr, status, error) {
+          // If the request fails, check the status code
+          handleErrorResponse(xhr.status);
+        });
+      });
+
+      $("#card-container").on("click", ".modify-btn", function () {
+        var key = $(this).closest(".card").find(".card-header").text();
+        console.log($(this));
+        var card = $(this).closest(".card");
+        var new_footprint = prompt("请输入更新的碳足迹数据");
+
+        if (new_footprint) {
+          $.post(
+            "/modifyProcess",
+            { key: key, new_footprint: new_footprint },
+            function (data, status) {
+              if (status === "success") {
+                if (data.error) {
+                  // If the server returned an error, check the error code
+                  handleErrorResponse(data.errorCode);
+                } else {
+                  // If the server returned a successful response, update the card
+                  card.find(".card-header").text(data.key);
+                  card
+                    .find(".card-text")
+                    .first()
+                    .text("哈希值： " + data.chameleon);
+                  alert("修改成功!");
+                }
+              }
+            }
+          ).fail(function (xhr, status, error) {
+            handleErrorResponse(xhr.status);
+          });
+        }
+      });
+
+      function handleErrorResponse(errorCode) {
+        if (errorCode === 403) {
+          alert("权限不足，无法操作！");
+        } else if (errorCode === 500) {
+          alert("服务 500 错误，请联系管理员");
+        } else {
+          alert("请求失败：" + errorCode);
+        }
+      }
+
+      $("#card-container").on("click", ".verify-btn", function () {
+        var key = $(this).closest(".card").find(".card-header")[0].innerText;
+        var btn = $(this);
+        //btn.text("Verifying..."); // show loading text
+        btn.text("验证中...");
+        $.post("/verifyProcess", { key: key }, function (data) {
+          if (data.result == "Data Verification Completed!") {
+            //btn.text("✔️ Verified");
+            btn.text("✔️ 验证通过");
+            btn.removeClass("btn-secondary").addClass("btn-success");
+          } else {
+            //btn.text("❌ Verification Failed");
+            btn.text("❌ 验证失败");
+            btn.removeClass("btn-secondary").addClass("btn-danger");
+          }
+        });
+      });
+    });
+
+    function renderTableData(data) {
+      // Define a mapping of table keys to display names
+      const tableNameMapping = {
+        "bom_data_part_1": "金属工厂(1)",
+        "bom_data_part_3": "钣金工厂(3)",
+        "bom_data_part_5": "总装工厂(5)",
+      };
+    
+      var container = $("#card-container");
+      container.empty(); // Clear existing content
+      // Iterate over each table in the data
+      Object.keys(data).forEach(function (tableName) {
+        var displayName = tableNameMapping[tableName] || tableName; // Use mapped name or default to the key
+        var tableData = data[tableName];
+        var table = $('<table class="table table-custom"></table>'); 
+        var thead = $('<thead></thead>');
+        var tbody = $("<tbody></tbody>");
+    
+        thead.append(`<tr><th colspan="2" class="table-name">${displayName}</th></tr>`);
+        // Column titles
+        thead.append(`<tr class="column-title"><th>碳足迹数据名</th><th>碳足迹数据</th></tr>`);
+        table.append(thead);
+    
+        // Rows with the data
+        tableData.forEach(function (rowData) {
+          var tr = $("<tr></tr>");
+          rowData.forEach(function (cell) {
+            tr.append(`<td>${cell}</td>`);
+          });
+          tbody.append(tr);
+        });
+    
+        table.append(tbody);
+        container.append(table);
+      });
+    }
+
+    $("#show-databases-btn").click(function () {
+      // Fetch the data from the server
+      $.ajax({
+        url: "/selectAllTables", 
+        method: "GET", 
+        dataType: "json",
+        success: function (data) {
+          renderTableData(data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+          console.error("Error fetching data: ", textStatus, errorThrown);
+          alert("权限不足，无法操作！");
+        },
+      });
+    });
+
+      document.addEventListener('DOMContentLoaded', function() {
+
+        // Add event listener to the "Write Permissions" checkbox
+        document.getElementById('writePermission').addEventListener('change', function() {
+          if (this.checked) {
+            document.getElementById('readPermission').checked = true;
+          }
+        });
+
+        document.getElementById('readPermission').addEventListener('change', function() {
+          if (!this.checked && document.getElementById('writePermission').checked) {
+            this.checked = true;
+          }
+        });
+
+        // Add event listener to the save button in the modal
+        document.getElementById('savePermissions').addEventListener('click', function() {
+          // Get the username and role from the modal dataset
+          const modal = document.getElementById('permissionsModal');
+          const username = modal.dataset.username;
+          const readPerm = document.getElementById('readPermission').checked;
+          const writePerm = document.getElementById('writePermission').checked;
+
+          // Determine the new role number
+          let roleNumber = 0;
+          if (writePerm) {
+            roleNumber = 2;
+          } else if (readPerm) {
+            roleNumber = 1;
+          }
+
+          // Make the POST request to the server
+          fetch('/changeRole', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `username=${encodeURIComponent(username)}&role=${roleNumber}`
+          })
+          .then(response => response.json())
+          .then(data => {
+            if(data.success) {
+              // Update the button in the dropdown
+              const userButtons = document.querySelectorAll('.dropdown-item');
+              userButtons.forEach(button => {
+                if (button.textContent.trim() === username) {
+                  button.dataset.role = roleNumber;
+                }
+              });
+
+              // Close the modal
+              $('#permissionsModal').modal('hide');
+            } else {
+              alert('权限更新失败.');
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          });
+        });
+
+        fetch('/allUsers')
+          .then(response => response.json())
+          .then(users => {
+            const dropdownMenu = document.querySelector('.dropdown-menu');
+            dropdownMenu.innerHTML = '';
+      
+            users.forEach(user => {
+              const [name, role] = user;
+              const dropdownItem = document.createElement('div');
+              dropdownItem.className = 'dropdown-item';
+      
+              // User name link
+              const userLink = document.createElement('a');
+              userLink.href = '#';
+              userLink.textContent = name;
+              userLink.style.marginRight = '10px';
+              userLink.onclick = function() {
+                changeUser(name); // Call the changeUser function when a user is selected
+              };
+      
+              // Modify permissions button
+              const modifyButton = document.createElement('button');
+              modifyButton.textContent = "权限编辑";
+              modifyButton.className = "btn btn-primary btn-sm";
+              modifyButton.type = "button";
+              modifyButton.onclick = function() {
+                // Set the current user and role in the modal
+                const modal = document.getElementById('permissionsModal');
+                modal.dataset.username = name;
+                modal.dataset.role = role;
+      
+                // Check/uncheck checkboxes based on the current role
+                document.getElementById('readPermission').checked = role >= 1;
+                document.getElementById('writePermission').checked = role === 2;
+      
+                // Show the modal
+                $('#permissionsModal').modal('show');
+              };
+      
+              // Append elements to the dropdown item
+              dropdownItem.appendChild(userLink);
+              dropdownItem.appendChild(modifyButton);
+              dropdownMenu.appendChild(dropdownItem);
+            });
+          });
+      
+        // Function to handle user selection
+        function changeUser(username) {
+          fetch('/changeUser', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `username=${encodeURIComponent(username)}`
+          })
+          .then(response => response.json())
+          .then(data => {
+            if(data.success) {
+              // Update the UI to reflect the current user
+              document.getElementById('current-user-name').textContent = username;
+            } else {
+              alert('There was an error selecting the user.');
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          });
+        }
+      
+      });
+
+  </script>
+  </div>
+</body>
+
+</html>
