@@ -61,6 +61,10 @@
       /* Set a max-width for cards */
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       /* Add a subtle shadow */
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+      cursor: pointer;
+      overflow: hidden;
+      margin-bottom: 1rem;
     }
 
     /* Card title */
@@ -138,15 +142,6 @@
 
     .card-entrance {
       animation: fadeIn 1s ease-out;
-    }
-
-    .card {
-      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
-      cursor: pointer;
-      border-radius: 8px;
-      overflow: hidden;
-      margin-bottom: 1rem;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     .card:hover {
