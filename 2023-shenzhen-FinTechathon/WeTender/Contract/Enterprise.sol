@@ -28,6 +28,7 @@ contract Enterprise
         etp_id = id;
         etp_name = name;
         num = 0;
+        profit = 0;
     }
     
     //开标同步
