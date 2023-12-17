@@ -97,9 +97,9 @@ contract Project
     }
     
     //项目结算（只有所有者可以操作）
-    function Salary(uint money, string remark) external onlyOwner() returns (bool)
+    function Salary(uint money, string remark) external onlyOwner()
     {
-        traceData.push(TraceData({addr:msg.sender, status:4, money:money, timestamp:now, remark:remark}));
+        traceData.push(TraceData({addr:msg.sender, status:5, money:money, timestamp:now, remark:remark}));
         Enterprise(builder).AddProfit(ProjectId, money);
         used_money += money;
         emit newStatus(msg.sender, 5, money, now, remark);
