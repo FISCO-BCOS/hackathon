@@ -5,7 +5,7 @@ pragma experimental ABIEncoderV2;
 
 contract ESGRatingSystem {
     // 存储政府的信息
-    address private government = 0xf4abb7c0624e2311eec36a3e3887da605c14ff24;
+    address private government = 0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db;
 
     // 存储评估机构地址的数组
     address[] private assessmentAddresses;
@@ -169,7 +169,9 @@ contract ESGRatingSystem {
             }
         }
         for (i = 0; i < 3; i++) {
-            scoreResult[i] = levelScoreSum[i] / scoreCnt[i];
+            if (scoreCnt[i] > 0) {
+                scoreResult[i] = levelScoreSum[i] / scoreCnt[i];
+            }
         }
 
         // 贝叶斯平均修正
@@ -192,10 +194,14 @@ contract ESGRatingSystem {
     function adjustScore(uint256 score0, uint256 score1, uint256 score2, uint[3] memory scoreCnt, uint256 priorStrength, uint256 priorMean) pure internal returns (uint256) {
         uint256 adjustedScore;
 
-        // 计算贝叶斯平均修正
-        adjustedScore = score0 +
-            ((score0 - score1) * (scoreCnt[1] * 4) / (scoreCnt[0] + scoreCnt[1])) / priorStrength +
-            ((score0 - score2) * (scoreCnt[2] * 8) / (scoreCnt[0] + scoreCnt[1] + scoreCnt[2])) / priorStrength;
+        if (scoreCnt[0] + scoreCnt[1] > 0) {
+            // 计算贝叶斯平均修正
+            adjustedScore = score0 +
+                ((score0 - score1) * (scoreCnt[1] * 4) / (scoreCnt[0] + scoreCnt[1])) / priorStrength +
+                ((score0 - score2) * (scoreCnt[2] * 8) / (scoreCnt[0] + scoreCnt[1] + scoreCnt[2])) / priorStrength;
+        } else {
+            return 0;
+        }
 
         return adjustedScore;
     }
@@ -227,7 +233,7 @@ contract ESGRatingSystem {
         );
 
         ProjectData memory project = ProjectData({
-            id: companyProjects[msg.sender].length - 1,
+            id: companyProjects[msg.sender].length,
             projectName: _projectName,
             projectDescription: _projectDescription,
             property: _property,
