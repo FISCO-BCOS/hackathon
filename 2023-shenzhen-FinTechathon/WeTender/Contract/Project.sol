@@ -97,7 +97,7 @@ contract Project
     }
     
     //项目结算（只有所有者可以操作）
-    function Salary(uint money, string remark) public onlyOwner() returns (bool)
+    function Salary(uint money, string remark) external onlyOwner() returns (bool)
     {
         require(getRev() > 0, "项目预算已耗尽!");
         traceData.push(TraceData({addr:msg.sender, status:4, money:money, timestamp:now, remark:remark}));
