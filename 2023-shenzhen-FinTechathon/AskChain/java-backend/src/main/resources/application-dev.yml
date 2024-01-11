@@ -1,0 +1,7 @@
+server:
+  port: 2333
+
+bcos:
+  key-store-path: C:\Users\zhong\code\blockchain-esg\java-backend\account\key
+  config-file: C:\Users\zhong\code\blockchain-esg\java-backend\config-example.toml
+  contract-address: 0xa9b3396876aed1b95413529e7194b1391757ec13
