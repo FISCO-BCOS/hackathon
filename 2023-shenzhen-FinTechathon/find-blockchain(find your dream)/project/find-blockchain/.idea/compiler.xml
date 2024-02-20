@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="common-api" />
+        <module name="fisco-shard6" />
+        <module name="fisco-shard5" />
+        <module name="blockchain-web-admin" />
+        <module name="fisco-shard2" />
+        <module name="fisco-shard1" />
+        <module name="fisco-shard4" />
+        <module name="fisco-shard3" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="blockchain-web-admin" options="-parameters" />
+      <module name="common-api" options="-parameters" />
+      <module name="find-blockchain" options="-parameters" />
+      <module name="find-blockchain-web" options="-parameters" />
+      <module name="fisco-shard1" options="-parameters" />
+      <module name="fisco-shard2" options="-parameters" />
+    </option>
+  </component>
+</project>

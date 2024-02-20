@@ -1,0 +1,27 @@
+dubbo:
+  application:
+    name: fisco-shard-1
+    id: fisco-shard-1
+  registry:
+    protocol: zookeeper
+    address: 127.0.0.1:2183
+  protocol:
+    name: dubbo
+    port: 20881
+  monitor:
+    protocol: dubbo-registry
+  scan:
+    base-packages: com.find.fiscoshard1.service.impl
+server:
+  port: 8088
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/validation_6g?userUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: debian-sys-maint
+    password: 5BEjcH9FLCTusoSQ
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    name: defaultDataSource
+mybatis:
+  type-aliases-package: com.find.fiscoshard1.pojo
+  mapper-locations: classpath:mapper/*.xml

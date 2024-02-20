@@ -1,0 +1,73 @@
+
+server:
+  port: 8085
+
+dubbo:
+  application:
+    id: blockchain-web-admin
+    name: blockchain-web-admin
+  monitor:
+    protocol: dubbo-registry
+  registry:
+    protocol: zookeeper
+    address: 10.21.181.3:2182
+  protocol:
+    name: dubbo
+    port: 20880
+  consumer:
+    timeout: 50000
+    retries: 0
+
+
+spring:
+  datasource:
+    url: jdbc:mysql://10.21.181.3:3306/terminal?allowPublicKeyRetrieval=true&userUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: su
+    password: Su@123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    name: defaultDataSource
+  rabbitmq:
+    host: 192.168.253.129 # rabbitmq的连接地址
+    port: 5672 # rabbitmq的连接端口号
+    virtual-host: / # rabbitmq的虚拟host
+    username: admin # rabbitmq的用户名
+    password: 123 # rabbitmq的密码
+  redis:
+    host: 10.21.181.3
+    port: 6379
+    database: 0
+
+elasticsearch:
+  host: 10.21.181.3
+  port: 9200
+  connTimeout: 3000
+  socketTimeout: 5000
+  connectionRequestTimeout: 500
+
+  thymeleaf:
+    cache: false
+mybatis:
+  type-aliases-package: com.find.pojo
+  mapper-locations: classpath:mapper/*.xml
+
+rocketmq:
+  consumer:
+    group: springboot_consumer_group
+    # 一次拉取消息最大值，注意是拉取消息的最大值而非消费最大值
+    pull-batch-size: 10
+  name-server: 10.21.181.3:9876
+  producer:
+    # 发送同一类消息的设置为同一个group，保证唯一
+    group: springboot_producer_group
+    # 发送消息超时时间，默认3000
+    sendMessageTimeout: 10000
+    # 发送消息失败重试次数，默认2
+    retryTimesWhenSendFailed: 2
+    # 异步消息重试此处，默认2
+    retryTimesWhenSendAsyncFailed: 2
+    # 消息最大长度，默认1024 * 1024 * 4(默认4M)
+    maxMessageSize: 4096
+    # 压缩消息阈值，默认4k(1024 * 4)
+    compressMessageBodyThreshold: 4096
+    # 是否在内部发送失败时重试另一个broker，默认false
+    retryNextServer: false

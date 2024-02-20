@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="2.6">
+    <CLASSES>
+      <root url="file://E:/MavenRepository/org/springframework/data/spring-data-redis/2.6.4" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://E:/MavenRepository/org/springframework/data/spring-data-redis/2.6.4" recursive="false" />
+  </library>
+</component>

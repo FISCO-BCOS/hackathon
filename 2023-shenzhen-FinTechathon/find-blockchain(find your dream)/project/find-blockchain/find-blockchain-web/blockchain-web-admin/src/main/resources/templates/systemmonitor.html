@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>任务监控</title>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet" href="/layui/css/layui.css">
+
+    <script type="text/html" id="barDemo">
+            <a class="layui-btn layui-btn-xs" lay-event="getRecords">下载训练记录</a>
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+</head>
+<body>
+
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header" style="background-color: #0C0C0C">
+        <div class="layui-logo layui-hide-xs layui-bg-black" style="background-color: #0C0C0C !important">
+            <img src="/img/gdutlogo.png" width="180px" height="45px">
+        </div>
+        <!-- 头部区域（可配合layui 已有的水平导航） -->
+        <ul class="layui-nav layui-layout-left">
+            <!-- 移动端显示 -->
+            <li class="layui-nav-item layui-show-xs-inline-block layui-hide-sm" lay-header-event="menuLeft">
+                <i class="layui-icon layui-icon-spread-left"></i>
+            </li>
+
+            <li class="layui-nav-item layui-hide-xs">系统监控</li>
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item layui-hide layui-show-md-inline-block">
+
+                <a href="javascript:;">
+                    <img src="/img/gdut.png" class="layui-nav-img">
+                    管理员
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">Your Profile</a></dd>
+                    <dd><a href="">Settings</a></dd>
+                    <dd><a href="">Sign out</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item" lay-header-event="menuRight" lay-unselect>
+                <a href="javascript:;">
+                    <i class="layui-icon layui-icon-more-vertical"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll" style="background-color: teal">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree" lay-filter="test" style="background-color: teal">
+                <li class="layui-nav-item" ><a href="http://127.0.0.1:8085/home">主页</a></li>
+                <li class="layui-nav-item"><a href="http://127.0.0.1:8085/nodemanager">终端管理</a></li>
+                <li class="layui-nav-item"><a href="http://127.0.0.1:8085/taskrelease">任务发布</a></li>
+                <li class="layui-nav-item"><a href="http://127.0.0.1:8085/systemmonitor">任务监控</a></li>
+
+                <li class="layui-nav-item"><a href="http://127.0.0.1:8085/gradienttest">区块链服务</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body" align="center" style="padding-top: 20px">
+        <!-- 内容主体区域 -->
+        <table class="layui-hide" id="test" lay-filter="test"></table>
+    </div>
+    <div class="layui-footer">
+        cailibinandrew@foxmail.com
+    </div>
+
+
+</div>
+<script th:src="@{/layui/layui.js}" src="/layui/layui.js"></script>
+
+<script>
+    var socket;
+
+    window.onload = function () {
+        if (typeof (WebSocket) == "undefined") {
+            console.log("您的浏览器不支持WebSocket");
+        } else {
+            console.log("您的浏览器支持WebSocket");
+            //实现化WebSocket对象，指定要连接的服务器地址与端口  建立连接
+            var userId = "admin";
+            var socketUrl = "ws://127.0.0.1:8085/webSocket/" + userId;
+            if (socket != null) {
+                socket.close();
+                socket = null;
+            }
+            socket = new WebSocket(socketUrl);
+            //打开事件
+            socket.onopen = function () {
+                var table = layui.table;
+
+                table.render({
+                    elem: '#test'
+                    , url: '/table/getAllNodes'
+                    , cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+                    , cols: [
+                        [
+                            {field: 'id', width: 100, title: 'ID', sort: true}
+                            , {field: 'ip', width: 300, title: 'IP地址'}
+                            , {field: 'port', width: 100, title: '端口号'}
+                            , {field: 'type', width: 200, title: '类型'}
+                            , {field: 'state', title: '状态', width: 200} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+                            , {field: 'times', title: '轮数', sort: true}
+                            , {field: 'accuracy', title: '准确率'}
+                            ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
+                        ]
+                    ], page: true,
+                        limit:10
+                });
+            };
+            //获得消息事件
+            socket.onmessage = function (msg) {
+                // var serverMsg = "收到服务端信息：" + msg.data;
+                // alert(msg.data)
+                // console.log(serverMsg);
+                //发现消息进入    开始处理前端触发逻辑
+                layui.use('table', function () {
+                    var table = layui.table;
+
+                    table.render({
+                        elem: '#test'
+                        , url: '/table/getAllNodes'
+                        , cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+                        , cols: [
+                            [
+                                {field: 'nodeId', title: 'ID', sort: true}
+                                // , {field: 'ip', width: 300, title: 'IP地址'}
+                                // , {field: 'port', width: 100, title: '端口号'}
+                                // , {field: 'type', width: 200, title: '类型'}
+                                , {field: 'state', title: '状态', } //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+                                , {field: 'times', title: '轮数', sort: true}
+                                , {field: 'accuracy', title: '准确率'}
+                                , {field: 'line', title: '车道'}
+                                ,{fixed: 'right', title:'操作', toolbar: '#barDemo'}
+                            ]
+                        ], page: true,
+                        limit:10
+                    });
+
+                    table.on('tool(test)', function(obj){
+                        var data = obj.data;
+
+
+                        var img = "<img src='" + "http://192.168.253.129:8085/api/v1/image?plotId="+data.id + "' />";
+                        layer.open({
+                            type: 1,
+                            shade: false,
+                            title: false, //不显示标题
+                            area:['auto','auto'],
+                            area: [img.width + 'px', img.height+'px'],
+                            content: img, //捕获的元素，注意：最好该指定的元素要存放在body最外层，否则可能被其它的相对元素所影响
+                            cancel: function () {
+                                //layer.msg('图片查看结束！', { time: 5000, icon: 6 });
+                            }
+                        });
+
+                        // $.ajax({
+                        //     type: 'GET',
+                        //     url: '/org1/test',//发送请求
+                        //     data: {
+                        //         cliId:data.id,
+                        //     },
+                        //     success: function(result) {
+                        //     console.log(result);
+                        //     console.log(result);
+                        //
+                        //         var img = "<img src='" + "http://222.200.125.141:8085/api/v1/image?plotId="+data.cliName + "' />";
+                        //         layer.open({
+                        //             type: 1,
+                        //             shade: false,
+                        //             title: false, //不显示标题
+                        //             area:['auto','auto'],
+                        //             area: [img.width + 'px', img.height+'px'],
+                        //             content: img, //捕获的元素，注意：最好该指定的元素要存放在body最外层，否则可能被其它的相对元素所影响
+                        //             cancel: function () {
+                        //                 //layer.msg('图片查看结束！', { time: 5000, icon: 6 });
+                        //             }
+                        //         });
+                        //
+                        //
+                        //     }
+                        // });
+
+                       // if(obj.event === 'getRecords'){
+                       //      var url= "/org1/test";
+                       //      var request= new XMLHttpRequest();
+                       //
+                       //     console.log("pass judge")
+                       //
+                       //      request.onload = function () {
+                       //          if (request.status){
+                       //              console.log(obj)
+                       //          }
+                       //      }
+                       //      request.open("GET",url);
+                       //      request.send(null);
+                       //  }
+
+
+                    });
+                });
+            };
+
+
+
+            //关闭事件
+            socket.onclose = function () {
+                console.log("websocket已关闭");
+            };
+            //发生了错误事件
+            socket.onerror = function () {
+                console.log("websocket发生了错误");
+            }
+        }
+    }
+
+
+
+</script>
+<script>
+    //JS
+    layui.use(['element', 'layer', 'util'], function () {
+        var element = layui.element
+            , layer = layui.layer
+            , util = layui.util
+            , $ = layui.$;
+
+        //头部事件
+        util.event('lay-header-event', {
+            //左侧菜单事件
+            menuLeft: function (othis) {
+                layer.msg('展开左侧菜单的操作', {icon: 0});
+            }
+            , menuRight: function () {
+                layer.open({
+                    type: 1
+                    , content: '<div style="padding: 15px;">处理右侧面板的操作</div>'
+                    , area: ['260px', '100%']
+                    , offset: 'rt' //右上角
+                    , anim: 5
+                    , shadeClose: true
+                });
+            }
+        });
+    });
+
+
+
+    layui.use('table', function () {
+        var table = layui.table;
+    });
+</script>
+</body>
+</html>
