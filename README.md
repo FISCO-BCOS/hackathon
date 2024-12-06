@@ -16,7 +16,7 @@
 ### [提交说明与入口](2024-shenzhen-FinTechathon/README.md)
 
 ---------------------
-#  [2023 深圳国际金融科技大赛（FinTechathon））](2023-shenzhen-FinTechathon/README.md)
+#  [2023 深圳国际金融科技大赛（FinTechathon）](2023-shenzhen-FinTechathon/README.md)
 
 ## 赛事简介
 2023深圳国际金融科技大赛（FinTechathon）—— 西丽湖金融科技大学生挑战赛面向金融科技前沿领域，由深圳市地方金融监督管理局、深圳市福田区人民政府、深圳市南山区人民政府作为战略指导单位，深大微众金融科技学院、微众银行、深圳香蜜湖国际金融科技研究院作为主办方联袂打造，FISCO BCOS开源社区为区块链赛道提供全程技术支持。
