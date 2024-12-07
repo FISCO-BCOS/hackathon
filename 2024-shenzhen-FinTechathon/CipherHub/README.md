@@ -79,6 +79,6 @@ https://github.com/JupiterXiaoxiaoYu/FHE-FiscoBcos
 https://github.com/JupiterXiaoxiaoYu/zkFHE-Decryption-Proof
 
 ## 项目团队
-- 香港科技大学（广州）数据科学与分析学域：余晓霄 硕士生 —— 导师 唐靖 助理教授 
-- 香港科技大学（广州）金融科技学域：曹懿月 博士生 —— 导师 王雪超 助理教授 
+- 香港科技大学（广州）数据科学与分析学域：余晓霄 硕士研究生 —— 导师 唐靖 助理教授 
+- 香港科技大学（广州）金融科技学域：曹懿月 博士研究生 —— 导师 王雪超 助理教授 
 
