@@ -1,0 +1,27 @@
+{
+    "collection_id": "unique_id_123",
+    "collection_name": "Sample Artwork",
+    "collection_matrix": [
+        [
+            1,
+            2,
+            3
+        ],
+        [
+            4,
+            5,
+            6
+        ],
+        [
+            7,
+            8,
+            9
+        ]
+    ],
+    "collection_make": "Artwork Maker",
+    "collection_record": "Artwork Record",
+    "owner_id": "owner_456",
+    "certificate_time": "2024-12-01T13:21:49Z",
+    "certificate_organization": "Artwork Certification Org",
+    "collection_semantic": "12345"
+}

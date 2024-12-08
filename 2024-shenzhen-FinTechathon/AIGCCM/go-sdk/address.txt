@@ -1,0 +1,9 @@
+luanboyue@skyeyecontroller:~/AI4C/Contracts/go-sdk$ go run /home/luanboyue/AI4C/Contracts/go-sdk/contract/accounttable/cmd/main.go
+contract address:  0x904ed579402eD8BBb80ee7F0eb02e8226d78a70f
+transaction hash:  0xa9db6c9ad3dfc6ddc6c1e157050f7e0cd75d648b71b85be7528e40f18e4e1ba3
+luanboyue@skyeyecontroller:~/AI4C/Contracts/go-sdk$ go run /home/luanboyue/AI4C/Contracts/go-sdk/contract/collectiontable/cmd/main.go
+contract address:  0xcb465127073489235bBB8cF6995172a7c7420b3F
+transaction hash:  0xc33065369fdf53ea5a2a7580c39842ad9d9cf6457852720fdb206ebcc79f2949
+luanboyue@skyeyecontroller:~/AI4C/Contracts/go-sdk$ go run /home/luanboyue/AI4C/Contracts/go-sdk/contract/kvtabletest/cmd/kvtabletest_main.go
+contract address:  0xE46EE87f19049d5705989f49305b136d0732a0Cf
+transaction hash:  0xee0c1f68703e2eaf302e138fd0eb8d88adecd139a9260afd2d8f25ac8477827b

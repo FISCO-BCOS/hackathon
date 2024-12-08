@@ -1,0 +1,4 @@
+[github.com/flipped-aurora/gin-vue-admin/server]2024/12/08 - 10:09:01.150	[31merror[0m	D:/files downloads/hackathon-master/server/api/v1/system/sys_user.go:56	登陆失败! 用户名不存在或者密码错误!	{"error": "db not init"}
+[github.com/flipped-aurora/gin-vue-admin/server]2024/12/08 - 10:09:12.132	[31merror[0m	D:/files downloads/hackathon-master/server/api/v1/system/sys_user.go:56	登陆失败! 用户名不存在或者密码错误!	{"error": "db not init"}
+[github.com/flipped-aurora/gin-vue-admin/server]2024/12/08 - 10:16:31.023	[31merror[0m	D:/files downloads/hackathon-master/server/api/v1/chainuser/user_chain.go:137	查询失败!	{"error": "record not found"}
+[github.com/flipped-aurora/gin-vue-admin/server]2024/12/08 - 10:21:31.968	[31merror[0m	D:/files downloads/hackathon-master/server/api/v1/chainuser/user_chain.go:137	查询失败!	{"error": "record not found"}

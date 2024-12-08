@@ -1,0 +1,9 @@
+[github.com/flipped-aurora/gin-vue-admin/server]2024/12/08 - 10:08:39.499	[34minfo[0m	D:/files downloads/hackathon-master/server/initialize/router.go:50	register swagger handler
+[github.com/flipped-aurora/gin-vue-admin/server]2024/12/08 - 10:08:39.552	[34minfo[0m	D:/files downloads/hackathon-master/server/initialize/router.go:95	router register success
+[github.com/flipped-aurora/gin-vue-admin/server]2024/12/08 - 10:08:39.555	[34minfo[0m	D:/files downloads/hackathon-master/server/core/server.go:41	server run success on 	{"address": ":8888"}
+[github.com/flipped-aurora/gin-vue-admin/server]2024/12/08 - 10:09:17.894	[34minfo[0m	D:/files downloads/hackathon-master/server/api/v1/system/sys_initdb.go:57	前往初始化数据库
+[github.com/flipped-aurora/gin-vue-admin/server]2024/12/08 - 10:10:10.029	[34minfo[0m	D:/files downloads/hackathon-master/server/api/v1/system/sys_initdb.go:57	数据库无需初始化
+[github.com/flipped-aurora/gin-vue-admin/server]2024/12/08 - 10:15:01.246	[34minfo[0m	D:/files downloads/hackathon-master/server/initialize/gorm.go:62	register table success
+[github.com/flipped-aurora/gin-vue-admin/server]2024/12/08 - 10:15:01.250	[34minfo[0m	D:/files downloads/hackathon-master/server/initialize/router.go:50	register swagger handler
+[github.com/flipped-aurora/gin-vue-admin/server]2024/12/08 - 10:15:01.292	[34minfo[0m	D:/files downloads/hackathon-master/server/initialize/router.go:95	router register success
+[github.com/flipped-aurora/gin-vue-admin/server]2024/12/08 - 10:15:01.295	[34minfo[0m	D:/files downloads/hackathon-master/server/core/server.go:41	server run success on 	{"address": ":8888"}
