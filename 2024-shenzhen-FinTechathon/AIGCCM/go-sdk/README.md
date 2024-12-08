@@ -1,36 +1,121 @@
-# go-sdk
+### 链端部署文档
 
-Golang SDK For FISCO BCOS 2.2.0+
+#### 1. 配置生产环境
 
-[![CodeFactor](https://www.codefactor.io/repository/github/fisco-bcos/go-sdk/badge)](https://www.codefactor.io/repository/github/fisco-bcos/go-sdk)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/afbb696df3a8436a9e446d39251b2158)](https://www.codacy.com/gh/FISCO-BCOS/go-sdk?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=FISCO-BCOS/go-sdk&amp;utm_campaign=Badge_Grade)
-[![codecov](https://codecov.io/gh/FISCO-BCOS/go-sdk/branch/master/graph/badge.svg)](https://codecov.io/gh/FISCO-BCOS/go-sdk)
-[![Code Lines](https://tokei.rs/b1/github/FISCO-BCOS/go-sdk?category=code)](https://github.com/FISCO-BCOS/go-sdk)
-[![version](https://img.shields.io/github/tag/FISCO-BCOS/go-sdk.svg)](https://github.com/FISCO-BCOS/go-sdk/releases/latest)
+生产环境为单机部署一条4节点联盟链。操作系统ubuntu18.04LTS
+
+##### 1.1 安装依赖
+
+`开发部署工具 build_chain.sh`脚本依赖于`openssl, curl`，根据您使用的操作系统，使用以下命令安装依赖。
+
+```bash
+sudo apt install -y openssl curl
+```
+
+##### 1.2 创建目录并下载脚本
+
+```bash
+## 创建操作目录
+cd ~ && mkdir -p fisco && cd fisco
+
+## 下载脚本
+curl -#LO https://github.com/FISCO-BCOS/FISCO-BCOS/releases/download/v2.11.0/build_chain.sh && chmod u+x build_chain.sh
+```
+
+如果因为网络问题导致长时间无法下载build_chain.sh脚本，请尝试 `curl -#LO https://github.com/FISCO-BCOS/FISCO-BCOS/releases/download/v2.11.0//build_chain.sh && chmod u+x build_chain.sh`
+
+##### 1.3 搭建单群组4节点联盟链
+
+在fisco目录下执行下面的指令，生成一条单群组4节点的FISCO链。 请确保机器的`30300~30303，20200~20203，8545~8548`端口没有被占用。
+
+```bash
+bash build_chain.sh -l 127.0.0.1:4 -p 30300,20200,8545
+##    - 其中-p选项指定起始端口，分别是p2p_port,channel_port,jsonrpc_port
+##    - 出于安全性和易用性考虑，v2.3.0版本最新配置将listen_ip拆分成jsonrpc_listen_ip和channel_listen_ip，但仍保留对listen_ip的解析功能，详细请参考Fisco-Bcos官方文档
+##    - 为便于开发和体验，channel_listen_ip参考配置是 `0.0.0.0` ，出于安全考虑，请根据实际业务网络情况，修改为安全的监听地址，如：内网IP或特定的外网IP
+```
+
+命令执行成功会输出`All completed`。如果执行出错，请检查`nodes/build.log`文件中的错误信息。
+
+```cpp
+Checking fisco-bcos binary...
+Binary check passed.
+==============================================================
+Generating CA key...
+==============================================================
+Generating keys ...
+Processing IP:127.0.0.1 Total:4 Agency:agency Groups:1
+==============================================================
+Generating configurations...
+Processing IP:127.0.0.1 Total:4 Agency:agency Groups:1
+==============================================================
+[INFO] Execute the download_console.sh script in directory named by IP to get FISCO-BCOS console.
+e.g.  bash /home/ubuntu/fisco/nodes/127.0.0.1/download_console.sh
+==============================================================
+[INFO] FISCO-BCOS Path   : bin/fisco-bcos
+[INFO] Start Port        : 30300 20200 8545
+[INFO] Server IP         : 127.0.0.1:4
+[INFO] Output Dir        : /home/ubuntu/fisco/nodes
+[INFO] CA Key Path       : /home/ubuntu/fisco/nodes/cert/ca.key
+==============================================================
+[INFO] All completed. Files in /home/ubuntu/fisco/nodes
+```
+
+##### 1.4 启动Fisco-Bcos联盟链
+
+```bash
+bash nodes/127.0.0.1/start_all.sh
+```
+
+启动成功会输出类似下面内容的响应。否则请使用`netstat -an | grep tcp`检查机器的`30300~30303，20200~20203，8545~8548`端口是否被占用。
+
+```bash
+try to start node0
+try to start node1
+try to start node2
+try to start node3
+ node1 start successfully
+ node2 start successfully
+ node0 start successfully
+ node3 start successfully
+```
+
+##### 1.5 检查进程
+
+```cpp
+ps -ef | grep -v grep | grep fisco-bcos
+```
+
+正常情况会有类似下面的输出； 如果进程数不为4，则进程没有启动（一般是端口被占用导致的）
+
+```bash
+fisco       5453     1  1 17:11 pts/0    00:00:02 /home/ubuntu/fisco/nodes/127.0.0.1/node0/../fisco-bcos -c config.ini
+fisco       5459     1  1 17:11 pts/0    00:00:02 /home/ubuntu/fisco/nodes/127.0.0.1/node1/../fisco-bcos -c config.ini
+fisco       5464     1  1 17:11 pts/0    00:00:02 /home/ubuntu/fisco/nodes/127.0.0.1/node2/../fisco-bcos -c config.ini
+fisco       5476     1  1 17:11 pts/0    00:00:02 /home/ubuntu/fisco/nodes/127.0.0.1/node3/../fisco-bcos -c config.ini
+```
 
 
-![FISCO-BCOS Go-SDK GitHub Actions](https://github.com/FISCO-BCOS/go-sdk/workflows/FISCO-BCOS%20Go-SDK%20GitHub%20Actions/badge.svg)
-[![Build Status](https://travis-ci.org/FISCO-BCOS/go-sdk.svg?branch=master)](https://travis-ci.org/FISCO-BCOS/go-sdk)
 
-____
+#### 2.拉取链端服务项目
 
-FISCO BCOS Go语言版本的SDK，主要实现的功能有：
+环境前提：Golang >= 1.13.6，使用Go Module管理
 
-- [FISCO BCOS 2.0 JSON-RPC服务](https://fisco-bcos-documentation.readthedocs.io/zh_CN/latest/docs/api.html)
-- `Solidity`合约编译为Go文件
-- 部署、查询、写入智能合约
-- 控制台
+此处环境建议Golang=1.18.10
 
-`go-sdk`的使用可以当做是一个`package`进行使用，亦可对项目代码进行编译，直接使用**控制台**通过配置文件来进行访问FISCO BCOS。
+##### 2.1 克隆项目Go-SDK
 
-# 环境准备
 
-- [Golang](https://golang.org/), [版本需不低于`1.17`](https://endoflife.date/go)，本项目采用`go module`进行包管理。具体可查阅[Using Go Modules](https://blog.golang.org/using-go-modules)，[环境配置](doc/README.md#环境配置)
-- [FISCO BCOS 2.2.0+](https://fisco-bcos-documentation.readthedocs.io/zh_CN/latest/), **需要提前运行** FISCO BCOS 区块链平台，可参考[安装搭建](https://fisco-bcos-documentation.readthedocs.io/zh_CN/latest/docs/installation.html#fisco-bcos)
 
-- Solidity编译器，默认[0.4.25版本](https://github.com/ethereum/solidity/releases/tag/v0.4.25)
+##### 2.2 配置链端认证文件
 
-# 配置文件说明(config.toml)
+拷贝`fisco/nodes/127.0.0.1/sdk`下的`ca.crt`等一众配置文件到go-sdk文件夹下
+
+```bash
+cp -Rf ~/fisco/nodes/127.0.0.1/sdk/* ~/AIGC/go-sdk/
+```
+
+编辑`config.toml`
 
 ```toml
 [Network]
@@ -55,217 +140,74 @@ ChainID=1
 SMCrypto=false
 ```
 
-## Network
+##### 2.3 编译合约
 
-**注意**：go-sdk暂不支持国密SSL，请注意在使用国密模式时，将节点的config.ini中`chain.sm_crypto_channel`设置为`false`，详情[请参考这里](https://fisco-bcos-documentation.readthedocs.io/zh_CN/latest/docs/manual/configuration.html#id10)
+###### 2.3.1 安装solc编译器
 
-- Type：支持channel和rpc两种模式，其中`channel`使用ssl链接，需要提供证书。`rpc`使用http访问节点。
-- CAFile：链根证书
-- Cert：SDK建立SSL链接时使用的证书
-- Key：SDK建立SSL链接时使用的证书对应的私钥
-- Network.Connection数组，配置节点信息，可配置多个。
-
-## Account
-
-- KeyFile：节点签发交易时所使用的私钥，PEM格式，支持国密和非国密。
-
-请使用[get_account.sh](https://github.com/FISCO-BCOS/console/blob/master/tools/get_account.sh)和[get_gm_account.sh](https://github.com/FISCO-BCOS/console/blob/master/tools/get_gm_account.sh)脚本生成。使用方式[参考这里](https://fisco-bcos-documentation.readthedocs.io/zh_CN/latest/docs/manual/account.html)。
-
-如果想使用Go-SDK代码生成，请[参考这里](doc/README.md#环境配置#外部账户)。
-
-## Chain
-
-- ChainID：链ID，与节点config.ini中`chain.id`保持一致。
-- SMCrypto：链使用的签名算法，`ture`表示使用国密SM2，`false`表示使用普通ECDSA。
-
-# 控制台使用
-
-在使用控制台需要先拉取代码或下载代码，然后对配置文件`config.toml`进行更改:
-
-1. 拉取代码并编译
+该编译器用于将 sol 合约文件编译成 abi 和 bin 文件，目前FISCO BCOS提供的`solc`编译器有0.4.25/0.5.2/0.6.10
 
 ```bash
-git clone https://github.com/FISCO-BCOS/go-sdk.git
-cd go-sdk
-go mod tidy
-go build cmd/console.go
+# 该指令在helloworld文件夹中执行
+bash ~/AIGC/go-sdk/tools/download_solc.sh -v 0.4.25
 ```
 
-2. 搭建FISCO BCOS 2.2以上版本节点，请[参考这里](https://fisco-bcos-documentation.readthedocs.io/zh_CN/latest/docs/installation.html)。
+###### 2.3.2 构建go-sdk的代码生成工具abigen
 
-3. config.toml默认使用channel模式，请拷贝对应的SDK证书。
-
-4. 最后，运行控制台查看可用指令:
+该工具用于将 abi 和 bin 文件转换为 go 文件
 
 ```bash
-./console help
+# 该指令在合约sol所在文件夹中执行，编译生成abigen工具
+go build ~/AIGC/go-sdk/cmd/abigen
 ```
 
-# Package功能使用
-
-以下的示例是通过`import`的方式来使用`go-sdk`，如引入RPC控制台库:
-
-```go
-import "github.com/FISCO-BCOS/go-sdk/client"
-```
-
-## Solidity合约编译为Go文件
-
-在利用SDK进行项目开发时，对智能合约进行操作时需要将Solidity智能合约利用go-sdk的`abigen`工具转换为`Go`文件代码。整体上主要包含了五个流程：
-
-- 准备需要编译的智能合约
-- 配置好相应版本的`solc`编译器
-- 构建go-sdk的合约编译工具`abigen`
-- 编译生成go文件
-- 使用生成的go文件进行合约调用
-
-下面的内容作为一个示例进行使用介绍。
-
-1.提供一份简单的样例智能合约`Store.sol`如下:
-
-```solidity
-pragma solidity ^0.4.25;
-
-contract Store {
-  event ItemSet(bytes32 key, bytes32 value);
-
-  string public version;
-  mapping (bytes32 => bytes32) public items;
-
-  constructor(string _version) public {
-    version = _version;
-  }
-
-  function setItem(bytes32 key, bytes32 value) external {
-    items[key] = value;
-    emit ItemSet(key, value);
-  }
-}
-```
-
-2.安装对应版本的[`solc`编译器](https://github.com/ethereum/solidity/releases/tag/v0.4.25)，目前FISCO BCOS默认的`solc`编译器版本为0.4.25。
+###### 2.3.3 编译合约(以collectiontable为例)
 
 ```bash
-# 如果是国密则添加-g选项
-bash tools/download_solc.sh -v 0.4.25
+#编译合约
+~/AIGC/go-sdk/solc-0.6.10 --bin --abi -o ./ ./CollectionTable.sol --overwrite
+#编译Go文件
+./abigen --bin ./CollectionTable.bin -
+-abi ./CollectionTable.abi --pkg collectiontable --type collectiontable --out ./collectiontable.go
 ```
 
-3.构建`go-sdk`的代码生成工具`abigen`
+###### 2.3.4 部署合约并记录合约地址（关键）
+
+部署三次合约,一定记录号返回值都是谁
 
 ```bash
-# 下面指令在go-sdk目录下操作，编译生成abigen工具
-go build ./cmd/abigen
+#accounttable
+root@celestial-1-0003:~/AIGC/go-sdk# cd ~/AIGC/go-sdk
+root@celestial-1-0003:~/AIGC/go-sdk# go run /root/AIGC/go-sdk/contract/accounttable/cmd/main.go
+contract address:  0xAAC410d4093Ad00dc6995f853864701b3b71845E
+transaction hash:  0xf1188ff010c21ebd8fe384c3a6ecfcecc6fafdb63ba02e061dfe45d3f6413cbc
+
+root@celestial-1-0003:~/AIGC/go-sdk# go run /root/AIGC/go-sdk/contract/collectiontable/cmd/main.go 
+contract address:  0x0a68F060B46e0d8f969383D260c34105EA13a9dd
+transaction hash:  0xc575ed13aa98d5919f032f2c2f078631cc2fcb541c2300f00c5b28b8b6059e7a
+
 ```
 
-执行命令后，检查根目录下是否存在`abigen`，并将准备的智能合约`Store.sol`放置在一个新的目录下：
+###### 2.3.5 修改链下控制程序地址
 
-```
-mkdir ./store
-mv Store.sol ./store
-```
+使用Vscode打开`/root/AIGC/go-sdk/agent/controller/AccountController.go`
 
-4.编译生成go文件，先利用`solc`将合约文件生成`abi`和`bin`文件，以前面所提供的`Store.sol`为例：
+修改涉及accounttable的`HexToAddress("xxxxxxxxx")`括号中参数为`"0xAAC410d4093Ad00dc6995f853864701b3b71845E"`，为`accounttable`合约地址
+
+打开`/root/AIGC/go-sdk/agent/controller/CollectionController.go`
+
+修改涉及collectiontable的`HexToAddress("xxxxxxxxx")`括号中参数为`"0x0a68F060B46e0d8f969383D260c34105EA13a9dd"`，为`collectiontable`合约地址
+
+###### 2.3.6 启动
 
 ```bash
-# 国密请使用 ./solc-0.4.25-gm --bin --abi -o ./store ./store/Store.sol
-./solc-0.4.25 --bin --abi -o ./store ./store/Store.sol
+go run ./agent/main.go 
+#测试系统
+go run test.go
 ```
 
-`Store.sol`目录下会生成`Store.bin`和`Store.abi`。此时利用`abigen`工具将`Store.bin`和`Store.abi`转换成`Store.go`：
 
-```bash
-# 国密请使用 ./abigen --bin ./store/Store.bin --abi ./store/Store.abi --pkg store --type Store --out ./store/Store.go --smcrypto=true
-./abigen --bin ./store/Store.bin --abi ./store/Store.abi --pkg store --type Store --out ./store/Store.go
-```
 
-最后store目录下面存在以下文件：
 
-```bash
-Store.abi  Store.bin  Store.go  Store.sol
-```
 
-5.调用生成的`Store.go`文件进行合约调用
 
-至此，合约已成功转换为go文件，用户可根据此文件在项目中利用SDK进行合约操作。具体的使用可参阅下一节。
 
-## 部署智能合约
-
-创建main函数，调用Store合约，
-```bash
-touch store_main.go
-```
-
-下面的例子先部署合约，在部署过程中设置的`Store.sol`合约中有一个公开的名为`version`的全局变量，这种公开的成员将自动创建`getter`函数，然后调用`Version()`来获取version的值。
-
-写入智能合约需要我们用私钥来对交易事务进行签名，我们创建的智能合约有一个名为`SetItem`的外部方法，它接受solidity`bytes32`类型的两个参数（key，value）。 这意味着在Go文件中需要传递一个长度为32个字节的字节数组。
-
-```go
-package main
-
-import (
-    "fmt"
-    "log"
-
-    "github.com/FISCO-BCOS/go-sdk/client"
-    "github.com/FISCO-BCOS/go-sdk/conf"
-    "github.com/FISCO-BCOS/go-sdk/store" // import store
-)
-
-func main(){
-	configs, err := conf.ParseConfigFile("config.toml")
-	if err != nil {
-		log.Fatalf("ParseConfigFile failed, err: %v", err)
-	}
-	client, err := client.Dial(&configs[0])
-	if err != nil {
-		log.Fatal(err)
-	}
-	input := "Store deployment 1.0"
-	address, tx, instance, err := store.DeployStore(client.GetTransactOpts(), client, input)
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Println("contract address: ", address.Hex()) // the address should be saved, will use in next example
-	fmt.Println("transaction hash: ", tx.Hash().Hex())
-
-	// load the contract
-	// contractAddress := common.HexToAddress("contract address in hex String")
-	// instance, err := store.NewStore(contractAddress, client)
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-
-	fmt.Println("================================")
-	storeSession := &store.StoreSession{Contract: instance, CallOpts: *client.GetCallOpts(), TransactOpts: *client.GetTransactOpts()}
-
-	version, err := storeSession.Version()
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	fmt.Println("version :", version) // "Store deployment 1.0"
-
-	// contract write interface demo
-	fmt.Println("================================")
-	key := [32]byte{}
-	value := [32]byte{}
-	copy(key[:], []byte("foo"))
-	copy(value[:], []byte("bar"))
-
-	tx, receipt, err := storeSession.SetItem(key, value)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	fmt.Printf("tx sent: %s\n", tx.Hash().Hex())
-	fmt.Printf("transaction hash of receipt: %s\n", receipt.GetTransactionHash())
-
-	// read the result
-	result, err := storeSession.Items(key)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	fmt.Println("get item: " + string(result[:])) // "bar"
-}
-```
