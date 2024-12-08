@@ -2,7 +2,7 @@
 
 - [查看PPT](https://gamma.app/docs/CipherBridge-dniu5htoqmm9qsb)
 - [查看Demo视频](https://youtu.be/8dlMbBVCjTc)
-- [运行项目](##相关代码仓库)
+- [运行项目](###相关代码仓库)
 
 ## 项目概述
 
