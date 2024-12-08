@@ -1,7 +1,8 @@
 # CipherBridge - 可验证多方密文计算平台
 
 - [查看PPT](https://gamma.app/docs/CipherBridge-dniu5htoqmm9qsb)
-- [查看Demo视频](https://youtu.be/8dlMbBVCjTc)
+- [查看Demo视频(youtube)](https://youtu.be/8dlMbBVCjTc)
+- [查看Demo视频(bilibili)](https://www.bilibili.com/video/BV13ZqnYLEMy/)
 - [运行项目](#相关代码仓库)
 
 ## 项目概述
