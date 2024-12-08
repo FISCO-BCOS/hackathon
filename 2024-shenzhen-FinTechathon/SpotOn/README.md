@@ -71,14 +71,18 @@
 #### 3.1.1 身份的诞生
 ![image](https://github.com/user-attachments/assets/9ed207de-e22f-4866-aa46-47e94885606d)
 
-
+用户可以通过生物特征识别验证身份，并采用OCR技术获取用户的唯一性标识符，生成全网唯一的去中心化数字身份。
 
 
 #### 3.1.2 身份认证证明
 
 ![image-20241122203950036](https://github.com/user-attachments/assets/162b0060-d850-4409-ba22-b3a6fc44b553)
 
+在身份认证过程中，用户可以在自己的本地设备生成证明，从根源上避免数据隐私泄漏，并采用微众区块链平台进行验证，依靠智能合约获取验证结果，确保验证过程的零知识性。
+
 ![e7f644bf794c01deb3aca8fdf24ac23](https://github.com/user-attachments/assets/c31e048b-3675-4dd7-8ad8-8f0518367ced)
+
+而具体的零知识证明电路可以参考上图。
 
 
 ## 4. 演示平台
@@ -106,29 +110,14 @@
 
 #### 4.2 环境依赖
 
-**前端环境**
 
-集成开发环境：Vscode、Remix、Neovim
+**集成环境**
 
-区块链平台：FISCO-BCOS v2.9.1 文档
-
-软件开发工具包：Python-SDK 文档
-
-中间件平台：WeBASE
-
-硬件环境：腾讯云ECS服务器一台 RAM：4 GB ，CPU: 2核，带宽：5Mbps
-
-操作系统：Linux Ubuntu 22.04 LTS
-
-开发语言：Solidity（智能合约）、Python（后端开发）、HTML+CSS+JavaScript（前端开发）
-
-**后端环境**
-
-集成开发环境：IDEA+jdk14、Remix、python3.8(Anaconda)、Vue3
+集成开发环境：IDEA+jdk14、Remix、python3.8(Anaconda)、Vscode、Remix、Neovim、Vue3
 
 区块链平台：FISCO-BCOS v2.9.1 文档
 
-软件开发工具包：Zokrates 文档、maven3.9.9、
+软件开发工具包：Python-SDK、maven3.9.9、zokrates cli
 
 中间件平台：WeBASE
 
@@ -136,7 +125,7 @@
 
 开发语言：Solidity（智能合约）、Python+java（后端开发）、HTML+CSS+JavaScript（前端开发）
 
-#### 4.5.2 启动步骤
+#### 4.3 启动步骤
 
 **后端启动**
 
