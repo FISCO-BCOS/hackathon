@@ -1,0 +1,1 @@
+[{"inputs":[{"internalType":"int256","name":"","type":"int256"}],"name":"get","outputs":[{"internalType":"contract Entry","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"size","outputs":[{"internalType":"int256","name":"","type":"int256"}],"stateMutability":"view","type":"function"}]

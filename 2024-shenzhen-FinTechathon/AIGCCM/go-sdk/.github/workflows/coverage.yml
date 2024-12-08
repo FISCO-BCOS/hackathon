@@ -1,0 +1,29 @@
+name: Calculate Code Coverage
+on:
+  push:
+    paths-ignore:
+      - "Changelog.md"
+      - "README.md"
+  pull_request:
+
+jobs:
+  coverage:
+    name: coverage
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-go@v2
+        with:
+          go-version: 1.17
+      - name: mod tidy
+        run: go mod tidy
+      - name: generate code coverage report
+        run: bash .ci/generate_coverage.sh
+      - name: upload code coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          file: ./coverage.txt
+          name: go-sdk code coverage
+          fail_ci_if_error: true

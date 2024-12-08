@@ -1,0 +1,4 @@
+/*! 
+ Build based on gin-vue-admin 
+ Time : 1730113336000 */
+.upload-btn-media-library{margin-left:20px}.media{display:flex;flex-wrap:wrap}.media .media-box{width:120px;margin-left:20px}.media .media-box .img-title{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:36px;text-align:center;cursor:pointer}.media .media-box .header-img-box-list{width:120px;height:120px;border:1px dashed #ccc;border-radius:8px;text-align:center;line-height:120px;cursor:pointer;overflow:hidden}.media .media-box .header-img-box-list .el-image__inner{max-width:120px;max-height:120px;vertical-align:middle;width:unset;height:unset}.header-img-box{display:flex;height:13rem;width:13rem;cursor:pointer;align-items:center;justify-content:center;border-radius:.75rem;border-width:1px;border-style:solid;--tw-border-opacity: 1;border-color:rgb(209 213 219 / var(--tw-border-opacity))}
