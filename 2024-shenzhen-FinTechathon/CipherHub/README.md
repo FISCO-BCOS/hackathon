@@ -1,5 +1,9 @@
 # CipherBridge - 可验证多方密文计算平台
 
+[查看PPT](https://gamma.app/docs/CipherBridge-dniu5htoqmm9qsb)
+[查看Demo视频](https://youtu.be/8dlMbBVCjTc)
+[运行项目](## 相关代码仓库)
+
 ## 项目概述
 
 CipherBridge是一个基于零知识证明和全同态加密(zkFHE)技术的可验证多方密文计算平台。平台采用TFHE-rs实现高效的全同态加密计算，使用RISC Zero提供计算可验证性，并基于FISCO BCOS区块链构建信任基础设施，致力于解决数据安全共享和隐私保护下进行可信复杂计算的难题。
