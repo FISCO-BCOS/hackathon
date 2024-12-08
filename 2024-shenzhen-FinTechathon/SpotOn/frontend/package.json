@@ -1,0 +1,28 @@
+{
+  "name": "yingying",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "@msgpack/msgpack": "^3.0.0-beta2",
+    "axios": "^1.7.7",
+    "core-js": "^3.8.3",
+    "crypto-js": "^4.2.0",
+    "element-plus": "^2.8.6",
+    "face-api.js": "^0.22.2",
+    "fs": "^0.0.1-security",
+    "register-service-worker": "^1.7.2",
+    "tesseract.js": "^5.1.1",
+    "vue": "^3.2.13",
+    "vue-router": "^4.4.5",
+    "zokrates-js": "^1.1.9"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-pwa": "~5.0.0",
+    "@vue/cli-service": "~5.0.0"
+  }
+}

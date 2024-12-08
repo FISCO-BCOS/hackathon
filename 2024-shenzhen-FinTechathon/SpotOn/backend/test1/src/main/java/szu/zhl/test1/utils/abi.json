@@ -1,0 +1,37 @@
+{
+  "inputs": [
+    {
+      "name": "g",
+      "public": true,
+      "type": "u64"
+    },
+    {
+      "name": "h",
+      "public": true,
+      "type": "u64"
+    },
+    {
+      "name": "m",
+      "public": false,
+      "type": "u64"
+    },
+    {
+      "name": "r",
+      "public": false,
+      "type": "u64"
+    },
+    {
+      "name": "d",
+      "public": true,
+      "type": "u64"
+    },
+    {
+      "name": "p",
+      "public": true,
+      "type": "u64"
+    }
+  ],
+  "output": {
+    "type": "u64"
+  }
+}
