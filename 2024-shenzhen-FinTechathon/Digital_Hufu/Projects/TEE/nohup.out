@@ -1,0 +1,529 @@
+ 
+ Checksum(0x0x7ffcba70a890, 100) = 0xfffd4143
+Info: executing thread synchronization, please wait...  
+Server is running on http://0.0.0.0:8082
+--------------------
+Received a POST request to decrypt transaction.
+RSA key params loaded successfully from file Enclave/enclave_keys.txt.
+Private key restored!
+Public key restored!
+Error: fail to decrypt "from".
+Fail to decrypt trasaction data.
+Failed to decrypt transaction.
+--------------------
+Received a POST request to decrypt transaction.
+RSA key params loaded successfully from file Enclave/enclave_keys.txt.
+Private key restored!
+Public key restored!
+Error: fail to decrypt "from".
+Fail to decrypt trasaction data.
+Failed to decrypt transaction.
+--------------------
+Received a POST request to decrypt transaction.
+RSA key params loaded successfully from file Enclave/enclave_keys.txt.
+Private key restored!
+Public key restored!
+from: 12
+to: 11
+amount11.000000
+Successfully decrypt transaction.
+Error: fail to open file <Wallets/wallet12.txt>.
+Error: failed to read data from outer.
+Failed to read wallet file: Wallets/wallet12.txt.
+Error: failed to read RSA key params from file.
+Error: Failed to get RSA keys for wallet_id 12
+Successfully write encrypted transaction into file.
+Transaction decrypted successfully.
+--------------------
+Received a POST request of transaction warning.
+No exception detected
+--------------------
+Received a POST request to shuffle transaction.
+Shuffling transaction: <From: 12 To: 11 Amount: 11.00>
+Address: 6 Amount: 0.63
+Address: 4 Amount: 0.53
+Address: 3 Amount: 9.84
+Transaction shuffled successfully.
+Error: fail to open file <Wallets/wallet12.txt>.
+Error: failed to read data from outer.
+Failed to read wallet file: Wallets/wallet12.txt.
+Error: failed to read RSA key params from file.
+Error: Failed to get RSA keys for wallet_id 12
+Failed to encrypt transaction.
+Failed to shuffle transaction.
+--------------------
+Received a POST request to decrypt transaction.
+RSA key params loaded successfully from file Enclave/enclave_keys.txt.
+Private key restored!
+Public key restored!
+from: 12
+to: 11
+amount1199999.000000
+Successfully decrypt transaction.
+Error: fail to open file <Wallets/wallet12.txt>.
+Error: failed to read data from outer.
+Failed to read wallet file: Wallets/wallet12.txt.
+Error: failed to read RSA key params from file.
+Error: Failed to get RSA keys for wallet_id 12
+Successfully write encrypted transaction into file.
+Transaction decrypted successfully.
+--------------------
+Received a POST request of transaction warning.
+Exception detected: Amount exceeds the maximum allowed for a single transaction.
+--------------------
+Received a POST request to decrypt transaction.
+RSA key params loaded successfully from file Enclave/enclave_keys.txt.
+Private key restored!
+Public key restored!
+from: 12
+to: 11
+amount0.010000
+Successfully decrypt transaction.
+Error: fail to open file <Wallets/wallet12.txt>.
+Error: failed to read data from outer.
+Failed to read wallet file: Wallets/wallet12.txt.
+Error: failed to read RSA key params from file.
+Error: Failed to get RSA keys for wallet_id 12
+Successfully write encrypted transaction into file.
+Transaction decrypted successfully.
+--------------------
+Received a POST request of transaction warning.
+No exception detected
+--------------------
+Received a POST request to shuffle transaction.
+Shuffling transaction: <From: 12 To: 11 Amount: 0.01>
+Address: 9 Amount: 0.00
+Address: 2 Amount: 0.00
+Address: 4 Amount: 0.00
+Address: 1 Amount: 0.00
+Address: 3 Amount: 0.01
+Transaction shuffled successfully.
+Error: fail to open file <Wallets/wallet12.txt>.
+Error: failed to read data from outer.
+Failed to read wallet file: Wallets/wallet12.txt.
+Error: failed to read RSA key params from file.
+Error: Failed to get RSA keys for wallet_id 12
+Failed to encrypt transaction.
+Failed to shuffle transaction.
+--------------------
+Received a POST request to decrypt transaction.
+RSA key params loaded successfully from file Enclave/enclave_keys.txt.
+Private key restored!
+Public key restored!
+from: 12
+to: 11
+amount11.000000
+Successfully decrypt transaction.
+Error: fail to open file <Wallets/wallet12.txt>.
+Error: failed to read data from outer.
+Failed to read wallet file: Wallets/wallet12.txt.
+Error: failed to read RSA key params from file.
+Error: Failed to get RSA keys for wallet_id 12
+Successfully write encrypted transaction into file.
+Transaction decrypted successfully.
+--------------------
+Received a POST request of transaction warning.
+No exception detected
+--------------------
+Received a POST request to shuffle transaction.
+Shuffling transaction: <From: 12 To: 11 Amount: 11.00>
+Address: 4 Amount: 0.38
+Address: 5 Amount: 2.96
+Address: 2 Amount: 2.79
+Address: 8 Amount: 4.86
+Transaction shuffled successfully.
+Error: fail to open file <Wallets/wallet12.txt>.
+Error: failed to read data from outer.
+Failed to read wallet file: Wallets/wallet12.txt.
+Error: failed to read RSA key params from file.
+Error: Failed to get RSA keys for wallet_id 12
+Failed to encrypt transaction.
+Failed to shuffle transaction.
+--------------------
+Received a POST request to decrypt transaction.
+RSA key params loaded successfully from file Enclave/enclave_keys.txt.
+Private key restored!
+Public key restored!
+from: 12
+to: 11
+amount1.000000
+Successfully decrypt transaction.
+Error: fail to open file <Wallets/wallet12.txt>.
+Error: failed to read data from outer.
+Failed to read wallet file: Wallets/wallet12.txt.
+Error: failed to read RSA key params from file.
+Error: Failed to get RSA keys for wallet_id 12
+Successfully write encrypted transaction into file.
+Transaction decrypted successfully.
+--------------------
+Received a POST request of transaction warning.
+No exception detected
+--------------------
+Received a POST request to shuffle transaction.
+Shuffling transaction: <From: 12 To: 11 Amount: 1.00>
+Address: 9 Amount: 0.26
+Address: 7 Amount: 0.34
+Address: 4 Amount: 0.12
+Address: 6 Amount: 0.10
+Address: 1 Amount: 0.17
+Transaction shuffled successfully.
+Error: fail to open file <Wallets/wallet12.txt>.
+Error: failed to read data from outer.
+Failed to read wallet file: Wallets/wallet12.txt.
+Error: failed to read RSA key params from file.
+Error: Failed to get RSA keys for wallet_id 12
+Failed to encrypt transaction.
+Failed to shuffle transaction.
+--------------------
+Received a POST request to shuffle transaction.
+Shuffling transaction: <From: 11 To: 12 Amount: 1.00>
+Address: 6 Amount: 0.19
+Address: 9 Amount: 0.02
+Address: 7 Amount: 0.79
+Transaction shuffled successfully.
+Error: fail to open file <Wallets/wallet11.txt>.
+Error: failed to read data from outer.
+Failed to read wallet file: Wallets/wallet11.txt.
+Error: failed to read RSA key params from file.
+Error: Failed to get RSA keys for wallet_id 11
+Failed to encrypt transaction.
+Failed to shuffle transaction.
+--------------------
+Received a POST request to shuffle transaction.
+Shuffling transaction: <From: 11 To: 12 Amount: 1.00>
+Address: 1 Amount: 0.45
+Address: 9 Amount: 0.21
+Address: 7 Amount: 0.13
+Address: 6 Amount: 0.21
+Transaction shuffled successfully.
+Error: fail to open file <Wallets/wallet11.txt>.
+Error: failed to read data from outer.
+Failed to read wallet file: Wallets/wallet11.txt.
+Error: failed to read RSA key params from file.
+Error: Failed to get RSA keys for wallet_id 11
+Failed to encrypt transaction.
+Failed to shuffle transaction.
+--------------------
+Received a POST request to shuffle transaction.
+Shuffling transaction: <From: 11 To: 12 Amount: 1.00>
+Address: 8 Amount: 0.38
+Address: 9 Amount: 0.13
+Address: 7 Amount: 0.11
+Address: 2 Amount: 0.10
+Address: 3 Amount: 0.28
+Transaction shuffled successfully.
+Error: fail to open file <Wallets/wallet11.txt>.
+Error: failed to read data from outer.
+Failed to read wallet file: Wallets/wallet11.txt.
+Error: failed to read RSA key params from file.
+Error: Failed to get RSA keys for wallet_id 11
+Failed to encrypt transaction.
+Failed to shuffle transaction.
+--------------------
+Checksum(0x0x7ffec7b13760, 100) = 0xfffd4143
+Info: executing thread synchronization, please wait...  
+Server is running on http://0.0.0.0:8082
+--------------------
+Received a POST request to shuffle transaction.
+Shuffling transaction: <From: 51 To: 47 Amount: 809379.53>
+Address: 8 Amount: 164425.71
+Address: 2 Amount: 91520.69
+Address: 3 Amount: 264170.74
+Address: 5 Amount: 98402.93
+Address: 9 Amount: 68430.61
+Address: 6 Amount: 122428.85
+Transaction shuffled successfully.
+Warning sign: 1
+Message: Amount exceeds the maximum allowed for a single transaction.
+--------------------
+Received a POST request to shuffle transaction.
+Shuffling transaction: <From: 71 To: 31 Amount: 696822.10>
+Address: 4 Amount: 202797.52
+Address: 3 Amount: 218772.71
+Address: 5 Amount: 89401.75
+Address: 8 Amount: 58333.56
+Address: 6 Amount: 127516.56
+Transaction shuffled successfully.
+Warning sign: 1
+Message: Amount exceeds the maximum allowed for a single transaction.
+--------------------
+Received a POST request to shuffle transaction.
+Shuffling transaction: <From: 66 To: 98 Amount: 352021.63>
+Address: 8 Amount: 98398.11
+Address: 2 Amount: 60562.32
+Address: 4 Amount: 193061.20
+Transaction shuffled successfully.
+Warning sign: 1
+Message: Amount exceeds the maximum allowed for a single transaction.
+--------------------
+Received a POST request to shuffle transaction.
+Shuffling transaction: <From: 97 To: 41 Amount: 644102.90>
+Address: 6 Amount: 127960.60
+Address: 1 Amount: 171233.94
+Address: 8 Amount: 169769.89
+Address: 3 Amount: 78161.22
+Address: 5 Amount: 519.47
+Address: 7 Amount: 96457.78
+Transaction shuffled successfully.
+Warning sign: 1
+Message: Amount exceeds the maximum allowed for a single transaction.
+--------------------
+Received a POST request to shuffle transaction.
+Shuffling transaction: <From: 17 To: 43 Amount: 827479.79>
+Address: 3 Amount: 361825.54
+Address: 5 Amount: 6969.84
+Address: 1 Amount: 52353.42
+Address: 6 Amount: 406330.99
+Transaction shuffled successfully.
+Warning sign: 1
+Message: Amount exceeds the maximum allowed for a single transaction.
+--------------------
+Received a POST request to shuffle transaction.
+Shuffling transaction: <From: 22 To: 35 Amount: 65681.19>
+Address: 2 Amount: 2844.26
+Address: 4 Amount: 20060.20
+Address: 1 Amount: 6416.30
+Address: 7 Amount: 11191.78
+Address: 9 Amount: 9084.30
+Address: 6 Amount: 16084.34
+Transaction shuffled successfully.
+Warning sign: 0
+Message: No exception detected in the transaction.
+--------------------
+Received a POST request to shuffle transaction.
+Shuffling transaction: <From: 22 To: 68 Amount: 255187.23>
+Address: 2 Amount: 41935.38
+Address: 6 Amount: 38883.11
+Address: 5 Amount: 66276.60
+Address: 9 Amount: 108092.13
+Transaction shuffled successfully.
+Warning sign: 1
+Message: Amount exceeds the maximum allowed for a single transaction.
+--------------------
+Received a POST request to shuffle transaction.
+Shuffling transaction: <From: 71 To: 73 Amount: 856946.66>
+Address: 6 Amount: 290677.56
+Address: 2 Amount: 244719.32
+Address: 3 Amount: 39982.22
+Address: 5 Amount: 281567.56
+Transaction shuffled successfully.
+Warning sign: 1
+Message: Amount exceeds the maximum allowed for a single transaction.
+--------------------
+Received a POST request to shuffle transaction.
+Shuffling transaction: <From: 66 To: 1 Amount: 62871.96>
+Address: 2 Amount: 28515.37
+Address: 1 Amount: 15986.82
+Address: 4 Amount: 5114.76
+Address: 7 Amount: 6041.09
+Address: 5 Amount: 7213.91
+Transaction shuffled successfully.
+Warning sign: 0
+Message: No exception detected in the transaction.
+--------------------
+Received a POST request to decrypt transaction.
+RSA key params loaded successfully from file Enclave/enclave_keys.txt.
+Private key restored!
+Public key restored!
+from: 50
+to: 68
+amount929603.710000
+Successfully decrypt transaction.
+RSA key params loaded successfully from file Wallets/wallet50.txt.
+Private key restored!
+Public key restored!
+Data to encrypt: <from: 50, to: 68, amount: 929603.71>
+Successfully write encrypted transaction into file.
+Transaction decrypted successfully.
+--------------------
+Received a post request for creating a new wallet.
+Generating key pair for wallet_id 1
+Key params created!
+Private key created!
+Public key created!
+Successfully write rsa key params into file.
+RSA key params loaded successfully from file Wallets/wallet1.txt.
+Private key restored!
+Public key restored!
+Restored key pair from file passed 4/4 test.
+Successfully created a new wallet.
+--------------------
+Received a post request for creating a new wallet.
+Generating key pair for wallet_id 2
+Key params created!
+Private key created!
+Public key created!
+Successfully write rsa key params into file.
+RSA key params loaded successfully from file Wallets/wallet2.txt.
+Private key restored!
+Public key restored!
+Restored key pair from file passed 4/4 test.
+Successfully created a new wallet.
+--------------------
+Received a post request for creating a new wallet.
+Generating key pair for wallet_id 3
+Key params created!
+Private key created!
+Public key created!
+Successfully write rsa key params into file.
+RSA key params loaded successfully from file Wallets/wallet3.txt.
+Private key restored!
+Public key restored!
+Restored key pair from file passed 4/4 test.
+Successfully created a new wallet.
+--------------------
+Received a post request for creating a new wallet.
+Generating key pair for wallet_id 4
+Key params created!
+Private key created!
+Public key created!
+Successfully write rsa key params into file.
+RSA key params loaded successfully from file Wallets/wallet4.txt.
+Private key restored!
+Public key restored!
+Restored key pair from file passed 4/4 test.
+Successfully created a new wallet.
+--------------------
+Received a post request for creating a new wallet.
+Generating key pair for wallet_id 5
+Key params created!
+Private key created!
+Public key created!
+Successfully write rsa key params into file.
+RSA key params loaded successfully from file Wallets/wallet5.txt.
+Private key restored!
+Public key restored!
+Restored key pair from file passed 4/4 test.
+Successfully created a new wallet.
+--------------------
+Received a post request for creating a new wallet.
+Generating key pair for wallet_id 6
+Key params created!
+Private key created!
+Public key created!
+Successfully write rsa key params into file.
+RSA key params loaded successfully from file Wallets/wallet6.txt.
+Private key restored!
+Public key restored!
+Restored key pair from file passed 4/4 test.
+Successfully created a new wallet.
+--------------------
+Received a post request for creating a new wallet.
+Generating key pair for wallet_id 7
+Key params created!
+Private key created!
+Public key created!
+Successfully write rsa key params into file.
+RSA key params loaded successfully from file Wallets/wallet7.txt.
+Private key restored!
+Public key restored!
+Restored key pair from file passed 4/4 test.
+Successfully created a new wallet.
+--------------------
+Received a post request for creating a new wallet.
+Generating key pair for wallet_id 8
+Key params created!
+Private key created!
+Public key created!
+Successfully write rsa key params into file.
+RSA key params loaded successfully from file Wallets/wallet8.txt.
+Private key restored!
+Public key restored!
+Restored key pair from file passed 4/4 test.
+Successfully created a new wallet.
+--------------------
+Received a post request for creating a new wallet.
+Generating key pair for wallet_id 9
+Key params created!
+Private key created!
+Public key created!
+Successfully write rsa key params into file.
+RSA key params loaded successfully from file Wallets/wallet9.txt.
+Private key restored!
+Public key restored!
+Restored key pair from file passed 4/4 test.
+Successfully created a new wallet.
+--------------------
+Received a post request for creating a new wallet.
+Generating key pair for wallet_id 10
+Key params created!
+Private key created!
+Public key created!
+Successfully write rsa key params into file.
+RSA key params loaded successfully from file Wallets/wallet10.txt.
+Private key restored!
+Public key restored!
+Restored key pair from file passed 4/4 test.
+Successfully created a new wallet.
+--------------------
+Received a post request for creating a new wallet.
+Generating key pair for wallet_id 11
+Key params created!
+Private key created!
+Public key created!
+Successfully write rsa key params into file.
+RSA key params loaded successfully from file Wallets/wallet11.txt.
+Private key restored!
+Public key restored!
+Restored key pair from file passed 4/4 test.
+Successfully created a new wallet.
+--------------------
+Received a post request for creating a new wallet.
+Generating key pair for wallet_id 12
+Key params created!
+Private key created!
+Public key created!
+Successfully write rsa key params into file.
+RSA key params loaded successfully from file Wallets/wallet12.txt.
+Private key restored!
+Public key restored!
+Restored key pair from file passed 4/4 test.
+Successfully created a new wallet.
+--------------------
+Received a POST request to decrypt transaction.
+RSA key params loaded successfully from file Enclave/enclave_keys.txt.
+Private key restored!
+Public key restored!
+from: 12
+to: 11
+amount10.000000
+Successfully decrypt transaction.
+RSA key params loaded successfully from file Wallets/wallet12.txt.
+Private key restored!
+Public key restored!
+Data to encrypt: <from: 12, to: 11, amount: 10.00>
+Successfully write encrypted transaction into file.
+Transaction decrypted successfully.
+--------------------
+Received a POST request of transaction warning.
+No exception detected
+--------------------
+Received a POST request to shuffle transaction.
+Shuffling transaction: <From: 12 To: 11 Amount: 10.00>
+Address: 8 Amount: 0.18
+Address: 3 Amount: 1.24
+Address: 5 Amount: 3.89
+Address: 1 Amount: 0.15
+Address: 6 Amount: 4.53
+Transaction shuffled successfully.
+Warning sign: 0
+Message: No exception detected in the transaction.
+--------------------
+Received a POST request to decrypt transaction.
+RSA key params loaded successfully from file Enclave/enclave_keys.txt.
+Private key restored!
+Public key restored!
+from: 12
+to: 11
+amount1199983.000000
+Successfully decrypt transaction.
+RSA key params loaded successfully from file Wallets/wallet12.txt.
+Private key restored!
+Public key restored!
+Data to encrypt: <from: 12, to: 11, amount: 1199983.00>
+Successfully write encrypted transaction into file.
+Transaction decrypted successfully.
+--------------------
+Received a POST request of transaction warning.
+Exception detected: Amount exceeds the maximum allowed for a single transaction.
+--------------------

@@ -1,0 +1,26 @@
+database:
+  username: root
+  password: "zss123456zss"
+  host: 127.0.0.1
+  port: 3306
+  dbname: gva
+  charset: utf8mb4 
+
+fisco:
+  is_sm_crypto: false
+  group_id: "group0"
+  disable_ssl: false
+  host: "127.0.0.1"
+  port: 20200
+  tls_ca_file: "./config/sdk/ca.crt"
+  tls_key_file: "./config/sdk/sdk.key"
+  tls_cert_file: "./config/sdk/sdk.crt"
+  Authorizationtoken: "Token 213cd1766722b0b51238b25f4868bad4d0c1b616e2ad71cde9fa1c89a3fa88ac"
+
+contract:
+  key_share_contract: "0x6849f21d1e455e9f0712b1e99fa4fcd23758e8f1"
+  decision_contract: "0x4721d1a77e0e76851d460073e64ea06d9c104194"
+
+tee:
+  private_key: "a1d6e8b17cabcaea1374facffca5474338af69d86de0f4137b7ba4c744338148"
+  public_key: "22acd867175ab1cf5b3da4b0db073e7c687bb5c7fbba6b7f2e4a3087d2aa9d92a9711922eacf680fe35dc60c5ce7a698115568b4a6cf1e6c397f20a886802817"
