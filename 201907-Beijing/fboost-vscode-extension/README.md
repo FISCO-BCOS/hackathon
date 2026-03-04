@@ -6,7 +6,7 @@
 
 ## 项目简介
 
-FBoost Visucal Code Extension 是针对 [Visual Code](https://code.visualstudio.com/) 设计的 [FISCO BCOS](http://fisco-bcos.org/zh/) 扩展插件。
+FBoost Visucal Code Extension 是针对 [Visual Code](https://code.visualstudio.com/) 设计的 [FISCO BCOS](https://github.com/FISCO-BCOS/FISCO-BCOS) 扩展插件。
 
 ## 项目背景
 
