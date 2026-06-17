@@ -1,0 +1,533 @@
+[
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "IDc",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "IDas",
+				"type": "string"
+			}
+		],
+		"name": "AS_Get_AS_REQ",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "IDc",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "IDas",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "AS_REP",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_nonce",
+				"type": "uint256"
+			}
+		],
+		"name": "AS_Set_AS_REP",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "IDc",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "IDv",
+				"type": "string"
+			}
+		],
+		"name": "C_Get_AP_REP",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "IDc",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "IDas",
+				"type": "string"
+			}
+		],
+		"name": "C_Get_AS_REP",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "IDc",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "IDv",
+				"type": "string"
+			}
+		],
+		"name": "C_Get_TGS_REP",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "IDc",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "IDv",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "AP_REQ",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_nonce",
+				"type": "uint256"
+			}
+		],
+		"name": "C_Set_AP_REQ",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "IDc",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "IDas",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "AS_REQ",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_nonce",
+				"type": "uint256"
+			}
+		],
+		"name": "C_Set_AS_REQ",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "IDc",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "IDtgs",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "TGS_REQ",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_nonce",
+				"type": "uint256"
+			}
+		],
+		"name": "C_Set_TGS_REQ",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "IDc",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "IDv",
+				"type": "string"
+			}
+		],
+		"name": "S_Get_AP_REQ",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "IDc",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "IDv",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "AP_REP",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_nonce",
+				"type": "uint256"
+			}
+		],
+		"name": "S_Set_AP_REP",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "IDtgs",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "IDv",
+				"type": "string"
+			}
+		],
+		"name": "TGS_Get_CKv",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "IDc",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "IDtgs",
+				"type": "string"
+			}
+		],
+		"name": "TGS_Get_TGS_REQ",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "IDc",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "IDtgs",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "IDv",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "TGS_REP",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_nonce",
+				"type": "uint256"
+			}
+		],
+		"name": "TGS_Set_TGS_REP",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "iID",
+				"type": "string"
+			}
+		],
+		"name": "getInfo",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			},
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "iID",
+				"type": "string"
+			}
+		],
+		"name": "get_nonce",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "iUser",
+				"type": "address"
+			},
+			{
+				"internalType": "string",
+				"name": "iID",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "iKey",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "iPL",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "ilifetime",
+				"type": "string"
+			}
+		],
+		"name": "setup",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	}
+]
