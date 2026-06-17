@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智易链-模型</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            background-color: #D7D7D7;
+        }
+        .container {
+            background-color: white;
+            width: 100%;
+            max-width: 1000px;
+            margin: auto;
+            text-align: center;
+        }
+        .title {
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .subtitle {
+            font-size: 1.5em;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        img {
+            width: 75%;
+            margin: 0 auto;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        .content {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .button {
+            cursor: pointer;
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .button:hover {
+            background: blue;
+        }
+        .downloadbutton {
+            cursor: pointer;
+            display: inline-block;
+            background-color: white;
+            color: blue;
+            padding: 10px 20px;
+            text-decoration: underline;
+            border-radius: 5px;
+            width: 80%;
+            border: 0px;
+        }
+        .downloadbutton:hover {
+            color: darkred;
+        }
+        
+        .image-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 创建三列 */
+            gap: 10px; /* 图片之间的间距 */
+            align-items: center; /* 垂直居中对齐 */
+        }
+        .files-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .upload-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .upload-btn:hover {
+            background: blue;
+        }
+        input[type="file"] {
+            display: none;
+        }
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+        .example {
+            text-decoration: none; /* 移除默认的下划线 */
+            font-weight: bold; /* 加粗文字 */
+            color: darkred; /* 设置文字颜色为暗红色 */
+            border-bottom: 1px solid #000; /* 添加自定义的下划线 */
+            margin-left: 5px;
+            margin-right: 5px;
+            padding-bottom: 2px; /* 增加底部内边距，使下划线看起来更接近文本 */
+        }
+        a {
+            cursor: pointer;
+        }
+        p {
+            width: 90%;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .example:hover {
+            color: blue;
+        }
+        .button-container {
+            flex: 0 0 auto; /* 不允许按钮容器伸缩 */
+            margin-left: 10%;
+        }
+        .table-container {
+            flex: 0 0 auto; /* 允许表格容器占据剩余空间 */
+            overflow: auto; /* 如果内容超出，显示滚动条 */
+            margin-right: 10%;
+        }
+        .container-lr {
+            display: flex; /* 使用flex布局 */
+            justify-content: space-between; /* 子元素之间的间距平均分布 */
+            align-items: center; /* 垂直居中 */
+            max-width: 100%;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse; /* 合并边框 */
+            margin: 20px 0; /* 表格上下外边距 */
+        }
+
+        th, td {
+            border: 1px solid black; /* 单元格边框 */
+            padding: 20px; /* 单元格内边距 */
+            text-align: center; /* 文本居中 */
+        }
+
+        caption {
+            caption-side: top; /* 标题位置在表格上方 */
+            padding: 10px; /* 标题内边距 */
+            font-size: 1.5em; /* 标题字体大小 */
+            font-weight: bold; /* 标题字体加粗 */
+        }
+        .file-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+        .file-list li {
+            padding: 8px 8px;
+            margin-bottom: 8px;
+            border-radius: 4px;
+        }
+        .delete-btn {
+            background: #d9534f;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .delete-btn:hover {
+            background: #c9302c;
+        }
+        .container select {
+            display: inline-block; /* 使select元素表现为行内块级元素 */
+        }
+        .dropdownset {
+            height: 25px;
+        }
+        #response {
+            display: none; /* 默认隐藏响应区域 */
+            margin-top: 20px;
+            font-family: Arial, sans-serif;
+        }
+        
+        #response p {
+            margin: 5px 0;
+        }
+        .download-link {
+            display: block;
+            margin-top: 10px;
+            font-size: 16px;
+            color: #0000EE; /* 链接颜色 */
+            text-decoration: underline; /* 下划线 */
+        }
+        form {
+            margin: 20px;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 10px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-group button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .form-group button:hover {
+            background-color: #0056b3;
+        }
+        .scroll-container{
+            position: fixed;
+            right: 5%;
+            top: 65%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #backToTop {
+            display: none;
+            background-color: white;
+            color: blue;
+            padding: 10px;
+            border: 5px grey;
+            border-radius: 50%;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 28px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            margin-top: 10px;
+            margin-left: 0;
+        }
+        #backToTop img {
+            width: 100%;
+            height: auto;
+        }
+        .scroll-nav {
+            background-color: #004F93;
+            border-radius: 8px;
+            padding: 10px 5px 5px;
+            width: 100px;
+        }
+
+        /* 导航链接的基本样式 */
+        .nav-link {
+            border: 2px solid white;
+            border-radius: 5px;
+            padding: 5px 10px;
+            display: block;
+            margin: 5px 5px;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        /* 当鼠标悬停在导航链接上时的样式 */
+        .nav-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 大标题 -->
+        <h1 class="title">模型链上链下可信交易</h1>
+        <br>
+
+<!-- ----------------------------------------------------  -->
+        
+        <!-- 图片 -->
+        <img src="images/b1-1.png" alt="描述性文字">
+        <br><br><br><br><br>
+	
+<!-- ----------------------------------------------------  -->
+	    <!-- 小标题 -->
+        <h2 id="upload-title" class="subtitle">模型上链</h2>
+        <!-- 图片 -->
+        <img src="images/b2-0.png" alt="描述性文字">
+        
+        <!-- 文本 -->
+        <div class="content">
+            <p>模型上链模块：模型提供商将水印嵌入模型后将模型上链。</p>
+        </div>
+
+        <!-- 图片 -->
+        <img src="images/b2-1.png" alt="描述性文字">
+        
+        <!-- 文本 -->
+        <div class="content">
+            <p>模型提供商向模型评估机构在链下申请模型上链，模型评估机构通过API/白盒访问模型，模型评估机构对模型的版权和功能进行评估后生成模型验证报告。</p>
+        </div>
+        <div class="container-lr">
+            <div class="button-container">
+                <a href="https://f9888d4b59f4704418.gradio.live" id="verify-button" class="button">验证模型</a>
+            </div>
+            <div class="table-container">
+                <table>
+                    <caption>生成式模型评估报告</caption>
+                    <tr>
+                        <td><a href="生成式模型语义一致性检测报告.pdf" target="_blank" rel="noopener noreferrer" class="example">生成式模型语义一致性检测报告</a></td>
+                        <td><a href="生成式模型的图像质量检测报告.pdf" target="_blank" rel="noopener noreferrer" class="example">生成式模型的图像质量检测报告</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="生成式模型的资产版权检测报告.pdf" target="_blank" rel="noopener noreferrer" class="example">生成式模型的资产版权检测报告</a></td>
+                        <td><a href="生成式模型的资产价值评估报告.pdf" target="_blank" rel="noopener noreferrer" class="example">生成式模型的资产价值评估报告</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- 图片 -->
+        <img src="images/b2-2.png" alt="描述性文字">
+        
+        <div class="container-lr">
+            <div class="content" style="width: 60%;">
+                <p style="width: 80%; margin-left: 10%;">评估机构调用模型上链合约进行上链，模型版权验证报告与模型功能验证报告将储存在平台中，区块链中储存模型的唯一身份标识符。</p>
+            </div>
+            <div class="files-container" style="width: 40%; margin:0 0 auto;">
+                <form action="">
+                    <label for="upload-option1">模型类型:</label>
+                    <input type="radio" id="upload-option1" name="upload-option" value="1" onchange="uploadchoose(this.value)">
+                    <label for="upload-option1">大语言</label>
+                    <input type="radio" id="upload-option2" name="upload-option" value="2" onchange="uploadchoose(this.value)">
+                    <label for="upload-option2">图像生成</label><br>
+                </form>
+        
+                <div id="upload-dropdown1" class="dropdown">
+                    <br>
+                    <label for="upload-dropdown1">模型名称:</label>
+                    <select id="upload-dropdownset1" class="dropdownset">
+                        <option value="" selected>请选择一类模型</option>
+                        <option value="opt-1.3">opt-1.3</option>
+                        <option value="opt-1.7">opt-1.7</option>
+                        <option value="GPT-2">GPT-2</option>
+                    </select>
+                </div>
+                
+                <div id="upload-dropdown2" class="dropdown">
+                    <br>
+                    <label for="upload-dropdown2">模型名称:</label>
+                    <select id="upload-dropdownset2" class="dropdownset">
+                        <option value="" selected>请选择一类模型</option>
+                        <option value="stable-diffusion v1-4">stable-diffusion v1-4</option>
+                        <option value="stable-diffusion v2.1">stable-diffusion v2.1</option>
+                        <option value="stable-diffusion XL">stable-diffusion XL</option>
+                    </select>
+                </div>
+                <div style="margin-top: 20px;">
+                    <input type="file" id="file-upload" multiple accept=".pdf">
+                    <label for="file-upload" class="upload-btn" style="margin:0 0 auto;">选择文件</label>
+                    <ul id="file-list" class="file-list"></ul>
+                </div>      
+                
+            </div>
+        </div>
+        <a id="upload" class="button">模型上链</a>
+        <br><br><br><br><br>
+        
+        	
+<!-- ----------------------------------------------------  -->
+        <!-- 小标题 -->
+        <h2 id="search-title" class="subtitle">模型查询</h2>
+            
+        <img src="images/b3-0.png" alt="图片1">
+        
+        <!-- 文本 -->
+        <div class="content">
+            <p>模型查询模块：对于模型授权查询，用户通过模型查询服务匹配模型服务需求，平台根据模型查询合约获取模型的版权信息，并返回模型功能评估报告。对于模型交易查询，模型需求方通过调用模型查询合约进行版权检索，通过检索信息向平台查询完整模型功能评估报告与模型版权评估报告。</p>
+        </div>
+
+        <form action="">
+            <label for="option1">模型类型:</label>
+            <input type="radio" id="option1" name="option" value="1" onchange="choose(this.value)">
+            <label for="option1">大语言</label>
+            <input type="radio" id="option2" name="option" value="2" onchange="choose(this.value)">
+            <label for="option2">图像生成</label><br>
+	    </form>
+
+        <div id="dropdown1" class="dropdown">
+            <br>
+            <label for="dropdown1">模型名称:</label>
+            <select id="dropdownset1" class="dropdownset">
+                <option value="" selected>请选择一类模型</option>
+                <option value="opt-1.3">opt-1.3</option>
+                <option value="opt-1.7">opt-1.7</option>
+                <option value="GPT-2">GPT-2</option>
+            </select>
+        </div>
+        
+        <div id="dropdown2" class="dropdown">
+            <br>
+            <label for="dropdown2">模型名称:</label>
+            <select id="dropdownset2" class="dropdownset">
+                <option value="" selected>请选择一类模型</option>
+                <option value="stable-diffusion v1-4">stable-diffusion v1-4</option>
+                <option value="stable-diffusion v2.1">stable-diffusion v2.1</option>
+                <option value="stable-diffusion XL">stable-diffusion XL</option>
+            </select>
+        </div>
+
+        <!-- 按钮 -->
+        <a id="Button2" class="button">查询</a>
+
+        <div id="response">
+            <table id="resultsTable" style="width: 60%;margin: auto;">
+                <thead>
+                    <tr>
+                        <th style="padding-top: 15px; padding-bottom: 15px;">模型ID</th>
+                        <th style="padding-top: 15px; padding-bottom: 15px;">测评报告</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 结果将被动态插入这里 -->
+                </tbody>
+            </table>
+        </div>
+        <br><br><br><br><br>
+
+<!-- ----------------------------------------------------  -->
+	    <!-- 小标题 -->
+        <h2 id="transaction-title" class="subtitle">模型交易</h2>
+        
+        <!-- 图片 -->
+        <img src="images/b4-0.png" alt="描述性文字">
+        
+        <!-- 文本 -->
+        <div class="content">
+            <p>模型交易模块：在模型协商阶段，模型提供商与模型需求方在根据平台接口进行链下协商后，平台记录协商结果并将交易关系上链。在模型交易阶段，模型供应商将水印组件嵌入模型并向模型需求方提供模型，水印组件为模型需求方设定了特殊的识别码，后续可对交易的模型进行追溯。</p>
+        </div>
+        <div class="container-lr">
+            <div class="content" style="background-color: lightblue; width: 45%; margin: auto;">
+                <p style="font-weight: bold; font-size: 18px;">买家端：</p>
+                <form id="buyerform" action="/submit-form" method="post">
+                    <div class="form-group">
+                        <label for="model">模型ID:</label>
+                        <input type="text" id="model" name="modelID" required>
+                        <label for="money">交易金额:</label>
+                        <input type="text" id="money" name="money" required>
+                    </div>
+                    <div class="form-group">
+                        <button class="button" type="submit">去付款</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="content" style="background-color: lightblue; width: 45%; margin: auto;">
+                <p style="font-weight: bold; font-size: 18px;">卖家端：</p>
+                <form id="solderform" action="/submit-form" method="post">
+                    <div class="form-group">
+                        <label for="tranid">交易ID:</label>
+                        <input type="text" id="tranid" required>
+                        <label for="verification">交易凭证:</label>
+                        <input type="file" id="verification" accept=".pdf">
+                        <label for="verification" class="upload-btn" style="margin:0 0 auto;">选择文件</label>
+                        <ul id="verification-list" class="file-list"></ul>
+                    </div>
+                    <div class="form-group">
+                        <button class="button" type="submit">提交凭证</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        <br><br><br><br><br>
+        
+
+<!-- ----------------------------------------------------  -->
+	    <!-- 小标题 -->
+        <h2 id="usage-title" class="subtitle">模型使用</h2>
+        
+        <!-- 图片 -->
+        <img src="images/b5-1.png" alt="描述性文字">
+        
+        <div class="container-lr" style="width: 50%; margin: auto;">
+            <div>
+                <a href="https://f9888d4b59f4704418.gradio.live" class="button">通过api使用模型</a>
+            </div>
+            <div>
+                <a href="https://b20ac8dbd1b3c3ef2e.gradio.live" class="button">通过模型部署使用模型</a>
+            </div>
+        </div>
+        <br><br><br><br><br><br><br>
+    </div>
+
+    <div class="scroll-container">
+        <!-- 导航栏 -->
+        <div class="scroll-nav">
+            <a href="#upload-title" class="nav-link">模型上链</a>
+            <a href="#search-title" class="nav-link">模型查询</a>
+            <a href="#transaction-title" class="nav-link">模型交易</a>
+            <a href="#usage-title" class="nav-link">模型使用</a>
+        </div>
+        <button id="backToTop" title="回到顶端" style="width: 35%;" onclick="topFunction()"><img src="images/top.svg" alt="Back to Top"></button>
+    </div>
+    
+	<script>
+        document.getElementById('upload').addEventListener('click', function(event) {
+            event.preventDefault(); // 阻止表单默认提交行为
+            const selectedUploadRadio = document.querySelector('input[type=radio][name="upload-option"]:checked');
+            let selectedUploadOption;
+
+            var filesInput = document.getElementById('file-upload'); // 获取指定 id 的 input 元素
+            var formData = new FormData();
+            Array.from(filesInput.files).forEach(file => {
+                formData.append('files', file); // 多个文件上传，字段名为 "files"
+            });
+            if (selectedUploadRadio) {
+                if (selectedUploadRadio.value === '1') {
+                    selectedUploadOption = uploaddropdownset1.value;
+                    
+                } else if (selectedUploadRadio.value === '2') {
+                    selectedUploadOption = uploaddropdownset2.value;
+                }
+
+                if (selectedUploadOption) {
+                    if (selectedUploadOption === "") {
+                        alert("请选择一个子选项");
+                        return;
+                    }
+                    formData.append('type', selectedUploadRadio.value)
+                    formData.append('model', selectedUploadOption)
+                } else{
+                    alert("请选择一个子选项");
+                    return
+                }
+            } else{
+                alert("请选择一个子选项");
+                return
+            }
+            fetch('http://61.48.133.1:65002/model-upload', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data); // 处理返回的数据
+                alert('模型ID为:' + data.modelID);
+                navigator.clipboard.writeText(data.modelID)
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+    <script>
+        document.getElementById('file-upload').addEventListener('change', function(event) {
+            var files = event.target.files;
+            var fileList = document.getElementById('file-list');
+            fileList.innerHTML = ''; // 清空之前的文件列表
+        
+            // 遍历所有选中的文件
+            for (var i = 0; i < files.length; i++) {
+                var file = files[i];
+                // 只显示PDF文件
+                if (file.type === 'application/pdf') {
+                var listItem = document.createElement('li');
+                listItem.textContent = file.name;
+                fileList.appendChild(listItem);
+                }
+            }
+        });
+    </script>
+    <script>
+        document.getElementById('verification').addEventListener('change', function(event) {
+            var files = event.target.files;
+            var fileList = document.getElementById('verification-list');
+            fileList.innerHTML = ''; // 清空之前的文件列表
+        
+            // 遍历所有选中的文件
+            for (var i = 0; i < files.length; i++) {
+                var file = files[i];
+                // 只显示PDF文件
+                if (file.type === 'application/pdf') {
+                var listItem = document.createElement('li');
+                listItem.textContent = file.name;
+                fileList.appendChild(listItem);
+                }
+            }
+        });
+    </script>
+    <script>
+        // 获取按钮元素
+        var button = document.getElementById('Button2');
+        const responseDiv = document.getElementById('response');
+        const textInfo = document.getElementById('textInfo');
+        const downloadLink = document.getElementById('downloadLink');
+        var dropdownset1 = document.getElementById('dropdownset1');
+        var dropdownset2 = document.getElementById('dropdownset2');
+        
+        
+        button.addEventListener('click', function() {
+            const selectedRadio = document.querySelector('input[type=radio][name="option"]:checked');
+            let selectedOption;
+
+            if (selectedRadio) {
+                if (selectedRadio.value === '1') {
+                    selectedOption = dropdownset1.value;
+                } else if (selectedRadio.value === '2') {
+                    selectedOption = dropdownset2.value;
+                }
+
+                if (selectedOption) {
+                    if (selectedOption === "") {
+                        alert("请选择一个子选项");
+                        return;
+                    }
+                    const param = new URLSearchParams({
+                        type: selectedRadio.value,
+                        model: selectedOption
+                    });
+                    console.log('111')
+                    // 使用fetch发送数据到后端
+                    fetch(`http://61.48.133.1:65002/search?${param}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json()
+                    })
+                    .then(data => {
+                        console.log(data);
+                        console.dir(data);
+                        if (data.message === 'ok') {
+                            responseDiv.style.display = 'block'
+                            createTable(data.results);
+                        } else {
+                            console.error('Error11:' + data.message);
+                        }
+                    })
+                    .catch((error) => {
+                        alert('Error12:', error);
+                        console.log(error)
+                    });
+                } else {
+                    alert("请选择一个选项");
+                }
+            } else {
+                alert("请选择一个选项");
+            }
+        });
+        function createTable(results) {
+            const tableBody = document.getElementById('resultsTable').getElementsByTagName('tbody')[0];
+            // 清空现有的表格内容
+            tableBody.innerHTML = '';
+
+            results.forEach(result => {
+                const row = tableBody.insertRow();
+                const cellResult = row.insertCell(0);
+                const cellButton = row.insertCell(1);
+                cellResult.style.paddingTop = '10px'
+                cellResult.style.paddingBottom = '10px'
+                cellButton.style.paddingTop = '10px'
+                cellButton.style.paddingBottom = '10px'
+                cellResult.style.width = '70%'
+                cellResult.textContent = result.idres;
+                var cos = result.cosres;
+                
+                const button = document.createElement('button');
+                button.className = 'downloadbutton'
+                button.textContent = '下载';
+                button.onclick = function() { window.location.href = cos };
+                cellButton.appendChild(button);
+            });
+        }
+    </script>
+    <script>
+        var uploadradios1 = document.getElementById('upload-option1');
+        var uploadradios2 = document.getElementById('upload-option2');
+        var uploaddropdown1 = document.getElementById('upload-dropdown1');
+        var uploaddropdown2 = document.getElementById('upload-dropdown2');
+        var uploaddropdownset1 = document.getElementById('upload-dropdownset1');
+        var uploaddropdownset2 = document.getElementById('upload-dropdownset2');
+        function hideUploadDropdowns() {
+	        uploaddropdown1.style.display = 'none';
+	        uploaddropdown2.style.display = 'none';
+	    }
+    	function uploadchoose(option){
+            if (option === "1"){
+                uploaddropdown1.style.display = 'block';
+                uploaddropdown2.style.display = 'none';
+                uploaddropdownset1.selectedIndex = 0
+            }else{
+                uploaddropdown2.style.display = 'block';
+                uploaddropdown1.style.display = 'none';
+                uploaddropdownset2.selectedIndex = 0
+            }            
+        }
+	    hideUploadDropdowns();
+    </script>
+    <script>
+        var radios1 = document.getElementById('option1');
+        var radios2 = document.getElementById('option2');
+        var dropdown1 = document.getElementById('dropdown1');
+        var dropdown2 = document.getElementById('dropdown2');
+        var dropdownset1 = document.getElementById('dropdownset1');
+        var dropdownset2 = document.getElementById('dropdownset2');
+        function hideDropdowns() {
+	        dropdown1.style.display = 'none';
+	        dropdown2.style.display = 'none';
+	    }
+    	function choose(option){
+            if (option === "1"){
+                dropdown1.style.display = 'block';
+                dropdown2.style.display = 'none';
+                dropdownset1.selectedIndex = 0
+            }else{
+                dropdown2.style.display = 'block';
+                dropdown1.style.display = 'none';
+                dropdownset2.selectedIndex = 0
+            }            
+        }
+	    hideDropdowns();
+    </script>
+    <script>
+        document.getElementById('buyerform').addEventListener('submit', function(event) {
+            event.preventDefault(); // 阻止表单默认提交行为
+        
+            var formData = new FormData(this); // 创建FormData对象
+
+            fetch('http://61.48.133.1:65002/buyer-submit', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json()) // 或者response.json()如果你期望JSON格式的响应
+            .then(data => {
+                console.log(data); // 处理返回的数据
+                alert("交易ID为:" + data.tranID); // 显示返回的数据
+                navigator.clipboard.writeText(data.tranID)
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+        document.getElementById('solderform').addEventListener('submit', function(event) {
+            event.preventDefault(); // 阻止表单默认提交行为
+            var traninput = document.getElementById('tranid')
+            var formData = new FormData(); // 创建FormData对象
+            var fileinput = document.getElementById('verification'); // 获取指定 id 的 input 元素
+            var file = fileinput.files[0];
+            formData.append('file', file);
+            formData.append('tranID',traninput.value)
+            fetch('http://61.48.133.1:65002/solder-submit', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json()) // 或者response.json()如果你期望JSON格式的响应
+            .then(data => {
+                console.log(data); // 处理返回的数据
+                alert(data.message); // 显示返回的数据
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+
+    </script>
+    <script>
+        // 通过锚点链接跳转到对应div的位置
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault(); // 阻止默认的锚点跳转行为
+                const targetId = this.getAttribute('href').substring(1); // 获取href属性中的ID
+                const targetSection = document.getElementById(targetId);
+                
+                // 滚动到对应div的位置
+                targetSection.scrollIntoView({
+                    behavior: 'smooth' // 平滑滚动
+                });
+            });
+        });
+        // 当页面滚动时，显示或隐藏返回顶部按钮
+        window.onscroll = function() {
+            scrollFunction();
+        };
+
+        function scrollFunction() {
+            var backToTop = document.getElementById("backToTop");
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTop.style.display = "block";
+            } else {
+                backToTop.style.display = "none";
+            }
+        }
+
+        // 点击按钮时平滑滚动到页面顶部
+        function topFunction() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+      </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+
+[Network]
+#type rpc or channel
+Type="channel"
+CAFile="ca.crt"
+Cert="sdk.crt"
+Key="sdk.key"
+# if the certificate context is not empty, use it, otherwise read from the certificate file
+# multi lines use triple quotes
+CAContext=''''''
+KeyContext=''''''
+CertContext=''''''
+
+[[Network.Connection]]
+NodeURL="127.0.0.1:20200"
+GroupID=1
+# [[Network.Connection]]
+# NodeURL="127.0.0.1:20200"
+# GroupID=2
+
+[Account]
+# only support PEM format for now
+#KeyFile=".ci/0x83309d045a19c44dc3722d15a6abd472f95866ac.pem"
+KeyFile=".ci/0xdcc91e225ccf2bffec2d82f9828b53f426556ef2.pem"
+
+[Chain]
+ChainID=1
+SMCrypto=false
+
+[log]
+Path="./"
