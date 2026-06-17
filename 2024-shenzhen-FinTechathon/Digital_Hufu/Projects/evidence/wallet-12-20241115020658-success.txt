@@ -1,0 +1,8 @@
+异常交易记录
+------------------------
+创建时间: 2024-11-15 02:06:02
+钱包序号: 12
+交易序号: 5
+异常证据: Transaction ID: 5, From: 12, To: 11, Amount: 199999.000000, Time: 2024-11-15T02:06:02Z, Error: Amount exceeds the maximum allowed for a single transaction.
+监管签名: 078fb81ca4477147ea5137c6d4ef3d89a0869f3ca0ea03f36c8d37f2a9a08823a7356ff94222df7948066f432db6fb837c6decbadb759264b50afd361c678a43
+------------------------

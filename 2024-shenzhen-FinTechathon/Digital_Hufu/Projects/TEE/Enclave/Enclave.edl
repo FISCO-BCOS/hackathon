@@ -1,0 +1,78 @@
+/*
+ * Copyright (C) 2011-2021 Intel Corporation. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ *   * Redistributions of source code must retain the above copyright
+ *     notice, this list of conditions and the following disclaimer.
+ *   * Redistributions in binary form must reproduce the above copyright
+ *     notice, this list of conditions and the following disclaimer in
+ *     the documentation and/or other materials provided with the
+ *     distribution.
+ *   * Neither the name of Intel Corporation nor the names of its
+ *     contributors may be used to endorse or promote products derived
+ *     from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ */
+
+/* Enclave.edl - Top EDL file. */
+
+enclave {
+    
+    include "user_types.h" /* buffer_t */
+
+    /* Import ECALL/OCALL from sub-directory EDLs.
+     *  [from]: specifies the location of EDL file. 
+     *  [import]: specifies the functions to import, 
+     *  [*]: implies to import all functions.
+     */
+    
+    from "Edger8rSyntax/Types.edl" import *;
+    from "Edger8rSyntax/Pointers.edl" import *;
+    from "Edger8rSyntax/Arrays.edl" import *;
+    from "Edger8rSyntax/Functions.edl" import *;
+
+    from "TrustedLibrary/Libc.edl" import *;
+    from "TrustedLibrary/Libcxx.edl" import ecall_exception, ecall_map;
+    from "TrustedLibrary/Thread.edl" import *;
+
+    /* 
+     * ocall_print_string - invokes OCALL to display string buffer inside the enclave.
+     *  [in]: copy the string buffer to App outside.
+     *  [string]: specifies 'str' is a NULL terminated buffer.
+     */
+    trusted {
+        public void ecall_add(int a, int b, [out] int *result);
+        public void ecall_create_wallet([out, size=key_len] unsigned char* ret_pub_key, [out, size=key_len] unsigned char* ret_priv_key, 
+                                        size_t key_len, int wallet_id, [out] int* ret);
+        public void ecall_deal_transaction(int from_id, int to_id, double amount, [out, size=shuffled_output_size] char* shuffled_output, size_t shuffled_output_size, 
+                                           [out, size=encrypted_output_size] char* encrypted_output, size_t encrypted_output_size, [out] int* warning_sign, [out] int* ret);
+        public void ecall_decrypt_transaction_data([in, size=encrypted_size] const char* encrypted_from, [in, size=encrypted_size] const char* encrypted_id, 
+                                                   [in, size=encrypted_size] const char* encrypted_amount, size_t encrypted_size, 
+                                                   [out] int* from_id, [out] int* to_id, [out] double* amount,[out] int* ret);
+        public void ecall_encrypt_transaction(int from_id, int to_id, double amount, [out] int* ret);
+        public void ecall_transaction_warning(int from_id, int to_id, double amount, [out] int* warning_sign, [out] int* ret);
+    };
+
+    untrusted {
+        void ocall_print_string([in, string] const char *str);
+        void ocall_file_exists([in, string] const char* filename, [out] int* exists);
+        void ocall_read_file([in, string] const char* filename, [out, size=buffer_size] char* buffer, size_t buffer_size, [out] int* ret);
+        void ocall_write_file([in, string] const char* filename, [in, size=data_size] const char* data, size_t data_size, int write_mode, [out] int *ret);
+    };
+
+};
