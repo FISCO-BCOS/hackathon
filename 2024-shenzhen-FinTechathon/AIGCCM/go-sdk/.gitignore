@@ -1,0 +1,42 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+main
+console
+/abigen
+
+# config files
+sdk.crt
+sdk.key
+ca.crt
+
+# Test binary, built with `go test -c`
+*.test
+
+# code coverage file
+coverage.txt
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+
+# Dependency directories (remove the comment below to include it)
+# vendor/
+
+# macOS specific
+.DS_Store
+
+# solc
+solc*
+
+# ci and config files
+.ci
+config.toml
+
+# golang
+go.sum
+
+# idea
+.idea

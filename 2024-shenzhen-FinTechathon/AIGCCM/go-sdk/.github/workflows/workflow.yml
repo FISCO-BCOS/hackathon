@@ -1,0 +1,51 @@
+name: FISCO-BCOS Go-SDK GitHub Actions
+on:
+  push:
+    # branches-ignore:
+    #   - "**-1.3"
+    # tags-ignore:
+    #   - v1.*
+    paths-ignore:
+      - "Changelog.md"
+      - "README.md"
+  pull_request:
+    # branches:
+    #     - '**'
+  release:
+    types: [published, created, edited]
+
+jobs:
+  build:
+    name: build
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        go: ["1.17", "1.18", "1.19"]
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+      # - uses: actions/cache@v1
+      #   id: cache
+      #   with:
+      #     path: deps/
+      #     key: deps-${{ runner.os }}-${{ github.ref }}-${{ hashFiles('.github/workflows/workflow.yml') }}
+      #     restore-keys: |
+      #       deps-${{ runner.os }}-${{ github.ref }}-${{ hashFiles('.github/workflows/workflow.yml') }}
+      #       deps-${{ runner.os }}-${{ github.ref }}
+      #       deps-${{ runner.os }}-
+      - uses: actions/setup-go@v2
+        with:
+          go-version: ${{ matrix.go }}
+      - name: check commit
+        if: ${{ runner.os == 'Linux' && github.base_ref != 'master' && github.event_name == 'pull_request' }}
+        run: bash .ci/check-commit.sh
+      - name: mod tidy
+        run: go mod tidy
+      - name: test all
+        if: ${{ runner.os == 'Linux' }}
+        run: bash -x .ci/integration_test.sh -a
+      - name: test without amop
+        if: ${{ runner.os == 'macOS' }}
+        run: bash .ci/integration_test.sh

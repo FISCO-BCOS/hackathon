@@ -1,0 +1,20 @@
+[Network]
+#type rpc or channel
+Type="channel"
+CAFile="certinf1/ca.crt"
+Cert="certinf1/sdk.crt"
+Key="certinf1/sdk.key"
+[[Network.Connection]]
+NodeURL="1.95.32.15:20200"
+GroupID=1
+# [[Network.Connection]]
+# NodeURL="1.95.32.15:20200"
+# GroupID=2
+
+[Account]
+# only support PEM format for now
+KeyFile=".ci/0x83309d045a19c44dc3722d15a6abd472f95866ac.pem"
+
+[Chain]
+ChainID=1
+SMCrypto=false
